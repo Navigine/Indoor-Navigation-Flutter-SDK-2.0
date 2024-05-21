@@ -10,8 +10,8 @@ void main() {
   runApp(MaterialApp(home: MainPage()));
 }
 
-int LOCATION_ID = 1303; // Put here your location id
-int SUBLOCATION_ID = 1739;  // Put here your sublocation id
+int LOCATION_ID = 0; // Put here your location id
+int SUBLOCATION_ID = 0;  // Put here your sublocation id
 
 class MainPage extends StatelessWidget with WidgetsBindingObserver {
   // Future<bool> get locationPermissionNotGranted async => !(await Permission.location.request().isGranted);
@@ -41,7 +41,7 @@ class MainPage extends StatelessWidget with WidgetsBindingObserver {
 
     _sdk = NavigineSdk.getInstance();
     _sdk.setServer("https://ips.navigine.com");
-    _sdk.setUserHash("7F4C-A0FE-4759-E444");
+    _sdk.setUserHash("0000-0000-0000-0000");
 
     _locationManager = _sdk.getLocationManager();
     _locationManager.setLocationId(LOCATION_ID);
