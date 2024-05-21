@@ -7,6 +7,13 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone.dart';
 
 abstract class ZoneListener {
+    factory ZoneListener(
+      void Function(Zone) onEnterZoneLambda,
+      void Function(Zone) onLeaveZoneLambda,
+    ) => ZoneListener$Lambdas(
+      onEnterZoneLambda,
+      onLeaveZoneLambda,
+    );
 
     void onEnterZone(Zone zone);
     void onLeaveZone(Zone zone);
@@ -26,8 +33,70 @@ final _navigine_sdk_flutter_ZoneListener_CreateProxy = __lib.catchArgumentError(
     Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer),
     Pointer<Void> Function(int, int, int, Object, Pointer, Pointer)
   >('navigine_sdk_flutter_ZoneListener_create_proxy'));
+
+
+class ZoneListener$Lambdas implements ZoneListener {
+    void Function(Zone) onEnterZoneLambda;
+    void Function(Zone) onLeaveZoneLambda;
+
+    ZoneListener$Lambdas(
+      this.onEnterZoneLambda,
+      this.onLeaveZoneLambda,
+    );
+
+    @override
+    void onEnterZone(Zone zone) =>
+      onEnterZoneLambda(zone);
+
+    @override
+    void onLeaveZone(Zone zone) =>
+      onLeaveZoneLambda(zone);
+
+
+}
+int _navigine_sdk_flutter_ZoneListener_onEnterZoneStatic(Object _obj, Pointer<Void> zone) {
+    
+    try  {
+        (_obj as ZoneListener).onEnterZone(
+          navigine_sdk_flutter_Zone_FromFfi(zone),
+        );
+
+        
+    }
+    finally  {
+          navigine_sdk_flutter_Zone_ReleaseFfiHandle(zone);
+
+    }
+    return 0;
+}
+
+int _navigine_sdk_flutter_ZoneListener_onLeaveZoneStatic(Object _obj, Pointer<Void> zone) {
+    
+    try  {
+        (_obj as ZoneListener).onLeaveZone(
+          navigine_sdk_flutter_Zone_FromFfi(zone),
+        );
+
+        
+    }
+    finally  {
+          navigine_sdk_flutter_Zone_ReleaseFfiHandle(zone);
+
+    }
+    return 0;
+}
+
 Pointer<Void> navigine_sdk_flutter_ZoneListener_ToFfi(ZoneListener value) {
-    return Pointer<Void>.fromAddress(0);
+    final result = _navigine_sdk_flutter_ZoneListener_CreateProxy(
+      __lib.getObjectToken(value),
+      __lib.LibraryContext.isolateId,
+      __lib.createExecutePort(),
+      value,
+      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_ZoneListener_onEnterZoneStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_ZoneListener_onLeaveZoneStatic, __lib.unknownError),
+    );
+
+    return result;
 }
 
 Pointer<Void> navigine_sdk_flutter_ZoneListener_ToFfiNullable(ZoneListener? value) => 

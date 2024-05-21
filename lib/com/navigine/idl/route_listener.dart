@@ -7,6 +7,11 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
 abstract class RouteListener {
+    factory RouteListener(
+      void Function(List<RoutePath>) onPathsUpdatedLambda,
+    ) => RouteListener$Lambdas(
+      onPathsUpdatedLambda,
+    );
 
     void onPathsUpdated(List<RoutePath> paths);
 
@@ -25,8 +30,47 @@ final _navigine_sdk_flutter_RouteListener_CreateProxy = __lib.catchArgumentError
     Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer),
     Pointer<Void> Function(int, int, int, Object, Pointer)
   >('navigine_sdk_flutter_RouteListener_create_proxy'));
+
+
+class RouteListener$Lambdas implements RouteListener {
+    void Function(List<RoutePath>) onPathsUpdatedLambda;
+
+    RouteListener$Lambdas(
+      this.onPathsUpdatedLambda,
+    );
+
+    @override
+    void onPathsUpdated(List<RoutePath> paths) =>
+      onPathsUpdatedLambda(paths);
+
+
+}
+int _navigine_sdk_flutter_RouteListener_onPathsUpdatedStatic(Object _obj, Pointer<Void> paths) {
+    
+    try  {
+        (_obj as RouteListener).onPathsUpdated(
+          navigine_sdk_flutter_List_RoutePath_FromFfi(paths),
+        );
+
+        
+    }
+    finally  {
+          navigine_sdk_flutter_List_RoutePath_ReleaseFfiHandle(paths);
+
+    }
+    return 0;
+}
+
 Pointer<Void> navigine_sdk_flutter_RouteListener_ToFfi(RouteListener value) {
-    return Pointer<Void>.fromAddress(0);
+    final result = _navigine_sdk_flutter_RouteListener_CreateProxy(
+      __lib.getObjectToken(value),
+      __lib.LibraryContext.isolateId,
+      __lib.createExecutePort(),
+      value,
+      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_RouteListener_onPathsUpdatedStatic, __lib.unknownError),
+    );
+
+    return result;
 }
 
 Pointer<Void> navigine_sdk_flutter_RouteListener_ToFfiNullable(RouteListener? value) => 
