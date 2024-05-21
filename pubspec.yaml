@@ -1,0 +1,17 @@
+name: navigine_sdk
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+dependencies:
+  flutter_plugin_android_lifecycle: ^2.0.6
+  ffi:
+  intl:
+  meta:
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.navigine.sdk.flutter
+        pluginClass: NavigineSdkPlugin
+      ios:
+        pluginClass: NavigineSdkPlugin
