@@ -1,8 +1,6 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/beacon.dart';
 import 'package:navigine_sdk/com/navigine/idl/eddystone.dart';
@@ -15,7 +13,7 @@ import 'package:navigine_sdk/com/navigine/idl/wifi.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone.dart';
 import 'package:navigine_sdk/image_wrapper.dart';
 
-abstract class Sublocation {
+abstract class Sublocation implements Finalizable {
 
     ImageWrapper getImage(int? maxTextureSize);
     LocationPoint globalToLocal(GlobalPoint globalPoint);
@@ -51,30 +49,29 @@ final _navigine_sdk_flutter_Sublocation_CopyHandle = __lib.catchArgumentError(()
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_Sublocation_copy_handle'));
 
-final _navigine_sdk_flutter_Sublocation_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_Sublocation_register_finalizer'));
-
-final _navigine_sdk_flutter_Sublocation_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Sublocation_get_type_id'));
-
 final _navigine_sdk_flutter_Sublocation_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_Sublocation_release_handle'));
 
+final _navigine_sdk_flutter_Sublocation_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_Sublocation_free');
+
 final _navigine_sdk_flutter_Sublocation_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_Sublocation_create_proxy'));
 
+final _navigine_sdk_flutter_Sublocation_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_Sublocation_set_ports'));
 
-class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
 
+class Sublocation$Impl extends __lib.NativeBase implements Sublocation, Finalizable {
     Sublocation$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_Sublocation_free.cast());
 
     @override
     ImageWrapper getImage(int? maxTextureSize) {
@@ -88,6 +85,10 @@ class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
         navigine_sdk_flutter_int_ReleaseFfiHandleNullable(_maxTextureSizeHandle);
         try  {
             return navigine_sdk_flutter_ImageWrapper_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_ImageWrapper_ReleaseFfiHandle(__resultHandle);
@@ -107,6 +108,10 @@ class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
         try  {
             return navigine_sdk_flutter_LocationPoint_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(__resultHandle);
         }
@@ -124,6 +129,10 @@ class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
         navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_localPointHandle);
         try  {
             return navigine_sdk_flutter_GlobalPoint_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_GlobalPoint_ReleaseFfiHandle(__resultHandle);
@@ -143,6 +152,10 @@ class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
         try  {
             return navigine_sdk_flutter_Graph_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_Graph_ReleaseFfiHandle(__resultHandle);
         }
@@ -161,6 +174,10 @@ class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
         try  {
             return navigine_sdk_flutter_Venue_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_Venue_ReleaseFfiHandle(__resultHandle);
         }
@@ -178,6 +195,10 @@ class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
         navigine_sdk_flutter_int_ReleaseFfiHandle(_idHandle);
         try  {
             return navigine_sdk_flutter_Zone_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_Zone_ReleaseFfiHandle(__resultHandle);
@@ -460,6 +481,7 @@ class Sublocation$Impl extends __lib.NativeBase implements Sublocation {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_Sublocation_ToFfi(Sublocation value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_Sublocation_CopyHandle((value as __lib.NativeBase).handle);
@@ -471,17 +493,9 @@ Pointer<Void> navigine_sdk_flutter_Sublocation_ToFfi(Sublocation value) {
 
 Sublocation navigine_sdk_flutter_Sublocation_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is Sublocation) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_Sublocation_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_Sublocation_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : Sublocation$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_Sublocation_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = Sublocation$Impl(_copiedHandle);
+    Sublocation$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

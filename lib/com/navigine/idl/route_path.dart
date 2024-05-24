@@ -1,14 +1,12 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_event.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
-abstract class RoutePath {
+abstract class RoutePath implements Finalizable {
 
     List<RoutePath> split(double advance);
 
@@ -26,30 +24,29 @@ final _navigine_sdk_flutter_RoutePath_CopyHandle = __lib.catchArgumentError(() =
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_RoutePath_copy_handle'));
 
-final _navigine_sdk_flutter_RoutePath_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_RoutePath_register_finalizer'));
-
-final _navigine_sdk_flutter_RoutePath_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RoutePath_get_type_id'));
-
 final _navigine_sdk_flutter_RoutePath_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_RoutePath_release_handle'));
 
+final _navigine_sdk_flutter_RoutePath_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_RoutePath_free');
+
 final _navigine_sdk_flutter_RoutePath_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_RoutePath_create_proxy'));
 
+final _navigine_sdk_flutter_RoutePath_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_RoutePath_set_ports'));
 
-class RoutePath$Impl extends __lib.NativeBase implements RoutePath {
 
+class RoutePath$Impl extends __lib.NativeBase implements RoutePath, Finalizable {
     RoutePath$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_RoutePath_free.cast());
 
     @override
     List<RoutePath> split(double advance) {
@@ -63,6 +60,10 @@ class RoutePath$Impl extends __lib.NativeBase implements RoutePath {
         navigine_sdk_flutter_double_ReleaseFfiHandle(_advanceHandle);
         try  {
             return navigine_sdk_flutter_List_RoutePath_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_List_RoutePath_ReleaseFfiHandle(__resultHandle);
@@ -124,6 +125,7 @@ class RoutePath$Impl extends __lib.NativeBase implements RoutePath {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_RoutePath_ToFfi(RoutePath value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_RoutePath_CopyHandle((value as __lib.NativeBase).handle);
@@ -135,17 +137,9 @@ Pointer<Void> navigine_sdk_flutter_RoutePath_ToFfi(RoutePath value) {
 
 RoutePath navigine_sdk_flutter_RoutePath_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is RoutePath) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_RoutePath_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_RoutePath_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : RoutePath$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_RoutePath_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = RoutePath$Impl(_copiedHandle);
+    RoutePath$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

@@ -1,20 +1,12 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
+import 'package:navigine_sdk/com/_weak_map.dart';
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_info.dart';
 import 'package:navigine_sdk/error.dart';
 
 abstract class LocationListListener {
-    factory LocationListListener(
-      void Function(Map<int, LocationInfo>) onLocationListLoadedLambda,
-      void Function(Error) onLocationListFailedLambda,
-    ) => LocationListListener$Lambdas(
-      onLocationListLoadedLambda,
-      onLocationListFailedLambda,
-    );
 
     void onLocationListLoaded(Map<int, LocationInfo> locationInfos);
     void onLocationListFailed(Error error);
@@ -25,77 +17,92 @@ abstract class LocationListListener {
 
 // LocationListListener "private" section, not exported.
 
-final _navigine_sdk_flutter_LocationListListener_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationListListener_release_handle'));
+final _navigine_sdk_flutter_LocationListListener_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_LocationListListener_free');
 
 final _navigine_sdk_flutter_LocationListListener_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer)
   >('navigine_sdk_flutter_LocationListListener_create_proxy'));
 
-
-class LocationListListener$Lambdas implements LocationListListener {
-    void Function(Map<int, LocationInfo>) onLocationListLoadedLambda;
-    void Function(Error) onLocationListFailedLambda;
-
-    LocationListListener$Lambdas(
-      this.onLocationListLoadedLambda,
-      this.onLocationListFailedLambda,
-    );
-
-    @override
-    void onLocationListLoaded(Map<int, LocationInfo> locationInfos) =>
-      onLocationListLoadedLambda(locationInfos);
-
-    @override
-    void onLocationListFailed(Error error) =>
-      onLocationListFailedLambda(error);
+final _navigine_sdk_flutter_LocationListListener_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_LocationListListener_set_ports'));
 
 
-}
-int _navigine_sdk_flutter_LocationListListener_onLocationListLoadedStatic(Object _obj, Pointer<Void> locationInfos) {
+int _navigine_sdk_flutter_LocationListListener_onLocationListLoadedStatic(Pointer<Void> _obj, Pointer<Void> locationInfos) {
     
+    final listener = LocationListListenerImpl._pointerToListener[_obj]?.target;
+    if (listener == null) {
+        throw Exception();
+    }
     try  {
-        (_obj as LocationListListener).onLocationListLoaded(
+        listener.onLocationListLoaded(
           navigine_sdk_flutter_Map_int_LocationInfo_FromFfi(locationInfos),
         );
-
         
     }
+    catch (e, stack)  {
+        // todo print stacktrace
+        rethrow;
+    }
     finally  {
-          navigine_sdk_flutter_Map_int_LocationInfo_ReleaseFfiHandle(locationInfos);
-
+        navigine_sdk_flutter_Map_int_LocationInfo_ReleaseFfiHandle(locationInfos);
     }
     return 0;
 }
 
-int _navigine_sdk_flutter_LocationListListener_onLocationListFailedStatic(Object _obj, Pointer<Void> error) {
+int _navigine_sdk_flutter_LocationListListener_onLocationListFailedStatic(Pointer<Void> _obj, Pointer<Void> error) {
     
+    final listener = LocationListListenerImpl._pointerToListener[_obj]?.target;
+    if (listener == null) {
+        throw Exception();
+    }
     try  {
-        (_obj as LocationListListener).onLocationListFailed(
+        listener.onLocationListFailed(
           navigine_sdk_flutter_Error_FromFfi(error),
         );
-
         
     }
+    catch (e, stack)  {
+        // todo print stacktrace
+        rethrow;
+    }
     finally  {
-          navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
-
+        navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
     }
     return 0;
+}
+
+
+class _LocationListListenerWrapper extends __lib.NativeBase implements Finalizable {
+    _LocationListListenerWrapper(Pointer<Void> handle) : super(handle) {
+        _finalizer.attach(this, handle);
+    }
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_LocationListListener_free.cast());
+}
+
+extension LocationListListenerImpl on LocationListListener  {
+    static final _pointerToListener = <Pointer<Void>, WeakReference<LocationListListener>>{};
+    static final _listenerToPointer = WeakMap<LocationListListener, _LocationListListenerWrapper?>();
+
+    static void _destructor(dynamic data) {
+        final int address = data;
+        final ptr = Pointer<Void>.fromAddress(address);
+        _pointerToListener.remove(ptr);
+    }
 }
 
 Pointer<Void> navigine_sdk_flutter_LocationListListener_ToFfi(LocationListListener value) {
     final result = _navigine_sdk_flutter_LocationListListener_CreateProxy(
-      __lib.getObjectToken(value),
-      __lib.LibraryContext.isolateId,
-      __lib.createExecutePort(),
-      value,
-      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_LocationListListener_onLocationListLoadedStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_LocationListListener_onLocationListFailedStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_LocationListListener_onLocationListLoadedStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_LocationListListener_onLocationListFailedStatic, __lib.unknownError),
     );
+    LocationListListenerImpl._pointerToListener[result] = WeakReference(value);
+    LocationListListenerImpl._listenerToPointer[value] = _LocationListListenerWrapper(result);
+    _navigine_sdk_flutter_LocationListListener_SetPorts(result, __lib.createPortWithCallback(LocationListListenerImpl._destructor), __lib.createExecutePort());
 
     return result;
 }
@@ -104,10 +111,10 @@ Pointer<Void> navigine_sdk_flutter_LocationListListener_ToFfiNullable(LocationLi
   value != null ? navigine_sdk_flutter_LocationListListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
 
 void navigine_sdk_flutter_LocationListListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_LocationListListener_ReleaseHandle(handle);
+{};
 
 void navigine_sdk_flutter_LocationListListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_LocationListListener_ReleaseHandle(handle);
+{};
 
 // End of LocationListListener "private" section.
 

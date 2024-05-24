@@ -2,8 +2,6 @@ import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
@@ -11,7 +9,7 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 import 'package:navigine_sdk/image_wrapper.dart';
 
-abstract class FlatIconMapObject implements IconMapObject {
+abstract class FlatIconMapObject implements IconMapObject, Finalizable {
 
     bool setAngle(double angle);
     bool setAngleAnimated(double angle, double duration, AnimationType type);
@@ -27,30 +25,29 @@ final _navigine_sdk_flutter_FlatIconMapObject_CopyHandle = __lib.catchArgumentEr
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_FlatIconMapObject_copy_handle'));
 
-final _navigine_sdk_flutter_FlatIconMapObject_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_FlatIconMapObject_register_finalizer'));
-
-final _navigine_sdk_flutter_FlatIconMapObject_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_FlatIconMapObject_get_type_id'));
-
 final _navigine_sdk_flutter_FlatIconMapObject_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_FlatIconMapObject_release_handle'));
 
+final _navigine_sdk_flutter_FlatIconMapObject_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_FlatIconMapObject_free');
+
 final _navigine_sdk_flutter_FlatIconMapObject_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer)
   >('navigine_sdk_flutter_FlatIconMapObject_create_proxy'));
 
+final _navigine_sdk_flutter_FlatIconMapObject_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_FlatIconMapObject_set_ports'));
 
-class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObject {
 
+class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObject, Finalizable {
     FlatIconMapObject$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_FlatIconMapObject_free.cast());
 
     // IconMapObject methods
     @override
@@ -65,6 +62,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_pointHandle);
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
@@ -88,6 +89,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -105,6 +110,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         navigine_sdk_flutter_ImageWrapper_ReleaseFfiHandle(_bitmapHandle);
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
@@ -126,6 +135,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -141,6 +154,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         final __resultHandle = _getIdFfi(_handle, );
         try  {
             return navigine_sdk_flutter_int_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_int_ReleaseFfiHandle(__resultHandle);
@@ -158,6 +175,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         try  {
             return navigine_sdk_flutter_MapObjectType_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_MapObjectType_ReleaseFfiHandle(__resultHandle);
         }
@@ -173,6 +194,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         final __resultHandle = _getDataFfi(_handle, );
         try  {
             return navigine_sdk_flutter_Uint8List_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_Uint8List_ReleaseFfiHandle(__resultHandle);
@@ -192,6 +217,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -210,6 +239,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -227,6 +260,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         navigine_sdk_flutter_String_ReleaseFfiHandle(_styleHandle);
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
@@ -258,6 +295,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -276,6 +317,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         navigine_sdk_flutter_double_ReleaseFfiHandle(_angleHandle);
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
@@ -299,6 +344,10 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -308,6 +357,7 @@ class FlatIconMapObject$Impl extends __lib.NativeBase implements FlatIconMapObje
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_FlatIconMapObject_ToFfi(FlatIconMapObject value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_FlatIconMapObject_CopyHandle((value as __lib.NativeBase).handle);
@@ -319,17 +369,9 @@ Pointer<Void> navigine_sdk_flutter_FlatIconMapObject_ToFfi(FlatIconMapObject val
 
 FlatIconMapObject navigine_sdk_flutter_FlatIconMapObject_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is FlatIconMapObject) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_FlatIconMapObject_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_FlatIconMapObject_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : FlatIconMapObject$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_FlatIconMapObject_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = FlatIconMapObject$Impl(_copiedHandle);
+    FlatIconMapObject$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

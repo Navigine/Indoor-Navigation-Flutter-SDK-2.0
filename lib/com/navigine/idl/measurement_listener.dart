@@ -1,21 +1,13 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
+import 'package:navigine_sdk/com/_weak_map.dart';
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/sensor_measurement.dart';
 import 'package:navigine_sdk/com/navigine/idl/sensor_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/signal_measurement.dart';
 
 abstract class MeasurementListener {
-    factory MeasurementListener(
-      void Function(Map<SensorType, SensorMeasurement>) onSensorMeasurementDetectedLambda,
-      void Function(Map<String, SignalMeasurement>) onSignalMeasurementDetectedLambda,
-    ) => MeasurementListener$Lambdas(
-      onSensorMeasurementDetectedLambda,
-      onSignalMeasurementDetectedLambda,
-    );
 
     void onSensorMeasurementDetected(Map<SensorType, SensorMeasurement> sensors);
     void onSignalMeasurementDetected(Map<String, SignalMeasurement> signals);
@@ -26,77 +18,92 @@ abstract class MeasurementListener {
 
 // MeasurementListener "private" section, not exported.
 
-final _navigine_sdk_flutter_MeasurementListener_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_MeasurementListener_release_handle'));
+final _navigine_sdk_flutter_MeasurementListener_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_MeasurementListener_free');
 
 final _navigine_sdk_flutter_MeasurementListener_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer)
   >('navigine_sdk_flutter_MeasurementListener_create_proxy'));
 
-
-class MeasurementListener$Lambdas implements MeasurementListener {
-    void Function(Map<SensorType, SensorMeasurement>) onSensorMeasurementDetectedLambda;
-    void Function(Map<String, SignalMeasurement>) onSignalMeasurementDetectedLambda;
-
-    MeasurementListener$Lambdas(
-      this.onSensorMeasurementDetectedLambda,
-      this.onSignalMeasurementDetectedLambda,
-    );
-
-    @override
-    void onSensorMeasurementDetected(Map<SensorType, SensorMeasurement> sensors) =>
-      onSensorMeasurementDetectedLambda(sensors);
-
-    @override
-    void onSignalMeasurementDetected(Map<String, SignalMeasurement> signals) =>
-      onSignalMeasurementDetectedLambda(signals);
+final _navigine_sdk_flutter_MeasurementListener_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_MeasurementListener_set_ports'));
 
 
-}
-int _navigine_sdk_flutter_MeasurementListener_onSensorMeasurementDetectedStatic(Object _obj, Pointer<Void> sensors) {
+int _navigine_sdk_flutter_MeasurementListener_onSensorMeasurementDetectedStatic(Pointer<Void> _obj, Pointer<Void> sensors) {
     
+    final listener = MeasurementListenerImpl._pointerToListener[_obj]?.target;
+    if (listener == null) {
+        throw Exception();
+    }
     try  {
-        (_obj as MeasurementListener).onSensorMeasurementDetected(
+        listener.onSensorMeasurementDetected(
           navigine_sdk_flutter_Map_SensorType_SensorMeasurement_FromFfi(sensors),
         );
-
         
     }
+    catch (e, stack)  {
+        // todo print stacktrace
+        rethrow;
+    }
     finally  {
-          navigine_sdk_flutter_Map_SensorType_SensorMeasurement_ReleaseFfiHandle(sensors);
-
+        navigine_sdk_flutter_Map_SensorType_SensorMeasurement_ReleaseFfiHandle(sensors);
     }
     return 0;
 }
 
-int _navigine_sdk_flutter_MeasurementListener_onSignalMeasurementDetectedStatic(Object _obj, Pointer<Void> signals) {
+int _navigine_sdk_flutter_MeasurementListener_onSignalMeasurementDetectedStatic(Pointer<Void> _obj, Pointer<Void> signals) {
     
+    final listener = MeasurementListenerImpl._pointerToListener[_obj]?.target;
+    if (listener == null) {
+        throw Exception();
+    }
     try  {
-        (_obj as MeasurementListener).onSignalMeasurementDetected(
+        listener.onSignalMeasurementDetected(
           navigine_sdk_flutter_Map_String_SignalMeasurement_FromFfi(signals),
         );
-
         
     }
+    catch (e, stack)  {
+        // todo print stacktrace
+        rethrow;
+    }
     finally  {
-          navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(signals);
-
+        navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(signals);
     }
     return 0;
+}
+
+
+class _MeasurementListenerWrapper extends __lib.NativeBase implements Finalizable {
+    _MeasurementListenerWrapper(Pointer<Void> handle) : super(handle) {
+        _finalizer.attach(this, handle);
+    }
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_MeasurementListener_free.cast());
+}
+
+extension MeasurementListenerImpl on MeasurementListener  {
+    static final _pointerToListener = <Pointer<Void>, WeakReference<MeasurementListener>>{};
+    static final _listenerToPointer = WeakMap<MeasurementListener, _MeasurementListenerWrapper?>();
+
+    static void _destructor(dynamic data) {
+        final int address = data;
+        final ptr = Pointer<Void>.fromAddress(address);
+        _pointerToListener.remove(ptr);
+    }
 }
 
 Pointer<Void> navigine_sdk_flutter_MeasurementListener_ToFfi(MeasurementListener value) {
     final result = _navigine_sdk_flutter_MeasurementListener_CreateProxy(
-      __lib.getObjectToken(value),
-      __lib.LibraryContext.isolateId,
-      __lib.createExecutePort(),
-      value,
-      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_MeasurementListener_onSensorMeasurementDetectedStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_MeasurementListener_onSignalMeasurementDetectedStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_MeasurementListener_onSensorMeasurementDetectedStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_MeasurementListener_onSignalMeasurementDetectedStatic, __lib.unknownError),
     );
+    MeasurementListenerImpl._pointerToListener[result] = WeakReference(value);
+    MeasurementListenerImpl._listenerToPointer[value] = _MeasurementListenerWrapper(result);
+    _navigine_sdk_flutter_MeasurementListener_SetPorts(result, __lib.createPortWithCallback(MeasurementListenerImpl._destructor), __lib.createExecutePort());
 
     return result;
 }
@@ -105,10 +112,10 @@ Pointer<Void> navigine_sdk_flutter_MeasurementListener_ToFfiNullable(Measurement
   value != null ? navigine_sdk_flutter_MeasurementListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
 
 void navigine_sdk_flutter_MeasurementListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_MeasurementListener_ReleaseHandle(handle);
+{};
 
 void navigine_sdk_flutter_MeasurementListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_MeasurementListener_ReleaseHandle(handle);
+{};
 
 // End of MeasurementListener "private" section.
 

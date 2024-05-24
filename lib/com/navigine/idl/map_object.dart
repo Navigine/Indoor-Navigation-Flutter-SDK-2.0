@@ -2,12 +2,10 @@ import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 
-abstract class MapObject {
+abstract class MapObject implements Finalizable {
 
     int getId();
     MapObjectType getType();
@@ -29,30 +27,29 @@ final _navigine_sdk_flutter_MapObject_CopyHandle = __lib.catchArgumentError(() =
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_MapObject_copy_handle'));
 
-final _navigine_sdk_flutter_MapObject_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_MapObject_register_finalizer'));
-
-final _navigine_sdk_flutter_MapObject_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_MapObject_get_type_id'));
-
 final _navigine_sdk_flutter_MapObject_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_MapObject_release_handle'));
 
+final _navigine_sdk_flutter_MapObject_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_MapObject_free');
+
 final _navigine_sdk_flutter_MapObject_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_MapObject_create_proxy'));
 
+final _navigine_sdk_flutter_MapObject_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_MapObject_set_ports'));
 
-class MapObject$Impl extends __lib.NativeBase implements MapObject {
 
+class MapObject$Impl extends __lib.NativeBase implements MapObject, Finalizable {
     MapObject$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_MapObject_free.cast());
 
     @override
     int getId() {
@@ -64,6 +61,10 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
         final __resultHandle = _getIdFfi(_handle, );
         try  {
             return navigine_sdk_flutter_int_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_int_ReleaseFfiHandle(__resultHandle);
@@ -81,6 +82,10 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
         try  {
             return navigine_sdk_flutter_MapObjectType_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_MapObjectType_ReleaseFfiHandle(__resultHandle);
         }
@@ -96,6 +101,10 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
         final __resultHandle = _getDataFfi(_handle, );
         try  {
             return navigine_sdk_flutter_Uint8List_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_Uint8List_ReleaseFfiHandle(__resultHandle);
@@ -115,6 +124,10 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -133,6 +146,10 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -150,6 +167,10 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
         navigine_sdk_flutter_String_ReleaseFfiHandle(_styleHandle);
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
@@ -181,6 +202,10 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -190,6 +215,7 @@ class MapObject$Impl extends __lib.NativeBase implements MapObject {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_MapObject_ToFfi(MapObject value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_MapObject_CopyHandle((value as __lib.NativeBase).handle);
@@ -201,17 +227,9 @@ Pointer<Void> navigine_sdk_flutter_MapObject_ToFfi(MapObject value) {
 
 MapObject navigine_sdk_flutter_MapObject_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is MapObject) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_MapObject_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_MapObject_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : MapObject$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_MapObject_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = MapObject$Impl(_copiedHandle);
+    MapObject$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

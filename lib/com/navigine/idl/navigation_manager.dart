@@ -1,14 +1,12 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/position_listener.dart';
 
-abstract class NavigationManager {
+abstract class NavigationManager implements Finalizable {
 
     void addPositionListener(PositionListener listener);
     void removePositionListener(PositionListener listener);
@@ -28,30 +26,29 @@ final _navigine_sdk_flutter_NavigationManager_CopyHandle = __lib.catchArgumentEr
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_NavigationManager_copy_handle'));
 
-final _navigine_sdk_flutter_NavigationManager_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_NavigationManager_register_finalizer'));
-
-final _navigine_sdk_flutter_NavigationManager_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_NavigationManager_get_type_id'));
-
 final _navigine_sdk_flutter_NavigationManager_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_NavigationManager_release_handle'));
 
+final _navigine_sdk_flutter_NavigationManager_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_NavigationManager_free');
+
 final _navigine_sdk_flutter_NavigationManager_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_NavigationManager_create_proxy'));
 
+final _navigine_sdk_flutter_NavigationManager_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_NavigationManager_set_ports'));
 
-class NavigationManager$Impl extends __lib.NativeBase implements NavigationManager {
 
+class NavigationManager$Impl extends __lib.NativeBase implements NavigationManager, Finalizable {
     NavigationManager$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_NavigationManager_free.cast());
 
     @override
     void addPositionListener(PositionListener listener) {
@@ -129,6 +126,7 @@ class NavigationManager$Impl extends __lib.NativeBase implements NavigationManag
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_NavigationManager_ToFfi(NavigationManager value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_NavigationManager_CopyHandle((value as __lib.NativeBase).handle);
@@ -140,17 +138,9 @@ Pointer<Void> navigine_sdk_flutter_NavigationManager_ToFfi(NavigationManager val
 
 NavigationManager navigine_sdk_flutter_NavigationManager_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is NavigationManager) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_NavigationManager_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_NavigationManager_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : NavigationManager$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_NavigationManager_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = NavigationManager$Impl(_copiedHandle);
+    NavigationManager$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

@@ -1,19 +1,11 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
+import 'package:navigine_sdk/com/_weak_map.dart';
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/error.dart';
 
 abstract class ResourceUploadListener {
-    factory ResourceUploadListener(
-      void Function(String) onUploadedLambda,
-      void Function(Error) onFailedLambda,
-    ) => ResourceUploadListener$Lambdas(
-      onUploadedLambda,
-      onFailedLambda,
-    );
 
     void onUploaded(String fileName);
     void onFailed(Error error);
@@ -24,77 +16,92 @@ abstract class ResourceUploadListener {
 
 // ResourceUploadListener "private" section, not exported.
 
-final _navigine_sdk_flutter_ResourceUploadListener_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ResourceUploadListener_release_handle'));
+final _navigine_sdk_flutter_ResourceUploadListener_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_ResourceUploadListener_free');
 
 final _navigine_sdk_flutter_ResourceUploadListener_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer)
   >('navigine_sdk_flutter_ResourceUploadListener_create_proxy'));
 
-
-class ResourceUploadListener$Lambdas implements ResourceUploadListener {
-    void Function(String) onUploadedLambda;
-    void Function(Error) onFailedLambda;
-
-    ResourceUploadListener$Lambdas(
-      this.onUploadedLambda,
-      this.onFailedLambda,
-    );
-
-    @override
-    void onUploaded(String fileName) =>
-      onUploadedLambda(fileName);
-
-    @override
-    void onFailed(Error error) =>
-      onFailedLambda(error);
+final _navigine_sdk_flutter_ResourceUploadListener_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_ResourceUploadListener_set_ports'));
 
 
-}
-int _navigine_sdk_flutter_ResourceUploadListener_onUploadedStatic(Object _obj, Pointer<Void> fileName) {
+int _navigine_sdk_flutter_ResourceUploadListener_onUploadedStatic(Pointer<Void> _obj, Pointer<Void> fileName) {
     
+    final listener = ResourceUploadListenerImpl._pointerToListener[_obj]?.target;
+    if (listener == null) {
+        throw Exception();
+    }
     try  {
-        (_obj as ResourceUploadListener).onUploaded(
+        listener.onUploaded(
           navigine_sdk_flutter_String_FromFfi(fileName),
         );
-
         
     }
+    catch (e, stack)  {
+        // todo print stacktrace
+        rethrow;
+    }
     finally  {
-          navigine_sdk_flutter_String_ReleaseFfiHandle(fileName);
-
+        navigine_sdk_flutter_String_ReleaseFfiHandle(fileName);
     }
     return 0;
 }
 
-int _navigine_sdk_flutter_ResourceUploadListener_onFailedStatic(Object _obj, Pointer<Void> error) {
+int _navigine_sdk_flutter_ResourceUploadListener_onFailedStatic(Pointer<Void> _obj, Pointer<Void> error) {
     
+    final listener = ResourceUploadListenerImpl._pointerToListener[_obj]?.target;
+    if (listener == null) {
+        throw Exception();
+    }
     try  {
-        (_obj as ResourceUploadListener).onFailed(
+        listener.onFailed(
           navigine_sdk_flutter_Error_FromFfi(error),
         );
-
         
     }
+    catch (e, stack)  {
+        // todo print stacktrace
+        rethrow;
+    }
     finally  {
-          navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
-
+        navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
     }
     return 0;
+}
+
+
+class _ResourceUploadListenerWrapper extends __lib.NativeBase implements Finalizable {
+    _ResourceUploadListenerWrapper(Pointer<Void> handle) : super(handle) {
+        _finalizer.attach(this, handle);
+    }
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_ResourceUploadListener_free.cast());
+}
+
+extension ResourceUploadListenerImpl on ResourceUploadListener  {
+    static final _pointerToListener = <Pointer<Void>, WeakReference<ResourceUploadListener>>{};
+    static final _listenerToPointer = WeakMap<ResourceUploadListener, _ResourceUploadListenerWrapper?>();
+
+    static void _destructor(dynamic data) {
+        final int address = data;
+        final ptr = Pointer<Void>.fromAddress(address);
+        _pointerToListener.remove(ptr);
+    }
 }
 
 Pointer<Void> navigine_sdk_flutter_ResourceUploadListener_ToFfi(ResourceUploadListener value) {
     final result = _navigine_sdk_flutter_ResourceUploadListener_CreateProxy(
-      __lib.getObjectToken(value),
-      __lib.LibraryContext.isolateId,
-      __lib.createExecutePort(),
-      value,
-      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_ResourceUploadListener_onUploadedStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Handle, Pointer<Void>)>(_navigine_sdk_flutter_ResourceUploadListener_onFailedStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ResourceUploadListener_onUploadedStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ResourceUploadListener_onFailedStatic, __lib.unknownError),
     );
+    ResourceUploadListenerImpl._pointerToListener[result] = WeakReference(value);
+    ResourceUploadListenerImpl._listenerToPointer[value] = _ResourceUploadListenerWrapper(result);
+    _navigine_sdk_flutter_ResourceUploadListener_SetPorts(result, __lib.createPortWithCallback(ResourceUploadListenerImpl._destructor), __lib.createExecutePort());
 
     return result;
 }
@@ -103,9 +110,9 @@ Pointer<Void> navigine_sdk_flutter_ResourceUploadListener_ToFfiNullable(Resource
   value != null ? navigine_sdk_flutter_ResourceUploadListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
 
 void navigine_sdk_flutter_ResourceUploadListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_ResourceUploadListener_ReleaseHandle(handle);
+{};
 
 void navigine_sdk_flutter_ResourceUploadListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_ResourceUploadListener_ReleaseHandle(handle);
+{};
 
 // End of ResourceUploadListener "private" section.

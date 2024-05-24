@@ -1,14 +1,12 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
-abstract class RouteManager {
+abstract class RouteManager implements Finalizable {
 
     RoutePath makeRoute(LocationPoint from, LocationPoint to);
     void setTarget(LocationPoint target);
@@ -32,30 +30,29 @@ final _navigine_sdk_flutter_RouteManager_CopyHandle = __lib.catchArgumentError((
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_RouteManager_copy_handle'));
 
-final _navigine_sdk_flutter_RouteManager_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_RouteManager_register_finalizer'));
-
-final _navigine_sdk_flutter_RouteManager_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteManager_get_type_id'));
-
 final _navigine_sdk_flutter_RouteManager_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_RouteManager_release_handle'));
 
+final _navigine_sdk_flutter_RouteManager_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_RouteManager_free');
+
 final _navigine_sdk_flutter_RouteManager_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_RouteManager_create_proxy'));
 
+final _navigine_sdk_flutter_RouteManager_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_RouteManager_set_ports'));
 
-class RouteManager$Impl extends __lib.NativeBase implements RouteManager {
 
+class RouteManager$Impl extends __lib.NativeBase implements RouteManager, Finalizable {
     RouteManager$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_RouteManager_free.cast());
 
     @override
     RoutePath makeRoute(LocationPoint from, LocationPoint to) {
@@ -71,6 +68,10 @@ class RouteManager$Impl extends __lib.NativeBase implements RouteManager {
         navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_toHandle);
         try  {
             return navigine_sdk_flutter_RoutePath_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_RoutePath_ReleaseFfiHandle(__resultHandle);
@@ -144,6 +145,10 @@ class RouteManager$Impl extends __lib.NativeBase implements RouteManager {
         try  {
             return navigine_sdk_flutter_String_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_String_ReleaseFfiHandle(__resultHandle);
         }
@@ -159,6 +164,10 @@ class RouteManager$Impl extends __lib.NativeBase implements RouteManager {
         final __resultHandle = _getGraphTagsFfi(_handle, );
         try  {
             return navigine_sdk_flutter_List_String_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_List_String_ReleaseFfiHandle(__resultHandle);
@@ -193,6 +202,7 @@ class RouteManager$Impl extends __lib.NativeBase implements RouteManager {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_RouteManager_ToFfi(RouteManager value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_RouteManager_CopyHandle((value as __lib.NativeBase).handle);
@@ -204,17 +214,9 @@ Pointer<Void> navigine_sdk_flutter_RouteManager_ToFfi(RouteManager value) {
 
 RouteManager navigine_sdk_flutter_RouteManager_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is RouteManager) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_RouteManager_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_RouteManager_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : RouteManager$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_RouteManager_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = RouteManager$Impl(_copiedHandle);
+    RouteManager$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

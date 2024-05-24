@@ -1,12 +1,10 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_estimator_listener.dart';
 
-abstract class BeaconProximityEstimator {
+abstract class BeaconProximityEstimator implements Finalizable {
 
     void start();
     void stop();
@@ -26,30 +24,29 @@ final _navigine_sdk_flutter_BeaconProximityEstimator_CopyHandle = __lib.catchArg
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_BeaconProximityEstimator_copy_handle'));
 
-final _navigine_sdk_flutter_BeaconProximityEstimator_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_BeaconProximityEstimator_register_finalizer'));
-
-final _navigine_sdk_flutter_BeaconProximityEstimator_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_BeaconProximityEstimator_get_type_id'));
-
 final _navigine_sdk_flutter_BeaconProximityEstimator_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_BeaconProximityEstimator_release_handle'));
 
+final _navigine_sdk_flutter_BeaconProximityEstimator_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_BeaconProximityEstimator_free');
+
 final _navigine_sdk_flutter_BeaconProximityEstimator_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_BeaconProximityEstimator_create_proxy'));
 
+final _navigine_sdk_flutter_BeaconProximityEstimator_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_BeaconProximityEstimator_set_ports'));
 
-class BeaconProximityEstimator$Impl extends __lib.NativeBase implements BeaconProximityEstimator {
 
+class BeaconProximityEstimator$Impl extends __lib.NativeBase implements BeaconProximityEstimator, Finalizable {
     BeaconProximityEstimator$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_BeaconProximityEstimator_free.cast());
 
     @override
     void start() {
@@ -119,6 +116,7 @@ class BeaconProximityEstimator$Impl extends __lib.NativeBase implements BeaconPr
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_BeaconProximityEstimator_ToFfi(BeaconProximityEstimator value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_BeaconProximityEstimator_CopyHandle((value as __lib.NativeBase).handle);
@@ -130,17 +128,9 @@ Pointer<Void> navigine_sdk_flutter_BeaconProximityEstimator_ToFfi(BeaconProximit
 
 BeaconProximityEstimator navigine_sdk_flutter_BeaconProximityEstimator_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is BeaconProximityEstimator) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_BeaconProximityEstimator_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_BeaconProximityEstimator_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : BeaconProximityEstimator$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_BeaconProximityEstimator_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = BeaconProximityEstimator$Impl(_copiedHandle);
+    BeaconProximityEstimator$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

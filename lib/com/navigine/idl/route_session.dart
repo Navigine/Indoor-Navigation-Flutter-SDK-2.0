@@ -1,12 +1,10 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/async_route_listener.dart';
 
-abstract class RouteSession {
+abstract class RouteSession implements Finalizable {
 
     void addRouteListener(AsyncRouteListener listener);
     void removeRouteListener(AsyncRouteListener listener);
@@ -22,30 +20,29 @@ final _navigine_sdk_flutter_RouteSession_CopyHandle = __lib.catchArgumentError((
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_RouteSession_copy_handle'));
 
-final _navigine_sdk_flutter_RouteSession_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_RouteSession_register_finalizer'));
-
-final _navigine_sdk_flutter_RouteSession_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteSession_get_type_id'));
-
 final _navigine_sdk_flutter_RouteSession_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_RouteSession_release_handle'));
 
+final _navigine_sdk_flutter_RouteSession_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_RouteSession_free');
+
 final _navigine_sdk_flutter_RouteSession_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer)
   >('navigine_sdk_flutter_RouteSession_create_proxy'));
 
+final _navigine_sdk_flutter_RouteSession_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_RouteSession_set_ports'));
 
-class RouteSession$Impl extends __lib.NativeBase implements RouteSession {
 
+class RouteSession$Impl extends __lib.NativeBase implements RouteSession, Finalizable {
     RouteSession$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_RouteSession_free.cast());
 
     @override
     void addRouteListener(AsyncRouteListener listener) {
@@ -75,6 +72,7 @@ class RouteSession$Impl extends __lib.NativeBase implements RouteSession {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_RouteSession_ToFfi(RouteSession value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_RouteSession_CopyHandle((value as __lib.NativeBase).handle);
@@ -86,17 +84,9 @@ Pointer<Void> navigine_sdk_flutter_RouteSession_ToFfi(RouteSession value) {
 
 RouteSession navigine_sdk_flutter_RouteSession_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is RouteSession) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_RouteSession_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_RouteSession_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : RouteSession$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_RouteSession_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = RouteSession$Impl(_copiedHandle);
+    RouteSession$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

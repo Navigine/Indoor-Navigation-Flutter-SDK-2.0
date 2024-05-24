@@ -2,8 +2,6 @@ import 'dart:ffi';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/async_route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_estimator.dart';
@@ -18,7 +16,7 @@ import 'package:navigine_sdk/com/navigine/idl/resource_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_manager.dart';
 
-abstract class NavigineSdk {
+abstract class NavigineSdk implements Finalizable {
 
     static NavigineSdk getInstance() => $prototype.getInstance();
     static String getVersion() => $prototype.getVersion();
@@ -53,30 +51,29 @@ final _navigine_sdk_flutter_NavigineSdk_CopyHandle = __lib.catchArgumentError(()
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_NavigineSdk_copy_handle'));
 
-final _navigine_sdk_flutter_NavigineSdk_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_NavigineSdk_register_finalizer'));
-
-final _navigine_sdk_flutter_NavigineSdk_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_NavigineSdk_get_type_id'));
-
 final _navigine_sdk_flutter_NavigineSdk_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_NavigineSdk_release_handle'));
 
+final _navigine_sdk_flutter_NavigineSdk_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_NavigineSdk_free');
+
 final _navigine_sdk_flutter_NavigineSdk_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_NavigineSdk_create_proxy'));
 
+final _navigine_sdk_flutter_NavigineSdk_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_NavigineSdk_set_ports'));
 
-class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
 
+class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk, Finalizable {
     NavigineSdk$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_NavigineSdk_free.cast());
 
     NavigineSdk getInstance() {
         final _getInstanceFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
@@ -165,6 +162,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         try  {
             return navigine_sdk_flutter_LocationManager_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(__resultHandle);
         }
@@ -182,6 +183,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
         try  {
             return navigine_sdk_flutter_NavigationManager_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_NavigationManager_ReleaseFfiHandle(__resultHandle);
@@ -203,6 +208,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         try  {
             return navigine_sdk_flutter_ZoneManager_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_ZoneManager_ReleaseFfiHandle(__resultHandle);
         }
@@ -222,6 +231,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         navigine_sdk_flutter_NavigationManager_ReleaseFfiHandle(_navigationManagerHandle);
         try  {
             return navigine_sdk_flutter_RouteManager_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_RouteManager_ReleaseFfiHandle(__resultHandle);
@@ -243,6 +256,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         try  {
             return navigine_sdk_flutter_AsyncRouteManager_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_AsyncRouteManager_ReleaseFfiHandle(__resultHandle);
         }
@@ -260,6 +277,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
         try  {
             return navigine_sdk_flutter_ResourceManager_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_ResourceManager_ReleaseFfiHandle(__resultHandle);
@@ -279,6 +300,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         try  {
             return navigine_sdk_flutter_NotificationManager_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_NotificationManager_ReleaseFfiHandle(__resultHandle);
         }
@@ -296,6 +321,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
         try  {
             return navigine_sdk_flutter_LocationEditManager_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_LocationEditManager_ReleaseFfiHandle(__resultHandle);
@@ -315,6 +344,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         try  {
             return navigine_sdk_flutter_MeasurementManager_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_MeasurementManager_ReleaseFfiHandle(__resultHandle);
         }
@@ -332,6 +365,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
         try  {
             return navigine_sdk_flutter_BeaconProximityEstimator_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_BeaconProximityEstimator_ReleaseFfiHandle(__resultHandle);
@@ -351,6 +388,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         try  {
             return navigine_sdk_flutter_String_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_String_ReleaseFfiHandle(__resultHandle);
         }
@@ -367,6 +408,10 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
         try  {
             return navigine_sdk_flutter_LocationListManager_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_LocationListManager_ReleaseFfiHandle(__resultHandle);
         }
@@ -376,6 +421,7 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_NavigineSdk_ToFfi(NavigineSdk value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_NavigineSdk_CopyHandle((value as __lib.NativeBase).handle);
@@ -387,17 +433,9 @@ Pointer<Void> navigine_sdk_flutter_NavigineSdk_ToFfi(NavigineSdk value) {
 
 NavigineSdk navigine_sdk_flutter_NavigineSdk_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is NavigineSdk) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_NavigineSdk_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_NavigineSdk_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : NavigineSdk$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_NavigineSdk_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = NavigineSdk$Impl(_copiedHandle);
+    NavigineSdk$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

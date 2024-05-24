@@ -1,12 +1,10 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
-abstract class GraphVertex {
+abstract class GraphVertex implements Finalizable {
 
 
     int get id;
@@ -25,30 +23,29 @@ final _navigine_sdk_flutter_GraphVertex_CopyHandle = __lib.catchArgumentError(()
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_GraphVertex_copy_handle'));
 
-final _navigine_sdk_flutter_GraphVertex_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_GraphVertex_register_finalizer'));
-
-final _navigine_sdk_flutter_GraphVertex_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GraphVertex_get_type_id'));
-
 final _navigine_sdk_flutter_GraphVertex_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_GraphVertex_release_handle'));
 
+final _navigine_sdk_flutter_GraphVertex_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_GraphVertex_free');
+
 final _navigine_sdk_flutter_GraphVertex_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_GraphVertex_create_proxy'));
 
+final _navigine_sdk_flutter_GraphVertex_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_GraphVertex_set_ports'));
 
-class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex {
 
+class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex, Finalizable {
     GraphVertex$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_GraphVertex_free.cast());
 
 
     int get id {
@@ -139,6 +136,7 @@ class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_GraphVertex_ToFfi(GraphVertex value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_GraphVertex_CopyHandle((value as __lib.NativeBase).handle);
@@ -150,17 +148,9 @@ Pointer<Void> navigine_sdk_flutter_GraphVertex_ToFfi(GraphVertex value) {
 
 GraphVertex navigine_sdk_flutter_GraphVertex_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is GraphVertex) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_GraphVertex_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_GraphVertex_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : GraphVertex$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_GraphVertex_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = GraphVertex$Impl(_copiedHandle);
+    GraphVertex$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

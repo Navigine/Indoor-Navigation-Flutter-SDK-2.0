@@ -1,14 +1,12 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/category.dart';
 import 'package:navigine_sdk/com/navigine/idl/elevation_graph.dart';
 import 'package:navigine_sdk/com/navigine/idl/sublocation.dart';
 
-abstract class Location {
+abstract class Location implements Finalizable {
 
     ElevationGraph getElevationGraph(String tag);
     List<String> getGraphTags();
@@ -33,30 +31,29 @@ final _navigine_sdk_flutter_Location_CopyHandle = __lib.catchArgumentError(() =>
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_Location_copy_handle'));
 
-final _navigine_sdk_flutter_Location_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_Location_register_finalizer'));
-
-final _navigine_sdk_flutter_Location_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Location_get_type_id'));
-
 final _navigine_sdk_flutter_Location_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_Location_release_handle'));
 
+final _navigine_sdk_flutter_Location_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_Location_free');
+
 final _navigine_sdk_flutter_Location_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_Location_create_proxy'));
 
+final _navigine_sdk_flutter_Location_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_Location_set_ports'));
 
-class Location$Impl extends __lib.NativeBase implements Location {
 
+class Location$Impl extends __lib.NativeBase implements Location, Finalizable {
     Location$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_Location_free.cast());
 
     @override
     ElevationGraph getElevationGraph(String tag) {
@@ -70,6 +67,10 @@ class Location$Impl extends __lib.NativeBase implements Location {
         navigine_sdk_flutter_String_ReleaseFfiHandle(_tagHandle);
         try  {
             return navigine_sdk_flutter_ElevationGraph_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_ElevationGraph_ReleaseFfiHandle(__resultHandle);
@@ -86,6 +87,10 @@ class Location$Impl extends __lib.NativeBase implements Location {
         final __resultHandle = _getGraphTagsFfi(_handle, );
         try  {
             return navigine_sdk_flutter_List_String_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_List_String_ReleaseFfiHandle(__resultHandle);
@@ -105,6 +110,10 @@ class Location$Impl extends __lib.NativeBase implements Location {
         try  {
             return navigine_sdk_flutter_Sublocation_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_Sublocation_ReleaseFfiHandle(__resultHandle);
         }
@@ -122,6 +131,10 @@ class Location$Impl extends __lib.NativeBase implements Location {
         navigine_sdk_flutter_int_ReleaseFfiHandle(_idHandle);
         try  {
             return navigine_sdk_flutter_Category_FromFfiNullable(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_Category_ReleaseFfiHandleNullable(__resultHandle);
@@ -251,6 +264,7 @@ class Location$Impl extends __lib.NativeBase implements Location {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_Location_ToFfi(Location value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_Location_CopyHandle((value as __lib.NativeBase).handle);
@@ -262,17 +276,9 @@ Pointer<Void> navigine_sdk_flutter_Location_ToFfi(Location value) {
 
 Location navigine_sdk_flutter_Location_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is Location) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_Location_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_Location_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : Location$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_Location_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = Location$Impl(_copiedHandle);
+    Location$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

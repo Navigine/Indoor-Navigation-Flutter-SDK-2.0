@@ -1,13 +1,11 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/transmitter_status.dart';
 
-abstract class Eddystone {
+abstract class Eddystone implements Finalizable {
 
 
     Point get point;
@@ -29,30 +27,29 @@ final _navigine_sdk_flutter_Eddystone_CopyHandle = __lib.catchArgumentError(() =
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_Eddystone_copy_handle'));
 
-final _navigine_sdk_flutter_Eddystone_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_Eddystone_register_finalizer'));
-
-final _navigine_sdk_flutter_Eddystone_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Eddystone_get_type_id'));
-
 final _navigine_sdk_flutter_Eddystone_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_Eddystone_release_handle'));
 
+final _navigine_sdk_flutter_Eddystone_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_Eddystone_free');
+
 final _navigine_sdk_flutter_Eddystone_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_Eddystone_create_proxy'));
 
+final _navigine_sdk_flutter_Eddystone_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_Eddystone_set_ports'));
 
-class Eddystone$Impl extends __lib.NativeBase implements Eddystone {
 
+class Eddystone$Impl extends __lib.NativeBase implements Eddystone, Finalizable {
     Eddystone$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_Eddystone_free.cast());
 
 
     Point get point {
@@ -194,6 +191,7 @@ class Eddystone$Impl extends __lib.NativeBase implements Eddystone {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_Eddystone_ToFfi(Eddystone value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_Eddystone_CopyHandle((value as __lib.NativeBase).handle);
@@ -205,17 +203,9 @@ Pointer<Void> navigine_sdk_flutter_Eddystone_ToFfi(Eddystone value) {
 
 Eddystone navigine_sdk_flutter_Eddystone_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is Eddystone) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_Eddystone_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_Eddystone_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : Eddystone$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_Eddystone_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = Eddystone$Impl(_copiedHandle);
+    Eddystone$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 

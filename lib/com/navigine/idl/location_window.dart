@@ -3,8 +3,6 @@ import 'dart:math' as math;
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_token_cache.dart' as __lib;
-import 'package:navigine_sdk/com/_type_repository.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera.dart';
@@ -21,7 +19,7 @@ import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
 import 'package:navigine_sdk/image_wrapper.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
-abstract class LocationWindow {
+abstract class LocationWindow implements Finalizable {
 
     void setSublocationId(int id);
     Point screenPositionToMeters(math.Point<double> point);
@@ -84,30 +82,29 @@ final _navigine_sdk_flutter_LocationWindow_CopyHandle = __lib.catchArgumentError
     Pointer<Void> Function(Pointer<Void>)
   >('navigine_sdk_flutter_LocationWindow_copy_handle'));
 
-final _navigine_sdk_flutter_LocationWindow_RegisterFinalizer = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Int32, Handle),
-    void Function(Pointer<Void>, int, Object)
-  >('navigine_sdk_flutter_LocationWindow_register_finalizer'));
-
-final _navigine_sdk_flutter_LocationWindow_GetTypeId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationWindow_get_type_id'));
-
 final _navigine_sdk_flutter_LocationWindow_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
   >('navigine_sdk_flutter_LocationWindow_release_handle'));
 
+final _navigine_sdk_flutter_LocationWindow_free = __lib.nativeLibrary.lookup<
+    NativeFunction<Void Function(Pointer<Void>)>
+  >('navigine_sdk_flutter_LocationWindow_free');
+
 final _navigine_sdk_flutter_LocationWindow_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint64, Int32, Int64, Handle, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
-    Pointer<Void> Function(int, int, int, Object, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer),
+    Pointer<Void> Function(Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer, Pointer)
   >('navigine_sdk_flutter_LocationWindow_create_proxy'));
 
+final _navigine_sdk_flutter_LocationWindow_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>, Int64, Int64),
+    Pointer<Void> Function(Pointer<Void>, int, int)
+  >('navigine_sdk_flutter_LocationWindow_set_ports'));
 
-class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
 
+class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Finalizable {
     LocationWindow$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_LocationWindow_free.cast());
 
     @override
     void setSublocationId(int id) {
@@ -134,6 +131,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         try  {
             return navigine_sdk_flutter_Point_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_Point_ReleaseFfiHandle(__resultHandle);
         }
@@ -154,6 +155,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         try  {
             return navigine_sdk_flutter_math_Point_double_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_math_Point_double_ReleaseFfiHandle(__resultHandle);
         }
@@ -169,6 +174,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         final __resultHandle = _addCircleMapObjectFfi(_handle, );
         try  {
             return navigine_sdk_flutter_CircleMapObject_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_CircleMapObject_ReleaseFfiHandle(__resultHandle);
@@ -188,6 +197,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -203,6 +216,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         final __resultHandle = _addIconMapObjectFfi(_handle, );
         try  {
             return navigine_sdk_flutter_IconMapObject_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_IconMapObject_ReleaseFfiHandle(__resultHandle);
@@ -222,6 +239,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -237,6 +258,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         final __resultHandle = _addFlatIconMapObjectFfi(_handle, );
         try  {
             return navigine_sdk_flutter_FlatIconMapObject_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_FlatIconMapObject_ReleaseFfiHandle(__resultHandle);
@@ -256,6 +281,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
+        }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         }
@@ -271,6 +300,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         final __resultHandle = _addPolylineMapObjectFfi(_handle, );
         try  {
             return navigine_sdk_flutter_PolylineMapObject_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_PolylineMapObject_ReleaseFfiHandle(__resultHandle);
@@ -289,6 +322,10 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
         navigine_sdk_flutter_PolylineMapObject_ReleaseFfiHandle(_polylineMapObjectHandle);
         try  {
             return navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        }
+        catch (e, stack)  {
+            // todo print stacktrace
+            rethrow;
         }
         finally  {
             navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
@@ -761,6 +798,7 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow {
 
 
 }
+
 Pointer<Void> navigine_sdk_flutter_LocationWindow_ToFfi(LocationWindow value) {
     if (value is __lib.NativeBase)  {
         return _navigine_sdk_flutter_LocationWindow_CopyHandle((value as __lib.NativeBase).handle);
@@ -772,17 +810,9 @@ Pointer<Void> navigine_sdk_flutter_LocationWindow_ToFfi(LocationWindow value) {
 
 LocationWindow navigine_sdk_flutter_LocationWindow_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final instance = __lib.getCachedInstance(handle);
-    if (instance != null && instance is LocationWindow) return instance;
-    final _typeIdHandle = _navigine_sdk_flutter_LocationWindow_GetTypeId(handle);
-    final factoryConstructor = __lib.typeRepository[navigine_sdk_flutter_String_FromFfi(_typeIdHandle)];
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_typeIdHandle);
     final _copiedHandle = _navigine_sdk_flutter_LocationWindow_CopyHandle(handle);
-    final result = factoryConstructor != null
-      ? factoryConstructor(_copiedHandle)
-      : LocationWindow$Impl(_copiedHandle);
-    __lib.cacheInstance(_copiedHandle, result);
-    _navigine_sdk_flutter_LocationWindow_RegisterFinalizer(_copiedHandle, __lib.LibraryContext.isolateId, result);
+    final result = LocationWindow$Impl(_copiedHandle);
+    LocationWindow$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 
