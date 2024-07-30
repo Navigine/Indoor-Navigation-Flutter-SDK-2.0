@@ -6,12 +6,32 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_event.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
+/**
+ *
+ * Class describing path calculated by SDK. It could be
+ * 1 - point to point request via `makeRoute` function of RouteManager (@see RouteManager)
+ * 2 - path from current user position to destination point (@see RouteManager and @RouteSession)
+ *
+ */
 abstract class RoutePath implements Finalizable {
 
+    /**
+     *
+     * Method is used to split route path by distance
+     * @param advance - distance on the route from the start.
+     * @return - pair of splitted route paths.
+     *
+     */
     List<RoutePath> split(double advance);
 
+    /** Total lenth of the route path in meters. */
     double get length;
+    /** List of consecutive incoming events (@see RouteEvent). */
     List<RouteEvent> get events;
+    /**
+     * List of consecutive points. (@see LocationPoint).
+     * NOTE! points could be on different sublocations if target sublocation is different from the starting one
+     */
     List<LocationPoint> get points;
 
 
@@ -157,108 +177,6 @@ RoutePath? navigine_sdk_flutter_RoutePath_FromFfiNullable(Pointer<Void> handle) 
 
 // End of RoutePath "private" section.
 
-final _navigine_sdk_flutter_List_LocationPoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(),
-    Pointer<Void> Function()
-  >('navigine_sdk_flutter_List_LocationPoint_create_handle'));
-
-final _navigine_sdk_flutter_List_LocationPoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_release_handle'));
-
-final _navigine_sdk_flutter_List_LocationPoint_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Pointer<Void>),
-    void Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_insert'));
-
-final _navigine_sdk_flutter_List_LocationPoint_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_iterator'));
-
-final _navigine_sdk_flutter_List_LocationPoint_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_iterator_release_handle'));
-
-final _navigine_sdk_flutter_List_LocationPoint_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int8 Function(Pointer<Void>, Pointer<Void>),
-    int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_iterator_is_valid'));
-
-final _navigine_sdk_flutter_List_LocationPoint_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_iterator_increment'));
-
-final _navigine_sdk_flutter_List_LocationPoint_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_iterator_get'));
-
-Pointer<Void> navigine_sdk_flutter_List_LocationPoint_ToFfi(List<LocationPoint> value)  {
-    final _result = _navigine_sdk_flutter_List_LocationPoint_CreateHandle();
-    for (final element in value)  {
-        final _elementHandle = navigine_sdk_flutter_LocationPoint_ToFfi(element);
-        _navigine_sdk_flutter_List_LocationPoint_Insert(_result, _elementHandle);
-        navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_elementHandle);
-    }
-    return _result;
-}
-
-List<LocationPoint> navigine_sdk_flutter_List_LocationPoint_FromFfi(Pointer<Void> handle)  {
-    final result = List<LocationPoint>.empty(growable: true);
-    final _iteratorHandle = _navigine_sdk_flutter_List_LocationPoint_Iterator(handle);
-    while (_navigine_sdk_flutter_List_LocationPoint_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _elementHandle = _navigine_sdk_flutter_List_LocationPoint_IteratorGet(_iteratorHandle);
-        try  {
-            result.add(navigine_sdk_flutter_LocationPoint_FromFfi(_elementHandle));
-        }
-        finally  {
-            navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_elementHandle);
-        }
-        _navigine_sdk_flutter_List_LocationPoint_IteratorIncrement(_iteratorHandle);
-    }
-    return result;
-}
-
-void navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_LocationPoint_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_List_LocationPoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_create_handle_nullable'));
-
-final _navigine_sdk_flutter_List_LocationPoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_release_handle_nullable'));
-
-final _navigine_sdk_flutter_List_LocationPoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_LocationPoint_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_List_LocationPoint_ToFfiNullable(List<LocationPoint>? value)  {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_List_LocationPoint_ToFfi(value);
-    final result = _navigine_sdk_flutter_List_LocationPoint_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-List<LocationPoint>? navigine_sdk_flutter_List_LocationPoint_FromFfiNullable(Pointer<Void> handle)  {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_List_LocationPoint_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_List_LocationPoint_FromFfi(_handle);
-    navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_List_LocationPoint_ReleaseHandleNullable(handle);
-
 final _navigine_sdk_flutter_List_RouteEvent_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
     Pointer<Void> Function()
@@ -360,6 +278,108 @@ List<RouteEvent>? navigine_sdk_flutter_List_RouteEvent_FromFfiNullable(Pointer<V
 
 void navigine_sdk_flutter_List_RouteEvent_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
   _navigine_sdk_flutter_List_RouteEvent_ReleaseHandleNullable(handle);
+
+final _navigine_sdk_flutter_List_LocationPoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_List_LocationPoint_create_handle'));
+
+final _navigine_sdk_flutter_List_LocationPoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_release_handle'));
+
+final _navigine_sdk_flutter_List_LocationPoint_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_insert'));
+
+final _navigine_sdk_flutter_List_LocationPoint_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_iterator'));
+
+final _navigine_sdk_flutter_List_LocationPoint_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_iterator_release_handle'));
+
+final _navigine_sdk_flutter_List_LocationPoint_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_iterator_is_valid'));
+
+final _navigine_sdk_flutter_List_LocationPoint_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_iterator_increment'));
+
+final _navigine_sdk_flutter_List_LocationPoint_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_iterator_get'));
+
+Pointer<Void> navigine_sdk_flutter_List_LocationPoint_ToFfi(List<LocationPoint> value)  {
+    final _result = _navigine_sdk_flutter_List_LocationPoint_CreateHandle();
+    for (final element in value)  {
+        final _elementHandle = navigine_sdk_flutter_LocationPoint_ToFfi(element);
+        _navigine_sdk_flutter_List_LocationPoint_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_elementHandle);
+    }
+    return _result;
+}
+
+List<LocationPoint> navigine_sdk_flutter_List_LocationPoint_FromFfi(Pointer<Void> handle)  {
+    final result = List<LocationPoint>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_LocationPoint_Iterator(handle);
+    while (_navigine_sdk_flutter_List_LocationPoint_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_LocationPoint_IteratorGet(_iteratorHandle);
+        try  {
+            result.add(navigine_sdk_flutter_LocationPoint_FromFfi(_elementHandle));
+        }
+        finally  {
+            navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_elementHandle);
+        }
+        _navigine_sdk_flutter_List_LocationPoint_IteratorIncrement(_iteratorHandle);
+    }
+    return result;
+}
+
+void navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_LocationPoint_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_List_LocationPoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_create_handle_nullable'));
+
+final _navigine_sdk_flutter_List_LocationPoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_release_handle_nullable'));
+
+final _navigine_sdk_flutter_List_LocationPoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_LocationPoint_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_List_LocationPoint_ToFfiNullable(List<LocationPoint>? value)  {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_List_LocationPoint_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_LocationPoint_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+List<LocationPoint>? navigine_sdk_flutter_List_LocationPoint_FromFfiNullable(Pointer<Void> handle)  {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_List_LocationPoint_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_LocationPoint_FromFfi(_handle);
+    navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_List_LocationPoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_LocationPoint_ReleaseHandleNullable(handle);
 
 final _navigine_sdk_flutter_List_RoutePath_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),

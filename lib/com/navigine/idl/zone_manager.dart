@@ -4,9 +4,22 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_listener.dart';
 
+/** Class is used to manage enter/exit zone events */
 abstract class ZoneManager implements Finalizable {
 
+    /**
+     *
+     * Method is used to add listener to handle new enter/exit zone events (@see ZoneListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addZoneListener(ZoneListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeZoneListener(ZoneListener listener);
 
 

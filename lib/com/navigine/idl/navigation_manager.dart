@@ -6,13 +6,34 @@ import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/position_listener.dart';
 
+/** Class is used to manage navigation routine */
 abstract class NavigationManager implements Finalizable {
 
+    /**
+     *
+     * Method is used to add listener to handle position updates (@see PositionListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addPositionListener(PositionListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removePositionListener(PositionListener listener);
+
+    /** @internal */
     void startLogRecording();
+
+    /** @internal */
     void addCheckPoint(LocationPoint point);
+
+    /** @internal */
     void stopLogRecording();
+
+    /** @internal */
     void addLocationMeasurement(GlobalPoint point, double accuracy, String provider);
 
 

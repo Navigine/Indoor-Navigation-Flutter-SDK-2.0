@@ -5,14 +5,25 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/transmitter_status.dart';
 
+/**
+ *
+ * Object describing WiFi transmitter.
+ *
+ */
 abstract class Wifi implements Finalizable {
 
 
+    /** Metrics coordinate of WiFi position (@see Point). */
     Point get point;
+    /** Unique location identifier of WiFi position. */
     int get locationId;
+    /** Unique sublocation identifier of WiFi position. */
     int get sublocationId;
+    /** WiFi name. */
     String get name;
+    /** WiFi mac. */
     String get mac;
+    /** WiFi status. (@see TransmitterStatus) */
     TransmitterStatus get status;
 
 

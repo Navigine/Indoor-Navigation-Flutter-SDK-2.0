@@ -9,6 +9,7 @@ import 'package:navigine_sdk/error.dart';
 abstract class ResourceListener {
 
     void onLoaded(String imageUrl, Image image);
+
     void onFailed(String imageUrl, Error error);
 
 

@@ -6,9 +6,27 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
+/**
+ * Class is used to handle events coming from routing session (@see RouteSession)
+ * Methods invoked in UI
+ */
 abstract class AsyncRouteListener {
 
+    /**
+     * @method onRouteChanged - called when new route was built or
+     *     old route was rebuilt after missing previouse one.
+     *
+     * @parameter currentPath - path from current postion to destination point
+     */
     void onRouteChanged(RoutePath currentPath);
+
+    /**
+     * @method onRouteAdvanced - called when user has progressed along the route
+     *     that was built in the method `onRouteChanged`
+     *
+     * @parameter distance - distance from the beginning or the route (unit meters)
+     * @parameter point - current location point on the route
+     */
     void onRouteAdvanced(double distance, LocationPoint point);
 
 

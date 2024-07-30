@@ -3,6 +3,7 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 class BeaconProximityEntry {
+    BeaconProximityEntry(this.major, this.minor, this.uuid, this.rssi, this.frequency, this.quality, this.distance);
     int major;
     int minor;
     String uuid;
@@ -10,7 +11,6 @@ class BeaconProximityEntry {
     double frequency;
     double quality;
     double? distance;
-    BeaconProximityEntry(this.major, this.minor, this.uuid, this.rssi, this.frequency, this.quality, this.distance);
 }
 
 // BeaconProximityEntry "private" section, not exported.

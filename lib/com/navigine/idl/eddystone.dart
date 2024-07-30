@@ -5,16 +5,29 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/transmitter_status.dart';
 
+/**
+ *
+ * Object describing eddystone transmitter.
+ *
+ */
 abstract class Eddystone implements Finalizable {
 
 
+    /** Metrics coordinate of eddystone position (@see Point). */
     Point get point;
+    /** Unique location identifier of eddystone position. */
     int get locationId;
+    /** Unique sublocation identifier of eddystone position. */
     int get sublocationId;
+    /** Eddystone name. */
     String get name;
+    /** Eddystone namespaceId. */
     String get namespaceId;
+    /** Eddystone instanceId. */
     String get instanceId;
+    /** Eddystone power. If exsists. */
     int? get power;
+    /** Eddystone status. (@see TransmitterStatus) */
     TransmitterStatus get status;
 
 

@@ -7,10 +7,15 @@ import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_estimator_listene
 abstract class BeaconProximityEstimator implements Finalizable {
 
     void start();
+
     void stop();
+
     void pause();
+
     void resume();
+
     void addListener(BeaconProximityEstimatorListener listener);
+
     void removeListener(BeaconProximityEstimatorListener listener);
 
 

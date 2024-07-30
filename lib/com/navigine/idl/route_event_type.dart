@@ -1,9 +1,13 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
+/** Available route events */
 enum RouteEventType {
+    /** An event showing a left turn. */
     TURN_LEFT,
+    /** An event showing a right turn. */
     TURN_RIGHT,
+    /** An event showing a chaning of sublocation (floor). */
     TRANSITION,
 }
 

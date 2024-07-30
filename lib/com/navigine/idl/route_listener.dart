@@ -5,8 +5,18 @@ import 'package:navigine_sdk/com/_weak_map.dart';
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
+/**
+ * Class is used to handle events coming from RouteManager (@see RouteManager).
+ * Methods invoked in UI
+ */
 abstract class RouteListener {
 
+    /**
+     *
+     * @method onPathsUpdated - called when new route has been calculated
+     * @parameter paths - calculated list of paths to added targets (@see RoutePath).
+     *
+     */
     void onPathsUpdated(List<RoutePath> paths);
 
 

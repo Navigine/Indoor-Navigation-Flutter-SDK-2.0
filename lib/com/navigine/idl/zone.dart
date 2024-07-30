@@ -4,15 +4,27 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon.dart';
 
+/**
+ *
+ * Object describing zone in CMS.
+ *
+ */
 abstract class Zone implements Finalizable {
 
 
+    /** Metrics polygon of Zone (@see Polygon). */
     Polygon get polygon;
+    /** Unique location identifier of Zone position. */
     int get locationId;
+    /** Unique sublocation identifier of Zone position. */
     int get sublocationId;
+    /** Zone unique identifier. */
     int get id;
+    /** Zone name. */
     String get name;
+    /** Zone color. */
     String get color;
+    /** Zone alias. */
     String get alias;
 
 

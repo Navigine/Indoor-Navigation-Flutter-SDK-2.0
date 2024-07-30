@@ -1,10 +1,15 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
+/** Describe possible transmitter state */
 enum TransmitterStatus {
+    /** Syncronized with CMS. */
     NONE,
+    /** Added in SDK but not syncronized with CMS. */
     NEW,
+    /** Deleted in SDK but not syncronized with CMS. */
     DELETED,
+    /** Changed in SDK but not syncronized with CMS. */
     MODIFIED,
 }
 

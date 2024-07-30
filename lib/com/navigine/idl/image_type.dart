@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
+/** Supported image types */
 enum ImageType {
     PNG,
     SVG,

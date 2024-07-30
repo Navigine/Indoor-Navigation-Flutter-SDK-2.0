@@ -2,10 +2,17 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
+/**
+ *
+ * A point at the specified metrics coordinates.
+ *
+ */
 class Point {
-    double x;
-    double y;
     Point(this.x, this.y);
+    /** Point's `x` coordinate in meters. */
+    double x;
+    /** Point's `y` coordinate in meters. */
+    double y;
 }
 
 // Point "private" section, not exported.

@@ -3,11 +3,33 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon.dart';
 
+/**
+ *
+ * Polygon at specified location and sublocation
+ * Units: meters
+ * Origin: bottom left corner
+ *
+ */
 class LocationPolygon {
-    Polygon polygon;
-    int locationId;
-    int sublocationId;
     LocationPolygon(this.polygon, this.locationId, this.sublocationId);
+    /**
+     *
+     * Metrics polygon (@see Polygon).
+     *
+     */
+    Polygon polygon;
+    /**
+     *
+     * Location unique identifier in CMS
+     *
+     */
+    int locationId;
+    /**
+     *
+     * Sublocation unique identifier in CMS
+     *
+     */
+    int sublocationId;
 }
 
 // LocationPolygon "private" section, not exported.

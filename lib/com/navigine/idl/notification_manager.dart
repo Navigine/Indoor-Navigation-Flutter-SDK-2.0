@@ -4,9 +4,28 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/notification_listener.dart';
 
+/**
+ *
+ * Class is used to manage local notifications
+ * Notification should be created in CMS. Notification handle iBeacon signals,
+ * detect proximity and notify user about event.
+ *
+ */
 abstract class NotificationManager implements Finalizable {
 
+    /**
+     *
+     * Method is used to add listener to handle new notification events (@see NotificationListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addNotificationListener(NotificationListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeNotificationListener(NotificationListener listener);
 
 

@@ -1,11 +1,17 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
+/** Describe animation functions */
 enum AnimationType {
+    /** Disable animation */
     NONE,
+    /** Animation according to formula `f(t) = t`. */
     LINEAR,
+    /** Animation according to formula `f(t) = (-2 * t + 3) * t * t`. */
     CUBIC,
+    /** Animation according to formula `f(t) = (6 * t * t - 15 * t + 10) * t * t * t`. */
     QUINT,
+    /** Animation according to formula `f(t) = 0.5 - 0.5 * cos(PI * t)`. */
     SINE,
 }
 

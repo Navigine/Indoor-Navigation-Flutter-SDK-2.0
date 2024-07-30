@@ -9,9 +9,30 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 import 'package:navigine_sdk/image_wrapper.dart';
 
+/**
+ *
+ * Object represents icon object on location view.
+ * FlatIconMapObject keep orientation to location view surface.
+ *
+ */
 abstract class FlatIconMapObject implements IconMapObject, Finalizable {
 
+    /**
+     *
+     * Method is used to specify rotation of object.
+     * @param angle - angle of rotation in degrees.
+     *
+     */
     bool setAngle(double angle);
+
+    /**
+     *
+     * Method is used to rotate object with specified animation.
+     * @param angle - angle of rotation in degrees.
+     * @param duration - animation duration in seconds.
+     * @param type - animation type (@see AnimationType).
+     *
+     */
     bool setAngleAnimated(double angle, double duration, AnimationType type);
 
 

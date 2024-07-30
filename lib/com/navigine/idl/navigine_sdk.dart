@@ -16,25 +16,126 @@ import 'package:navigine_sdk/com/navigine/idl/resource_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_manager.dart';
 
+/**
+ * Provides access to all services in the SDK.
+ *
+ * @note SDK holds objects by weak references. You need
+ * to have strong references to them somewhere in the client code.
+ *
+ */
 abstract class NavigineSdk implements Finalizable {
 
+    /**
+     *
+     * Returns instance of SDK
+     *
+     */
     static NavigineSdk getInstance() => $prototype.getInstance();
+
+    /**
+     *
+     * Returns version of SDK
+     *
+     */
     static String getVersion() => $prototype.getVersion();
+
+    /**
+     *
+     * Returns persistent device id
+     *
+     */
     static String getDeviceId() => $prototype.getDeviceId();
+
+    /**
+     *
+     * Returns internal timestamp
+     *
+     */
     static int getRelativeTime() => $prototype.getRelativeTime();
+
+    /**
+     *
+     * Method is used to set USER_HASH from the user's profile in CMS
+     * @param userHash - auth token in format XXXX-XXXX-XXXX-XXXX
+     *
+     */
     void setUserHash(String userHash);
+
+    /**
+     *
+     * Method is used to set server url
+     * @param server - custom server url in format: `http[s]://example.com`
+     *
+     */
     void setServer(String server);
+
+    /**
+     *
+     * Returns a manager that allows to listen for new locations
+     *     and manage selected one
+     *
+     */
     LocationManager getLocationManager();
+
+    /**
+     *
+     * Returns a manager that allows to listen for position updates
+     *
+     */
     NavigationManager getNavigationManager(LocationManager locationManager);
-    ZoneManager getZoneManager(LocationManager locationManager, NavigationManager navigationManager);
+
+    /**
+     *
+     * Returns a manager that allows to listen for zone events (enter/exit particular zone)
+     *
+     */
+    ZoneManager getZoneManager(NavigationManager navigationManager);
+
+    /**
+     *
+     * Returns a manager that allows to
+     * 1 - build a route from point to point
+     * 2 - set target point and subscribe for route updates
+     *
+     */
     RouteManager getRouteManager(LocationManager locationManager, NavigationManager navigationManager);
+
+    /**
+     *
+     * Returns a manager that allows to manage routing sessions (@see RouteSession class)
+     *
+     */
     AsyncRouteManager getAsyncRouteManager(LocationManager locationManager, NavigationManager navigationManager);
+
+    /**
+     *
+     * Returns a manager that allows to manage resources
+     * 1 - download and decode images
+     * 2 - managing logs
+     *
+     */
     ResourceManager getResourceManager(LocationManager locationManager);
+
+    /**
+     *
+     * Returns a manager that allows to manage local notifications based on signal measurements
+     *
+     */
     NotificationManager getNotificationManager(LocationManager locationManager);
+
     LocationEditManager getLocationEditManager(LocationManager locationManager);
+
     MeasurementManager getMeasurementManager(LocationManager locationManager);
+
     BeaconProximityEstimator getBeaconProximityEstimator(LocationManager locationManager);
+
     String getErrorDescription(int errorCode);
+
+    /**
+     *
+     * createLocationWindow(platform_view: platform_view): location_window;
+     *
+     */
     LocationListManager getLocationListManager();
 
 
@@ -194,16 +295,14 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk, Finaliza
     }
 
     @override
-    ZoneManager getZoneManager(LocationManager locationManager, NavigationManager navigationManager) {
+    ZoneManager getZoneManager(NavigationManager navigationManager) {
         final _getZoneManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_NavigineSdk_getZoneManager__LocationManager_NavigationManager'));
-        final _locationManagerHandle = navigine_sdk_flutter_LocationManager_ToFfi(locationManager);
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_getZoneManager__NavigationManager'));
         final _navigationManagerHandle = navigine_sdk_flutter_NavigationManager_ToFfi(navigationManager);
         final _handle = this.handle;
-        final __resultHandle = _getZoneManagerFfi(_handle, _locationManagerHandle, _navigationManagerHandle);
-        navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
+        final __resultHandle = _getZoneManagerFfi(_handle, _navigationManagerHandle);
         navigine_sdk_flutter_NavigationManager_ReleaseFfiHandle(_navigationManagerHandle);
         try  {
             return navigine_sdk_flutter_ZoneManager_FromFfi(__resultHandle);

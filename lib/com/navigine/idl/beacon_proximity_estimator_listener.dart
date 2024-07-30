@@ -9,8 +9,11 @@ import 'package:navigine_sdk/error.dart';
 abstract class BeaconProximityEstimatorListener {
 
     void onScanResultReady(List<BeaconProximityEntry> beacons);
+
     void onProgressChanged(double progress);
+
     void onFinished(List<BeaconProximityEntry> beacons);
+
     void onFailed(Error error);
 
 

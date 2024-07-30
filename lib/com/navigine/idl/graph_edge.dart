@@ -3,12 +3,21 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
+/**
+ *
+ * Object describing graph edge in CMS.
+ *
+ */
 abstract class GraphEdge implements Finalizable {
 
 
+    /** edge weight. */
     double get weight;
+    /** destination vertex id (@see GraphVertex) */
     int get dst;
+    /** source vertex id (@see GraphVertex) */
     int get src;
+    /** edge weight coefficient. */
     int get weightCoef;
 
 

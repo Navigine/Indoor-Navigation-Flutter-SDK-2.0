@@ -3,10 +3,10 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 class Vector3d {
+    Vector3d(this.x, this.y, this.z);
     double x;
     double y;
     double z;
-    Vector3d(this.x, this.y, this.z);
 }
 
 // Vector3d "private" section, not exported.

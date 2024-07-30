@@ -19,53 +19,303 @@ import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
 import 'package:navigine_sdk/image_wrapper.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
+/** Class is used to interact with the view. */
 abstract class LocationWindow implements Finalizable {
 
+    /**
+     *
+     * Method is used to switch LocationView between sublocations (floors).
+     * @param id - sublocation unique identifier (@see Sublocation class or CMS).
+     *
+     */
     void setSublocationId(int id);
+
+    /**
+     *
+     * Method is used to convert screen (pixels) coordinates to metrics coordinates.
+     * @param point - (x,y) point in screen pixels.
+     * @return (x,y) point in meters coordinates (@see Point class).
+     *
+     */
     Point screenPositionToMeters(math.Point<double> point);
+
+    /**
+     *
+     * Method is used to convert metrics coordinates to screen (pixels) coordinates.
+     * @param point - (x,y) point in meters coordinates (@see Point class).
+     * @param clipToViewport - if true, results that would be outside the viewport are clipped to a position on the edge of the viewport in the direction of the location.
+     * @return (x,y) point in screen pixels.
+     *
+     */
     math.Point<double> metersToScreenPosition(Point point, bool clipToViewport);
+
+    /**
+     *
+     * Method is used to create and add circle map object to the LocationView.
+     * @return CircleMapObject instance (@see CircleMapObject) if success, null otherwise.
+     *
+     */
     CircleMapObject addCircleMapObject();
+
+    /**
+     *
+     * Method is used to remove circle map object from the LocationView.
+     * @param CircleMapObject instance (@see CircleMapObject).
+     * @return true if success, false otherwise.
+     *
+     */
     bool removeCircleMapObject(CircleMapObject circleMapObject);
+
+    /**
+     *
+     * Method is used to create and add icon map object to the LocationView.
+     * @return IconMapObject instance (@see IconMapObject) if success, null otherwise.
+     *
+     */
     IconMapObject addIconMapObject();
+
+    /**
+     *
+     * Method is used to remove icon map object from the LocationView.
+     * @param IconMapObject instance (@see IconMapObject).
+     * @return true if success, false otherwise.
+     *
+     */
     bool removeIconMapObject(IconMapObject iconMapObject);
+
+    /**
+     *
+     * Method is used to create and add flat icon map object to the LocationView.
+     * @return FlatIconMapObject instance (@see FlatIconMapObject) if success, null otherwise.
+     *
+     */
     FlatIconMapObject addFlatIconMapObject();
+
+    /**
+     *
+     * Method is used to remove flat icon map object from the LocationView.
+     * @param FlatIconMapObject instance (@see FlatIconMapObject).
+     * @return true if success, false otherwise.
+     *
+     */
     bool removeFlatIconMapObject(FlatIconMapObject iconMapObject);
+
+    /**
+     *
+     * Method is used to create and add polyline map object to the LocationView.
+     * @return PolylineMapObject instance (@see PolylineMapObject) if success, null otherwise.
+     *
+     */
     PolylineMapObject addPolylineMapObject();
+
+    /**
+     *
+     * Method is used to remove polyline map object from the LocationView.
+     * @param PolylineMapObject instance (@see PolylineMapObject).
+     * @return true if success, false otherwise.
+     *
+     */
     bool removePolylineMapObject(PolylineMapObject polylineMapObject);
+
+    /**
+     *
+     * Method is used to remove all object from the LocationView.
+     *
+     */
     void removeAllMapObjects();
+
+    /**
+     *
+     * Method is used to select a visible map object marked as `interactive` (@see MapObject).
+     * The result will be delivered to the `PickListener` by `onMapObjectPickComplete` (@see PickListener).
+     * @param point - position in the view to pick from, in pixels.
+     *
+     */
     void pickMapObjectAt(math.Point<double> point);
+
+    /**
+     *
+     * Method is used to select a visible map features, such as venues etc.
+     * The result will be delivered to the `PickListener` by `onMapFeaturePickComplete` (@see PickListener).
+     * @param point - position in the view to pick from, in pixels.
+     *
+     */
     void pickMapFeatureAt(math.Point<double> point);
+
+    /**
+     *
+     * Method is used to add listener to handle picking results (@see PickListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addPickListener(PickListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removePickListener(PickListener listener);
+
+    /**
+     *
+     * Method is used to add listener to handle input results (@see InputListener).
+     * Such as tap, double tap, long tap
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addInputListener(InputListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeInputListener(InputListener listener);
+
+    /**
+     *
+     * Method is used to add listener to handle camera movements (@see CameraListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addCameraListener(CameraListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeCameraListener(CameraListener listener);
+
+    /**
+     *
+     * Move the map camera to a new position with an easing animation.
+     *
+     * @param camera The new camera position
+     * @param duration The animation duration in milliseconds
+     * @param completion A callback to execute when the animation completes
+     *
+     */
     void flyTo(Camera camera, int duration, CameraCallback callback);
+
+    /**
+     *
+     * Move the map camera to a new position with an animation that pans and zooms in a smooth arc.
+     *
+     * The animation duration is calculated based on the distance to the new camera position and the specified speed
+     *
+     * @param camera The new camera position
+     * @param duration Duration of the animation in milliseconds (-1 for default duration)
+     * @param animationType The type of easing animation
+     * @param callback A callback to execute when the animation completes
+     *
+     */
     void moveTo(Camera camera, int duration, AnimationType animationType, CameraCallback callback);
+
+    /**
+     *
+     * @internal
+     * Don't use it if you don't know what is it
+     *
+     */
     void applyFilter(String filter, String layer);
+
+    /**
+     *
+     * @internal
+     * Don't use it if you don't know what is it
+     *
+     */
     void setIcons(Map<String, ImageWrapper> icons);
+
+    /**
+     *
+     * @internal
+     * Don't use it if you don't know what is it
+     *
+     */
     static void setDebugFlag(DebugFlag flag, bool on) => $prototype.setDebugFlag(flag, on);
+
+    /**
+     *
+     * @internal
+     * Don't use it if you don't know what is it
+     *
+     */
     static bool getDebugFlag(DebugFlag flag) => $prototype.getDebugFlag(flag);
 
+    /**
+     *
+     * Parameter is used to change LocationView zoom.
+     * @param zoomFactor - value indicates count of pixels in 1 meter (default: approx 100m in screen width).
+     *
+     */
     double get zoomFactor;
     void set zoomFactor(double zoomFactor);
+    /**
+     *
+     * @param minZoomFactor - minimum zoomFactor value (@see zoomFactor parameter).
+     *
+     */
     double get minZoomFactor;
     void set minZoomFactor(double minZoomFactor);
+    /**
+     *
+     * @param zoomFactor - maximum zoomFactor value (@see zoomFactor parameter).
+     *
+     */
     double get maxZoomFactor;
     void set maxZoomFactor(double maxZoomFactor);
+    /**
+     *
+     * Parameter is used to enable/disable sublocation content sticking to screen borders.
+     * @param stickToBorder - if true image sticking to screen bounds, if false sticking to center of screen (Default: true).
+     *
+     */
     bool get stickToBorder;
     void set stickToBorder(bool stickToBorder);
+    /**
+     *
+     * Current camera position in meters.
+     *
+     */
     Camera get camera;
     void set camera(Camera camera);
+    /**
+     *
+     * Parameter is used to enable/disable rotation gestures, such as rotation with two fingers.
+     *
+     */
     bool get rotateGestureEnabled;
     void set rotateGestureEnabled(bool rotateGestureEnabled);
+    /**
+     *
+     * Parameter is used to enable/disable tilt gestures, such as parallel pan with two fingers.
+     *
+     */
     bool get tiltGesturesEnabled;
     void set tiltGesturesEnabled(bool tiltGesturesEnabled);
+    /**
+     *
+     * Parameter is used to enable/disable scroll gestures, such as the pan gesture.
+     *
+     */
     bool get scrollGesturesEnabled;
     void set scrollGesturesEnabled(bool scrollGesturesEnabled);
+    /**
+     *
+     * Parameter is used to enable/disable zoom gestures, such as the pinch with two fingers.
+     *
+     */
     bool get zoomGesturesEnabled;
     void set zoomGesturesEnabled(bool zoomGesturesEnabled);
+    /**
+     *
+     * Radius to use when picking features on the map. The default radius is 0.5 dp.
+     * @param pickRadius - radius in dp (density-independent pixels).
+     *
+     */
     double get pickRadius;
     void set pickRadius(double pickRadius);
 

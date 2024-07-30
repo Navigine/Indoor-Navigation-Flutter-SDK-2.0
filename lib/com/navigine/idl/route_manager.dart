@@ -6,17 +6,83 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
+/** Class is used to build a route between points and subscribe for route updates */
 abstract class RouteManager implements Finalizable {
 
+    /**
+     *
+     * Method is used to build a route between points
+     * @param from - starting point (@see LocationPoint class).
+     * @param to - destination point (@see LocationPoint class).
+     * @return RoutePath from starting to destination point (@see RoutePath).
+     *
+     */
     RoutePath makeRoute(LocationPoint from, LocationPoint to);
+
+    /**
+     *
+     * Method is used to set target point.
+     * Navigation manager will build new route path (@see RoutePath) each navigation tick.
+     * Results will be available in RouteListener (@see RouteListener).
+     * @param target - finish point (@see LocationPoint class).
+     *
+     */
     void setTarget(LocationPoint target);
+
+    /**
+     *
+     * Method is used to add one more target point.
+     * Navigation manager will build new route path (@see RoutePath) to each target each navigation tick.
+     * Results will be available in RouteListener (@see RouteListener).
+     * @param target - finish point (@see LocationPoint class).
+     *
+     */
     void addTarget(LocationPoint target);
+
+    /**
+     *
+     * Method is used to cancel all routing processes.
+     *
+     */
     void cancelTarget();
+
+    /** @internal */
     void clearTargets();
+
+    /**
+     *
+     * Method is used to select graph tag (Default: "default").
+     *
+     */
     void setGraphTag(String tag);
+
+    /**
+     *
+     * Method is used to get current graph tag (Default: "default").
+     *
+     */
     String getGraphTag();
+
+    /**
+     *
+     * Method is used to get all graph tags,
+     *
+     */
     List<String> getGraphTags();
+
+    /**
+     *
+     * Method is used to add listener to handle new routes (@see RouteListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addRouteListener(RouteListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeRouteListener(RouteListener listener);
 
 

@@ -4,18 +4,33 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
+/**
+ *
+ * Object describing venue in CMS.
+ *
+ */
 abstract class Venue implements Finalizable {
 
 
+    /** Metrics coordinate of Venue position (@see Point). */
     Point get point;
+    /** Unique location identifier of Venue position. */
     int get locationId;
+    /** Unique sublocation identifier of Venue position. */
     int get sublocationId;
+    /** Venue unique identifier. */
     int get id;
+    /** Venue name. */
     String get name;
+    /** Venue phone. */
     String get phone;
+    /** Venue description. */
     String get descript;
+    /** Venue alias. */
     String get alias;
+    /** Venue category unique identifier (@Category). */
     int get categoryId;
+    /** Venue image url if specified. */
     String? get imageUrl;
 
 

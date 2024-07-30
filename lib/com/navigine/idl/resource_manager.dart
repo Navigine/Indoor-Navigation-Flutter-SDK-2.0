@@ -8,8 +8,12 @@ import 'package:navigine_sdk/com/navigine/idl/resource_upload_listener.dart';
 abstract class ResourceManager implements Finalizable {
 
     void loadImage(String imageUrl, ResourceListener listener);
+
+    /** working with logs */
     List<String> getLogsList();
+
     void removeLogFile(String fileName);
+
     void uploadLogFile(String fileName, ResourceUploadListener listener);
 
 

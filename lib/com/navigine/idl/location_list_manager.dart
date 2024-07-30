@@ -5,11 +5,36 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_info.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_list_listener.dart';
 
+/** Class is used to manage list of available locations */
 abstract class LocationListManager implements Finalizable {
 
+    /**
+     *
+     * Method is used to add listener to handle location list updates (@see LocationListListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addLocationListListener(LocationListListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeLocationListListener(LocationListListener listener);
+
+    /**
+     *
+     * Method is used to force reload location list.
+     *
+     */
     void updateLocationList();
+
+    /**
+     *
+     * Method is used to get current location list.
+     *
+     */
     Map<int, LocationInfo> getLocationList();
 
 

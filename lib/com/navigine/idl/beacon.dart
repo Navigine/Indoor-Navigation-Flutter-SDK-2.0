@@ -5,17 +5,31 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/transmitter_status.dart';
 
+/**
+ *
+ * Object describing iBeacon transmitter.
+ *
+ */
 abstract class Beacon implements Finalizable {
 
 
+    /** Metrics coordinate of iBeacon position (@see Point). */
     Point get point;
+    /** Unique location identifier of iBeacon position. */
     int get locationId;
+    /** Unique sublocation identifier of iBeacon position. */
     int get sublocationId;
+    /** iBeacon name. */
     String get name;
+    /** iBeacon major. Values [1-65535] */
     int get major;
+    /** iBeacon minor. Values [1-65535] */
     int get minor;
+    /** iBeacon uuid. Format [XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX] */
     String get uuid;
+    /** iBeacon power. If exsists. */
     int? get power;
+    /** iBeacon status. (@see TransmitterStatus) */
     TransmitterStatus get status;
 
 

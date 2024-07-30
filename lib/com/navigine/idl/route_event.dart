@@ -3,11 +3,22 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_event_type.dart';
 
+/**
+ *
+ * A route event handle information about incoming events on the route.
+ *
+ */
 class RouteEvent {
-    RouteEventType type;
-    int value;
-    double distance;
     RouteEvent(this.type, this.value, this.distance);
+    /** Incoming event type. */
+    RouteEventType type;
+    /**
+     * Indicates angle in degrees for TURN_LEFT/TURN_RIGHT types (@see RouteEventType)
+     * and target sublocation unique identifier if type is TRANSITION (@see Sublocation)
+     */
+    int value;
+    /** distance from the beginning of the route to incoming event in meters. */
+    double distance;
 }
 
 // RouteEvent "private" section, not exported.

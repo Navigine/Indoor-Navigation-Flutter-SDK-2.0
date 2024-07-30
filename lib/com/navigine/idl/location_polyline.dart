@@ -3,11 +3,33 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline.dart';
 
+/**
+ *
+ * Polyline at specified location and sublocation
+ * Units: meters
+ * Origin: bottom left corner
+ *
+ */
 class LocationPolyline {
-    Polyline polyline;
-    int locationId;
-    int sublocationId;
     LocationPolyline(this.polyline, this.locationId, this.sublocationId);
+    /**
+     *
+     * Metrics polyline (@see Polyline).
+     *
+     */
+    Polyline polyline;
+    /**
+     *
+     * Location unique identifier in CMS
+     *
+     */
+    int locationId;
+    /**
+     *
+     * Sublocation unique identifier in CMS
+     *
+     */
+    int sublocationId;
 }
 
 // LocationPolyline "private" section, not exported.

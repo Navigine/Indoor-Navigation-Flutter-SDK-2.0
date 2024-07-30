@@ -6,9 +6,26 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/notification.dart';
 import 'package:navigine_sdk/error.dart';
 
+/**
+ * Class is used to handle events coming from NotificationManager (@see NotificationManager).
+ * Methods invoked in UI
+ */
 abstract class NotificationListener {
 
+    /**
+     *
+     * @method onNotificationLoaded - called when iBeacon signal mathed all parameters in notification
+     * @parameter notification - notification instance created in CMS (@see Notification).
+     *
+     */
     void onNotificationLoaded(Notification notification);
+
+    /**
+     *
+     * @method onNotificationFailed - called if unable to calculate notification or network errors.
+     * @parameter error - handled error.
+     *
+     */
     void onNotificationFailed(Error error);
 
 

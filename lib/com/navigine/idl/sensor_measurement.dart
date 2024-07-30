@@ -5,10 +5,10 @@ import 'package:navigine_sdk/com/navigine/idl/sensor_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/vector3d.dart';
 
 class SensorMeasurement {
+    SensorMeasurement(this.type, this.values, this.time);
     SensorType type;
     Vector3d values;
     int time;
-    SensorMeasurement(this.type, this.values, this.time);
 }
 
 // SensorMeasurement "private" section, not exported.

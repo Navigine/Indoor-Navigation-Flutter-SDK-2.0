@@ -6,10 +6,30 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location.dart';
 import 'package:navigine_sdk/error.dart';
 
+/**
+ * Class is used to handle events coming from LocationManager (@see LocationManager).
+ * Methods invoked in UI
+ */
 abstract class LocationListener {
 
+    /**
+     *
+     * @method onLocationLoaded - called when new location version has been downloaded from CMS
+     * @parameter location - downloaded location instance (@see Location).
+     *
+     */
     void onLocationLoaded(Location location);
+
+    /**
+     *
+     * @method onLocationFailed - called if unable to download location version from CMS
+     * @parameter locationId - location unique identifier in SMC.
+     * @parameter error - handled error.
+     *
+     */
     void onLocationFailed(int locationId, Error error);
+
+    /** @internal */
     void onLocationUploaded(int locationId);
 
 

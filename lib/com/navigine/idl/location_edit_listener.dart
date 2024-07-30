@@ -9,6 +9,7 @@ import 'package:navigine_sdk/error.dart';
 abstract class LocationEditListener {
 
     void onLocationEditSuccess(Location location);
+
     void onLocationEditError(Error error);
 
 

@@ -4,9 +4,22 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/async_route_listener.dart';
 
+/** Class is used to manage route listeners */
 abstract class RouteSession implements Finalizable {
 
+    /**
+     *
+     * Method is used to add listener to handle async route events (@see AsyncRouteListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addRouteListener(AsyncRouteListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeRouteListener(AsyncRouteListener listener);
 
 

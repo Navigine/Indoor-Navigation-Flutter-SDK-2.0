@@ -5,8 +5,17 @@ import 'package:navigine_sdk/com/_weak_map.dart';
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera_update_reason.dart';
 
+/** Class is used to listen for camera updates (@see LocationView) */
 abstract class CameraListener {
 
+    /**
+     *
+     * Triggered when the camera position changed.
+     * @param reason - reason of camera update.
+     * @param finished - true if the camera finished moving, false otherwise.
+     *      If a movement is cancelled then reason represents initiator of cancellation.
+     *
+     */
     void onCameraPositionChanged(CameraUpdateReason reason, bool finished);
 
 

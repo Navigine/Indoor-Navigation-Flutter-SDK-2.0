@@ -4,13 +4,31 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 
+/**
+ *
+ * Class describing user's position
+ *
+ */
 class Position {
-    GlobalPoint point;
-    double accuracy;
-    double? heading;
-    LocationPoint? locationPoint;
-    double? locationHeading;
     Position(this.point, this.accuracy, this.heading, this.locationPoint, this.locationHeading);
+    /** Position in WGS84 coordinates */
+    GlobalPoint point;
+    /** Position accuracy in meters */
+    double accuracy;
+    /**
+     * Heading, angle of rotation about the -Z axis (in radians).
+     * This value represents the angle between the device's Y
+     * axis and the magnetic north pole. When facing north, this
+     * angle is 0, when facing south, this angle is pi.
+     * Likewise, when facing east, this angle is pi/2, and
+     * when facing west, this angle is -pi/2. The range of
+     * values is [-pi, pi].
+     */
+    double? heading;
+    /** Position in metrics coordinates at calculated location and sublocation */
+    LocationPoint? locationPoint;
+    /** Similiar to `heading` but with respect to `sublocation north` (top of the image) */
+    double? locationHeading;
 }
 
 // Position "private" section, not exported.

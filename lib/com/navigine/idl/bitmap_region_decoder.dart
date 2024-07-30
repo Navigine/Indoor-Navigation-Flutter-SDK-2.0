@@ -11,6 +11,7 @@ import 'package:navigine_sdk/image_wrapper.dart';
 abstract class BitmapRegionDecoder implements Finalizable {
 
     static BitmapRegionDecoder newInstance(Uint8List data) => $prototype.newInstance(data);
+
     ImageWrapper decodeRegion(Rectangle rect, int sampleSize);
 
 

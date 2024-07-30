@@ -3,9 +3,15 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
+/**
+ *
+ * A polygon with specified list of points.
+ *
+ */
 class Polygon {
-    List<Point> points;
     Polygon(this.points);
+    /** The ring specifying the area. */
+    List<Point> points;
 }
 
 // Polygon "private" section, not exported.

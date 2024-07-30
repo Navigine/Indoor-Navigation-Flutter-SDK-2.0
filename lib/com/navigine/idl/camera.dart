@@ -3,11 +3,15 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
+/** Class describing position of the camera. */
 class Camera {
-    Point point;
-    double zoom;
-    double rotation;
     Camera(this.point, this.zoom, this.rotation);
+    /** Point the camera is looking at. */
+    Point point;
+    /** Zoom level. */
+    double zoom;
+    /** Angle between `Location North` (top of the image) and the direction of interest on the view plane, in degrees in the range [0, 360). */
+    double rotation;
 }
 
 // Camera "private" section, not exported.

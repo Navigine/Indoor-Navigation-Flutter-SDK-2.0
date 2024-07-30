@@ -8,6 +8,7 @@ import 'package:navigine_sdk/error.dart';
 abstract class ResourceUploadListener {
 
     void onUploaded(String fileName);
+
     void onFailed(Error error);
 
 

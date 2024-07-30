@@ -3,10 +3,17 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
+/**
+ *
+ * Line between two points.
+ *
+ */
 class Segment {
-    Point start;
-    Point end;
     Segment(this.start, this.end);
+    /** Starting point of the segment. */
+    Point start;
+    /** End point of the segment. */
+    Point end;
 }
 
 // Segment "private" section, not exported.

@@ -6,9 +6,17 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_options.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_session.dart';
 
+/** Class is used to manage routing sessions */
 abstract class AsyncRouteManager implements Finalizable {
 
+    /**
+     * Method is used to create routing session
+     * @param wayPoint - destination point
+     * @param routeOptions - params of routing session (@see RouteSession class)
+     */
     RouteSession createRouteSession(LocationPoint wayPoint, RouteOptions routeOptions);
+
+    /** Method is used to cancel routing session */
     void cancelRouteSession(RouteSession session);
 
 

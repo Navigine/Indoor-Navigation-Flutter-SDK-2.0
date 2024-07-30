@@ -3,12 +3,21 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/_weak_map.dart';
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
-import 'package:navigine_sdk/com/navigine/idl/zone.dart';
+import 'package:navigine_sdk/com/navigine/idl/zone_event.dart';
 
+/**
+ * Class is used to handle events coming from ZoneManager (@see ZoneManager).
+ * Methods invoked in UI
+ */
 abstract class ZoneListener {
 
-    void onEnterZone(Zone zone);
-    void onLeaveZone(Zone zone);
+    /**
+     *
+     * @method onZoneEvent - called when user handle particular zone event
+     * @parameter zoneEvent - handled zone event (@see ZoneEvent).
+     *
+     */
+    void onZoneEvent(ZoneEvent zoneEvent);
 
 
 
@@ -21,8 +30,8 @@ final _navigine_sdk_flutter_ZoneListener_free = __lib.nativeLibrary.lookup<
   >('navigine_sdk_flutter_ZoneListener_free');
 
 final _navigine_sdk_flutter_ZoneListener_CreateProxy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer, Pointer),
-    Pointer<Void> Function(Pointer, Pointer)
+    Pointer<Void> Function(Pointer),
+    Pointer<Void> Function(Pointer)
   >('navigine_sdk_flutter_ZoneListener_create_proxy'));
 
 final _navigine_sdk_flutter_ZoneListener_SetPorts = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
@@ -31,15 +40,15 @@ final _navigine_sdk_flutter_ZoneListener_SetPorts = __lib.catchArgumentError(() 
   >('navigine_sdk_flutter_ZoneListener_set_ports'));
 
 
-int _navigine_sdk_flutter_ZoneListener_onEnterZoneStatic(Pointer<Void> _obj, Pointer<Void> zone) {
+int _navigine_sdk_flutter_ZoneListener_onZoneEventStatic(Pointer<Void> _obj, Pointer<Void> zoneEvent) {
     
     final listener = ZoneListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
         throw Exception();
     }
     try  {
-        listener.onEnterZone(
-          navigine_sdk_flutter_Zone_FromFfi(zone),
+        listener.onZoneEvent(
+          navigine_sdk_flutter_ZoneEvent_FromFfi(zoneEvent),
         );
         
     }
@@ -48,29 +57,7 @@ int _navigine_sdk_flutter_ZoneListener_onEnterZoneStatic(Pointer<Void> _obj, Poi
         rethrow;
     }
     finally  {
-        navigine_sdk_flutter_Zone_ReleaseFfiHandle(zone);
-    }
-    return 0;
-}
-
-int _navigine_sdk_flutter_ZoneListener_onLeaveZoneStatic(Pointer<Void> _obj, Pointer<Void> zone) {
-    
-    final listener = ZoneListenerImpl._pointerToListener[_obj]?.target;
-    if (listener == null) {
-        throw Exception();
-    }
-    try  {
-        listener.onLeaveZone(
-          navigine_sdk_flutter_Zone_FromFfi(zone),
-        );
-        
-    }
-    catch (e, stack)  {
-        // todo print stacktrace
-        rethrow;
-    }
-    finally  {
-        navigine_sdk_flutter_Zone_ReleaseFfiHandle(zone);
+        navigine_sdk_flutter_ZoneEvent_ReleaseFfiHandle(zoneEvent);
     }
     return 0;
 }
@@ -96,8 +83,7 @@ extension ZoneListenerImpl on ZoneListener  {
 
 Pointer<Void> navigine_sdk_flutter_ZoneListener_ToFfi(ZoneListener value) {
     final result = _navigine_sdk_flutter_ZoneListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ZoneListener_onEnterZoneStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ZoneListener_onLeaveZoneStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ZoneListener_onZoneEventStatic, __lib.unknownError),
     );
     ZoneListenerImpl._pointerToListener[result] = WeakReference(value);
     ZoneListenerImpl._listenerToPointer[value] = _ZoneListenerWrapper(result);

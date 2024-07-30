@@ -8,11 +8,47 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 
+/**
+ *
+ * Object represents circle on location view.
+ *
+ */
 abstract class CircleMapObject implements MapObject, Finalizable {
 
+    /**
+     *
+     * Method is used to specify center of object.
+     * @param point - metrics coordinate of center (@see LocationPoint).
+     *
+     */
     bool setPosition(LocationPoint point);
+
+    /**
+     *
+     * Method is used to move center of object with specified animation (@see LocationPoint).
+     * @param point - metrics coordinate of center (@see LocationPoint).
+     * @param duration - animation duration in seconds.
+     * @param type - animation type (@see AnimationType).
+     *
+     */
     bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
+
+    /**
+     *
+     * Method is used to specify color of object.
+     * @param red - red RGBA component.
+     * @param green - green RGBA component.
+     * @param blue - blue RGBA component.
+     * @param alpha - Opacity multiplicator. Values below 0 will be set to 0. Default: 1.
+     */
     bool setColor(double red, double green, double blue, double alpha);
+
+    /**
+     *
+     * Method is used to specify size of object.
+     * @param radius - metrics radius of circle.
+     *
+     */
     bool setRadius(double radius);
 
 

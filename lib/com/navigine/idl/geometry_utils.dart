@@ -10,17 +10,40 @@ import 'package:navigine_sdk/com/navigine/idl/segment.dart';
 
 abstract class GeometryUtils implements Finalizable {
 
+    /** Get distance between GPS points */
     static double distanceBetweenGlobalPoints(GlobalPoint from, GlobalPoint to) => $prototype.distanceBetweenGlobalPoints(from, to);
+
+    /** Get distance between points */
     static double distanceBetweenPoints(Point from, Point to) => $prototype.distanceBetweenPoints(from, to);
+
+    /** Get length of segment */
     static double segmentLength(Segment segment) => $prototype.segmentLength(segment);
+
+    /** Get polygon area */
     static double polygonArea(Polygon polygon) => $prototype.polygonArea(polygon);
+
+    /** Get polygon geometric center */
     static Point polygonCenter(Polygon polygon) => $prototype.polygonCenter(polygon);
+
+    /** Checks that polygon contains point */
     static bool polygonContainsPoint(Polygon polygon, Point point) => $prototype.polygonContainsPoint(polygon, point);
+
+    /** Get distance from segment to point */
     static double segmentPointDistance(Segment segment, Point point) => $prototype.segmentPointDistance(segment, point);
+
+    /** Checks the intersection of two segments */
     static bool segmentIntersectsSegment(Segment segment1, Segment segment2) => $prototype.segmentIntersectsSegment(segment1, segment2);
+
+    /** Calculate the intersection point of two segments */
     static Point segmentIntersectionSegment(Segment segment1, Segment segment2) => $prototype.segmentIntersectionSegment(segment1, segment2);
+
+    /** Calculate the division ratio of a segment by a given segment(if intersects) */
     static double divisionRatioBySegment(Segment segment1, Segment segment2) => $prototype.divisionRatioBySegment(segment1, segment2);
+
+    /** Calculate projection point on a segment */
     static Point getRatioPoint(Segment segment, double r) => $prototype.getRatioPoint(segment, r);
+
+    /** Calculate the division ratio of a segment by a given point */
     static double getProjectionRatio(Segment segment, Point point) => $prototype.getProjectionRatio(segment, point);
 
 

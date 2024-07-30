@@ -4,9 +4,15 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/graph_edge.dart';
 
+/**
+ *
+ * Сlass describing a graph that connects the sublocations.
+ *
+ */
 abstract class ElevationGraph implements Finalizable {
 
 
+    /** list of edges that connect two sublocations (@see GraphEdge). */
     List<GraphEdge> get edges;
 
 

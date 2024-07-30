@@ -3,12 +3,21 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
+/**
+ *
+ * Object describing notification in CMS.
+ *
+ */
 abstract class Notification implements Finalizable {
 
 
+    /** Notification unique identifier. */
     int get id;
+    /** Notification title. */
     String get title;
+    /** Notification content. */
     String get content;
+    /** Notification image url if specified. */
     String? get imageUrl;
 
 

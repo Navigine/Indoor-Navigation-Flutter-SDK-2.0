@@ -5,10 +5,21 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 
+/** Class is useed to handle information in PickListener (@see PickListener). */
 abstract class MapObjectPickResult implements Finalizable {
 
 
+    /**
+     *
+     * @param point - location of the picked map object (@see LocationPoint).
+     *
+     */
     LocationPoint get point;
+    /**
+     *
+     * @param mapObject - instance of the picked map object (@see MapObject).
+     *
+     */
     MapObject get mapObject;
 
 

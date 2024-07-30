@@ -5,12 +5,21 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/image_type.dart';
 
+/**
+ *
+ * Object with image data in SDK
+ *
+ */
 abstract class Image implements Finalizable {
 
 
+    /** binary source data of the image */
     Uint8List get data;
+    /** decoded image width */
     int get width;
+    /** decoded image height */
     int get height;
+    /** decoded image type */
     ImageType get type;
 
 

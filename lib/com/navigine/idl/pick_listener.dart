@@ -7,9 +7,25 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_pick_result.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
+/** Class is used to handle for picking objects on the view (@see LocationView) */
 abstract class PickListener {
 
+    /**
+     *
+     * Receive the result from LocationView `pickMapObjectAt` method (@see LocationView)
+     * @param mapObjectPickResult - MapObjectPickResult instance or `nil` if no objects was found (@see MapObjectPickResult).
+     * @param screenPosition - position where the object was picked in pixels.
+     *
+     */
     void onMapObjectPickComplete(MapObjectPickResult mapObjectPickResult, math.Point<double> screenPosition);
+
+    /**
+     *
+     * Receive the result from LocationView `pickMapFeatureAt` method (@see LocationView)
+     * @param mapFeaturePickResult - dictionary of properties of the picked feature or `nil` if no objects was found.
+     * @param screenPosition - position where the object was picked in pixels.
+     *
+     */
     void onMapFeaturePickComplete(Map<String, String> mapFeaturePickResult, math.Point<double> screenPosition);
 
 

@@ -9,11 +9,47 @@ import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 import 'package:navigine_sdk/image_wrapper.dart';
 
+/**
+ *
+ * Object represents icon object on location view.
+ * IconMapObject keep orientation to screen surface.
+ *
+ */
 abstract class IconMapObject implements MapObject, Finalizable {
 
+    /**
+     *
+     * Method is used to specify center of object.
+     * @param point - metrics coordinate of center (@see LocationPoint).
+     *
+     */
     bool setPosition(LocationPoint point);
+
+    /**
+     *
+     * Method is used to move center of object with specified animation (@see LocationPoint).
+     * @param point - metrics coordinate of center (@see LocationPoint).
+     * @param duration - animation duration in seconds.
+     * @param type - animation type (@see AnimationType).
+     *
+     */
     bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
+
+    /**
+     *
+     * Method is used to specify bitmap image to the object.
+     * @param bitmap - platfrom bitmap object.
+     *
+     */
     bool setBitmap(ImageWrapper bitmap);
+
+    /**
+     *
+     * Method is used to specify size of object.
+     * @param width - width of object in pixels.
+     * @param height - width of object in pixels.
+     *
+     */
     bool setSize(double width, double height);
 
 

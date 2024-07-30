@@ -7,10 +7,38 @@ import 'package:navigine_sdk/com/navigine/idl/location_polyline.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 
+/**
+ *
+ * Object represents polyline on location view.
+ *
+ */
 abstract class PolylineMapObject implements MapObject, Finalizable {
 
+    /**
+     *
+     * Method is used to specify source pyline of object.
+     * @param polyline - metrics coordinate of pyline (@see LocationPoint).
+     *
+     */
     bool setPolyLine(LocationPolyline polyline);
+
+    /**
+     *
+     * Method is used to specify width of a line.
+     * @param width - width of a line in pixels.
+     *
+     */
     bool setWidth(double width);
+
+    /**
+     *
+     * Method is used to specify color of object.
+     * @param red - red RGBA component.
+     * @param green - green RGBA component.
+     * @param blue - blue RGBA component.
+     * @param alpha - Opacity multiplicator. Values below 0 will be set to 0. Default: 1.
+     *
+     */
     bool setColor(double red, double green, double blue, double alpha);
 
 

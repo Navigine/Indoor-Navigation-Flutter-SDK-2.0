@@ -2,11 +2,19 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
+/**
+ *
+ * Object describing category in CMS
+ *
+ */
 class Category {
-    int id;
-    String name;
-    String? imageUrl;
     Category(this.id, this.name, this.imageUrl);
+    /** Category unique identifier */
+    int id;
+    /** Category name */
+    String name;
+    /** Category image source. If presented. */
+    String? imageUrl;
 }
 
 // Category "private" section, not exported.

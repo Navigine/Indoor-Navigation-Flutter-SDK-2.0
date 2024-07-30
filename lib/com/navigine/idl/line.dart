@@ -3,9 +3,15 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/segment.dart';
 
+/**
+ *
+ * A polyline with specified list of segments.
+ *
+ */
 class Line {
-    List<Segment> segments;
     Line(this.segments);
+    /** List of segments to connect. */
+    List<Segment> segments;
 }
 
 // Line "private" section, not exported.

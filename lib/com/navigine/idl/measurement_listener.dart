@@ -10,6 +10,7 @@ import 'package:navigine_sdk/com/navigine/idl/signal_measurement.dart';
 abstract class MeasurementListener {
 
     void onSensorMeasurementDetected(Map<SensorType, SensorMeasurement> sensors);
+
     void onSignalMeasurementDetected(Map<String, SignalMeasurement> signals);
 
 

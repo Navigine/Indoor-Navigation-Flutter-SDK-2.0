@@ -6,19 +6,46 @@ import 'package:navigine_sdk/com/navigine/idl/category.dart';
 import 'package:navigine_sdk/com/navigine/idl/elevation_graph.dart';
 import 'package:navigine_sdk/com/navigine/idl/sublocation.dart';
 
+/**
+ *
+ * Object describing location in CMS.
+ *
+ */
 abstract class Location implements Finalizable {
 
+    /** Method returns location elevation graph (@see ElevationGraph). */
     ElevationGraph getElevationGraph(String tag);
+
+    /** Method returns list of available graph tags. */
     List<String> getGraphTags();
+
+    /**
+     * Method returns sublocation by id.
+     * @param id - unique sublocation identifier.
+     * @return - sublocation instance or null.
+     */
     Sublocation getSublocationById(int id);
+
+    /**
+     * Method returns category by id.
+     * @param id - unique category identifier.
+     * @return - category instance or null.
+     */
     Category? getCategoryById(int id);
 
+    /** Location unique identifier. */
     int get id;
+    /** Current location version. */
     int get version;
+    /** Location name. */
     String get name;
+    /** Location description. */
     String get descript;
+    /** List of supported categories (@see Category). */
     List<Category> get categories;
+    /** List of created sublocations (@see Sublocation). */
     List<Sublocation> get sublocations;
+    /** Flag indicates if location has been modified by user or not */
     bool get modified;
 
 
@@ -296,108 +323,6 @@ Location? navigine_sdk_flutter_Location_FromFfiNullable(Pointer<Void> handle) =>
 
 // End of Location "private" section.
 
-final _navigine_sdk_flutter_List_Sublocation_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(),
-    Pointer<Void> Function()
-  >('navigine_sdk_flutter_List_Sublocation_create_handle'));
-
-final _navigine_sdk_flutter_List_Sublocation_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_release_handle'));
-
-final _navigine_sdk_flutter_List_Sublocation_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Pointer<Void>),
-    void Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_insert'));
-
-final _navigine_sdk_flutter_List_Sublocation_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_iterator'));
-
-final _navigine_sdk_flutter_List_Sublocation_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_iterator_release_handle'));
-
-final _navigine_sdk_flutter_List_Sublocation_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int8 Function(Pointer<Void>, Pointer<Void>),
-    int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_iterator_is_valid'));
-
-final _navigine_sdk_flutter_List_Sublocation_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_iterator_increment'));
-
-final _navigine_sdk_flutter_List_Sublocation_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_iterator_get'));
-
-Pointer<Void> navigine_sdk_flutter_List_Sublocation_ToFfi(List<Sublocation> value)  {
-    final _result = _navigine_sdk_flutter_List_Sublocation_CreateHandle();
-    for (final element in value)  {
-        final _elementHandle = navigine_sdk_flutter_Sublocation_ToFfi(element);
-        _navigine_sdk_flutter_List_Sublocation_Insert(_result, _elementHandle);
-        navigine_sdk_flutter_Sublocation_ReleaseFfiHandle(_elementHandle);
-    }
-    return _result;
-}
-
-List<Sublocation> navigine_sdk_flutter_List_Sublocation_FromFfi(Pointer<Void> handle)  {
-    final result = List<Sublocation>.empty(growable: true);
-    final _iteratorHandle = _navigine_sdk_flutter_List_Sublocation_Iterator(handle);
-    while (_navigine_sdk_flutter_List_Sublocation_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _elementHandle = _navigine_sdk_flutter_List_Sublocation_IteratorGet(_iteratorHandle);
-        try  {
-            result.add(navigine_sdk_flutter_Sublocation_FromFfi(_elementHandle));
-        }
-        finally  {
-            navigine_sdk_flutter_Sublocation_ReleaseFfiHandle(_elementHandle);
-        }
-        _navigine_sdk_flutter_List_Sublocation_IteratorIncrement(_iteratorHandle);
-    }
-    return result;
-}
-
-void navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Sublocation_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_List_Sublocation_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_create_handle_nullable'));
-
-final _navigine_sdk_flutter_List_Sublocation_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_release_handle_nullable'));
-
-final _navigine_sdk_flutter_List_Sublocation_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Sublocation_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_List_Sublocation_ToFfiNullable(List<Sublocation>? value)  {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_List_Sublocation_ToFfi(value);
-    final result = _navigine_sdk_flutter_List_Sublocation_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-List<Sublocation>? navigine_sdk_flutter_List_Sublocation_FromFfiNullable(Pointer<Void> handle)  {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_List_Sublocation_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_List_Sublocation_FromFfi(_handle);
-    navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_List_Sublocation_ReleaseHandleNullable(handle);
-
 final _navigine_sdk_flutter_List_Category_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
     Pointer<Void> Function()
@@ -499,6 +424,108 @@ List<Category>? navigine_sdk_flutter_List_Category_FromFfiNullable(Pointer<Void>
 
 void navigine_sdk_flutter_List_Category_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
   _navigine_sdk_flutter_List_Category_ReleaseHandleNullable(handle);
+
+final _navigine_sdk_flutter_List_Sublocation_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_List_Sublocation_create_handle'));
+
+final _navigine_sdk_flutter_List_Sublocation_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_release_handle'));
+
+final _navigine_sdk_flutter_List_Sublocation_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_insert'));
+
+final _navigine_sdk_flutter_List_Sublocation_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_iterator'));
+
+final _navigine_sdk_flutter_List_Sublocation_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_iterator_release_handle'));
+
+final _navigine_sdk_flutter_List_Sublocation_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_iterator_is_valid'));
+
+final _navigine_sdk_flutter_List_Sublocation_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_iterator_increment'));
+
+final _navigine_sdk_flutter_List_Sublocation_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_iterator_get'));
+
+Pointer<Void> navigine_sdk_flutter_List_Sublocation_ToFfi(List<Sublocation> value)  {
+    final _result = _navigine_sdk_flutter_List_Sublocation_CreateHandle();
+    for (final element in value)  {
+        final _elementHandle = navigine_sdk_flutter_Sublocation_ToFfi(element);
+        _navigine_sdk_flutter_List_Sublocation_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_Sublocation_ReleaseFfiHandle(_elementHandle);
+    }
+    return _result;
+}
+
+List<Sublocation> navigine_sdk_flutter_List_Sublocation_FromFfi(Pointer<Void> handle)  {
+    final result = List<Sublocation>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_Sublocation_Iterator(handle);
+    while (_navigine_sdk_flutter_List_Sublocation_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_Sublocation_IteratorGet(_iteratorHandle);
+        try  {
+            result.add(navigine_sdk_flutter_Sublocation_FromFfi(_elementHandle));
+        }
+        finally  {
+            navigine_sdk_flutter_Sublocation_ReleaseFfiHandle(_elementHandle);
+        }
+        _navigine_sdk_flutter_List_Sublocation_IteratorIncrement(_iteratorHandle);
+    }
+    return result;
+}
+
+void navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Sublocation_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_List_Sublocation_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_create_handle_nullable'));
+
+final _navigine_sdk_flutter_List_Sublocation_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_release_handle_nullable'));
+
+final _navigine_sdk_flutter_List_Sublocation_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Sublocation_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_List_Sublocation_ToFfiNullable(List<Sublocation>? value)  {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_List_Sublocation_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_Sublocation_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+List<Sublocation>? navigine_sdk_flutter_List_Sublocation_FromFfiNullable(Pointer<Void> handle)  {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_List_Sublocation_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_Sublocation_FromFfi(_handle);
+    navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_List_Sublocation_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_Sublocation_ReleaseHandleNullable(handle);
 
 final _navigine_sdk_flutter_List_String_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),

@@ -4,12 +4,12 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/signal_type.dart';
 
 class SignalMeasurement {
+    SignalMeasurement(this.type, this.id, this.rssi, this.distance, this.time);
     SignalType type;
     String id;
     double rssi;
     double distance;
     int time;
-    SignalMeasurement(this.type, this.id, this.rssi, this.distance, this.time);
 }
 
 // SignalMeasurement "private" section, not exported.

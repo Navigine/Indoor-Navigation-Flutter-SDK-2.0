@@ -3,11 +3,33 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
+/**
+ *
+ * Point at specified location and sublocation
+ * Units: meters
+ * Origin: bottom left corner
+ *
+ */
 class LocationPoint {
-    Point point;
-    int locationId;
-    int sublocationId;
     LocationPoint(this.point, this.locationId, this.sublocationId);
+    /**
+     *
+     * Metrics coordinates (@see Point).
+     *
+     */
+    Point point;
+    /**
+     *
+     * Location unique identifier in CMS
+     *
+     */
+    int locationId;
+    /**
+     *
+     * Sublocation unique identifier in CMS
+     *
+     */
+    int sublocationId;
 }
 
 // LocationPoint "private" section, not exported.

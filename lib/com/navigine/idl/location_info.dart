@@ -2,11 +2,19 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
+/**
+ *
+ * General information about location
+ *
+ */
 class LocationInfo {
-    int id;
-    int version;
-    String name;
     LocationInfo(this.id, this.version, this.name);
+    /** Unique location identifier. */
+    int id;
+    /** Current location version. */
+    int version;
+    /** Location name. */
+    String name;
 }
 
 // LocationInfo "private" section, not exported.

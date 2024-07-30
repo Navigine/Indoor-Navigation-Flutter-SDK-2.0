@@ -4,13 +4,23 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
+/**
+ *
+ * Object describing graph vertex in CMS.
+ *
+ */
 abstract class GraphVertex implements Finalizable {
 
 
+    /** Vertex unique identifier. */
     int get id;
+    /** Vertex position in meters (@see Point). */
     Point get point;
+    /** Vertex name. */
     String get name;
+    /** Parameter indicates that a vertex can be used to communicate with external graphs. */
     bool get isExternal;
+    /** Parameter indicates that a vertex used in elevation graph (@see ElevationGraph). */
     bool get isElevation;
 
 

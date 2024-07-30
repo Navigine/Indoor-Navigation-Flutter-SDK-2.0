@@ -6,9 +6,26 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/position.dart';
 import 'package:navigine_sdk/error.dart';
 
+/**
+ * Class is used to handle events coming from NavigationManager (@see NavigationManager).
+ * Methods invoked in UI
+ */
 abstract class PositionListener {
 
+    /**
+     *
+     * @method onPositionUpdated - called when new position has been calculated
+     * @parameter position - current user position (@see Position).
+     *
+     */
     void onPositionUpdated(Position position);
+
+    /**
+     *
+     * @method onPositionError - called if unable to calculate user's position
+     * @parameter error - handled error.
+     *
+     */
     void onPositionError(Error error);
 
 

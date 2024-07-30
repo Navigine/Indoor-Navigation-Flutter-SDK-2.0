@@ -5,15 +5,45 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 
+/**
+ *
+ * Object on map created and managing by user
+ * Could be handled in `pickMapObjectAt` method (@see LocationWindow)
+ *
+ */
 abstract class MapObject implements Finalizable {
 
+    /** Unique identifier of map object */
     int getId();
+
+    /**
+     * Map object type (@see MapObjectType).
+     * Map object could be casted to the specified type.
+     */
     MapObjectType getType();
+
+    /** Any kind of user's data */
     Uint8List getData();
+
+    /** Method is used to change visibility of map object. */
     bool setVisible(bool visible);
+
+    /**
+     * Method is used to interactive property
+     * If True - map object could be handled in `pickMapObjectAt` method.
+     */
     bool setInteractive(bool interactive);
+
+    /** Method is used to apply custom styling to map object. */
     bool setStyle(String style);
+
+    /** Method is used to set any kind of user's data */
     void setData(Uint8List data);
+
+    /**
+     * Method is used to set object title.
+     * Title will shown on LocationView.
+     */
     bool setTitle(String title);
 
 

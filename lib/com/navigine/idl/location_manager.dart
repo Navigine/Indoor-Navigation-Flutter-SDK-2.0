@@ -4,14 +4,51 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_listener.dart';
 
+/** Class is used to manage locations */
 abstract class LocationManager implements Finalizable {
 
+    /**
+     *
+     * Method is used to add listener to handle location updates (@see LocationListener).
+     * Do not forget to remove listener if it is no longer needed!
+     *
+     */
     void addLocationListener(LocationListener listener);
+
+    /**
+     *
+     * Method is used to remove listener.
+     *
+     */
     void removeLocationListener(LocationListener listener);
+
+    /**
+     *
+     * Method is used to select a specific location id from CMS to work with.
+     * Result will be handled by LocationListener (@see LocationListener)
+     *
+     */
     void setLocationId(int locationId);
+
+    /**
+     *
+     * Method returns current location unique identifier
+     *
+     */
     int getLocationId();
+
+    /**
+     *
+     * Method is used to change interval in seconds ещcheck for new version in CMS
+     * Default: 300s
+     *
+     */
     void setLocationUpdateInterval(int interval);
+
+    /** @internal */
     void commitChanges();
+
+    /** @internal */
     void revertChanges();
 
 

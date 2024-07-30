@@ -6,10 +6,31 @@ import 'package:navigine_sdk/com/_weak_map.dart';
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
+/** Class is used to listen for interactions with view (@see LocationView). */
 abstract class InputListener {
 
+    /**
+     *
+     * Called when a tap occurred.
+     * @param screenPoint - point in screen coordinates.
+     *
+     */
     void onViewTap(math.Point<double> screenPoint);
+
+    /**
+     *
+     * Called when a double tap occurred.
+     * @param screenPoint - point in screen coordinates.
+     *
+     */
     void onViewDoubleTap(math.Point<double> screenPoint);
+
+    /**
+     *
+     * Called when a long tap occurred.
+     * @param screenPoint - point in screen coordinates.
+     *
+     */
     void onViewLongTap(math.Point<double> screenPoint);
 
 

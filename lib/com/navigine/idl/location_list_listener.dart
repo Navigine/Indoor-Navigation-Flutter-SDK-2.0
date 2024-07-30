@@ -6,9 +6,26 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_info.dart';
 import 'package:navigine_sdk/error.dart';
 
+/**
+ * Class is used to handle events coming from LocationListManager (@see LocationListManager).
+ * Methods invoked in UI
+ */
 abstract class LocationListListener {
 
+    /**
+     *
+     * @method onLocationListLoaded - called when new list of locations has been downloaded from CMS
+     * @parameter locationInfos - dictionary represents location id to location general info (@see LocationInfo).
+     *
+     */
     void onLocationListLoaded(Map<int, LocationInfo> locationInfos);
+
+    /**
+     *
+     * @method onLocationListFailed - called if unable to download location list from CMS
+     * @parameter error - handled error.
+     *
+     */
     void onLocationListFailed(Error error);
 
 

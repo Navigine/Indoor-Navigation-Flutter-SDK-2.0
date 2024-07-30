@@ -3,9 +3,15 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
+/**
+ *
+ * A polyline with specified number of points.
+ *
+ */
 class Polyline {
-    List<Point> points;
     Polyline(this.points);
+    /** List of points to connect. */
+    List<Point> points;
 }
 
 // Polyline "private" section, not exported.

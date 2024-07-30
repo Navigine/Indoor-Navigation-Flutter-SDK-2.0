@@ -2,10 +2,17 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
+/**
+ *
+ * A point at the specified WGS84 coordinates.
+ *
+ */
 class GlobalPoint {
-    double latitude;
-    double longitude;
     GlobalPoint(this.latitude, this.longitude);
+    /** Point's latitude. */
+    double latitude;
+    /** Point's g. */
+    double longitude;
 }
 
 // GlobalPoint "private" section, not exported.

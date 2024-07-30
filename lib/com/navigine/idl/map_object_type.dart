@@ -1,10 +1,15 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
+/** Describe underlying type of map object */
 enum MapObjectType {
+    /** (@see IconMapObject) */
     ICON,
+    /** (@see FlatIconMapObject) */
     FLAT_ICON,
+    /** (@see PolylineIconMapObject) */
     POLYLINE,
+    /** (@see CircleMapObject) */
     CIRCLE,
 }
 

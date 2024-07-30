@@ -2,12 +2,37 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
+/**
+ *
+ * A rectangle with specified origin and size.
+ *
+ */
 class Rectangle {
-    double x;
-    double y;
-    double width;
-    double height;
     Rectangle(this.x, this.y, this.width, this.height);
+    /**
+     *
+     * Rectangle's origin `x` coordinate.
+     *
+     */
+    double x;
+    /**
+     *
+     * Rectangle's origin `y` coordinate.
+     *
+     */
+    double y;
+    /**
+     *
+     * Rectangle's width.
+     *
+     */
+    double width;
+    /**
+     *
+     * Rectangle's height.
+     *
+     */
+    double height;
 }
 
 // Rectangle "private" section, not exported.
