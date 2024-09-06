@@ -86,8 +86,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
 
     double distanceBetweenGlobalPoints(GlobalPoint from, GlobalPoint to) {
         final _distanceBetweenGlobalPointsFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            Float Function(Pointer<Void>, Pointer<Void>),
+            double Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_distanceBetweenGlobalPoints__From_To'));
         final _fromHandle = navigine_sdk_flutter_GlobalPoint_ToFfi(from);
         final _toHandle = navigine_sdk_flutter_GlobalPoint_ToFfi(to);
@@ -103,8 +103,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     double distanceBetweenPoints(Point from, Point to) {
         final _distanceBetweenPointsFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            Float Function(Pointer<Void>, Pointer<Void>),
+            double Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_distanceBetweenPoints__From_To'));
         final _fromHandle = navigine_sdk_flutter_Point_ToFfi(from);
         final _toHandle = navigine_sdk_flutter_Point_ToFfi(to);
@@ -120,8 +120,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     double segmentLength(Segment segment) {
         final _segmentLengthFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            Float Function(Pointer<Void>),
+            double Function(Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_segmentLength__Segment'));
         final _segmentHandle = navigine_sdk_flutter_Segment_ToFfi(segment);
         final __resultHandle = _segmentLengthFfi(_segmentHandle);
@@ -135,8 +135,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     double polygonArea(Polygon polygon) {
         final _polygonAreaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            Float Function(Pointer<Void>),
+            double Function(Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_polygonArea__Polygon'));
         final _polygonHandle = navigine_sdk_flutter_Polygon_ToFfi(polygon);
         final __resultHandle = _polygonAreaFfi(_polygonHandle);
@@ -165,8 +165,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     bool polygonContainsPoint(Polygon polygon, Point point) {
         final _polygonContainsPointFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_polygonContainsPoint__Polygon_Point'));
         final _polygonHandle = navigine_sdk_flutter_Polygon_ToFfi(polygon);
         final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
@@ -182,8 +182,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     double segmentPointDistance(Segment segment, Point point) {
         final _segmentPointDistanceFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            Float Function(Pointer<Void>, Pointer<Void>),
+            double Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_segmentPointDistance__Segment_Point'));
         final _segmentHandle = navigine_sdk_flutter_Segment_ToFfi(segment);
         final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
@@ -199,8 +199,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     bool segmentIntersectsSegment(Segment segment1, Segment segment2) {
         final _segmentIntersectsSegmentFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_segmentIntersectsSegment__Segment1_Segment2'));
         final _segment1Handle = navigine_sdk_flutter_Segment_ToFfi(segment1);
         final _segment2Handle = navigine_sdk_flutter_Segment_ToFfi(segment2);
@@ -233,8 +233,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     double divisionRatioBySegment(Segment segment1, Segment segment2) {
         final _divisionRatioBySegmentFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            Float Function(Pointer<Void>, Pointer<Void>),
+            double Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_divisionRatioBySegment__Segment1_Segment2'));
         final _segment1Handle = navigine_sdk_flutter_Segment_ToFfi(segment1);
         final _segment2Handle = navigine_sdk_flutter_Segment_ToFfi(segment2);
@@ -267,8 +267,8 @@ class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Fina
     }
     double getProjectionRatio(Segment segment, Point point) {
         final _getProjectionRatioFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            Double Function(Pointer<Void>, Pointer<Void>),
+            double Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_GeometryUtils_getProjectionRatio__Segment_Point'));
         final _segmentHandle = navigine_sdk_flutter_Segment_ToFfi(segment);
         final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);

@@ -217,8 +217,8 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk, Finaliza
     }
     int getRelativeTime() {
         final _getRelativeTimeFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(),
-            Pointer<Void> Function()
+            Int64 Function(),
+            int Function()
           >('navigine_sdk_flutter_NavigineSdk_getRelativeTime'));
         final __resultHandle = _getRelativeTimeFfi();
         try  {

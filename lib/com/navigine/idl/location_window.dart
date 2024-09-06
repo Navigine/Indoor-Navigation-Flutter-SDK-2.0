@@ -750,8 +750,8 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
 
     void setDebugFlag(DebugFlag flag, bool on) {
         final _setDebugFlagFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Uint32, Uint8),
-            Pointer<Void> Function(int, int)
+            Void Function(Uint32, Uint8),
+            void Function(int, int)
           >('navigine_sdk_flutter_LocationWindow_setDebugFlag__Flag_On'));
         final _flagHandle = navigine_sdk_flutter_DebugFlag_ToFfi(flag);
         final _onHandle = navigine_sdk_flutter_bool_ToFfi(on);
@@ -761,8 +761,8 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
     bool getDebugFlag(DebugFlag flag) {
         final _getDebugFlagFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Uint32),
-            Pointer<Void> Function(int)
+            Uint8 Function(Uint32),
+            int Function(int)
           >('navigine_sdk_flutter_LocationWindow_getDebugFlag__Flag'));
         final _flagHandle = navigine_sdk_flutter_DebugFlag_ToFfi(flag);
         final __resultHandle = _getDebugFlagFfi(_flagHandle);
