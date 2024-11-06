@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'navigine_sdk'
-  s.version          = '0.0.7'
+  s.version          = '0.0.8'
   s.summary          = 'A new flutter plugin project.'
   s.description      = 'A new flutter plugin project.'
   s.homepage         = 'http://example.com'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.dependency 'Flutter'
   s.ios.deployment_target = '11.0'
 
-  s.frameworks = 'CoreGraphics','Foundation','OpenGLES','CoreMotion','CoreFoundation','UIKit','QuartzCore','SystemConfiguration','CoreLocation', 'CoreText', 'CoreBluetooth', 'GLKit'
+  s.frameworks = 'CoreGraphics','Foundation','OpenGLES','CoreMotion','CoreFoundation','UIKit','QuartzCore','SystemConfiguration','CoreLocation', 'CoreText', 'CoreBluetooth', 'GLKit', 'Metal'
   s.libraries = 'c++'
   s.static_framework = true
   s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC -all_load' }
