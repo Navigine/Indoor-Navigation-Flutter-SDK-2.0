@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
   s.version          = '1.0.0'
   s.summary          = 'Navigine flutter plugin.'
   s.description      = 'Navigine flutter plugin.'
-  s.author           = { 'Navigine' }
-  s.homepage         = ':none'
+  s.authors           = 'Navigine'
+  s.homepage         = 'none'
   s.license          = { :file => '../LICENSE.md' }
   s.source           = { :path => '.' }
   s.platform = :ios, "7.0"
