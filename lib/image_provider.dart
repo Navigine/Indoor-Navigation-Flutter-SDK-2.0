@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-@internal
 class RawImageProvider extends ImageProvider<RawImageKey> {
   RawImageProvider(this._pixels, this._width, this._height)
       : key = RawImageKey(_width, _height, _pixels.hashCode);
@@ -39,7 +38,6 @@ class RawImageProvider extends ImageProvider<RawImageKey> {
   final RawImageKey key;
 }
 
-@internal
 class RawImageKey {
   RawImageKey(this.width, this.height, this.dataHash);
 

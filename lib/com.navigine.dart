@@ -1,5 +1,4 @@
 export 'error.dart' show Error;
-export 'screen_point.dart' show Error;
 export 'image_wrapper.dart' show ImageWrapper;
 export 'location_view.dart' show LocationView;
 export 'com/navigine/idl/animation_type.dart' show AnimationType;

@@ -1,8 +1,5 @@
-
-
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/beacon.dart';
-import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_entry.dart';
 import 'package:navigine_sdk/com/navigine/idl/category.dart';
 import 'package:navigine_sdk/com/navigine/idl/eddystone.dart';
 import 'package:navigine_sdk/com/navigine/idl/graph_edge.dart';
@@ -25,9 +22,6 @@ import 'package:navigine_sdk/com/navigine/idl/zone.dart';
 import 'dart:ffi';
 
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-
-
-
 
 final _listofNavigineIdlBeaconCreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
@@ -65,9 +59,9 @@ final _listofNavigineIdlBeaconIteratorGet = __lib.catchArgumentError(() => __lib
 Pointer<Void> listofNavigineIdlBeaconToFfi(List<Beacon> value) {
   final _result = _listofNavigineIdlBeaconCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlBeaconToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Beacon_ToFfi(element);
     _listofNavigineIdlBeaconInsert(_result, _elementHandle);
-    navigineIdlBeaconReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Beacon_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -78,9 +72,9 @@ List<Beacon> listofNavigineIdlBeaconFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlBeaconIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlBeaconIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlBeaconFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Beacon_FromFfi(_elementHandle));
     } finally {
-      navigineIdlBeaconReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Beacon_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlBeaconIteratorIncrement(_iteratorHandle);
   }
@@ -159,9 +153,9 @@ void listofNavigineIdlBeaconReleaseFfiHandleNullable(Pointer<Void> handle) =>
 // Pointer<Void> navigine_sdk_flutter_List_BeaconProximityEntry__ToFfi(List<BeaconProximityEntry> value) {
 //   final _result = _listofNavigineIdlBeaconproximityentryCreateHandle();
 //   for (final element in value) {
-//     final _elementHandle = navigineIdlBeaconproximityentryToFfi(element);
+//     final _elementHandle = navigine_sdk_flutter_Beaconproximityentry_ToFfi(element);
 //     _listofNavigineIdlBeaconproximityentryInsert(_result, _elementHandle);
-//     navigineIdlBeaconproximityentryReleaseFfiHandle(_elementHandle);
+//     navigine_sdk_flutter_Beaconproximityentry_ReleaseFfiHandle(_elementHandle);
 //   }
 //   return _result;
 // }
@@ -172,9 +166,9 @@ void listofNavigineIdlBeaconReleaseFfiHandleNullable(Pointer<Void> handle) =>
 //   while (_listofNavigineIdlBeaconproximityentryIteratorIsValid(handle, _iteratorHandle) != 0) {
 //     final _elementHandle = _listofNavigineIdlBeaconproximityentryIteratorGet(_iteratorHandle);
 //     try {
-//       result.add(navigineIdlBeaconproximityentryFromFfi(_elementHandle));
+//       result.add(navigine_sdk_flutter_Beaconproximityentry_FromFfi(_elementHandle));
 //     } finally {
-//       navigineIdlBeaconproximityentryReleaseFfiHandle(_elementHandle);
+//       navigine_sdk_flutter_Beaconproximityentry_ReleaseFfiHandle(_elementHandle);
 //     }
 //     _listofNavigineIdlBeaconproximityentryIteratorIncrement(_iteratorHandle);
 //   }
@@ -252,9 +246,9 @@ final _listofNavigineIdlCategoryIteratorGet = __lib.catchArgumentError(() => __l
 Pointer<Void> listofNavigineIdlCategoryToFfi(List<Category> value) {
   final _result = _listofNavigineIdlCategoryCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlCategoryToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Category_ToFfi(element);
     _listofNavigineIdlCategoryInsert(_result, _elementHandle);
-    navigineIdlCategoryReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Category_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -265,9 +259,9 @@ List<Category> listofNavigineIdlCategoryFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlCategoryIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlCategoryIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlCategoryFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Category_FromFfi(_elementHandle));
     } finally {
-      navigineIdlCategoryReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Category_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlCategoryIteratorIncrement(_iteratorHandle);
   }
@@ -345,9 +339,9 @@ final _listofNavigineIdlEddystoneIteratorGet = __lib.catchArgumentError(() => __
 Pointer<Void> listofNavigineIdlEddystoneToFfi(List<Eddystone> value) {
   final _result = _listofNavigineIdlEddystoneCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlEddystoneToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Eddystone_ToFfi(element);
     _listofNavigineIdlEddystoneInsert(_result, _elementHandle);
-    navigineIdlEddystoneReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Eddystone_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -358,9 +352,9 @@ List<Eddystone> listofNavigineIdlEddystoneFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlEddystoneIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlEddystoneIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlEddystoneFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Eddystone_FromFfi(_elementHandle));
     } finally {
-      navigineIdlEddystoneReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Eddystone_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlEddystoneIteratorIncrement(_iteratorHandle);
   }
@@ -438,9 +432,9 @@ final _listofNavigineIdlGraphedgeIteratorGet = __lib.catchArgumentError(() => __
 Pointer<Void> listofNavigineIdlGraphedgeToFfi(List<GraphEdge> value) {
   final _result = _listofNavigineIdlGraphedgeCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlGraphedgeToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_GraphEdge_ToFfi(element);
     _listofNavigineIdlGraphedgeInsert(_result, _elementHandle);
-    navigineIdlGraphedgeReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_GraphEdge_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -451,9 +445,9 @@ List<GraphEdge> listofNavigineIdlGraphedgeFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlGraphedgeIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlGraphedgeIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlGraphedgeFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_GraphEdge_FromFfi(_elementHandle));
     } finally {
-      navigineIdlGraphedgeReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_GraphEdge_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlGraphedgeIteratorIncrement(_iteratorHandle);
   }
@@ -531,9 +525,9 @@ final _listofNavigineIdlGraphvertexIteratorGet = __lib.catchArgumentError(() => 
 Pointer<Void> listofNavigineIdlGraphvertexToFfi(List<GraphVertex> value) {
   final _result = _listofNavigineIdlGraphvertexCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlGraphvertexToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_GraphVertex_ToFfi(element);
     _listofNavigineIdlGraphvertexInsert(_result, _elementHandle);
-    navigineIdlGraphvertexReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_GraphVertex_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -544,9 +538,9 @@ List<GraphVertex> listofNavigineIdlGraphvertexFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlGraphvertexIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlGraphvertexIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlGraphvertexFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_GraphVertex_FromFfi(_elementHandle));
     } finally {
-      navigineIdlGraphvertexReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_GraphVertex_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlGraphvertexIteratorIncrement(_iteratorHandle);
   }
@@ -624,9 +618,9 @@ final _listofNavigineIdlLocationpointIteratorGet = __lib.catchArgumentError(() =
 Pointer<Void> listofNavigineIdlLocationpointToFfi(List<LocationPoint> value) {
   final _result = _listofNavigineIdlLocationpointCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlLocationpointToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_LocationPoint_ToFfi(element);
     _listofNavigineIdlLocationpointInsert(_result, _elementHandle);
-    navigineIdlLocationpointReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -637,9 +631,9 @@ List<LocationPoint> listofNavigineIdlLocationpointFromFfi(Pointer<Void> handle) 
   while (_listofNavigineIdlLocationpointIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlLocationpointIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlLocationpointFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_LocationPoint_FromFfi(_elementHandle));
     } finally {
-      navigineIdlLocationpointReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlLocationpointIteratorIncrement(_iteratorHandle);
   }
@@ -717,9 +711,9 @@ final _listofNavigineIdlPointIteratorGet = __lib.catchArgumentError(() => __lib.
 Pointer<Void> listofNavigineIdlPointToFfi(List<Point> value) {
   final _result = _listofNavigineIdlPointCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlPointToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Point_ToFfi(element);
     _listofNavigineIdlPointInsert(_result, _elementHandle);
-    navigineIdlPointReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Point_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -730,9 +724,9 @@ List<Point> listofNavigineIdlPointFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlPointIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlPointIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlPointFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Point_FromFfi(_elementHandle));
     } finally {
-      navigineIdlPointReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Point_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlPointIteratorIncrement(_iteratorHandle);
   }
@@ -810,9 +804,9 @@ final _listofNavigineIdlReferenceentryIteratorGet = __lib.catchArgumentError(() 
 Pointer<Void> listofNavigineIdlReferenceentryToFfi(List<ReferenceEntry> value) {
   final _result = _listofNavigineIdlReferenceentryCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlReferenceentryToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_ReferenceEntry_ToFfi(element);
     _listofNavigineIdlReferenceentryInsert(_result, _elementHandle);
-    navigineIdlReferenceentryReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_ReferenceEntry_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -823,9 +817,9 @@ List<ReferenceEntry> listofNavigineIdlReferenceentryFromFfi(Pointer<Void> handle
   while (_listofNavigineIdlReferenceentryIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlReferenceentryIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlReferenceentryFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_ReferenceEntry_FromFfi(_elementHandle));
     } finally {
-      navigineIdlReferenceentryReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_ReferenceEntry_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlReferenceentryIteratorIncrement(_iteratorHandle);
   }
@@ -903,9 +897,9 @@ final _listofNavigineIdlReferencepointIteratorGet = __lib.catchArgumentError(() 
 Pointer<Void> listofNavigineIdlReferencepointToFfi(List<ReferencePoint> value) {
   final _result = _listofNavigineIdlReferencepointCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlReferencepointToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_ReferencePoint_ToFfi(element);
     _listofNavigineIdlReferencepointInsert(_result, _elementHandle);
-    navigineIdlReferencepointReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -916,9 +910,9 @@ List<ReferencePoint> listofNavigineIdlReferencepointFromFfi(Pointer<Void> handle
   while (_listofNavigineIdlReferencepointIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlReferencepointIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlReferencepointFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_ReferencePoint_FromFfi(_elementHandle));
     } finally {
-      navigineIdlReferencepointReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlReferencepointIteratorIncrement(_iteratorHandle);
   }
@@ -996,9 +990,9 @@ final _listofNavigineIdlRouteeventIteratorGet = __lib.catchArgumentError(() => _
 Pointer<Void> listofNavigineIdlRouteeventToFfi(List<RouteEvent> value) {
   final _result = _listofNavigineIdlRouteeventCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlRouteeventToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_RouteEvent_ToFfi(element);
     _listofNavigineIdlRouteeventInsert(_result, _elementHandle);
-    navigineIdlRouteeventReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_RouteEvent_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -1009,9 +1003,9 @@ List<RouteEvent> listofNavigineIdlRouteeventFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlRouteeventIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlRouteeventIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlRouteeventFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_RouteEvent_FromFfi(_elementHandle));
     } finally {
-      navigineIdlRouteeventReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_RouteEvent_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlRouteeventIteratorIncrement(_iteratorHandle);
   }
@@ -1089,9 +1083,9 @@ final _listofNavigineIdlRoutepathIteratorGet = __lib.catchArgumentError(() => __
 Pointer<Void> listofNavigineIdlRoutepathToFfi(List<RoutePath> value) {
   final _result = _listofNavigineIdlRoutepathCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlRoutepathToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_RoutePath_ToFfi(element);
     _listofNavigineIdlRoutepathInsert(_result, _elementHandle);
-    navigineIdlRoutepathReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_RoutePath_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -1102,9 +1096,9 @@ List<RoutePath> listofNavigineIdlRoutepathFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlRoutepathIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlRoutepathIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlRoutepathFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_RoutePath_FromFfi(_elementHandle));
     } finally {
-      navigineIdlRoutepathReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_RoutePath_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlRoutepathIteratorIncrement(_iteratorHandle);
   }
@@ -1182,9 +1176,9 @@ final _listofNavigineIdlSublocationIteratorGet = __lib.catchArgumentError(() => 
 Pointer<Void> listofNavigineIdlSublocationToFfi(List<Sublocation> value) {
   final _result = _listofNavigineIdlSublocationCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlSublocationToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Sublocation_ToFfi(element);
     _listofNavigineIdlSublocationInsert(_result, _elementHandle);
-    navigineIdlSublocationReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Sublocation_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -1195,9 +1189,9 @@ List<Sublocation> listofNavigineIdlSublocationFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlSublocationIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlSublocationIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlSublocationFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Sublocation_FromFfi(_elementHandle));
     } finally {
-      navigineIdlSublocationReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Sublocation_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlSublocationIteratorIncrement(_iteratorHandle);
   }
@@ -1275,9 +1269,9 @@ final _listofNavigineIdlVenueIteratorGet = __lib.catchArgumentError(() => __lib.
 Pointer<Void> listofNavigineIdlVenueToFfi(List<Venue> value) {
   final _result = _listofNavigineIdlVenueCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlVenueToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Venue_ToFfi(element);
     _listofNavigineIdlVenueInsert(_result, _elementHandle);
-    navigineIdlVenueReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Venue_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -1288,9 +1282,9 @@ List<Venue> listofNavigineIdlVenueFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlVenueIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlVenueIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlVenueFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Venue_FromFfi(_elementHandle));
     } finally {
-      navigineIdlVenueReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Venue_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlVenueIteratorIncrement(_iteratorHandle);
   }
@@ -1368,9 +1362,9 @@ final _listofNavigineIdlWifiIteratorGet = __lib.catchArgumentError(() => __lib.n
 Pointer<Void> listofNavigineIdlWifiToFfi(List<Wifi> value) {
   final _result = _listofNavigineIdlWifiCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlWifiToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Wifi_ToFfi(element);
     _listofNavigineIdlWifiInsert(_result, _elementHandle);
-    navigineIdlWifiReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Wifi_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -1381,9 +1375,9 @@ List<Wifi> listofNavigineIdlWifiFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlWifiIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlWifiIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlWifiFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Wifi_FromFfi(_elementHandle));
     } finally {
-      navigineIdlWifiReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Wifi_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlWifiIteratorIncrement(_iteratorHandle);
   }
@@ -1461,9 +1455,9 @@ final _listofNavigineIdlZoneIteratorGet = __lib.catchArgumentError(() => __lib.n
 Pointer<Void> listofNavigineIdlZoneToFfi(List<Zone> value) {
   final _result = _listofNavigineIdlZoneCreateHandle();
   for (final element in value) {
-    final _elementHandle = navigineIdlZoneToFfi(element);
+    final _elementHandle = navigine_sdk_flutter_Zone_ToFfi(element);
     _listofNavigineIdlZoneInsert(_result, _elementHandle);
-    navigineIdlZoneReleaseFfiHandle(_elementHandle);
+    navigine_sdk_flutter_Zone_ReleaseFfiHandle(_elementHandle);
   }
   return _result;
 }
@@ -1474,9 +1468,9 @@ List<Zone> listofNavigineIdlZoneFromFfi(Pointer<Void> handle) {
   while (_listofNavigineIdlZoneIteratorIsValid(handle, _iteratorHandle) != 0) {
     final _elementHandle = _listofNavigineIdlZoneIteratorGet(_iteratorHandle);
     try {
-      result.add(navigineIdlZoneFromFfi(_elementHandle));
+      result.add(navigine_sdk_flutter_Zone_FromFfi(_elementHandle));
     } finally {
-      navigineIdlZoneReleaseFfiHandle(_elementHandle);
+      navigine_sdk_flutter_Zone_ReleaseFfiHandle(_elementHandle);
     }
     _listofNavigineIdlZoneIteratorIncrement(_iteratorHandle);
   }
@@ -1559,10 +1553,10 @@ Pointer<Void> mapofIntToNavigineIdlLocationinfoToFfi(Map<int, LocationInfo> valu
   final _result = _mapofIntToNavigineIdlLocationinfoCreateHandle();
   for (final entry in value.entries) {
     final _keyHandle = (entry.key);
-    final _valueHandle = navigineIdlLocationinfoToFfi(entry.value);
+    final _valueHandle = navigine_sdk_flutter_LocationInfo_ToFfi(entry.value);
     _mapofIntToNavigineIdlLocationinfoPut(_result, _keyHandle, _valueHandle);
 
-    navigineIdlLocationinfoReleaseFfiHandle(_valueHandle);
+    navigine_sdk_flutter_LocationInfo_ReleaseFfiHandle(_valueHandle);
   }
   return _result;
 }
@@ -1575,10 +1569,10 @@ Map<int, LocationInfo> mapofIntToNavigineIdlLocationinfoFromFfi(Pointer<Void> ha
     final _valueHandle = _mapofIntToNavigineIdlLocationinfoIteratorGetValue(_iteratorHandle);
     try {
       result[(_keyHandle)] =
-        navigineIdlLocationinfoFromFfi(_valueHandle);
+        navigine_sdk_flutter_LocationInfo_FromFfi(_valueHandle);
     } finally {
 
-      navigineIdlLocationinfoReleaseFfiHandle(_valueHandle);
+      navigine_sdk_flutter_LocationInfo_ReleaseFfiHandle(_valueHandle);
     }
     _mapofIntToNavigineIdlLocationinfoIteratorIncrement(_iteratorHandle);
   }
@@ -1660,11 +1654,11 @@ final _mapofStringToStringIteratorGetValue = __lib.catchArgumentError(() => __li
 Pointer<Void> mapofStringToStringToFfi(Map<String, String> value) {
   final _result = _mapofStringToStringCreateHandle();
   for (final entry in value.entries) {
-    final _keyHandle = stringToFfi(entry.key);
-    final _valueHandle = stringToFfi(entry.value);
+    final _keyHandle = navigine_sdk_flutter_String_ToFfi(entry.key);
+    final _valueHandle = navigine_sdk_flutter_String_ToFfi(entry.value);
     _mapofStringToStringPut(_result, _keyHandle, _valueHandle);
-    stringReleaseFfiHandle(_keyHandle);
-    stringReleaseFfiHandle(_valueHandle);
+    navigine_sdk_flutter_String_ReleaseFfiHandle(_keyHandle);
+    navigine_sdk_flutter_String_ReleaseFfiHandle(_valueHandle);
   }
   return _result;
 }
@@ -1676,11 +1670,11 @@ Map<String, String> mapofStringToStringFromFfi(Pointer<Void> handle) {
     final _keyHandle = _mapofStringToStringIteratorGetKey(_iteratorHandle);
     final _valueHandle = _mapofStringToStringIteratorGetValue(_iteratorHandle);
     try {
-      result[stringFromFfi(_keyHandle)] =
-        stringFromFfi(_valueHandle);
+      result[navigine_sdk_flutter_String_FromFfi(_keyHandle)] =
+        navigine_sdk_flutter_String_FromFfi(_valueHandle);
     } finally {
-      stringReleaseFfiHandle(_keyHandle);
-      stringReleaseFfiHandle(_valueHandle);
+      navigine_sdk_flutter_String_ReleaseFfiHandle(_keyHandle);
+      navigine_sdk_flutter_String_ReleaseFfiHandle(_valueHandle);
     }
     _mapofStringToStringIteratorIncrement(_iteratorHandle);
   }
@@ -1762,11 +1756,11 @@ final _mapofStringToNavigineIdlSignalmeasurementIteratorGetValue = __lib.catchAr
 Pointer<Void> mapofStringToNavigineIdlSignalmeasurementToFfi(Map<String, SignalMeasurement> value) {
   final _result = _mapofStringToNavigineIdlSignalmeasurementCreateHandle();
   for (final entry in value.entries) {
-    final _keyHandle = stringToFfi(entry.key);
-    final _valueHandle = navigineIdlSignalmeasurementToFfi(entry.value);
+    final _keyHandle = navigine_sdk_flutter_String_ToFfi(entry.key);
+    final _valueHandle = navigine_sdk_flutter_SignalMeasurement_ToFfi(entry.value);
     _mapofStringToNavigineIdlSignalmeasurementPut(_result, _keyHandle, _valueHandle);
-    stringReleaseFfiHandle(_keyHandle);
-    navigineIdlSignalmeasurementReleaseFfiHandle(_valueHandle);
+    navigine_sdk_flutter_String_ReleaseFfiHandle(_keyHandle);
+    navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_valueHandle);
   }
   return _result;
 }
@@ -1778,11 +1772,11 @@ Map<String, SignalMeasurement> mapofStringToNavigineIdlSignalmeasurementFromFfi(
     final _keyHandle = _mapofStringToNavigineIdlSignalmeasurementIteratorGetKey(_iteratorHandle);
     final _valueHandle = _mapofStringToNavigineIdlSignalmeasurementIteratorGetValue(_iteratorHandle);
     try {
-      result[stringFromFfi(_keyHandle)] =
-        navigineIdlSignalmeasurementFromFfi(_valueHandle);
+      result[navigine_sdk_flutter_String_FromFfi(_keyHandle)] =
+        navigine_sdk_flutter_SignalMeasurement_FromFfi(_valueHandle);
     } finally {
-      stringReleaseFfiHandle(_keyHandle);
-      navigineIdlSignalmeasurementReleaseFfiHandle(_valueHandle);
+      navigine_sdk_flutter_String_ReleaseFfiHandle(_keyHandle);
+      navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_valueHandle);
     }
     _mapofStringToNavigineIdlSignalmeasurementIteratorIncrement(_iteratorHandle);
   }
@@ -1864,11 +1858,11 @@ final _mapofNavigineIdlSensortypeToNavigineIdlSensormeasurementIteratorGetValue 
 Pointer<Void> mapofNavigineIdlSensortypeToNavigineIdlSensormeasurementToFfi(Map<SensorType, SensorMeasurement> value) {
   final _result = _mapofNavigineIdlSensortypeToNavigineIdlSensormeasurementCreateHandle();
   for (final entry in value.entries) {
-    final _keyHandle = navigineIdlSensortypeToFfi(entry.key);
-    final _valueHandle = navigineIdlSensormeasurementToFfi(entry.value);
+    final _keyHandle = navigine_sdk_flutter_SensorType_ToFfi(entry.key);
+    final _valueHandle = navigine_sdk_flutter_SensorMeasurement_ToFfi(entry.value);
     _mapofNavigineIdlSensortypeToNavigineIdlSensormeasurementPut(_result, _keyHandle, _valueHandle);
-    navigineIdlSensortypeReleaseFfiHandle(_keyHandle);
-    navigineIdlSensormeasurementReleaseFfiHandle(_valueHandle);
+    navigine_sdk_flutter_SensorType_ReleaseFfiHandle(_keyHandle);
+    navigine_sdk_flutter_SensorMeasurement_ReleaseFfiHandle(_valueHandle);
   }
   return _result;
 }
@@ -1880,11 +1874,11 @@ Map<SensorType, SensorMeasurement> mapofNavigineIdlSensortypeToNavigineIdlSensor
     final _keyHandle = _mapofNavigineIdlSensortypeToNavigineIdlSensormeasurementIteratorGetKey(_iteratorHandle);
     final _valueHandle = _mapofNavigineIdlSensortypeToNavigineIdlSensormeasurementIteratorGetValue(_iteratorHandle);
     try {
-      result[navigineIdlSensortypeFromFfi(_keyHandle)] =
-        navigineIdlSensormeasurementFromFfi(_valueHandle);
+      result[navigine_sdk_flutter_SensorType_FromFfi(_keyHandle)] =
+        navigine_sdk_flutter_SensorMeasurement_FromFfi(_valueHandle);
     } finally {
-      navigineIdlSensortypeReleaseFfiHandle(_keyHandle);
-      navigineIdlSensormeasurementReleaseFfiHandle(_valueHandle);
+      navigine_sdk_flutter_SensorType_ReleaseFfiHandle(_keyHandle);
+      navigine_sdk_flutter_SensorMeasurement_ReleaseFfiHandle(_valueHandle);
     }
     _mapofNavigineIdlSensortypeToNavigineIdlSensormeasurementIteratorIncrement(_iteratorHandle);
   }

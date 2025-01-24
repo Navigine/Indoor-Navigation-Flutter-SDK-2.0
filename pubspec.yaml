@@ -1,12 +1,18 @@
 name: navigine_sdk
+description: Navigine SDK for Flutter. This allow you to use the capabilities
+  of Navigine SDK in your Flutter applications for iOS and Android
+version: 1.2.6
+repository: https://github.com/Navigine/Indoor-Navigation-Flutter-SDK-2.0
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ^3.1.0
+  flutter: '>=3.13.1'
 dependencies:
-  flutter_plugin_android_lifecycle: ^2.0.6
-  ffi:
-  intl:
-  meta:
-
+  flutter:
+    sdk: flutter
+  ffi: ^2.1.0
+  uuid: ^4.2.2
+  flutter_plugin_android_lifecycle: ^2.0.16
+  meta: ^1.9.1
 flutter:
   plugin:
     platforms:
@@ -15,3 +21,7 @@ flutter:
         pluginClass: NavigineSdkPlugin
       ios:
         pluginClass: NavigineSdkPlugin
+
+false_secrets:
+  - ios/Frameworks/Navigine.xcframework/ios-arm64/Navigine.framework/Navigine
+  - ios/Frameworks/Navigine.xcframework/ios-arm64_x86_64-simulator/Navigine.framework/Navigine

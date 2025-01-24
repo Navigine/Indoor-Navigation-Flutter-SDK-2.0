@@ -8,8 +8,6 @@ import 'dart:ui' as ui;
 import "package:flutter/painting.dart" as painting;
 import 'dart:async';
 
-import 'package:ffi/ffi.dart';
-
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/image_provider.dart';

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:isolate';
-import 'package:meta/meta.dart';
 
 import 'package:navigine_sdk/com/_sdk_method_channel.dart';
 
@@ -54,12 +53,10 @@ void _notifyHandler(dynamic data) {
   _executeWork(event);
 }
 
-@internal
 int createExecutePort() {
   return _isolateReceivePort.sendPort.nativePort;
 }
 
-@internal
 int createPortWithCallback(void Function(dynamic) callback) {
   final port = ReceivePort()..listen(callback);
   return port.sendPort.nativePort;

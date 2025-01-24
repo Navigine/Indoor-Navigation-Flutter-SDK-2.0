@@ -3,7 +3,6 @@
 import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:ffi/ffi.dart';
-import 'package:intl/locale.dart';
 
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
