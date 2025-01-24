@@ -4,6 +4,11 @@ analyzer:
     unused_element: ignore
     deprecated_member_use: ignore
     unused_import: ignore
+    unreachable_switch_default: ignore
+    unused_catch_stack: ignore
+    unused_field: ignore
+    invalid_internal_annotation: ignore
+    unused_local_variable: ignore
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
