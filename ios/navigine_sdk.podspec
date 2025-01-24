@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.platform = :ios, "7.0"
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.ios.deployment_target = '11.0'
 
   s.frameworks = 'CoreGraphics','Foundation','OpenGLES','CoreMotion','CoreFoundation','UIKit','QuartzCore','SystemConfiguration','CoreLocation', 'CoreText', 'CoreBluetooth', 'GLKit', 'Metal'
 
