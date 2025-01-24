@@ -16,10 +16,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-
-        flatDir {
-            dirs 'libs'
-        }
     }
 }
 
@@ -43,7 +39,7 @@ android {
     }
 
     dependencies {
-        implementation 'com.navigine:navigine-release@aar'
+	    api 'com.github.Navigine:Indoor-Navigation-Android-Mobile-SDK-2.0-Flutter:20241107'
     }
 
     defaultConfig {
