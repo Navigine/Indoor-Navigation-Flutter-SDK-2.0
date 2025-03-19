@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'dart:io';
 import 'dart:isolate';
 
+import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_sdk_method_channel.dart';
 
 final nativeLibrary = _loadNativeLibrary(_getLibraryPath("navigine"));

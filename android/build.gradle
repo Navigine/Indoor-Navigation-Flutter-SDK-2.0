@@ -22,7 +22,7 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     // Conditional for compatibility with AGP <4.2.
     if (project.android.hasProperty("namespace")) {
@@ -39,10 +39,10 @@ android {
     }
 
     dependencies {
-	    api 'com.github.Navigine:Indoor-Navigation-Android-Mobile-SDK-2.0-Flutter:20241107'
+	    api 'com.github.Navigine:Indoor-Navigation-Android-Mobile-SDK-2.0-Flutter:20250319'
     }
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 24
     }
 }

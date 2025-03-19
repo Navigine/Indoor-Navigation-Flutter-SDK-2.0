@@ -58,7 +58,6 @@ class ImageWrapper {
   @internal
   ImageWrapper(this._pixels, this._width, this._height);
 
-  @internal
   ImageProvider _extractImageProvider() {
     return RawImageProvider(
       _pixels,

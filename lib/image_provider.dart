@@ -1,8 +1,9 @@
+// ignore_for_file: unused_field, deprecated_member_use
+
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 class RawImageProvider extends ImageProvider<RawImageKey> {
   RawImageProvider(this._pixels, this._width, this._height)
@@ -20,7 +21,6 @@ class RawImageProvider extends ImageProvider<RawImageKey> {
 
   Future<ui.Codec> _loadAsync(RawImageKey key) async {
     final buffer = await ui.ImmutableBuffer.fromUint8List(_pixels);
-    print(buffer);
 
     final descriptor = ui.ImageDescriptor.raw(
       buffer,

@@ -3,146 +3,45 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_event_type.dart';
 
+part 'zone_event.impl.dart';
 /**
+ * @file com/navigine/idl/zone_event.dart
+ * @brief @copybrief ZoneEvent
+ */
+/**
+ * @ingroup navigine_dart_classes
+ * @ingroup navigine_dart_secondary_classes
  *
- * Object describing user zone_event.
+ * @brief Class described user zone event.
+ *
+ * Referenced from @see ZoneListener "ZoneListener".
  *
  */
 class ZoneEvent {
+    /// @brief Default constructor
     ZoneEvent(this.type, this.locationId, this.sublocationId, this.id, this.name, this.alias);
-    /** Handled zone event type. */
+    /**
+     * @brief Handled zone event type.
+     */
     ZoneEventType type;
-    /** Unique location identifier of Zone position. */
+    /**
+     * @brief zone's location identifier.
+     */
     int locationId;
-    /** Unique sublocation identifier of Zone position. */
+    /**
+     * @brief zone's sublocationId identifier.
+     */
     int sublocationId;
-    /** Zone unique identifier. */
+    /**
+     * @brief zone's identifier.
+     */
     int id;
-    /** Zone name. */
+    /**
+     * @brief zone's name.
+     */
     String name;
-    /** Zone alias. */
+    /**
+     * @brief zone's alias.
+     */
     String alias;
 }
-
-// ZoneEvent "private" section, not exported.
-
-final _navigine_sdk_flutter_ZoneEvent_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint32, Int32, Int32, Int32, Pointer<Void>, Pointer<Void>),
-    Pointer<Void> Function(int, int, int, int, Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_create_handle'));
-
-final _navigine_sdk_flutter_ZoneEvent_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_release_handle'));
-
-final _navigine_sdk_flutter_ZoneEvent_GetFieldtype = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Uint32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_get_field_type'));
-
-final _navigine_sdk_flutter_ZoneEvent_GetFieldlocationId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_get_field_locationId'));
-
-final _navigine_sdk_flutter_ZoneEvent_GetFieldsublocationId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_get_field_sublocationId'));
-
-final _navigine_sdk_flutter_ZoneEvent_GetFieldid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_get_field_id'));
-
-final _navigine_sdk_flutter_ZoneEvent_GetFieldname = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_get_field_name'));
-
-final _navigine_sdk_flutter_ZoneEvent_GetFieldalias = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_get_field_alias'));
-
-
-Pointer<Void> navigine_sdk_flutter_ZoneEvent_ToFfi(ZoneEvent value) {
-    final _typeHandle = navigine_sdk_flutter_ZoneEventType_ToFfi(value.type);
-    final _locationIdHandle = navigine_sdk_flutter_int_ToFfi(value.locationId);
-    final _sublocationIdHandle = navigine_sdk_flutter_int_ToFfi(value.sublocationId);
-    final _idHandle = navigine_sdk_flutter_int_ToFfi(value.id);
-    final _nameHandle = navigine_sdk_flutter_String_ToFfi(value.name);
-    final _aliasHandle = navigine_sdk_flutter_String_ToFfi(value.alias);
-    final _result = _navigine_sdk_flutter_ZoneEvent_CreateHandle(_typeHandle, _locationIdHandle, _sublocationIdHandle, _idHandle, _nameHandle, _aliasHandle);
-    navigine_sdk_flutter_ZoneEventType_ReleaseFfiHandle(_typeHandle);
-    navigine_sdk_flutter_int_ReleaseFfiHandle(_locationIdHandle);
-    navigine_sdk_flutter_int_ReleaseFfiHandle(_sublocationIdHandle);
-    navigine_sdk_flutter_int_ReleaseFfiHandle(_idHandle);
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
-    navigine_sdk_flutter_String_ReleaseFfiHandle(_aliasHandle);
-    return _result;
-}
-
-ZoneEvent navigine_sdk_flutter_ZoneEvent_FromFfi(Pointer<Void> handle) {
-    final _typeHandle = _navigine_sdk_flutter_ZoneEvent_GetFieldtype(handle);
-    final _locationIdHandle = _navigine_sdk_flutter_ZoneEvent_GetFieldlocationId(handle);
-    final _sublocationIdHandle = _navigine_sdk_flutter_ZoneEvent_GetFieldsublocationId(handle);
-    final _idHandle = _navigine_sdk_flutter_ZoneEvent_GetFieldid(handle);
-    final _nameHandle = _navigine_sdk_flutter_ZoneEvent_GetFieldname(handle);
-    final _aliasHandle = _navigine_sdk_flutter_ZoneEvent_GetFieldalias(handle);
-    try  {
-        return ZoneEvent(
-          navigine_sdk_flutter_ZoneEventType_FromFfi(_typeHandle),
-          navigine_sdk_flutter_int_FromFfi(_locationIdHandle),
-          navigine_sdk_flutter_int_FromFfi(_sublocationIdHandle),
-          navigine_sdk_flutter_int_FromFfi(_idHandle),
-          navigine_sdk_flutter_String_FromFfi(_nameHandle),
-          navigine_sdk_flutter_String_FromFfi(_aliasHandle),
-        );
-    }
-    finally  {
-          navigine_sdk_flutter_ZoneEventType_ReleaseFfiHandle(_typeHandle);
-          navigine_sdk_flutter_int_ReleaseFfiHandle(_locationIdHandle);
-          navigine_sdk_flutter_int_ReleaseFfiHandle(_sublocationIdHandle);
-          navigine_sdk_flutter_int_ReleaseFfiHandle(_idHandle);
-          navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
-          navigine_sdk_flutter_String_ReleaseFfiHandle(_aliasHandle);
-    }
-}
-
-void navigine_sdk_flutter_ZoneEvent_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_ZoneEvent_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_ZoneEvent_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_create_handle_nullable'));
-
-final _navigine_sdk_flutter_ZoneEvent_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_release_handle_nullable'));
-
-final _navigine_sdk_flutter_ZoneEvent_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_ZoneEvent_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_ZoneEvent_ToFfiNullable(ZoneEvent? value) {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_ZoneEvent_ToFfi(value);
-    final result = _navigine_sdk_flutter_ZoneEvent_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_ZoneEvent_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-ZoneEvent? navigine_sdk_flutter_ZoneEvent_FromFfiNullable(Pointer<Void> handle) {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_ZoneEvent_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_ZoneEvent_FromFfi(_handle);
-    navigine_sdk_flutter_ZoneEvent_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_ZoneEvent_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_ZoneEvent_ReleaseHandleNullable(handle);

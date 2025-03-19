@@ -1,4 +1,5 @@
 export 'error.dart' show Error;
+export 'com/exception.dart' show nativeAssert;
 export 'image_wrapper.dart' show ImageWrapper;
 export 'location_view.dart' show LocationView;
 export 'com/navigine/idl/animation_type.dart' show AnimationType;
