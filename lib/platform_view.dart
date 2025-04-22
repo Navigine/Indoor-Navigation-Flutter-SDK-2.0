@@ -8,6 +8,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 import 'package:navigine_sdk/com/_sdk_method_channel.dart';
+import 'package:navigine_sdk/com/_library_context.dart' as __lib;
+import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 
 class PlatformView {
   final Pointer<Void> nativePtr;
@@ -32,6 +34,24 @@ class PlatformView {
       return widget;
     }
   }
+}
+
+final _navigine_sdk_flutter_PlatformView_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_PlatformView_copy_handle'));
+
+final _navigine_sdk_flutter_PlatformView_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_PlatformView_release_handle'));
+
+Pointer<Void> navigine_sdk_flutter_PlatformView_ToFfi(PlatformView value) {
+    return _navigine_sdk_flutter_PlatformView_CopyHandle(value.nativePtr);
+}
+
+void navigine_sdk_flutter_PlatformView_ReleaseFfiHandle(Pointer<Void> handle) {
+  _navigine_sdk_flutter_PlatformView_ReleaseHandle(handle);
 }
 
 class _AndroidView extends StatelessWidget {

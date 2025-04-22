@@ -4,8 +4,7 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
 import 'package:navigine_sdk/platform_view.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_window.dart';
-
-part 'location_view.impl.dart';
+import 'package:navigine_sdk/com/navigine/idl/navigine_sdk.dart';
 
 /**
  * @file com/location_view.dart
@@ -46,7 +45,7 @@ class _LocationViewState extends State<LocationView> {
           return false;
         }
 
-        final window = createLocationWindow(view);
+        final window = NavigineSdk.getInstance().createLocationWindow(view);
         widget.onViewCreated(window);
 
         return true;

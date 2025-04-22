@@ -16,7 +16,6 @@ import 'package:navigine_sdk/com/navigine/idl/input_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/pick_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
-import 'package:navigine_sdk/image_wrapper.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
 part 'location_window.impl.dart';
@@ -224,8 +223,6 @@ abstract class LocationWindow implements Finalizable {
      * @cond
      */
     void applyFilter(String filter, String layer);
-
-    void setIcons(Map<String, ImageWrapper> icons);
 
     static void setDebugFlag(DebugFlag flag, bool on) => $prototype.setDebugFlag(flag, on);
 

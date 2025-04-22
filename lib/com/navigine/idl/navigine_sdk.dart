@@ -8,12 +8,15 @@ import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_estimator.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_edit_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_list_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_manager.dart';
+import 'package:navigine_sdk/com/navigine/idl/location_window.dart';
 import 'package:navigine_sdk/com/navigine/idl/measurement_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/navigation_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/notification_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/resource_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_manager.dart';
+import 'package:navigine_sdk/location_view.dart';
+import 'package:navigine_sdk/platform_view.dart';
 
 part 'navigine_sdk.impl.dart';
 /**
@@ -158,10 +161,9 @@ abstract class NavigineSdk implements Finalizable {
 
     String getErrorDescription(int errorCode);
 
+    LocationWindow createLocationWindow(PlatformView platformView);
+
     /**
-     *
-     * createLocationWindow(platform_view: platform_view): location_window;
-     *
      * @endcond
      *
      * Returns a manager that allows to manage locations list

@@ -69,3 +69,55 @@ Future<void> initNavigineSdk() async {
   _libraryDartDlInit(NativeApi.initializeApiDLData);
   await SdkMethodChannel('navigine_sdk').invokeMethod('init');
 }
+
+final class AsyncCallbackData extends Struct {
+  @Int()
+  external int command;
+  external Pointer<Void> nativeObject;
+  external Pointer<Void> nativeData;
+}
+
+const _DestructPlatformObjectAndFreeCallbackData = 0;
+const _GetPlatformObjectData = 1;
+
+abstract class AsyncDispatcherHeap<T> {
+  final Map<Pointer<Void>, T> _heap = {};
+  final ReceivePort _port = ReceivePort();
+
+  AsyncDispatcherHeap() {
+    _port.listen(_handler);
+  }
+
+  void requestData(T object, Pointer<Void> nativeData);
+
+  int get sendPort => _port.sendPort.nativePort;
+
+  void _removeObject(Pointer<Void> nativeObject) {
+    _heap.remove(nativeObject);
+  }
+
+  void insertObject(Pointer<Void> nativeObject, T platformObject) {
+    _heap[nativeObject] = platformObject;
+  }
+
+  T findObject(Pointer<Void> nativeObject) {
+    return _heap[nativeObject]!;
+  }
+
+  void _handler(dynamic data) {
+    final dataPtr = Pointer<AsyncCallbackData>.fromAddress(data as int);
+    final callbackData = dataPtr.ref;
+
+    switch (callbackData.command) {
+      case _DestructPlatformObjectAndFreeCallbackData:
+        _removeObject(callbackData.nativeObject);
+        malloc.free(dataPtr);
+        break;
+      case _GetPlatformObjectData:
+        requestData(_heap[callbackData.nativeObject]!, callbackData.nativeData);
+        break;
+      default:
+        assert(false);
+    }
+  }
+}

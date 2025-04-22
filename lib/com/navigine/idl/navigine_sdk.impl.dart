@@ -253,6 +253,21 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk, Finaliza
     }
 
     @override
+    LocationWindow createLocationWindow(PlatformView platformView) {
+        final _createLocationWindowFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_createLocationWindow__PlatformView'));
+        final _platformViewHandle = navigine_sdk_flutter_PlatformView_ToFfi(platformView);
+        final _handle = this.handle;
+        final __resultHandle = _createLocationWindowFfi(_handle, _platformViewHandle);
+        navigine_sdk_flutter_PlatformView_ReleaseFfiHandle(_platformViewHandle);
+        final _result = navigine_sdk_flutter_LocationWindow_FromFfi(__resultHandle);
+        navigine_sdk_flutter_LocationWindow_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
     LocationListManager getLocationListManager() {
         final _getLocationListManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, ),
