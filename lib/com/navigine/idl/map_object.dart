@@ -58,7 +58,7 @@ abstract class MapObject implements Finalizable {
 
     /**
      * @brief Method is used to apply custom styling to map object.
-     * @param style styling string.
+     * @param style styling string (@ref en/styles/styles.md).
      * @return true if success, false otherwise.
      */
     bool setStyle(String style);
