@@ -39,7 +39,7 @@ android {
     }
 
     dependencies {
-	    api 'com.github.Navigine:Indoor-Navigation-Android-Mobile-SDK-2.0-Flutter:20250519'
+	    api 'com.github.Navigine:Indoor-Navigation-Android-Mobile-SDK-2.0-Flutter:20250521'
     }
 
     defaultConfig {
