@@ -150,6 +150,34 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
 
     @override
+    PolygonMapObject addPolygonMapObject() {
+        final _addPolygonMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, ),
+            Pointer<Void> Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_addPolygonMapObject'));
+        final _handle = this.handle;
+        final __resultHandle = _addPolygonMapObjectFfi(_handle, );
+        final _result = navigine_sdk_flutter_PolygonMapObject_FromFfi(__resultHandle);
+        navigine_sdk_flutter_PolygonMapObject_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool removePolygonMapObject(PolygonMapObject polygonMapObject) {
+        final _removePolygonMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_removePolygonMapObject__PolygonMapObject'));
+        final _polygonMapObjectHandle = navigine_sdk_flutter_PolygonMapObject_ToFfi(polygonMapObject);
+        final _handle = this.handle;
+        final __resultHandle = _removePolygonMapObjectFfi(_handle, _polygonMapObjectHandle);
+        navigine_sdk_flutter_PolygonMapObject_ReleaseFfiHandle(_polygonMapObjectHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
     PolylineMapObject addPolylineMapObject() {
         final _addPolylineMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, ),
@@ -297,6 +325,46 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
         navigine_sdk_flutter_Camera_ReleaseFfiHandle(_cameraHandle);
         navigine_sdk_flutter_int_ReleaseFfiHandle(_durationHandle);
         navigine_sdk_flutter_CameraCallback_ReleaseFfiHandle(_callbackHandle);
+    }
+
+    @override
+    bool selectMapFeature(String featureId) {
+        final _selectMapFeatureFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_selectMapFeature__FeatureId'));
+        final _featureIdHandle = navigine_sdk_flutter_String_ToFfi(featureId);
+        final _handle = this.handle;
+        final __resultHandle = _selectMapFeatureFfi(_handle, _featureIdHandle);
+        navigine_sdk_flutter_String_ReleaseFfiHandle(_featureIdHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool deselectMapFeature(String featureId) {
+        final _deselectMapFeatureFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_deselectMapFeature__FeatureId'));
+        final _featureIdHandle = navigine_sdk_flutter_String_ToFfi(featureId);
+        final _handle = this.handle;
+        final __resultHandle = _deselectMapFeatureFfi(_handle, _featureIdHandle);
+        navigine_sdk_flutter_String_ReleaseFfiHandle(_featureIdHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    void deselectAllMapFeatures() {
+        final _deselectAllMapFeaturesFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, ),
+            void Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_deselectAllMapFeatures'));
+        final _handle = this.handle;
+        _deselectAllMapFeaturesFfi(_handle, );
     }
 
     @override
@@ -595,6 +663,20 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
         navigine_sdk_flutter_double_ReleaseFfiHandle(_pickRadiusHandle);
     }
 
+    List<String> get selectedMapFeatures {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_selectedMapFeatures_get'));
+
+        final _handle = this.handle;
+        final _selectedMapFeaturesHandle = _getFfi(_handle);
+        final _result = navigine_sdk_flutter_List_String_FromFfi(_selectedMapFeaturesHandle);
+        navigine_sdk_flutter_List_String_ReleaseFfiHandle(_selectedMapFeaturesHandle);
+        return _result;
+    }
+
+
 
 
 }
@@ -629,3 +711,101 @@ LocationWindow? navigine_sdk_flutter_LocationWindow_FromFfiNullable(Pointer<Void
   handle.address != 0 ? navigine_sdk_flutter_LocationWindow_FromFfi(handle) : null;
 
 // End of LocationWindow "private" section.
+
+final _navigine_sdk_flutter_List_String_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_List_String_create_handle'));
+
+final _navigine_sdk_flutter_List_String_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_release_handle'));
+
+final _navigine_sdk_flutter_List_String_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_insert'));
+
+final _navigine_sdk_flutter_List_String_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_iterator'));
+
+final _navigine_sdk_flutter_List_String_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_iterator_release_handle'));
+
+final _navigine_sdk_flutter_List_String_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_iterator_is_valid'));
+
+final _navigine_sdk_flutter_List_String_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_iterator_increment'));
+
+final _navigine_sdk_flutter_List_String_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_iterator_get'));
+
+Pointer<Void> navigine_sdk_flutter_List_String_ToFfi(List<String> value)  {
+    final _result = _navigine_sdk_flutter_List_String_CreateHandle();
+    for (final element in value)  {
+        final _elementHandle = navigine_sdk_flutter_String_ToFfi(element);
+        _navigine_sdk_flutter_List_String_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_String_ReleaseFfiHandle(_elementHandle);
+    }
+    return _result;
+}
+
+List<String> navigine_sdk_flutter_List_String_FromFfi(Pointer<Void> handle)  {
+    final result = List<String>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_String_Iterator(handle);
+    while (_navigine_sdk_flutter_List_String_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_String_IteratorGet(_iteratorHandle);
+        result.add(navigine_sdk_flutter_String_FromFfi(_elementHandle));
+        navigine_sdk_flutter_String_ReleaseFfiHandle(_elementHandle);
+        _navigine_sdk_flutter_List_String_IteratorIncrement(_iteratorHandle);
+    }
+    return result;
+}
+
+void navigine_sdk_flutter_List_String_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_String_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_List_String_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_create_handle_nullable'));
+
+final _navigine_sdk_flutter_List_String_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_release_handle_nullable'));
+
+final _navigine_sdk_flutter_List_String_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_String_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_List_String_ToFfiNullable(List<String>? value)  {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_List_String_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_String_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_String_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+List<String>? navigine_sdk_flutter_List_String_FromFfiNullable(Pointer<Void> handle)  {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_List_String_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_String_FromFfi(_handle);
+    navigine_sdk_flutter_List_String_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_List_String_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_String_ReleaseHandleNullable(handle);

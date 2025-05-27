@@ -8,10 +8,12 @@ int navigine_sdk_flutter_MapObjectType_ToFfi(MapObjectType value) {
         return 0;
     case MapObjectType.FLAT_ICON:
         return 1;
-    case MapObjectType.POLYLINE:
+    case MapObjectType.POLYGON:
         return 2;
-    case MapObjectType.CIRCLE:
+    case MapObjectType.POLYLINE:
         return 3;
+    case MapObjectType.CIRCLE:
+        return 4;
     }
 }
 
@@ -22,8 +24,10 @@ MapObjectType navigine_sdk_flutter_MapObjectType_FromFfi(int handle) {
     case 1:
         return MapObjectType.FLAT_ICON;
     case 2:
-        return MapObjectType.POLYLINE;
+        return MapObjectType.POLYGON;
     case 3:
+        return MapObjectType.POLYLINE;
+    case 4:
         return MapObjectType.CIRCLE;
     default:
         throw StateError("Invalid numeric value $handle for MapObjectType enum.");

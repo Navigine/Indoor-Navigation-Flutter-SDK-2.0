@@ -28,6 +28,12 @@ enum MapObjectType {
      */
     FLAT_ICON,
     /**
+     * @brief polygon
+     *
+     * @see PolygonMapObject "PolygonMapObject"
+     */
+    POLYGON,
+    /**
      * @brief polyline
      *
      * @see PolylineMapObject "PolylineMapObject"

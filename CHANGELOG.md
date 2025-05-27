@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `navigine_sdk` adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.13
+
+* Added NCPolygonMapObject
+* Added selectMapFeature/deselectMapFeature/deselectAllMapFeatures/getSelectedMapFeatures
+
 ## 1.2.12
 
 * Fix crash in interface finalization

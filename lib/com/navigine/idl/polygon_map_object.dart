@@ -3,43 +3,34 @@ import 'dart:typed_data';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_polyline.dart';
+import 'package:navigine_sdk/com/navigine/idl/location_polygon.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 
-part 'polyline_map_object.impl.dart';
+part 'polygon_map_object.impl.dart';
 /**
- * @file com/navigine/idl/polyline_map_object.dart
- * @brief @copybrief PolylineMapObject
+ * @file com/navigine/idl/polygon_map_object.dart
+ * @brief @copybrief PolygonMapObject
  */
 /**
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_location_view
  *
- * @brief represents polyline object on location view.
+ * @brief represents polygon object on location view.
  *
  * Referenced from @see LocationWindow "LocationWindow".
  *
  */
-abstract class PolylineMapObject implements MapObject, Finalizable {
+abstract class PolygonMapObject implements MapObject, Finalizable {
 
     /**
      *
-     * @brief Method is used to specify source polyline of object.
-     * @param polyline metrics coordinate of polyline @see LocationPolyline "LocationPolyline".
+     * @brief Method is used to specify source polygon of object.
+     * @param polygon metrics coordinate of polygon @see LocationPolygon "LocationPolygon".
      * @return true if success, false otherwise.
      *
      */
-    bool setPolyLine(LocationPolyline polyline);
-
-    /**
-     *
-     * @brief Method is used to specify width of a line.
-     * @param width width of a line in pixels.
-     * @return true if success, false otherwise.
-     *
-     */
-    bool setWidth(double width);
+    bool setPolygon(LocationPolygon polygon);
 
     /**
      *

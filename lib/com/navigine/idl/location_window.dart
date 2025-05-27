@@ -15,6 +15,7 @@ import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/input_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/pick_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
+import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
@@ -111,6 +112,23 @@ abstract class LocationWindow implements Finalizable {
      *
      */
     bool removeFlatIconMapObject(FlatIconMapObject flatIconMapObject);
+
+    /**
+     *
+     * @brief Method is used to create and add polygon map object to the location view.
+     * @return PolygonMapObject instance @see PolygonMapObject "PolygonMapObject" if success, null otherwise.
+     *
+     */
+    PolygonMapObject addPolygonMapObject();
+
+    /**
+     *
+     * @brief Method is used to remove polygon map object from the location view.
+     * @param polygonMapObject polygon map object instance @see PolygonMapObject "PolygonMapObject".
+     * @return true if success, false otherwise.
+     *
+     */
+    bool removePolygonMapObject(PolygonMapObject polygonMapObject);
 
     /**
      *
@@ -220,6 +238,35 @@ abstract class LocationWindow implements Finalizable {
     void flyTo(Camera camera, int duration, CameraCallback callback);
 
     /**
+     *
+     * @brief Selects a map feature with the specified featureId.
+     *
+     * @param featureId featureId can be extracted from the `mapFeaturePickResult` container by
+     * using @see onMapFeaturePickComplete "onMapFeaturePickComplete" callback of @see PickListener "PickListener".
+     * @return true if success, false otherwise.
+     *
+     */
+    bool selectMapFeature(String featureId);
+
+    /**
+     *
+     * @brief Deselects a map feature with the specified featureId.
+     *
+     * @param featureId featureId can be extracted from the `mapFeaturePickResult` container by
+     * using @see onMapFeaturePickComplete "onMapFeaturePickComplete" callback of @see PickListener "PickListener".
+     * @return true if success, false otherwise.
+     *
+     */
+    bool deselectMapFeature(String featureId);
+
+    /**
+     *
+     * @brief Resets the currently selected map features.
+     *
+     */
+    void deselectAllMapFeatures();
+
+    /**
      * @cond
      */
     void applyFilter(String filter, String layer);
@@ -315,6 +362,12 @@ abstract class LocationWindow implements Finalizable {
      */
     double get pickRadius;
     void set pickRadius(double pickRadius);
+    /**
+     *
+     * @brief List of currently selected map features.
+     *
+     */
+    List<String> get selectedMapFeatures;
 
 
     /// @nodoc
