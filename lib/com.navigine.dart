@@ -17,7 +17,6 @@ export 'com/navigine/idl/category.dart' show Category;
 export 'com/navigine/idl/circle_map_object.dart' show CircleMapObject;
 export 'com/navigine/idl/debug_flag.dart' show DebugFlag;
 export 'com/navigine/idl/eddystone.dart' show Eddystone;
-export 'com/navigine/idl/flat_icon_map_object.dart' show FlatIconMapObject;
 export 'com/navigine/idl/global_point.dart' show GlobalPoint;
 export 'com/navigine/idl/geometry_utils.dart' show GeometryUtils;
 export 'com/navigine/idl/graph.dart' show Graph;
