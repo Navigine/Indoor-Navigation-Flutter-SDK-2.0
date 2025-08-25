@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `navigine_sdk` adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.14
+
+* Adaptive image rendering
+* Improved onRouteChanged method
+
 ## 1.2.13
 
 * Added NCPolygonMapObject
