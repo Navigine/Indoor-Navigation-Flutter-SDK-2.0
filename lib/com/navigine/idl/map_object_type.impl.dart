@@ -6,11 +6,11 @@ int navigine_sdk_flutter_MapObjectType_ToFfi(MapObjectType value) {
     switch (value) {
     case MapObjectType.ICON:
         return 0;
-    case MapObjectType.FLAT_ICON:
-        return 1;
     case MapObjectType.POLYGON:
-        return 2;
+        return 1;
     case MapObjectType.POLYLINE:
+        return 2;
+    case MapObjectType.DOTTED_POLYLINE:
         return 3;
     case MapObjectType.CIRCLE:
         return 4;
@@ -22,11 +22,11 @@ MapObjectType navigine_sdk_flutter_MapObjectType_FromFfi(int handle) {
     case 0:
         return MapObjectType.ICON;
     case 1:
-        return MapObjectType.FLAT_ICON;
-    case 2:
         return MapObjectType.POLYGON;
-    case 3:
+    case 2:
         return MapObjectType.POLYLINE;
+    case 3:
+        return MapObjectType.DOTTED_POLYLINE;
     case 4:
         return MapObjectType.CIRCLE;
     default:

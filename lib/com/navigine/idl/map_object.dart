@@ -14,68 +14,123 @@ part 'map_object.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_location_view
  *
- * @brief Class is used to handle object on @see LocationWindow "LocationWindow" created and managing by user
- * Could be handled in `pickMapObjectAt` method @see LocationWindow "LocationWindow"
+ * @brief Base interface for handling objects on the location view.
  *
- * Referenced from @see CircleMapObject "CircleMapObject", @see IconMapObject "IconMapObject", @see FlatIconMapObject "FlatIconMapObject".
+ * Used to manage objects in @see LocationWindow "LocationWindow".
+ * Can be handled in the `pickMapObjectAt` method @see LocationWindow "LocationWindow".
+ *
+ * Referenced from @see CircleMapObject "CircleMapObject", @see IconMapObject "IconMapObject", @see PolylineMapObject "PolylineMapObject", @see PolygonMapObject "PolygonMapObject", @see DottedPolylineMapObject "DottedPolylineMapObject".
  *
  */
 abstract class MapObject implements Finalizable {
 
     /**
-     * @brief Unique identifier of map object
-     * @return Unique identifier of current map objcet @see MapObjectType "MapObjectType"
+     *
+     * @brief Gets the unique identifier of the map object.
+     * @return The unique identifier of the map object.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_getId
+     *
      */
     int getId();
 
     /**
-     * @brief Map object type @see MapObjectType "MapObjectType".
-     * Map object could be casted to the specified type.
-     * @return Type of current map objcet @see MapObjectType "MapObjectType".
+     *
+     * @brief Gets the type of the map object.
+     * @return The type of the map object @see MapObjectType "MapObjectType".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_getType
+     *
      */
     MapObjectType getType();
 
     /**
-     * @brief Any kind of user's data
-     * @return Data stored in map object @see MapObjectType "MapObjectType".
+     *
+     * @brief Gets the user-defined data associated with the map object.
+     * @return The data stored in the map object.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_getData
+     *
      */
     Uint8List getData();
 
     /**
-     * @brief Method is used to change visibility of map object.
-     * @param visible control visibility of the object.
-     * @return true if success, false otherwise.
+     *
+     * @brief Method is used to specify the visibility of the map object.
+     * @param visible Specifies whether the object is visible (true) or hidden (false). Default: true.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_setVisible
+     *
      */
     bool setVisible(bool visible);
 
     /**
-     * @brief Method is used to interactive property
-     * If True - map object could be handled in `pickMapObjectAt` method.
-     * @param interactive control interactivity of the object.
-     * @return true if success, false otherwise.
+     *
+     * @brief Method is used to specify whether the map object can be interacted with.
+     * @param interactive Specifies whether the object can be picked in the `pickMapObjectAt` method (true) or not (false). Default: false.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_setInteractive
+     *
      */
     bool setInteractive(bool interactive);
 
     /**
-     * @brief Method is used to apply custom styling to map object.
-     * @param style styling string (@ref en/styles/styles.md).
-     * @return true if success, false otherwise.
-     */
-    bool setStyle(String style);
-
-    /**
-     * @brief Method is used to set any kind of user's data
-     * @param data Data to store in map object
+     *
+     * @brief Method is used to set user-defined data for the map object.
+     * @param data Data to store in the map object.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_setData
+     *
      */
     void setData(Uint8List data);
 
     /**
-     * @brief Method is used to set object title.
-     * Title will shown on location view.
-     * @param title of map object.
-     * @return true if success, false otherwise.
+     *
+     * @brief Method is used to set the title of the map object.
+     * @param title The title to display on the location view.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_setTitle
+     *
      */
     bool setTitle(String title);
+
+    /**
+     *
+     * @brief Method is used to set the opacity of the map object.
+     * @param alpha Opacity multiplier. Values below 0 will be set to 0. Values above 1 will be set to 1. Default: 1.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_MapObject_setAlpha
+     *
+     */
+    bool setAlpha(double alpha);
 
 
 

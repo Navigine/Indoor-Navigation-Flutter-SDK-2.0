@@ -16,7 +16,7 @@ part 'polygon_map_object.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_location_view
  *
- * @brief represents polygon object on location view.
+ * @brief Represents a polygon object on the location view.
  *
  * Referenced from @see LocationWindow "LocationWindow".
  *
@@ -25,24 +25,48 @@ abstract class PolygonMapObject implements MapObject, Finalizable {
 
     /**
      *
-     * @brief Method is used to specify source polygon of object.
-     * @param polygon metrics coordinate of polygon @see LocationPolygon "LocationPolygon".
+     * @brief Method is used to specify the source polygon of the object.
+     * @param polygon Metrics coordinates of the polygon @see LocationPolygon "LocationPolygon".
      * @return true if success, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_PolygonMapObject_setPolygon
      *
      */
     bool setPolygon(LocationPolygon polygon);
 
     /**
      *
-     * @brief Method is used to specify color of object.
-     * @param red red RGBA component.
-     * @param green green RGBA component.
-     * @param blue blue RGBA component.
-     * @param alpha Opacity multiplicator. Values below 0 will be set to 0. Default: 1.
+     * @brief Method is used to specify the color of the object.
+     * @param red Red RGBA component.
+     * @param green Green RGBA component.
+     * @param blue Blue RGBA component.
+     * @param alpha Opacity multiplier. Values below 0 will be set to 0. Default: 1.
      * @return true if success, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_PolygonMapObject_setColor
      *
      */
     bool setColor(double red, double green, double blue, double alpha);
+
+    /**
+     *
+     * @brief Method is used to specify the rendering order of the object.
+     * @param order The rendering order value. Default: 0.
+     * @return true if success, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_PolygonMapObject_setOrder
+     *
+     */
+    bool setOrder(int order);
 
 
 

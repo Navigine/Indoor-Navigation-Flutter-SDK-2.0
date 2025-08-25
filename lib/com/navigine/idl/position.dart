@@ -23,10 +23,22 @@ class Position {
     Position(this.point, this.accuracy, this.heading, this.headingAccuracy, this.locationPoint, this.locationHeading);
     /**
      * @brief position in WGS84 coordinates.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_Position_getPoint
+     *
      */
     GlobalPoint point;
     /**
      * Position accuracy in meters
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_Position_getAccuracy
+     *
      */
     double accuracy;
     /**
@@ -37,18 +49,42 @@ class Position {
      * Likewise, when facing east, this angle is pi/2, and
      * when facing west, this angle is -pi/2. The range of
      * values is [-pi, pi].
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_Position_getHeading
+     *
      */
     double? heading;
     /**
      * @brief Heading accuracy in radians
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_Position_getHeadingAccuracy
+     *
      */
     double? headingAccuracy;
     /**
      * @brief position in metrics coordinates at calculated location and sublocation @see LocationPoint
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_Position_getLocationPoint
+     *
      */
     LocationPoint? locationPoint;
     /**
      * @brief Similiar to `heading` but with respect to `sublocation north` (top of the image)
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_Position_getLocationHeading
+     *
      */
     double? locationHeading;
 }

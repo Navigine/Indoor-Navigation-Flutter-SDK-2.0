@@ -216,7 +216,7 @@ class MeasurementManager$Impl extends __lib.NativeBase implements MeasurementMan
     @override
     String addLocationGenerator(double latMin, double latMax, double lonMin, double lonMax, double accMin, double accMax, int timeout) {
         final _addLocationGeneratorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Double, Double, Double, Double, Double, Double, Int32),
+            Pointer<Void> Function(Pointer<Void>, Double, Double, Double, Double, Float, Float, Int32),
             Pointer<Void> Function(Pointer<Void>, double, double, double, double, double, double, int)
           >('navigine_sdk_flutter_MeasurementManager_addLocationGenerator__LatMin_LatMax_LonMin_LonMax_AccMin_AccMax_Timeout'));
         final _latMinHandle = navigine_sdk_flutter_double_ToFfi(latMin);

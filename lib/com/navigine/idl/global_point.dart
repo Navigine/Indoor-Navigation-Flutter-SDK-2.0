@@ -15,16 +15,33 @@ part 'global_point.impl.dart';
  *
  * Referenced from @see GeometryUtils "GeometryUtils", @see NavigationManager "NavigationManager", @see Position "Position", @see Sublocation "Sublocation".
  *
+ *
+ *
+ * Dart code snippet:
+ * @snippet geometry_utils_example.dart dart_GlobalPoint_constructor
+ *
  */
 class GlobalPoint {
     /// @brief Default constructor
     GlobalPoint(this.latitude, this.longitude);
     /**
      * @brief point's latitude.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GlobalPoint_getLatitude
+     *
      */
     double latitude;
     /**
      * @brief point's longitude.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GlobalPoint_getLongitude
+     *
      */
     double longitude;
 }

@@ -25,11 +25,21 @@ abstract class MapObjectPickResult implements Finalizable {
      *
      * @brief Location of the picked map object @see LocationPoint "LocationPoint".
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_interaction_example.dart dart_MapObjectPickResult_getPoint
+     *
      */
     LocationPoint get point;
     /**
      *
      * @brief Picked map object @see MapObject "MapObject".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_interaction_example.dart dart_MapObjectPickResult_getMapObject
      *
      */
     MapObject get mapObject;

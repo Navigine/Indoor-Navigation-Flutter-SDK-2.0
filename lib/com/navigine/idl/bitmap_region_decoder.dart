@@ -25,6 +25,11 @@ abstract class BitmapRegionDecoder implements Finalizable {
      * @param data raw image data (could be raw svg string)
      * @return nstance of decoder, which could be used for decoding byte array to bitmap.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet bitmap_region_decoder_example.dart dart_BitmapRegionDecoder_newInstance
+     *
      */
     static BitmapRegionDecoder newInstance(Uint8List data) => $prototype.newInstance(data);
 
@@ -35,8 +40,13 @@ abstract class BitmapRegionDecoder implements Finalizable {
      * @param sampleSize if set to a value > 1, requests the decoder to subsample the original image, returning a smaller image to save memory.
      * @return constructed bitmap
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet bitmap_region_decoder_example.dart dart_BitmapRegionDecoder_decodeRegion
+     *
      */
-    ImageWrapper decodeRegion(Rectangle rect, int sampleSize);
+    ImageWrapper decodeRegion(Rectangle rect, double sampleSize);
 
 
 

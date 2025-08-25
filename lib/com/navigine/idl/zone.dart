@@ -22,30 +22,72 @@ abstract class Zone implements Finalizable {
 
     /**
      * @brief zone's list of points composing the polygonal zone @see Polygon "Polygon"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Zone_getPolygon
+     *
      */
     Polygon get polygon;
     /**
      * @brief zone's location identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Zone_getLocationId
+     *
      */
     int get locationId;
     /**
      * @brief zone's sublocationId identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Zone_getSublocationId
+     *
      */
     int get sublocationId;
     /**
      * @brief zone's identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Zone_getId
+     *
      */
     int get id;
     /**
      * @brief zone's name.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Zone_getName
+     *
      */
     String get name;
     /**
      * @brief zone's color.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Zone_getColor
+     *
      */
     String get color;
     /**
      * @brief zone's alias.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Zone_getAlias
+     *
      */
     String get alias;
 

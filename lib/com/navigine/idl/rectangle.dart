@@ -13,6 +13,12 @@ part 'rectangle.impl.dart';
  *
  * @brief A rectangle with specified origin and size.
  *
+ *
+ *
+ *
+ * Dart code snippet:
+ * @snippet bitmap_region_decoder_example.dart dart_Rectangle_constructor
+ *
  */
 class Rectangle {
     /// @brief Default constructor
@@ -22,23 +28,22 @@ class Rectangle {
      * @brief rectangle's origin `x` coordinate.
      *
      */
-    double x;
+    int x;
     /**
      *
      * @brief rectangle's origin `y` coordinate.
-     *
      */
-    double y;
+    int y;
     /**
      *
      * @brief rectangle's width.
      *
      */
-    double width;
+    int width;
     /**
      *
      * @brief rectangle's height.
      *
      */
-    double height;
+    int height;
 }

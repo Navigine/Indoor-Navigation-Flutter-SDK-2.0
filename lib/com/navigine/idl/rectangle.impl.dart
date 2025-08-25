@@ -3,8 +3,8 @@ part of 'rectangle.dart';
 // Rectangle "private" section, not exported.
 
 final _navigine_sdk_flutter_Rectangle_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Float, Float, Float, Float),
-    Pointer<Void> Function(double, double, double, double)
+    Pointer<Void> Function(Int32, Int32, Int32, Int32),
+    Pointer<Void> Function(int, int, int, int)
   >('navigine_sdk_flutter_Rectangle_create_handle'));
 
 final _navigine_sdk_flutter_Rectangle_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
@@ -13,36 +13,36 @@ final _navigine_sdk_flutter_Rectangle_ReleaseHandle = __lib.catchArgumentError((
   >('navigine_sdk_flutter_Rectangle_release_handle'));
 
 final _navigine_sdk_flutter_Rectangle_GetFieldx = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Float Function(Pointer<Void>),
-    double Function(Pointer<Void>)
+    Int32 Function(Pointer<Void>),
+    int Function(Pointer<Void>)
   >('navigine_sdk_flutter_Rectangle_get_field_x'));
 
 final _navigine_sdk_flutter_Rectangle_GetFieldy = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Float Function(Pointer<Void>),
-    double Function(Pointer<Void>)
+    Int32 Function(Pointer<Void>),
+    int Function(Pointer<Void>)
   >('navigine_sdk_flutter_Rectangle_get_field_y'));
 
 final _navigine_sdk_flutter_Rectangle_GetFieldwidth = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Float Function(Pointer<Void>),
-    double Function(Pointer<Void>)
+    Int32 Function(Pointer<Void>),
+    int Function(Pointer<Void>)
   >('navigine_sdk_flutter_Rectangle_get_field_width'));
 
 final _navigine_sdk_flutter_Rectangle_GetFieldheight = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Float Function(Pointer<Void>),
-    double Function(Pointer<Void>)
+    Int32 Function(Pointer<Void>),
+    int Function(Pointer<Void>)
   >('navigine_sdk_flutter_Rectangle_get_field_height'));
 
 
 Pointer<Void> navigine_sdk_flutter_Rectangle_ToFfi(Rectangle value) {
-    final _xHandle = navigine_sdk_flutter_double_ToFfi(value.x);
-    final _yHandle = navigine_sdk_flutter_double_ToFfi(value.y);
-    final _widthHandle = navigine_sdk_flutter_double_ToFfi(value.width);
-    final _heightHandle = navigine_sdk_flutter_double_ToFfi(value.height);
+    final _xHandle = navigine_sdk_flutter_int_ToFfi(value.x);
+    final _yHandle = navigine_sdk_flutter_int_ToFfi(value.y);
+    final _widthHandle = navigine_sdk_flutter_int_ToFfi(value.width);
+    final _heightHandle = navigine_sdk_flutter_int_ToFfi(value.height);
     final _result = _navigine_sdk_flutter_Rectangle_CreateHandle(_xHandle, _yHandle, _widthHandle, _heightHandle);
-    navigine_sdk_flutter_double_ReleaseFfiHandle(_xHandle);
-    navigine_sdk_flutter_double_ReleaseFfiHandle(_yHandle);
-    navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
-    navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
+    navigine_sdk_flutter_int_ReleaseFfiHandle(_xHandle);
+    navigine_sdk_flutter_int_ReleaseFfiHandle(_yHandle);
+    navigine_sdk_flutter_int_ReleaseFfiHandle(_widthHandle);
+    navigine_sdk_flutter_int_ReleaseFfiHandle(_heightHandle);
     return _result;
 }
 
@@ -52,15 +52,15 @@ Rectangle navigine_sdk_flutter_Rectangle_FromFfi(Pointer<Void> handle) {
     final _widthHandle = _navigine_sdk_flutter_Rectangle_GetFieldwidth(handle);
     final _heightHandle = _navigine_sdk_flutter_Rectangle_GetFieldheight(handle);
     final _result = Rectangle(
-      navigine_sdk_flutter_double_FromFfi(_xHandle),
-      navigine_sdk_flutter_double_FromFfi(_yHandle),
-      navigine_sdk_flutter_double_FromFfi(_widthHandle),
-      navigine_sdk_flutter_double_FromFfi(_heightHandle),
+      navigine_sdk_flutter_int_FromFfi(_xHandle),
+      navigine_sdk_flutter_int_FromFfi(_yHandle),
+      navigine_sdk_flutter_int_FromFfi(_widthHandle),
+      navigine_sdk_flutter_int_FromFfi(_heightHandle),
     );
-      navigine_sdk_flutter_double_ReleaseFfiHandle(_xHandle);
-      navigine_sdk_flutter_double_ReleaseFfiHandle(_yHandle);
-      navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
-      navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
+      navigine_sdk_flutter_int_ReleaseFfiHandle(_xHandle);
+      navigine_sdk_flutter_int_ReleaseFfiHandle(_yHandle);
+      navigine_sdk_flutter_int_ReleaseFfiHandle(_widthHandle);
+      navigine_sdk_flutter_int_ReleaseFfiHandle(_heightHandle);
     return _result;
 }
 

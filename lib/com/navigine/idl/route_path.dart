@@ -32,6 +32,11 @@ abstract class RoutePath implements Finalizable {
      * @param advance Distance along the route (in meters).
      * @return The covered (passed) segment of the route (from start to advance), or nil if the segment is empty.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RoutePath_head
+     *
      */
     RoutePath head(double advance);
 
@@ -45,21 +50,44 @@ abstract class RoutePath implements Finalizable {
      * @param advance Distance along the route (in meters).
      * @return The remaining segment of the route (from advance to end), or nil if the segment is empty.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RoutePath_tail
+     *
      */
     RoutePath tail(double advance);
 
     /**
      * @brief Total lenth of the route path in meters.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RoutePath_getLength
+     *
      */
     double get length;
     /**
      * @brief List of consecutive incoming events @see RouteEvent "RouteEvent".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RoutePath_getEvents
+     *
      */
     List<RouteEvent> get events;
     /**
      * @brief List of consecutive points. @see LocationPoint.
      *
      * @note points could be on different sublocations if target sublocation is different from the starting one
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RoutePath_getPoints
+     *
      */
     List<LocationPoint> get points;
 

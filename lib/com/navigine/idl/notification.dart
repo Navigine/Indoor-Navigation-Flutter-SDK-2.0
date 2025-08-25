@@ -22,18 +22,42 @@ abstract class Notification implements Finalizable {
 
     /**
      * @brief notification's unique identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet notification_manager_example.dart dart_Notification_getId
+     *
      */
     int get id;
     /**
      * @brief notification's title.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet notification_manager_example.dart dart_Notification_getTitle
+     *
      */
     String get title;
     /**
      * @brief notification's content.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet notification_manager_example.dart dart_Notification_getContent
+     *
      */
     String get content;
     /**
      * @brief notification's image url if specified.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet notification_manager_example.dart dart_Notification_getImageUrl
+     *
      */
     String? get imageUrl;
 

@@ -122,34 +122,6 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
 
     @override
-    FlatIconMapObject addFlatIconMapObject() {
-        final _addFlatIconMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, ),
-            Pointer<Void> Function(Pointer<Void>, )
-          >('navigine_sdk_flutter_LocationWindow_addFlatIconMapObject'));
-        final _handle = this.handle;
-        final __resultHandle = _addFlatIconMapObjectFfi(_handle, );
-        final _result = navigine_sdk_flutter_FlatIconMapObject_FromFfi(__resultHandle);
-        navigine_sdk_flutter_FlatIconMapObject_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
-    @override
-    bool removeFlatIconMapObject(FlatIconMapObject flatIconMapObject) {
-        final _removeFlatIconMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_LocationWindow_removeFlatIconMapObject__FlatIconMapObject'));
-        final _flatIconMapObjectHandle = navigine_sdk_flutter_FlatIconMapObject_ToFfi(flatIconMapObject);
-        final _handle = this.handle;
-        final __resultHandle = _removeFlatIconMapObjectFfi(_handle, _flatIconMapObjectHandle);
-        navigine_sdk_flutter_FlatIconMapObject_ReleaseFfiHandle(_flatIconMapObjectHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
-    @override
     PolygonMapObject addPolygonMapObject() {
         final _addPolygonMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, ),
@@ -200,6 +172,34 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
         final _handle = this.handle;
         final __resultHandle = _removePolylineMapObjectFfi(_handle, _polylineMapObjectHandle);
         navigine_sdk_flutter_PolylineMapObject_ReleaseFfiHandle(_polylineMapObjectHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    DottedPolylineMapObject addDottedPolylineMapObject() {
+        final _addDottedPolylineMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, ),
+            Pointer<Void> Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_addDottedPolylineMapObject'));
+        final _handle = this.handle;
+        final __resultHandle = _addDottedPolylineMapObjectFfi(_handle, );
+        final _result = navigine_sdk_flutter_DottedPolylineMapObject_FromFfi(__resultHandle);
+        navigine_sdk_flutter_DottedPolylineMapObject_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool removeDottedPolylineMapObject(DottedPolylineMapObject dottedPolylineMapObject) {
+        final _removeDottedPolylineMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_removeDottedPolylineMapObject__DottedPolylineMapObject'));
+        final _dottedPolylineMapObjectHandle = navigine_sdk_flutter_DottedPolylineMapObject_ToFfi(dottedPolylineMapObject);
+        final _handle = this.handle;
+        final __resultHandle = _removeDottedPolylineMapObjectFfi(_handle, _dottedPolylineMapObjectHandle);
+        navigine_sdk_flutter_DottedPolylineMapObject_ReleaseFfiHandle(_dottedPolylineMapObjectHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;
@@ -328,6 +328,24 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
 
     @override
+    void moveTo(Camera camera, int duration, AnimationType animationType, CameraCallback callback) {
+        final _moveToFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>, Int32, Uint32, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>, int, int, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_moveTo__Camera_Duration_AnimationType_Callback'));
+        final _cameraHandle = navigine_sdk_flutter_Camera_ToFfi(camera);
+        final _durationHandle = navigine_sdk_flutter_int_ToFfi(duration);
+        final _animationTypeHandle = navigine_sdk_flutter_AnimationType_ToFfi(animationType);
+        final _callbackHandle = navigine_sdk_flutter_CameraCallback_ToFfi(callback);
+        final _handle = this.handle;
+        _moveToFfi(_handle, _cameraHandle, _durationHandle, _animationTypeHandle, _callbackHandle);
+        navigine_sdk_flutter_Camera_ReleaseFfiHandle(_cameraHandle);
+        navigine_sdk_flutter_int_ReleaseFfiHandle(_durationHandle);
+        navigine_sdk_flutter_AnimationType_ReleaseFfiHandle(_animationTypeHandle);
+        navigine_sdk_flutter_CameraCallback_ReleaseFfiHandle(_callbackHandle);
+    }
+
+    @override
     bool selectMapFeature(String featureId) {
         final _selectMapFeatureFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Pointer<Void>),
@@ -404,24 +422,6 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;
     }
-    @override
-    void moveTo(Camera camera, int duration, AnimationType animationType, CameraCallback callback) {
-        final _moveToFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Pointer<Void>, Int32, Uint32, Pointer<Void>),
-            void Function(Pointer<Void>, Pointer<Void>, int, int, Pointer<Void>)
-          >('navigine_sdk_flutter_LocationWindow_moveTo__Camera_Duration_AnimationType_Callback'));
-        final _cameraHandle = navigine_sdk_flutter_Camera_ToFfi(camera);
-        final _durationHandle = navigine_sdk_flutter_int_ToFfi(duration);
-        final _animationTypeHandle = navigine_sdk_flutter_AnimationType_ToFfi(animationType);
-        final _callbackHandle = navigine_sdk_flutter_CameraCallback_ToFfi(callback);
-        final _handle = this.handle;
-        _moveToFfi(_handle, _cameraHandle, _durationHandle, _animationTypeHandle, _callbackHandle);
-        navigine_sdk_flutter_Camera_ReleaseFfiHandle(_cameraHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_durationHandle);
-        navigine_sdk_flutter_AnimationType_ReleaseFfiHandle(_animationTypeHandle);
-        navigine_sdk_flutter_CameraCallback_ReleaseFfiHandle(_callbackHandle);
-    }
-
 
     double get zoomFactor {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<

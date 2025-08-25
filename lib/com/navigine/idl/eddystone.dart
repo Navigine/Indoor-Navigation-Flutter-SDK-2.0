@@ -24,34 +24,82 @@ abstract class Eddystone implements Finalizable {
 
     /**
      * @brief eddystone's X and Y coordinates in meters as @see Point "Point" (within the sublocation).
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Eddystone_getPoint
+     *
      */
     Point get point;
     /**
      * @brief eddystone's location identifier.
+     *
+     *
+     *
+     * Dart code snippet
+     * @snippet location_manager_example.dart dart_Eddystone_getLocationId
+     *
      */
     int get locationId;
     /**
      * @brief eddystone's sublocation identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Eddystone_getSublocationId
+     *
      */
     int get sublocationId;
     /**
      * @brief eddystone's name.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Eddystone_getName
+     *
      */
     String get name;
     /**
      * @brief eddystone's namespaceId.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Eddystone_getNamespaceId
+     *
      */
     String get namespaceId;
     /**
      * @brief eddystone's instanceId.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Eddystone_getInstanceId
+     *
      */
     String get instanceId;
     /**
      * @brief eddystone's power.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Eddystone_getPower
+     *
      */
     int? get power;
     /**
      * @brief eddystone status. @see TransmitterStatus "TransmitterStatus"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Eddystone_getStatus
+     *
      */
     TransmitterStatus get status;
 

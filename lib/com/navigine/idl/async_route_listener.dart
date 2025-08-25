@@ -6,6 +6,7 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
+import 'package:navigine_sdk/com/navigine/idl/route_status.dart';
 
 part 'async_route_listener.impl.dart';
 /**
@@ -27,10 +28,16 @@ abstract class AsyncRouteListener {
      * @brief Called when new route was built or
      *     old route was rebuilt after missing previouse one.
      *
-     * @param currentPath @see RoutePath "RoutePath" from current postion to destination point
+     * @param status @see RouteStatus "RouteStatus" indicating the current router state
+     * @param currentPath @see RoutePath "RoutePath" from current postion to destination point (null if status is not new_route)
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteChanged
      *
      */
-    void onRouteChanged(RoutePath currentPath);
+    void onRouteChanged(RouteStatus status, RoutePath currentPath);
 
     /**
      * @brief Called when user has progressed along the route
@@ -38,6 +45,11 @@ abstract class AsyncRouteListener {
      *
      * @param distance distance from the beginning or the route (unit meters)
      * @param point current location point on the route
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteAdvanced
      *
      */
     void onRouteAdvanced(double distance, LocationPoint point);

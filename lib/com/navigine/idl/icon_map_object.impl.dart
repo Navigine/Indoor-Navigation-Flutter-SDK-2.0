@@ -92,21 +92,6 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
     }
 
     @override
-    bool setStyle(String style) {
-        final _setStyleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_MapObject_setStyle__Style'));
-        final _styleHandle = navigine_sdk_flutter_String_ToFfi(style);
-        final _handle = this.handle;
-        final __resultHandle = _setStyleFfi(_handle, _styleHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_styleHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
-    @override
     void setData(Uint8List data) {
         final _setDataFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Void Function(Pointer<Void>, Pointer<Void>),
@@ -128,6 +113,21 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _handle = this.handle;
         final __resultHandle = _setTitleFfi(_handle, _titleHandle);
         navigine_sdk_flutter_String_ReleaseFfiHandle(_titleHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setAlpha(double alpha) {
+        final _setAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_MapObject_setAlpha__Alpha'));
+        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
+        final _handle = this.handle;
+        final __resultHandle = _setAlphaFfi(_handle, _alphaHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;
@@ -195,6 +195,119 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final __resultHandle = _setSizeFfi(_handle, _widthHandle, _heightHandle);
         navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
         navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setCollisionEnabled(bool enabled) {
+        final _setCollisionEnabledFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Uint8),
+            int Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_IconMapObject_setCollisionEnabled__Enabled'));
+        final _enabledHandle = navigine_sdk_flutter_bool_ToFfi(enabled);
+        final _handle = this.handle;
+        final __resultHandle = _setCollisionEnabledFfi(_handle, _enabledHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(_enabledHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setAngle(double angle) {
+        final _setAngleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_IconMapObject_setAngle__Angle'));
+        final _angleHandle = navigine_sdk_flutter_double_ToFfi(angle);
+        final _handle = this.handle;
+        final __resultHandle = _setAngleFfi(_handle, _angleHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_angleHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setAngleAnimated(double angle, double duration, AnimationType type) {
+        final _setAngleAnimatedFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float, Float, Uint32),
+            int Function(Pointer<Void>, double, double, int)
+          >('navigine_sdk_flutter_IconMapObject_setAngleAnimated__Angle_Duration_Type'));
+        final _angleHandle = navigine_sdk_flutter_double_ToFfi(angle);
+        final _durationHandle = navigine_sdk_flutter_double_ToFfi(duration);
+        final _typeHandle = navigine_sdk_flutter_AnimationType_ToFfi(type);
+        final _handle = this.handle;
+        final __resultHandle = _setAngleAnimatedFfi(_handle, _angleHandle, _durationHandle, _typeHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_angleHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_durationHandle);
+        navigine_sdk_flutter_AnimationType_ReleaseFfiHandle(_typeHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setBuffer(double width, double height) {
+        final _setBufferFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float, Float),
+            int Function(Pointer<Void>, double, double)
+          >('navigine_sdk_flutter_IconMapObject_setBuffer__Width_Height'));
+        final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
+        final _heightHandle = navigine_sdk_flutter_double_ToFfi(height);
+        final _handle = this.handle;
+        final __resultHandle = _setBufferFfi(_handle, _widthHandle, _heightHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setOffset(double width, double height) {
+        final _setOffsetFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float, Float),
+            int Function(Pointer<Void>, double, double)
+          >('navigine_sdk_flutter_IconMapObject_setOffset__Width_Height'));
+        final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
+        final _heightHandle = navigine_sdk_flutter_double_ToFfi(height);
+        final _handle = this.handle;
+        final __resultHandle = _setOffsetFfi(_handle, _widthHandle, _heightHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setPriority(double priority) {
+        final _setPriorityFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_IconMapObject_setPriority__Priority'));
+        final _priorityHandle = navigine_sdk_flutter_double_ToFfi(priority);
+        final _handle = this.handle;
+        final __resultHandle = _setPriorityFfi(_handle, _priorityHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_priorityHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setFlat(bool flat) {
+        final _setFlatFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Uint8),
+            int Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_IconMapObject_setFlat__Flat'));
+        final _flatHandle = navigine_sdk_flutter_bool_ToFfi(flat);
+        final _handle = this.handle;
+        final __resultHandle = _setFlatFfi(_handle, _flatHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(_flatHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;

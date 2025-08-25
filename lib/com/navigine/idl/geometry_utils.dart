@@ -27,6 +27,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param from start point of calculation @see GlobalPoint "GlobalPoint"
      * @param to end point of calculation @see GlobalPoint "GlobalPoint"
      * @return distance in meters
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_distanceBetweenGlobalPoints
+     *
      */
     static double distanceBetweenGlobalPoints(GlobalPoint from, GlobalPoint to) => $prototype.distanceBetweenGlobalPoints(from, to);
 
@@ -35,6 +41,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param from start point of calculation @see Point "Point"
      * @param to end point of calculation @see Point "Point"
      * @return distance in meters
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_distanceBetweenPoints
+     *
      */
     static double distanceBetweenPoints(Point from, Point to) => $prototype.distanceBetweenPoints(from, to);
 
@@ -42,6 +54,12 @@ abstract class GeometryUtils implements Finalizable {
      * @brief Get length of segment
      * @param segment segment object for calculation @see Segment "Segment"
      * @return length in meters
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_segmentLength
+     *
      */
     static double segmentLength(Segment segment) => $prototype.segmentLength(segment);
 
@@ -49,6 +67,12 @@ abstract class GeometryUtils implements Finalizable {
      * @brief Get polygon area
      * @param polygon polygon object for calculation @see Polygon "Polygon"
      * @return area in meters
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_polygonArea
+     *
      */
     static double polygonArea(Polygon polygon) => $prototype.polygonArea(polygon);
 
@@ -56,6 +80,12 @@ abstract class GeometryUtils implements Finalizable {
      * @brief Get polygon geometric center
      * @param polygon polygon object for calculation @see Polygon "Polygon"
      * @return center point @see Point "Point"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_polygonCenter
+     *
      */
     static Point polygonCenter(Polygon polygon) => $prototype.polygonCenter(polygon);
 
@@ -64,6 +94,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param polygon polygon object in which looking for contents @see Polygon "Polygon"
      * @param point checking point object @see Point "Point"
      * @return contains or not
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_polygonContainsPoint
+     *
      */
     static bool polygonContainsPoint(Polygon polygon, Point point) => $prototype.polygonContainsPoint(polygon, point);
 
@@ -72,6 +108,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param segment start segment of calculation @see Segment "Segment"
      * @param point end point of calculation @see Point "Point"
      * @return distance in meters
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_segmentPointDistance
+     *
      */
     static double segmentPointDistance(Segment segment, Point point) => $prototype.segmentPointDistance(segment, point);
 
@@ -80,6 +122,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param segment1 first segment of calculation @see Segment "Segment"
      * @param segment2 second segment of calculation @see Segment "Segment"
      * @return intersects or not
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_segmentIntersectsSegment
+     *
      */
     static bool segmentIntersectsSegment(Segment segment1, Segment segment2) => $prototype.segmentIntersectsSegment(segment1, segment2);
 
@@ -88,6 +136,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param segment1 first segment of calculation @see Segment "Segment"
      * @param segment2 second segment of calculation @see Segment "Segment"
      * @return intersection point @see Point "Point"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_segmentIntersectionSegment
+     *
      */
     static Point segmentIntersectionSegment(Segment segment1, Segment segment2) => $prototype.segmentIntersectionSegment(segment1, segment2);
 
@@ -96,6 +150,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param segment1 first segment of calculation @see Segment "Segment"
      * @param segment2 second segment of calculation @see Segment "Segment"
      * @return division ratio
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_divisionRatioBySegment
+     *
      */
     static double divisionRatioBySegment(Segment segment1, Segment segment2) => $prototype.divisionRatioBySegment(segment1, segment2);
 
@@ -104,6 +164,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param segment segment of calculation @see Segment "Segment"
      * @param r division ratio
      * @return ratio point @see Point "Point"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_getRatioPoint
+     *
      */
     static Point getRatioPoint(Segment segment, double r) => $prototype.getRatioPoint(segment, r);
 
@@ -113,6 +179,12 @@ abstract class GeometryUtils implements Finalizable {
      * @param segment segment of calculation @see Segment "Segment"
      * @param point point of calculation @see Point "Point"
      * @return division ratio
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_GeometryUtils_getProjectionRatio
+     *
      */
     static double getProjectionRatio(Segment segment, Point point) => $prototype.getProjectionRatio(segment, point);
 

@@ -27,6 +27,11 @@ abstract class NavigationManager implements Finalizable {
      * @note Do not forget to remove listener if it is no longer needed!
      * @param listener Сorresponding @see PositionListener "PositionListener" class.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_NavigationManager_addPositionListener
+     *
      */
     void addPositionListener(PositionListener listener);
 
@@ -46,6 +51,11 @@ abstract class NavigationManager implements Finalizable {
      *
      * @brief Method is used for removing previously added @see PositionListener "PositionListener" class element.
      * @param listener Сorresponding @see PositionListener "PositionListener" class to remove.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigation_manager_example.dart dart_NavigationManager_removePositionListener
      *
      */
     void removePositionListener(PositionListener listener);

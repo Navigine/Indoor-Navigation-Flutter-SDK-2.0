@@ -26,7 +26,12 @@ abstract class LocationListener {
     /**
      *
      * @brief Called when new location version has been downloaded from server or load it from the storage
-     * @param location @see Location "Location" instance.
+     * @param location @see Location "Location" instance or nil if server url or `USER_HASH` was changed.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_LocationListener_onLocationLoaded
      *
      */
     void onLocationLoaded(Location location);
@@ -42,6 +47,11 @@ abstract class LocationListener {
      * @brief Called if unable to download location version from CMS
      * @param locationId location unique identifier in SMC.
      * @param error handled error.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_LocationListener_onLocationFailed
      *
      */
     void onLocationFailed(int locationId, Error error);

@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/navigine/idl/log_info.dart';
 import 'package:navigine_sdk/com/navigine/idl/resource_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/resource_upload_listener.dart';
 
@@ -17,7 +18,7 @@ abstract class ResourceManager implements Finalizable {
     /**
      * working with logs
      */
-    List<String> getLogsList();
+    List<LogInfo> getLogsList();
 
     void removeLogFile(String fileName);
 

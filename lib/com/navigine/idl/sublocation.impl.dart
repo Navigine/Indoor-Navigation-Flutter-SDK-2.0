@@ -567,103 +567,103 @@ List<Eddystone>? navigine_sdk_flutter_List_Eddystone_FromFfiNullable(Pointer<Voi
 void navigine_sdk_flutter_List_Eddystone_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
   _navigine_sdk_flutter_List_Eddystone_ReleaseHandleNullable(handle);
 
-final _navigine_sdk_flutter_List_ReferencePoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
     Pointer<Void> Function()
-  >('navigine_sdk_flutter_List_ReferencePoint_create_handle'));
+  >('navigine_sdk_flutter_List_Wifi_create_handle'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_release_handle'));
+  >('navigine_sdk_flutter_List_Wifi_release_handle'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>, Pointer<Void>),
     void Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_insert'));
+  >('navigine_sdk_flutter_List_Wifi_insert'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator'));
+  >('navigine_sdk_flutter_List_Wifi_iterator'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_release_handle'));
+  >('navigine_sdk_flutter_List_Wifi_iterator_release_handle'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Int8 Function(Pointer<Void>, Pointer<Void>),
     int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_is_valid'));
+  >('navigine_sdk_flutter_List_Wifi_iterator_is_valid'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_increment'));
+  >('navigine_sdk_flutter_List_Wifi_iterator_increment'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_get'));
+  >('navigine_sdk_flutter_List_Wifi_iterator_get'));
 
-Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfi(List<ReferencePoint> value)  {
-    final _result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandle();
+Pointer<Void> navigine_sdk_flutter_List_Wifi_ToFfi(List<Wifi> value)  {
+    final _result = _navigine_sdk_flutter_List_Wifi_CreateHandle();
     for (final element in value)  {
-        final _elementHandle = navigine_sdk_flutter_ReferencePoint_ToFfi(element);
-        _navigine_sdk_flutter_List_ReferencePoint_Insert(_result, _elementHandle);
-        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
+        final _elementHandle = navigine_sdk_flutter_Wifi_ToFfi(element);
+        _navigine_sdk_flutter_List_Wifi_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_Wifi_ReleaseFfiHandle(_elementHandle);
     }
     return _result;
 }
 
-List<ReferencePoint> navigine_sdk_flutter_List_ReferencePoint_FromFfi(Pointer<Void> handle)  {
-    final result = List<ReferencePoint>.empty(growable: true);
-    final _iteratorHandle = _navigine_sdk_flutter_List_ReferencePoint_Iterator(handle);
-    while (_navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _elementHandle = _navigine_sdk_flutter_List_ReferencePoint_IteratorGet(_iteratorHandle);
-        result.add(navigine_sdk_flutter_ReferencePoint_FromFfi(_elementHandle));
-        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
-        _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement(_iteratorHandle);
+List<Wifi> navigine_sdk_flutter_List_Wifi_FromFfi(Pointer<Void> handle)  {
+    final result = List<Wifi>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_Wifi_Iterator(handle);
+    while (_navigine_sdk_flutter_List_Wifi_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_Wifi_IteratorGet(_iteratorHandle);
+        result.add(navigine_sdk_flutter_Wifi_FromFfi(_elementHandle));
+        navigine_sdk_flutter_Wifi_ReleaseFfiHandle(_elementHandle);
+        _navigine_sdk_flutter_List_Wifi_IteratorIncrement(_iteratorHandle);
     }
     return result;
 }
 
-void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle(handle);
+void navigine_sdk_flutter_List_Wifi_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Wifi_ReleaseHandle(handle);
 
-final _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_create_handle_nullable'));
+  >('navigine_sdk_flutter_List_Wifi_create_handle_nullable'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_release_handle_nullable'));
+  >('navigine_sdk_flutter_List_Wifi_release_handle_nullable'));
 
-final _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_Wifi_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_get_value_nullable'));
+  >('navigine_sdk_flutter_List_Wifi_get_value_nullable'));
 
-Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfiNullable(List<ReferencePoint>? value)  {
+Pointer<Void> navigine_sdk_flutter_List_Wifi_ToFfiNullable(List<Wifi>? value)  {
     if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_List_ReferencePoint_ToFfi(value);
-    final result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
+    final _handle = navigine_sdk_flutter_List_Wifi_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_Wifi_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_Wifi_ReleaseFfiHandle(_handle);
     return result;
 }
 
-List<ReferencePoint>? navigine_sdk_flutter_List_ReferencePoint_FromFfiNullable(Pointer<Void> handle)  {
+List<Wifi>? navigine_sdk_flutter_List_Wifi_FromFfiNullable(Pointer<Void> handle)  {
     if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_List_ReferencePoint_FromFfi(_handle);
-    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
+    final _handle = _navigine_sdk_flutter_List_Wifi_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_Wifi_FromFfi(_handle);
+    navigine_sdk_flutter_List_Wifi_ReleaseFfiHandle(_handle);
     return result;
 }
 
-void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable(handle);
+void navigine_sdk_flutter_List_Wifi_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_Wifi_ReleaseHandleNullable(handle);
 
 final _navigine_sdk_flutter_List_Beacon_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
@@ -763,103 +763,103 @@ List<Beacon>? navigine_sdk_flutter_List_Beacon_FromFfiNullable(Pointer<Void> han
 void navigine_sdk_flutter_List_Beacon_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
   _navigine_sdk_flutter_List_Beacon_ReleaseHandleNullable(handle);
 
-final _navigine_sdk_flutter_List_Wifi_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
     Pointer<Void> Function()
-  >('navigine_sdk_flutter_List_Wifi_create_handle'));
+  >('navigine_sdk_flutter_List_ReferencePoint_create_handle'));
 
-final _navigine_sdk_flutter_List_Wifi_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_release_handle'));
+  >('navigine_sdk_flutter_List_ReferencePoint_release_handle'));
 
-final _navigine_sdk_flutter_List_Wifi_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>, Pointer<Void>),
     void Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_insert'));
+  >('navigine_sdk_flutter_List_ReferencePoint_insert'));
 
-final _navigine_sdk_flutter_List_Wifi_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_iterator'));
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator'));
 
-final _navigine_sdk_flutter_List_Wifi_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_iterator_release_handle'));
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_release_handle'));
 
-final _navigine_sdk_flutter_List_Wifi_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Int8 Function(Pointer<Void>, Pointer<Void>),
     int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_iterator_is_valid'));
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_is_valid'));
 
-final _navigine_sdk_flutter_List_Wifi_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_iterator_increment'));
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_increment'));
 
-final _navigine_sdk_flutter_List_Wifi_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_iterator_get'));
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_get'));
 
-Pointer<Void> navigine_sdk_flutter_List_Wifi_ToFfi(List<Wifi> value)  {
-    final _result = _navigine_sdk_flutter_List_Wifi_CreateHandle();
+Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfi(List<ReferencePoint> value)  {
+    final _result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandle();
     for (final element in value)  {
-        final _elementHandle = navigine_sdk_flutter_Wifi_ToFfi(element);
-        _navigine_sdk_flutter_List_Wifi_Insert(_result, _elementHandle);
-        navigine_sdk_flutter_Wifi_ReleaseFfiHandle(_elementHandle);
+        final _elementHandle = navigine_sdk_flutter_ReferencePoint_ToFfi(element);
+        _navigine_sdk_flutter_List_ReferencePoint_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
     }
     return _result;
 }
 
-List<Wifi> navigine_sdk_flutter_List_Wifi_FromFfi(Pointer<Void> handle)  {
-    final result = List<Wifi>.empty(growable: true);
-    final _iteratorHandle = _navigine_sdk_flutter_List_Wifi_Iterator(handle);
-    while (_navigine_sdk_flutter_List_Wifi_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _elementHandle = _navigine_sdk_flutter_List_Wifi_IteratorGet(_iteratorHandle);
-        result.add(navigine_sdk_flutter_Wifi_FromFfi(_elementHandle));
-        navigine_sdk_flutter_Wifi_ReleaseFfiHandle(_elementHandle);
-        _navigine_sdk_flutter_List_Wifi_IteratorIncrement(_iteratorHandle);
+List<ReferencePoint> navigine_sdk_flutter_List_ReferencePoint_FromFfi(Pointer<Void> handle)  {
+    final result = List<ReferencePoint>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_ReferencePoint_Iterator(handle);
+    while (_navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_ReferencePoint_IteratorGet(_iteratorHandle);
+        result.add(navigine_sdk_flutter_ReferencePoint_FromFfi(_elementHandle));
+        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
+        _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement(_iteratorHandle);
     }
     return result;
 }
 
-void navigine_sdk_flutter_List_Wifi_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Wifi_ReleaseHandle(handle);
+void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle(handle);
 
-final _navigine_sdk_flutter_List_Wifi_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_create_handle_nullable'));
+  >('navigine_sdk_flutter_List_ReferencePoint_create_handle_nullable'));
 
-final _navigine_sdk_flutter_List_Wifi_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_release_handle_nullable'));
+  >('navigine_sdk_flutter_List_ReferencePoint_release_handle_nullable'));
 
-final _navigine_sdk_flutter_List_Wifi_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Wifi_get_value_nullable'));
+  >('navigine_sdk_flutter_List_ReferencePoint_get_value_nullable'));
 
-Pointer<Void> navigine_sdk_flutter_List_Wifi_ToFfiNullable(List<Wifi>? value)  {
+Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfiNullable(List<ReferencePoint>? value)  {
     if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_List_Wifi_ToFfi(value);
-    final result = _navigine_sdk_flutter_List_Wifi_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_List_Wifi_ReleaseFfiHandle(_handle);
+    final _handle = navigine_sdk_flutter_List_ReferencePoint_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
     return result;
 }
 
-List<Wifi>? navigine_sdk_flutter_List_Wifi_FromFfiNullable(Pointer<Void> handle)  {
+List<ReferencePoint>? navigine_sdk_flutter_List_ReferencePoint_FromFfiNullable(Pointer<Void> handle)  {
     if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_List_Wifi_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_List_Wifi_FromFfi(_handle);
-    navigine_sdk_flutter_List_Wifi_ReleaseFfiHandle(_handle);
+    final _handle = _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_ReferencePoint_FromFfi(_handle);
+    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
     return result;
 }
 
-void navigine_sdk_flutter_List_Wifi_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_List_Wifi_ReleaseHandleNullable(handle);
+void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable(handle);
 
 final _navigine_sdk_flutter_List_Venue_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),

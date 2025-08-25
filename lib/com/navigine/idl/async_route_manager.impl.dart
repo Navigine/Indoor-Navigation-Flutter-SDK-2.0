@@ -39,6 +39,25 @@ class AsyncRouteManager$Impl extends __lib.NativeBase implements AsyncRouteManag
     }
 
     @override
+    RouteSession createRouteSessionWithTag(LocationPoint wayPoint, RouteOptions routeOptions, String tag) {
+        final _createRouteSessionWithTagFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_AsyncRouteManager_createRouteSessionWithTag__WayPoint_RouteOptions_Tag'));
+        final _wayPointHandle = navigine_sdk_flutter_LocationPoint_ToFfi(wayPoint);
+        final _routeOptionsHandle = navigine_sdk_flutter_RouteOptions_ToFfi(routeOptions);
+        final _tagHandle = navigine_sdk_flutter_String_ToFfi(tag);
+        final _handle = this.handle;
+        final __resultHandle = _createRouteSessionWithTagFfi(_handle, _wayPointHandle, _routeOptionsHandle, _tagHandle);
+        navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_wayPointHandle);
+        navigine_sdk_flutter_RouteOptions_ReleaseFfiHandle(_routeOptionsHandle);
+        navigine_sdk_flutter_String_ReleaseFfiHandle(_tagHandle);
+        final _result = navigine_sdk_flutter_RouteSession_FromFfi(__resultHandle);
+        navigine_sdk_flutter_RouteSession_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
     void cancelRouteSession(RouteSession session) {
         final _cancelRouteSessionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Void Function(Pointer<Void>, Pointer<Void>),

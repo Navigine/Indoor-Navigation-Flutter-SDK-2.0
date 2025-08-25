@@ -29,6 +29,11 @@ abstract class CameraListener {
      * @param finished true if the camera finished moving, false otherwise.
      *      If a movement is cancelled then reason represents initiator of cancellation.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_camera_example.dart dart_Camera_constructor
+     *
      */
     void onCameraPositionChanged(CameraUpdateReason reason, bool finished);
 

@@ -27,6 +27,11 @@ abstract class NotificationListener {
      * @brief Called when iBeacon signal mathed all parameters in notification
      * @param notification notification instance created in CMS @see Notification "Notification".
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet notification_manager_example.dart dart_NotificationListener_onNotificationLoaded
+     *
      */
     void onNotificationLoaded(Notification notification);
 
@@ -34,6 +39,11 @@ abstract class NotificationListener {
      *
      * @brief Called if unable to calculate notification or network errors.
      * @param error handled error.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet notification_manager_example.dart dart_NotificationListener_onNotificationFailed
      *
      */
     void onNotificationFailed(Error error);

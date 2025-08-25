@@ -22,15 +22,33 @@ class RouteEvent {
     RouteEvent(this.type, this.value, this.distance);
     /**
      * @brief Incoming event type @see RouteEventType "RouteEventType"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteEvent_getType
+     *
      */
     RouteEventType type;
     /**
      * @brief Indicates angle in degrees for TURN_LEFT/TURN_RIGHT types @see RouteEventType "RouteEventType"
      * and target sublocation unique identifier if type is TRANSITION @see Sublocation "Sublocation"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteEvent_getValue
+     *
      */
     int value;
     /**
      * @brief distance from the beginning of the route to incoming event in meters.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteEvent_getDistance
+     *
      */
     double distance;
 }

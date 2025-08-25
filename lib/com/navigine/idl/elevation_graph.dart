@@ -21,6 +21,12 @@ abstract class ElevationGraph implements Finalizable {
 
     /**
      * @brief List of edges that connect two sublocations @see GraphEdge "GraphEdge".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_ElevationGraph_getEdges
+     *
      */
     List<GraphEdge> get edges;
 

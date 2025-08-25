@@ -28,6 +28,11 @@ abstract class LocationListListener {
      * @brief Called when new list of available locations has been downloaded from server
      * @param locationInfos dictionary of @see LocationInfo "LocationInfo"s which represents location id to location general info.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_list_manager_example.dart dart_LocationListListener_onLocationListLoaded
+     *
      */
     void onLocationListLoaded(Map<int, LocationInfo> locationInfos);
 
@@ -35,6 +40,11 @@ abstract class LocationListListener {
      *
      * @brief Called if unable to download list of available locations
      * @param error handled error.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_list_manager_example.dart dart_LocationListListener_onLocationListFailed
      *
      */
     void onLocationListFailed(Error error);

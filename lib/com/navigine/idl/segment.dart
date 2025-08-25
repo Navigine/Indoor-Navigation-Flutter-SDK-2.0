@@ -13,16 +13,33 @@ part 'segment.impl.dart';
  *
  * @brief line between two points.
  *
+ *
+ *
+ * Dart code snippet:
+ * @snippet geometry_utils_example.dart dart_Segment_constructor
+ *
  */
 class Segment {
     /// @brief Default constructor
     Segment(this.start, this.end);
     /**
      * @brief Start point of the segment.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_Segment_getStart
+     *
      */
     Point start;
     /**
      * @brief End point of the segment.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_Segment_getEnd
+     *
      */
     Point end;
 }

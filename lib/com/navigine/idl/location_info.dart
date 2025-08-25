@@ -21,14 +21,32 @@ class LocationInfo {
     LocationInfo(this.id, this.version, this.name);
     /**
      * @brief Unique location identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_list_manager_example.dart dart_LocationInfo_getId
+     *
      */
     int id;
     /**
      * @brief Current location version.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_list_manager_example.dart dart_LocationInfo_getVersion
+     *
      */
     int version;
     /**
      * @brief location name.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_list_manager_example.dart dart_LocationInfo_getName
+     *
      */
     String name;
 }

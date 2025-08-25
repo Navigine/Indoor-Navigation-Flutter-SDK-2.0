@@ -14,6 +14,12 @@ part 'camera.impl.dart';
  * @brief Class describing position of the camera.
  *
  * Referenced from @see LocationWindow "LocationWindow".
+ *
+ *
+ *
+ * Dart code snippet:
+ * @snippet location_window_camera_example.dart dart_Camera_constructor
+ *
  */
 class Camera {
     /// @brief Default constructor

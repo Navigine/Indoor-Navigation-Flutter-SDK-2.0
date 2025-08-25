@@ -16,7 +16,7 @@ final _navigine_sdk_flutter_AsyncRouteListener_SetPorts = __lib.catchArgumentErr
     Pointer<Void> Function(Pointer<Void>, int, int)
   >('navigine_sdk_flutter_AsyncRouteListener_set_ports'));
 
-int _navigine_sdk_flutter_AsyncRouteListener_onRouteChangedStatic(Pointer<Void> _obj, Pointer<Void> currentPath) {
+int _navigine_sdk_flutter_AsyncRouteListener_onRouteChangedStatic(Pointer<Void> _obj, int status, Pointer<Void> currentPath) {
     
     final listener = AsyncRouteListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -24,6 +24,7 @@ int _navigine_sdk_flutter_AsyncRouteListener_onRouteChangedStatic(Pointer<Void> 
     }
     try  {
         listener.onRouteChanged(
+          navigine_sdk_flutter_RouteStatus_FromFfi(status),
           navigine_sdk_flutter_RoutePath_FromFfi(currentPath),
         );
         
@@ -33,6 +34,7 @@ int _navigine_sdk_flutter_AsyncRouteListener_onRouteChangedStatic(Pointer<Void> 
         rethrow;
     }
     finally  {
+        navigine_sdk_flutter_RouteStatus_ReleaseFfiHandle(status);
         navigine_sdk_flutter_RoutePath_ReleaseFfiHandle(currentPath);
     }
     return 0;
@@ -83,7 +85,7 @@ extension AsyncRouteListenerImpl on AsyncRouteListener  {
 
 Pointer<Void> navigine_sdk_flutter_AsyncRouteListener_ToFfi(AsyncRouteListener value) {
     final result = _navigine_sdk_flutter_AsyncRouteListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_AsyncRouteListener_onRouteChangedStatic, __lib.unknownError),
+      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Uint32, Pointer<Void>)>(_navigine_sdk_flutter_AsyncRouteListener_onRouteChangedStatic, __lib.unknownError),
       Pointer.fromFunction<Uint8 Function(Pointer<Void>, Float, Pointer<Void>)>(_navigine_sdk_flutter_AsyncRouteListener_onRouteAdvancedStatic, __lib.unknownError),
     );
     AsyncRouteListenerImpl._pointerToListener[result] = WeakReference(value);

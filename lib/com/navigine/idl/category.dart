@@ -19,14 +19,32 @@ class Category {
     Category(this.id, this.name, this.imageUrl);
     /**
      * @brief category identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Category_getId
+     *
      */
     int id;
     /**
      * @brief category name.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Category_getName
+     *
      */
     String name;
     /**
      * @brief image source. If presented.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Category_getImageUrl
+     *
      */
     String? imageUrl;
 }

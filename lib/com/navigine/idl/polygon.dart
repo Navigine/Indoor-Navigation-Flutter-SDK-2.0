@@ -13,12 +13,23 @@ part 'polygon.impl.dart';
  *
  * @brief A polygon with specified list of points.
  *
+ *
+ *
+ * Dart code snippet:
+ * @snippet geometry_utils_example.dart dart_Polygon_constructor
+ *
  */
 class Polygon {
     /// @brief Default constructor
     Polygon(this.points);
     /**
      * @brief Ring specifying the area.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_Polygon_getPoints
+     *
      */
     List<Point> points;
 }

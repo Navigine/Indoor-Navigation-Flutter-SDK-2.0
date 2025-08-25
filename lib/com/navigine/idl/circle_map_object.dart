@@ -17,7 +17,7 @@ part 'circle_map_object.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_location_view
  *
- * @brief represents circle on location view.
+ * @brief Represents a circle on the location view.
  *
  * Referenced from @see LocationWindow "LocationWindow".
  *
@@ -26,44 +26,167 @@ abstract class CircleMapObject implements MapObject, Finalizable {
 
     /**
      *
-     * @brief Method is used to specify center of object.
-     * @param point metrics coordinate of center @see LocationPoint "LocationPoint".
-     * @return true if success, false otherwise.
+     * @brief Method is used to specify the center of the circle.
+     * @param point Metrics coordinates of the center @see LocationPoint "LocationPoint".
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setPosition
      *
      */
     bool setPosition(LocationPoint point);
 
     /**
      *
-     * Method is used to move center of object with specified animation @see LocationPoint "LocationPoint".
-     * @param point metrics coordinate of center @see LocationPoint "LocationPoint".
-     * @param duration animation duration in seconds.
-     * @param type @see AnimationType "AnimationType".
-     * @return true if success, false otherwise.
+     * @brief Method is used to move the center of the circle with the specified animation.
+     * @param point Metrics coordinates of the center @see LocationPoint "LocationPoint".
+     * @param duration Animation duration in seconds.
+     * @param type Animation type @see AnimationType "AnimationType". Default: CENTER.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setPositionAnimated
      *
      */
     bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
 
     /**
      *
-     * @brief Method is used to specify color of object.
-     * @param red red RGBA component.
-     * @param green green RGBA component.
-     * @param blue blue RGBA component.
-     * @param alpha Opacity multiplicator. Values below 0 will be set to 0. Default: 1.
-     * @return true if success, false otherwise.
+     * @brief Method is used to specify the fill color of the circle.
+     * @param red Red RGBA component (0 to 1).
+     * @param green Green RGBA component (0 to 1).
+     * @param blue Blue RGBA component (0 to 1).
+     * @param alpha Opacity multiplier (0 to 1). Values below 0 are set to 0. Default: 1.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setColor
      *
      */
     bool setColor(double red, double green, double blue, double alpha);
 
     /**
      *
-     * @brief Method is used to specify size of object.
-     * @param radius metrics radius of circle.
-     * @return true if success, false otherwise.
+     * @brief Method is used to specify the size of the circle.
+     * @param radius Radius of the circle in meters.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setRadius
      *
      */
     bool setRadius(double radius);
+
+    /**
+     *
+     * @brief Method is used to enable or disable collision detection for the circle.
+     * @param enabled Specifies whether collision detection is enabled (true) or disabled (false). Default: false.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setCollisionEnabled
+     *
+     */
+    bool setCollisionEnabled(bool enabled);
+
+    /**
+     *
+     * @brief Method is used to specify the buffer size around the circle for collision detection.
+     * @param width Width of the buffer in pixels. Default: 0.
+     * @param height Height of the buffer in pixels. Default: 0.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setBuffer
+     *
+     */
+    bool setBuffer(double width, double height);
+
+    /**
+     *
+     * @brief Method is used to specify an offset for the circle’s position.
+     * @param width Horizontal offset in pixels.
+     * @param height Vertical offset in pixels.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setOffset
+     *
+     */
+    bool setOffset(double width, double height);
+
+    /**
+     *
+     * @brief Method is used to specify the priority of the circle.
+     * @param priority The priority value for rendering or interaction. Default: 0.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setPriority
+     *
+     */
+    bool setPriority(double priority);
+
+    /**
+     *
+     * @brief Method is used to specify the color of the circle’s outline.
+     * @param red Red RGBA component (0 to 1).
+     * @param green Green RGBA component (0 to 1).
+     * @param blue Blue RGBA component (0 to 1).
+     * @param alpha Opacity multiplier (0 to 1). Values below 0 are set to 0. Default: 1.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setOutlineColor
+     *
+     */
+    bool setOutlineColor(double red, double green, double blue, double alpha);
+
+    /**
+     *
+     * @brief Method is used to specify the thickness of the circle’s outline.
+     * @param radius Thickness of the outline in pixels.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setOutlineRadius
+     *
+     */
+    bool setOutlineRadius(double radius);
+
+    /**
+     *
+     * @brief Method is used to specify the opacity of the circle’s outline.
+     * @param alpha Opacity multiplier (0 to 1). Values below 0 are set to 0. Default: 1.
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_map_objects_example.dart dart_CircleMapObject_setOutlineAlpha
+     *
+     */
+    bool setOutlineAlpha(double alpha);
 
 
 

@@ -30,6 +30,11 @@ abstract class PickListener {
      * @param mapObjectPickResult @see MapObjectPickResult "MapObjectPickResult" instance or `nil` if no objects was found.
      * @param screenPosition position where the object was picked in pixels.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_interaction_example.dart dart_PickListener_onMapObjectPickComplete
+     *
      */
     void onMapObjectPickComplete(MapObjectPickResult mapObjectPickResult, math.Point<double> screenPosition);
 
@@ -38,6 +43,11 @@ abstract class PickListener {
      * @brief Receive the result from @see LocationWindow "LocationWindow" `pickMapFeatureAt`
      * @param mapFeaturePickResult dictionary of properties of the picked feature or `nil` if no objects was found.
      * @param screenPosition position where the object was picked in pixels.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_interaction_example.dart dart_PickListener_onMapFeaturePickComplete
      *
      */
     void onMapFeaturePickComplete(Map<String, String> mapFeaturePickResult, math.Point<double> screenPosition);

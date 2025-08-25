@@ -33,6 +33,12 @@ abstract class Sublocation implements Finalizable {
      * @brief Method is used to obtain origin sublocation image with specified maxTextureSize.
      * @param maxTextureSize maximum texure size to render.
      * @return platform image.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getImage
+     *
      */
     ImageWrapper getImage(int? maxTextureSize);
 
@@ -41,6 +47,12 @@ abstract class Sublocation implements Finalizable {
      * using the geographic binding of the sublocation
      * @param globalPoint point in WGS84 coordinates @see GlobalPoint "GlobalPoint"
      * @return point in metrics coordinates @see LocationPoint "LocationPoint".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_globalToLocal
+     *
      */
     LocationPoint globalToLocal(GlobalPoint globalPoint);
 
@@ -49,6 +61,12 @@ abstract class Sublocation implements Finalizable {
      * using the geographic binding of the sublocation.
      * @param localPoint point in metrics coordinates @see LocationPoint "LocationPoint"
      * @return point in WGS84 coordinates @see GlobalPoint "GlobalPoint".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_localToGlobal
+     *
      */
     GlobalPoint localToGlobal(LocationPoint localPoint);
 
@@ -57,6 +75,12 @@ abstract class Sublocation implements Finalizable {
      * with the specified identifier or `null` if no such graph.
      * @param tag graph tag.
      * @return found graph or `null` @see Graph "Graph".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getGraph
+     *
      */
     Graph getGraph(String tag);
 
@@ -65,6 +89,12 @@ abstract class Sublocation implements Finalizable {
      * with the specified identifier or `null` if no such venue exists.
      * @param id venue unique identifier.
      * @return found venue object or `null` @see Venue "Venue".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getVenueById
+     *
      */
     Venue getVenueById(int id);
 
@@ -73,59 +103,131 @@ abstract class Sublocation implements Finalizable {
      * with the specified identifier or `null` if no such zone exists.
      * @param id zone unique identifier.
      * @return found zone object or `null` @see Zone "Zone".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getZoneById
+     *
      */
     Zone getZoneById(int id);
 
     /**
      * @brief sublocation's identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getId
+     *
      */
     int get id;
     /**
      * @brief location's identifier to which the sublocation belongs.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getLocation
+     *
      */
     int get location;
     /**
      * @brief sublocation's name.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getName
+     *
      */
     String get name;
     /**
      * @brief sublocation's width in meters.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getWidth
+     *
      */
     double get width;
     /**
      * @brief sublocation's height in meters.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getHeight
+     *
      */
     double get height;
     /**
      * @brief sublocation's altitude in meters if specified.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getAltitude
+     *
      */
     double? get altitude;
     /**
      * @brief sublocation's azimuth in degrees clockwise.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getAzimuth
+     *
      */
     double get azimuth;
     /**
      * @brief sublocation's center point in WGS84 coordinates @see GlobalPoint "GlobalPoint".
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getOriginPoint
+     *
      */
     GlobalPoint get originPoint;
     /**
      * @brief sublocation's levelId.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getLevelId
+     *
      */
     String get levelId;
     /**
      * @brief sublocation's externalId.
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getExternalId
+     *
      */
     String get externalId;
     /**
      * @brief List of beacons, attached to this sublocation @see Beacon "Beacon".
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getBeacons
+     *
      */
     List<Beacon> get beacons;
     /**
      * @brief List of eddystones, attached to this sublocation @see Eddystone "Eddystone".
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getEddystones
+     *
      */
     List<Eddystone> get eddystones;
     /**
      * @brief List of wifis, attached to this sublocation @see Wifi "Wifi".
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getWifis
+     *
      */
     List<Wifi> get wifis;
     /**
@@ -135,10 +237,20 @@ abstract class Sublocation implements Finalizable {
     /**
      * @endcond
      * @brief List of venues, attached to this sublocation @see Venue "Venue".
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getVenues
+     *
      */
     List<Venue> get venues;
     /**
      * @brief List of zones, attached to this sublocation @see Zone "Zone".
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Sublocation_getZones
+     *
      */
     List<Zone> get zones;
 

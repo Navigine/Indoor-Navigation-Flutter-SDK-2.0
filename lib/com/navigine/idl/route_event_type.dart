@@ -13,6 +13,11 @@ part 'route_event_type.impl.dart';
  *
  * Referenced from @see RouteEvent "RouteEvent".
  *
+ *
+ *
+ * Dart code snippet:
+ * @snippet route_manager_example.dart dart_RouteEventType_values
+ *
  */
 enum RouteEventType {
     /**

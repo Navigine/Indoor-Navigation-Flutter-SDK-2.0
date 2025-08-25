@@ -20,18 +20,42 @@ abstract class GraphEdge implements Finalizable {
 
     /**
      * @brief Edge weight.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphEdge_getWeight
+     *
      */
     double get weight;
     /**
      * @brief Destination vertex id @see GraphVertex "GraphVertex"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphEdge_getDst
+     *
      */
     int get dst;
     /**
      * @brief Source vertex id @see GraphVertex "GraphVertex"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphEdge_getSrc
+     *
      */
     int get src;
     /**
      * @brief Edge weight coefficient.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphEdge_getWeightCoef
+     *
      */
     int get weightCoef;
 

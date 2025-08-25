@@ -13,16 +13,33 @@ part 'point.impl.dart';
  *
  * @brief A point at the specified metrics coordinates.
  *
+ *
+ *
+ * Dart code snippet:
+ * @snippet geometry_utils_example.dart dart_Point_constructor
+ *
  */
 class Point {
     /// @brief Default constructor
     Point(this.x, this.y);
     /**
      * @brief point's `x` coordinate in meters.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_Point_getX
+     *
      */
     double x;
     /**
      * @brief point's `y` coordinate in meters.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet geometry_utils_example.dart dart_Point_getY
+     *
      */
     double y;
 }

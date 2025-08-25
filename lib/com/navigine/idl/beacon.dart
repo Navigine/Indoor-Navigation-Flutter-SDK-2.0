@@ -24,39 +24,92 @@ abstract class Beacon implements Finalizable {
 
     /**
      * @brief beacon's X and Y coordinates in meters as @see Point "Point" (within the sublocation).
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getPoint
+     *
      */
     Point get point;
     /**
      * @brief beacon's location identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getLocationId
+     *
      */
     int get locationId;
     /**
      * @brief beacon's sublocation identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getSublocationId
+     *
      */
     int get sublocationId;
     /**
      * @brief beacon's name.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getName
+     *
      */
     String get name;
     /**
      * @brief beacon's major. Values [1-65535]
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getMajor
+     *
      */
     int get major;
     /**
      * @brief beacon's minor. Values [1-65535]
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getMinor
+     *
      */
     int get minor;
     /**
      * @brief beacon's uuid. Format [XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getUuid
+     *
      */
     String get uuid;
     /**
-     * iBeacon power. If exsists.
      * @brief beacon's power.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getPower
+     *
      */
     int? get power;
     /**
      * @brief iBeacon status. @see TransmitterStatus "TransmitterStatus"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Beacon_getStatus
+     *
      */
     TransmitterStatus get status;
 

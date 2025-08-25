@@ -14,6 +14,11 @@ part 'zone_event_type.impl.dart';
  *
  * Referenced from @see ZoneEvent "ZoneEvent".
  *
+ *
+ *
+ * Dart code snippet:
+ * @snippet zone_manager_example.dart dart_ZoneEventType_values
+ *
  */
 enum ZoneEventType {
     /**

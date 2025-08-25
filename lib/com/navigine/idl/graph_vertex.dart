@@ -21,22 +21,52 @@ abstract class GraphVertex implements Finalizable {
 
     /**
      * @brief graph vertex unique identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphVertex_getId
+     *
      */
     int get id;
     /**
      * @brief graph vertex position in meters @see Point "Point".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphVertex_getPoint
+     *
      */
     Point get point;
     /**
      * @brief graph vertex name.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphVertex_getName
+     *
      */
     String get name;
     /**
      * @brief graph vertex can be used to communicate with external graphs or not.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphVertex_getIsExternal
+     *
      */
     bool get isExternal;
     /**
      * @brief graph vertex used in elevation graph @see ElevationGraph "ElevationGraph" or not.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_GraphVertex_getIsElevation
+     *
      */
     bool get isElevation;
 

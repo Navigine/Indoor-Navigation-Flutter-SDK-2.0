@@ -14,6 +14,12 @@ part 'route_options.impl.dart';
  *
  * Referenced from: @see AsyncRouteManager "AsyncRouteManager".
  *
+ *
+ *
+ *
+ * Dart code snippet:
+ * @snippet async_route_manager_example.dart dart_RouteOptions_constructor
+ *
  */
 class RouteOptions {
     /// @brief Default constructor

@@ -27,6 +27,11 @@ abstract class InputListener {
      * @brief Called when a tap occurred.
      * @param screenPoint point in screen coordinates.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_interaction_example.dart dart_InputListener_onViewTap
+     *
      */
     void onViewTap(math.Point<double> screenPoint);
 
@@ -35,6 +40,11 @@ abstract class InputListener {
      * @brief Called when a double tap occurred.
      * @param screenPoint point in screen coordinates.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_interaction_example.dart dart_InputListener_onViewDoubleTap
+     *
      */
     void onViewDoubleTap(math.Point<double> screenPoint);
 
@@ -42,6 +52,11 @@ abstract class InputListener {
      *
      * @brief Called when a long tap occurred.
      * @param screenPoint point in screen coordinates.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_interaction_example.dart dart_InputListener_onViewLongTap
      *
      */
     void onViewLongTap(math.Point<double> screenPoint);

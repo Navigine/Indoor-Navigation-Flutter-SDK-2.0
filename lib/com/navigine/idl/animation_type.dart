@@ -11,7 +11,7 @@ part 'animation_type.impl.dart';
  * @ingroup navigine_dart_location_view
  * @brief Enum described animation functions.
  *
- * Referenced from @see CircleMapObject "CircleMapObject", @see IconMapObject "IconMapObject", @see FlatIconMapObject "FlatIconMapObject", @see LocationWindow "LocationWindow".
+ * Referenced from @see CircleMapObject "CircleMapObject", @see IconMapObject "IconMapObject", @see LocationWindow "LocationWindow".
  *
  */
 enum AnimationType {

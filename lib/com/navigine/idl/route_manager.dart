@@ -28,6 +28,11 @@ abstract class RouteManager implements Finalizable {
      * @param to destination @see LocationPoint "LocationPoint".
      * @return @see RoutePath "RoutePath" from starting to destination point.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_makeRoute
+     *
      */
     RoutePath makeRoute(LocationPoint from, LocationPoint to);
 
@@ -38,6 +43,11 @@ abstract class RouteManager implements Finalizable {
      * @param to destination list of @see LocationPoint "LocationPoint"s.
      * @return vector of @see RoutePath "RoutePath"s from starting to destination point.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_makeRoutes
+     *
      */
     List<RoutePath> makeRoutes(LocationPoint from, List<LocationPoint> to);
 
@@ -46,6 +56,11 @@ abstract class RouteManager implements Finalizable {
      * @brief Method is used to set target point in your location.
      * Through @see RouteListener "RouteListener" you will be notified about new paths to target point.
      * @param target finish @see LocationPoint "LocationPoint".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_setTarget
      *
      */
     void setTarget(LocationPoint target);
@@ -56,12 +71,22 @@ abstract class RouteManager implements Finalizable {
      * Through @see RouteListener "RouteListener" you will be notified about new paths to target point.
      * @param target finish @see LocationPoint "LocationPoint".
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_addTarget
+     *
      */
     void addTarget(LocationPoint target);
 
     /**
      *
      * @brief Method is used for removing current target points to where the routes were built.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_cancelTarget
      *
      */
     void cancelTarget();
@@ -70,12 +95,22 @@ abstract class RouteManager implements Finalizable {
      *
      * @brief Method is used for removing all target points to where the routes were built.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_clearTargets
+     *
      */
     void clearTargets();
 
     /**
      *
      * @brief Method is used to select graph tag (Default: "default").
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_setGraphTag
      *
      */
     void setGraphTag(String tag);
@@ -84,12 +119,22 @@ abstract class RouteManager implements Finalizable {
      *
      * @brief Method is used to get current graph tag (Default: "default").
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_getGraphTag
+     *
      */
     String getGraphTag();
 
     /**
      *
      * @brief Method is used to get all graph tags,
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_getGraphTags
      *
      */
     List<String> getGraphTags();
@@ -101,6 +146,11 @@ abstract class RouteManager implements Finalizable {
      * @note Do not forget to remove listener if it is no longer needed!
      * @param listener Сorresponding @see RouteListener "RouteListener" class.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_addRouteListener
+     *
      */
     void addRouteListener(RouteListener listener);
 
@@ -108,6 +158,11 @@ abstract class RouteManager implements Finalizable {
      *
      * @brief Method is used for removing previously added @see RouteListener "RouteListener" class element.
      * @param listener Сorresponding @see RouteListener "RouteListener" class to remove.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet route_manager_example.dart dart_RouteManager_removeRouteListener
      *
      */
     void removeRouteListener(RouteListener listener);

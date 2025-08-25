@@ -92,21 +92,6 @@ class CircleMapObject$Impl extends __lib.NativeBase implements CircleMapObject, 
     }
 
     @override
-    bool setStyle(String style) {
-        final _setStyleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_MapObject_setStyle__Style'));
-        final _styleHandle = navigine_sdk_flutter_String_ToFfi(style);
-        final _handle = this.handle;
-        final __resultHandle = _setStyleFfi(_handle, _styleHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_styleHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
-    @override
     void setData(Uint8List data) {
         final _setDataFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Void Function(Pointer<Void>, Pointer<Void>),
@@ -128,6 +113,21 @@ class CircleMapObject$Impl extends __lib.NativeBase implements CircleMapObject, 
         final _handle = this.handle;
         final __resultHandle = _setTitleFfi(_handle, _titleHandle);
         navigine_sdk_flutter_String_ReleaseFfiHandle(_titleHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setAlpha(double alpha) {
+        final _setAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_MapObject_setAlpha__Alpha'));
+        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
+        final _handle = this.handle;
+        final __resultHandle = _setAlphaFfi(_handle, _alphaHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;
@@ -199,6 +199,121 @@ class CircleMapObject$Impl extends __lib.NativeBase implements CircleMapObject, 
         final _handle = this.handle;
         final __resultHandle = _setRadiusFfi(_handle, _radiusHandle);
         navigine_sdk_flutter_double_ReleaseFfiHandle(_radiusHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setCollisionEnabled(bool enabled) {
+        final _setCollisionEnabledFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Uint8),
+            int Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_CircleMapObject_setCollisionEnabled__Enabled'));
+        final _enabledHandle = navigine_sdk_flutter_bool_ToFfi(enabled);
+        final _handle = this.handle;
+        final __resultHandle = _setCollisionEnabledFfi(_handle, _enabledHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(_enabledHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setBuffer(double width, double height) {
+        final _setBufferFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float, Float),
+            int Function(Pointer<Void>, double, double)
+          >('navigine_sdk_flutter_CircleMapObject_setBuffer__Width_Height'));
+        final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
+        final _heightHandle = navigine_sdk_flutter_double_ToFfi(height);
+        final _handle = this.handle;
+        final __resultHandle = _setBufferFfi(_handle, _widthHandle, _heightHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setOffset(double width, double height) {
+        final _setOffsetFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float, Float),
+            int Function(Pointer<Void>, double, double)
+          >('navigine_sdk_flutter_CircleMapObject_setOffset__Width_Height'));
+        final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
+        final _heightHandle = navigine_sdk_flutter_double_ToFfi(height);
+        final _handle = this.handle;
+        final __resultHandle = _setOffsetFfi(_handle, _widthHandle, _heightHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setPriority(double priority) {
+        final _setPriorityFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_CircleMapObject_setPriority__Priority'));
+        final _priorityHandle = navigine_sdk_flutter_double_ToFfi(priority);
+        final _handle = this.handle;
+        final __resultHandle = _setPriorityFfi(_handle, _priorityHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_priorityHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setOutlineColor(double red, double green, double blue, double alpha) {
+        final _setOutlineColorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float, Float, Float, Float),
+            int Function(Pointer<Void>, double, double, double, double)
+          >('navigine_sdk_flutter_CircleMapObject_setOutlineColor__Red_Green_Blue_Alpha'));
+        final _redHandle = navigine_sdk_flutter_double_ToFfi(red);
+        final _greenHandle = navigine_sdk_flutter_double_ToFfi(green);
+        final _blueHandle = navigine_sdk_flutter_double_ToFfi(blue);
+        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
+        final _handle = this.handle;
+        final __resultHandle = _setOutlineColorFfi(_handle, _redHandle, _greenHandle, _blueHandle, _alphaHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_redHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_greenHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_blueHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setOutlineRadius(double radius) {
+        final _setOutlineRadiusFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_CircleMapObject_setOutlineRadius__Radius'));
+        final _radiusHandle = navigine_sdk_flutter_double_ToFfi(radius);
+        final _handle = this.handle;
+        final __resultHandle = _setOutlineRadiusFfi(_handle, _radiusHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_radiusHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setOutlineAlpha(double alpha) {
+        final _setOutlineAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_CircleMapObject_setOutlineAlpha__Alpha'));
+        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
+        final _handle = this.handle;
+        final __resultHandle = _setOutlineAlphaFfi(_handle, _alphaHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;

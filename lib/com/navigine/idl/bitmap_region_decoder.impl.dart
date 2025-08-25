@@ -34,17 +34,17 @@ class BitmapRegionDecoder$Impl extends __lib.NativeBase implements BitmapRegionD
         return _result;
     }
     @override
-    ImageWrapper decodeRegion(Rectangle rect, int sampleSize) {
+    ImageWrapper decodeRegion(Rectangle rect, double sampleSize) {
         final _decodeRegionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Int32),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, int)
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Float),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, double)
           >('navigine_sdk_flutter_BitmapRegionDecoder_decodeRegion__Rect_SampleSize'));
         final _rectHandle = navigine_sdk_flutter_Rectangle_ToFfi(rect);
-        final _sampleSizeHandle = navigine_sdk_flutter_int_ToFfi(sampleSize);
+        final _sampleSizeHandle = navigine_sdk_flutter_double_ToFfi(sampleSize);
         final _handle = this.handle;
         final __resultHandle = _decodeRegionFfi(_handle, _rectHandle, _sampleSizeHandle);
         navigine_sdk_flutter_Rectangle_ReleaseFfiHandle(_rectHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_sampleSizeHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_sampleSizeHandle);
         final _result = navigine_sdk_flutter_ImageWrapper_FromFfi(__resultHandle);
         navigine_sdk_flutter_ImageWrapper_ReleaseFfiHandle(__resultHandle);
         return _result;

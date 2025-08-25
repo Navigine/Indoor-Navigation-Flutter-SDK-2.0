@@ -68,7 +68,7 @@ class NavigationManager$Impl extends __lib.NativeBase implements NavigationManag
     @override
     void addLocationMeasurement(GlobalPoint point, double accuracy, String provider) {
         final _addLocationMeasurementFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Pointer<Void>, Double, Pointer<Void>),
+            Void Function(Pointer<Void>, Pointer<Void>, Float, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>, double, Pointer<Void>)
           >('navigine_sdk_flutter_NavigationManager_addLocationMeasurement__Point_Accuracy_Provider'));
         final _pointHandle = navigine_sdk_flutter_GlobalPoint_ToFfi(point);

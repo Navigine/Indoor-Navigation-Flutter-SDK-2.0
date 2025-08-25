@@ -25,6 +25,11 @@ abstract class LocationManager implements Finalizable {
      * @note Do not forget to remove listener if it is no longer needed!
      * @param listener Сorresponding @see LocationListener "LocationListener" class.
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_LocationManager_addLocationListener
+     *
      */
     void addLocationListener(LocationListener listener);
 
@@ -32,6 +37,11 @@ abstract class LocationManager implements Finalizable {
      *
      * @brief Method is used for removing previously added @see LocationListener "LocationListener" class element.
      * @param listener Сorresponding @see LocationListener "LocationListener" class to remove.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_LocationManager_removeLocationListener
      *
      */
     void removeLocationListener(LocationListener listener);
@@ -42,6 +52,11 @@ abstract class LocationManager implements Finalizable {
      * Result will be handled by @see LocationListener "LocationListener"
      * @param locationId location id from CMS
      *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_LocationManager_setLocationId
+     *
      */
     void setLocationId(int locationId);
 
@@ -49,6 +64,11 @@ abstract class LocationManager implements Finalizable {
      *
      * @brief Method returns current location unique identifier
      * @return current location unique identifier
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_LocationManager_getLocationId
      *
      */
     int getLocationId();
@@ -66,6 +86,11 @@ abstract class LocationManager implements Finalizable {
      * @brief Method is used to change interval in seconds check for new version from server
      * Default: 300s
      * @param interval update interval in seconds
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_LocationManager_setLocationUpdateInterval
      *
      */
     void setLocationUpdateInterval(int interval);

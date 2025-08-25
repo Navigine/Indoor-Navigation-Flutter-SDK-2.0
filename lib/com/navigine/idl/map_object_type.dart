@@ -9,39 +9,35 @@ part 'map_object_type.impl.dart';
 /**
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_location_view
- * @brief Enum underlying type of map object
+ *
+ * @brief Enum defining the type of map object.
  *
  * Referenced from @see MapObject "MapObject".
  *
  */
 enum MapObjectType {
     /**
-     * @brief icon
-     *
+     * @brief Icon.
      * @see IconMapObject "IconMapObject"
      */
     ICON,
     /**
-     * @brief flat icon
-     *
-     * @see FlatIconMapObject "FlatIconMapObject"
-     */
-    FLAT_ICON,
-    /**
-     * @brief polygon
-     *
+     * @brief Polygon.
      * @see PolygonMapObject "PolygonMapObject"
      */
     POLYGON,
     /**
-     * @brief polyline
-     *
+     * @brief Polyline.
      * @see PolylineMapObject "PolylineMapObject"
      */
     POLYLINE,
     /**
-     * @brief circle
-     *
+     * @brief DottedPolyline.
+     * @see DottedPolylineMapObject "DottedPolylineMapObject"
+     */
+    DOTTED_POLYLINE,
+    /**
+     * @brief Circle.
      * @see CircleMapObject "CircleMapObject"
      */
     CIRCLE,

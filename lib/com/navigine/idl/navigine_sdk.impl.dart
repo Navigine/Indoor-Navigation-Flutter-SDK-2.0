@@ -178,6 +178,21 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk, Finaliza
     }
 
     @override
+    MeasurementManager getMeasurementManager(LocationManager locationManager) {
+        final _getMeasurementManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_getMeasurementManager__LocationManager'));
+        final _locationManagerHandle = navigine_sdk_flutter_LocationManager_ToFfi(locationManager);
+        final _handle = this.handle;
+        final __resultHandle = _getMeasurementManagerFfi(_handle, _locationManagerHandle);
+        navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
+        final _result = navigine_sdk_flutter_MeasurementManager_FromFfi(__resultHandle);
+        navigine_sdk_flutter_MeasurementManager_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
     ResourceManager getResourceManager(LocationManager locationManager) {
         final _getResourceManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
@@ -204,21 +219,6 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk, Finaliza
         navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
         final _result = navigine_sdk_flutter_LocationEditManager_FromFfi(__resultHandle);
         navigine_sdk_flutter_LocationEditManager_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
-    @override
-    MeasurementManager getMeasurementManager(LocationManager locationManager) {
-        final _getMeasurementManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_NavigineSdk_getMeasurementManager__LocationManager'));
-        final _locationManagerHandle = navigine_sdk_flutter_LocationManager_ToFfi(locationManager);
-        final _handle = this.handle;
-        final __resultHandle = _getMeasurementManagerFfi(_handle, _locationManagerHandle);
-        navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(_locationManagerHandle);
-        final _result = navigine_sdk_flutter_MeasurementManager_FromFfi(__resultHandle);
-        navigine_sdk_flutter_MeasurementManager_ReleaseFfiHandle(__resultHandle);
         return _result;
     }
 

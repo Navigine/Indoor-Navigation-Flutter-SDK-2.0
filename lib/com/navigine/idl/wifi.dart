@@ -24,26 +24,62 @@ abstract class Wifi implements Finalizable {
 
     /**
      * @brief wifi's X and Y coordinates in meters as @see Point "Point" (within the sublocation).
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Wifi_getPoint
+     *
      */
     Point get point;
     /**
      * @brief wifi's location identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Wifi_getLocationId
+     *
      */
     int get locationId;
     /**
      * @brief wifi's sublocation identifier.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Wifi_getSublocationId
+     *
      */
     int get sublocationId;
     /**
      * @brief wifi's name.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Wifi_getName
+     *
      */
     String get name;
     /**
      * @brief wifi's mac.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Wifi_getMac
+     *
      */
     String get mac;
     /**
      * @brief wifi's status. @see TransmitterStatus "TransmitterStatus"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_manager_example.dart dart_Wifi_getStatus
+     *
      */
     TransmitterStatus get status;
 

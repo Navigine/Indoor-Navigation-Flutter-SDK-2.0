@@ -92,21 +92,6 @@ class PolygonMapObject$Impl extends __lib.NativeBase implements PolygonMapObject
     }
 
     @override
-    bool setStyle(String style) {
-        final _setStyleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_MapObject_setStyle__Style'));
-        final _styleHandle = navigine_sdk_flutter_String_ToFfi(style);
-        final _handle = this.handle;
-        final __resultHandle = _setStyleFfi(_handle, _styleHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_styleHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
-    @override
     void setData(Uint8List data) {
         final _setDataFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Void Function(Pointer<Void>, Pointer<Void>),
@@ -128,6 +113,21 @@ class PolygonMapObject$Impl extends __lib.NativeBase implements PolygonMapObject
         final _handle = this.handle;
         final __resultHandle = _setTitleFfi(_handle, _titleHandle);
         navigine_sdk_flutter_String_ReleaseFfiHandle(_titleHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setAlpha(double alpha) {
+        final _setAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_MapObject_setAlpha__Alpha'));
+        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
+        final _handle = this.handle;
+        final __resultHandle = _setAlphaFfi(_handle, _alphaHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;
@@ -165,6 +165,21 @@ class PolygonMapObject$Impl extends __lib.NativeBase implements PolygonMapObject
         navigine_sdk_flutter_double_ReleaseFfiHandle(_greenHandle);
         navigine_sdk_flutter_double_ReleaseFfiHandle(_blueHandle);
         navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool setOrder(int order) {
+        final _setOrderFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Int32),
+            int Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_PolygonMapObject_setOrder__Order'));
+        final _orderHandle = navigine_sdk_flutter_int_ToFfi(order);
+        final _handle = this.handle;
+        final __resultHandle = _setOrderFfi(_handle, _orderHandle);
+        navigine_sdk_flutter_int_ReleaseFfiHandle(_orderHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;
