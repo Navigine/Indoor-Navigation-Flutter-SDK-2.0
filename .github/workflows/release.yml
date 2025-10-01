@@ -43,10 +43,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Dart
-        uses: dart-lang/setup-dart@v1
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          sdk: stable
+          flutter-version: '3.24.3'  # Актуальная стабильная версия; замени на нужную
+          channel: 'stable'
 
       - name: Install dependencies
         run: flutter pub get
