@@ -49,7 +49,7 @@ jobs:
           sdk: stable
 
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Publish to pub.dev
-        run: dart pub publish
+        run: flutter pub publish
