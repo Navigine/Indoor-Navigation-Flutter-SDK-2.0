@@ -46,11 +46,11 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.3'  # Актуальная стабильная версия; замени на нужную
+          flutter-version: '3.24.3'
           channel: 'stable'
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Publish to pub.dev
-        run: flutter pub publish
+        run: flutter pub publish --force
