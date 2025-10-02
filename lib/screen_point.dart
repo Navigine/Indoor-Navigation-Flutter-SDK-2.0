@@ -28,8 +28,6 @@ Pointer<Void> navigine_sdk_flutter_math_Point_double_ToFfi(math.Point<double> va
   final _xHandle = (value.x);
   final _yHandle = (value.y);
   final _result = _navigine_sdk_flutter_math_Point_double_CreateHandle(_xHandle, _yHandle);
-
-
   return _result;
 }
 
