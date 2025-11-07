@@ -8,6 +8,9 @@ on:
         required: false
         default: ''
         type: multiline
+  push:
+    tags:
+      - 'v*'  # Matches tags like v1.2.3; adjust if needed
 
 jobs:
   create-release:
@@ -21,43 +24,35 @@ jobs:
         id: version
         run: echo "current_version=$(cat VERSION)" >> $GITHUB_OUTPUT
 
-      - name: Create Release
+      - name: Create and push git tag
+        if: github.event_name == 'workflow_dispatch'  # Only for manual triggers; skips on direct tag push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ steps.version.outputs.current_version }}"
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+
+      - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v.${{ steps.version.outputs.current_version }}
-          release_name: Release ${{ steps.version.outputs.current_version }}
-          body: ${{ github.event.inputs.release_body || format('v.{0}', steps.version.outputs.current_version) }}
+          tag_name: v${{ steps.version.outputs.current_version }}
+          release_name: Release v${{ steps.version.outputs.current_version }}
+          body: ${{ github.event.inputs.release_body || format('v{0}', steps.version.outputs.current_version) }}
           draft: false
           prerelease: false
-
-  # publish-pub:
-  #   name: Publish to pub.dev
-  #   needs: create-release
-  #   permissions:
-  #     id-token: write
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4
-
-  #     - name: Setup Flutter
-  #       uses: subosito/flutter-action@v2
-  #       with:
-  #         flutter-version: '3.24.3'
-  #         channel: 'stable'
-
-  #     - name: Install dependencies
-  #       run: flutter pub get
-
-  #     - name: Publish to pub.dev
-  #       run: flutter pub publish --force
 
   publish-pub:
     name: Publish to pub.dev
     needs: create-release
+    if: startsWith(github.ref, 'refs/tags/')  # Only run on tag triggers
     permissions:
-      id-token: write # Required for authentication using OIDC
+      id-token: write  # Required for OIDC authentication
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    # Optional: Add environment for extra security
+    environment: pub.dev
