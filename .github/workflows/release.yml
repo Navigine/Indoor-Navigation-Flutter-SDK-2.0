@@ -50,7 +50,6 @@ jobs:
   publish-pub:
     name: Publish to pub.dev
     needs: create-release
-    if: startsWith(github.ref, 'refs/tags/')  # Only run on tag triggers
     permissions:
       id-token: write  # Required for OIDC authentication
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
