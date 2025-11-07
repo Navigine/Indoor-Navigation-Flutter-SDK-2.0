@@ -53,6 +53,9 @@ jobs:
         run: flutter pub get
 
       - name: Publish to pub.dev
-        run: flutter pub publish --force
-        env:
-          PUB_DEV_PUBLISH_ACCESS_TOKEN: ${{ secrets.PUB_DEV_PUBLISH_ACCESS_TOKEN }}
+        uses: k-paxian/dart-package-publisher@v1.5.1
+        with:
+          accessToken: ${{ secrets.PUB_DEV_PUBLISH_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.PUB_DEV_PUBLISH_REFRESH_TOKEN }}
+          flutter: true
+          skipTests: true
