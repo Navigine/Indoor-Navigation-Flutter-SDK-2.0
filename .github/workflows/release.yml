@@ -33,24 +33,31 @@ jobs:
           draft: false
           prerelease: false
 
+  # publish-pub:
+  #   name: Publish to pub.dev
+  #   needs: create-release
+  #   permissions:
+  #     id-token: write
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+
+  #     - name: Setup Flutter
+  #       uses: subosito/flutter-action@v2
+  #       with:
+  #         flutter-version: '3.24.3'
+  #         channel: 'stable'
+
+  #     - name: Install dependencies
+  #       run: flutter pub get
+
+  #     - name: Publish to pub.dev
+  #       run: flutter pub publish --force
+
   publish-pub:
     name: Publish to pub.dev
     needs: create-release
     permissions:
-      id-token: write
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.24.3'
-          channel: 'stable'
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Publish to pub.dev
-        run: flutter pub publish --force
+      id-token: write # Required for authentication using OIDC
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
