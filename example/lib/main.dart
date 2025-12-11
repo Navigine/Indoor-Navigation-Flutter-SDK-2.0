@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 // import 'package:permission_handler/permission_handler.dart';
@@ -29,8 +28,8 @@ class MainPage extends StatelessWidget with WidgetsBindingObserver implements Lo
     WidgetsBinding.instance.removeObserver(this);
 
     _sdk = NavigineSdk.getInstance();
-    _sdk.setServer("https://ips.navigine.com");
-    _sdk.setUserHash("0000-0000-0000-0000");
+    _sdk.setServer('https://ips.navigine.com');
+    _sdk.setUserHash('0000-0000-0000-0000');
 
     _locationManager = _sdk.getLocationManager();
     _locationManager.setLocationId(LOCATION_ID);
@@ -55,14 +54,15 @@ class MainPage extends StatelessWidget with WidgetsBindingObserver implements Lo
                     _locationWindow.setSublocationId(SUBLOCATION_ID);
                   });
 
-                  _iconMapObject = (_locationWindow.addIconMapObject())!;
+                  _iconMapObject = _locationWindow.addIconMapObject();
                   await imageWrapper.then((image) => _iconMapObject.setBitmap(image));
                   _iconMapObject.setSize(40.0, 40.0);
-                  _iconMapObject.setStyle("{order: 1, collide: false}");
+                  _iconMapObject.setCollisionEnabled(false);
+                  _iconMapObject.setPriority(1);
                   _iconMapObject.setPosition(LocationPoint(Point(10, 10), LOCATION_ID, SUBLOCATION_ID));
                   _iconMapObject.setVisible(true);
 
-                  _polylineMapObject = (_locationWindow.addPolylineMapObject())!;
+                  _polylineMapObject = _locationWindow.addPolylineMapObject();
                   _polylineMapObject.setColor(100/255.0, 0.5, 0.5, 1);
                   _polylineMapObject.setWidth(3.0);
                   _polylineMapObject.setPolyLine(LocationPolyline(Polyline([Point(0.0, 0.0), Point(3.0, 10.0)]), LOCATION_ID, SUBLOCATION_ID));
@@ -83,7 +83,7 @@ class MainPage extends StatelessWidget with WidgetsBindingObserver implements Lo
 
   @override
   void onLocationFailed(int locationId, Error error) {
-    print("On Location failed ${locationId} ${error.code} ${error.message}");
+    print('On Location failed $locationId ${error.code} ${error.message}');
   }
 
   @override
