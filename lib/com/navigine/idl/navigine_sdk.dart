@@ -10,10 +10,13 @@ import 'package:navigine_sdk/com/navigine/idl/location_list_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_window.dart';
 import 'package:navigine_sdk/com/navigine/idl/measurement_manager.dart';
+import 'package:navigine_sdk/com/navigine/idl/mqtt_session.dart';
 import 'package:navigine_sdk/com/navigine/idl/navigation_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/notification_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/resource_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_manager.dart';
+import 'package:navigine_sdk/com/navigine/idl/storage_manager.dart';
+import 'package:navigine_sdk/com/navigine/idl/user_location_layer.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_manager.dart';
 import 'package:navigine_sdk/location_view.dart';
 import 'package:navigine_sdk/platform_view.dart';
@@ -248,6 +251,39 @@ abstract class NavigineSdk implements Finalizable {
      *
      */
     LocationListManager getLocationListManager();
+
+    /**
+     *
+     * @brief @see MqttSession "MqttSession" instance, which could be used for working with MQTT sessions.
+     * @param navigationManager @see NavigationManager "NavigationManager" instance
+     * @return @see MqttSession "MqttSession" instance
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getMqttSession
+     *
+     */
+    MqttSession getMqttSession(NavigationManager navigationManager);
+
+    /**
+     * Returns a manager that allows to manage user storages
+     * @return Storage manager instance @see StorageManager "StorageManager"
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getStorageManager
+     *
+     */
+    StorageManager getStorageManager();
+
+    /**
+     *
+     * Create layer with the user location icon.
+     *
+     */
+    UserLocationLayer getUserLocationLayer(LocationWindow locationWindow);
 
 
 

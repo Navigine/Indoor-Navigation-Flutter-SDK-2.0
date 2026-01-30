@@ -371,104 +371,6 @@ Sublocation? navigine_sdk_flutter_Sublocation_FromFfiNullable(Pointer<Void> hand
 
 // End of Sublocation "private" section.
 
-final _navigine_sdk_flutter_List_Zone_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(),
-    Pointer<Void> Function()
-  >('navigine_sdk_flutter_List_Zone_create_handle'));
-
-final _navigine_sdk_flutter_List_Zone_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_release_handle'));
-
-final _navigine_sdk_flutter_List_Zone_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Pointer<Void>),
-    void Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_insert'));
-
-final _navigine_sdk_flutter_List_Zone_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_iterator'));
-
-final _navigine_sdk_flutter_List_Zone_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_iterator_release_handle'));
-
-final _navigine_sdk_flutter_List_Zone_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int8 Function(Pointer<Void>, Pointer<Void>),
-    int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_iterator_is_valid'));
-
-final _navigine_sdk_flutter_List_Zone_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_iterator_increment'));
-
-final _navigine_sdk_flutter_List_Zone_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_iterator_get'));
-
-Pointer<Void> navigine_sdk_flutter_List_Zone_ToFfi(List<Zone> value)  {
-    final _result = _navigine_sdk_flutter_List_Zone_CreateHandle();
-    for (final element in value)  {
-        final _elementHandle = navigine_sdk_flutter_Zone_ToFfi(element);
-        _navigine_sdk_flutter_List_Zone_Insert(_result, _elementHandle);
-        navigine_sdk_flutter_Zone_ReleaseFfiHandle(_elementHandle);
-    }
-    return _result;
-}
-
-List<Zone> navigine_sdk_flutter_List_Zone_FromFfi(Pointer<Void> handle)  {
-    final result = List<Zone>.empty(growable: true);
-    final _iteratorHandle = _navigine_sdk_flutter_List_Zone_Iterator(handle);
-    while (_navigine_sdk_flutter_List_Zone_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _elementHandle = _navigine_sdk_flutter_List_Zone_IteratorGet(_iteratorHandle);
-        result.add(navigine_sdk_flutter_Zone_FromFfi(_elementHandle));
-        navigine_sdk_flutter_Zone_ReleaseFfiHandle(_elementHandle);
-        _navigine_sdk_flutter_List_Zone_IteratorIncrement(_iteratorHandle);
-    }
-    return result;
-}
-
-void navigine_sdk_flutter_List_Zone_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Zone_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_List_Zone_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_create_handle_nullable'));
-
-final _navigine_sdk_flutter_List_Zone_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_release_handle_nullable'));
-
-final _navigine_sdk_flutter_List_Zone_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Zone_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_List_Zone_ToFfiNullable(List<Zone>? value)  {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_List_Zone_ToFfi(value);
-    final result = _navigine_sdk_flutter_List_Zone_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_List_Zone_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-List<Zone>? navigine_sdk_flutter_List_Zone_FromFfiNullable(Pointer<Void> handle)  {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_List_Zone_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_List_Zone_FromFfi(_handle);
-    navigine_sdk_flutter_List_Zone_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_List_Zone_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_List_Zone_ReleaseHandleNullable(handle);
-
 final _navigine_sdk_flutter_List_Eddystone_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
     Pointer<Void> Function()
@@ -566,6 +468,300 @@ List<Eddystone>? navigine_sdk_flutter_List_Eddystone_FromFfiNullable(Pointer<Voi
 
 void navigine_sdk_flutter_List_Eddystone_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
   _navigine_sdk_flutter_List_Eddystone_ReleaseHandleNullable(handle);
+
+final _navigine_sdk_flutter_List_Venue_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_List_Venue_create_handle'));
+
+final _navigine_sdk_flutter_List_Venue_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_release_handle'));
+
+final _navigine_sdk_flutter_List_Venue_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_insert'));
+
+final _navigine_sdk_flutter_List_Venue_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_iterator'));
+
+final _navigine_sdk_flutter_List_Venue_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_iterator_release_handle'));
+
+final _navigine_sdk_flutter_List_Venue_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_iterator_is_valid'));
+
+final _navigine_sdk_flutter_List_Venue_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_iterator_increment'));
+
+final _navigine_sdk_flutter_List_Venue_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_iterator_get'));
+
+Pointer<Void> navigine_sdk_flutter_List_Venue_ToFfi(List<Venue> value)  {
+    final _result = _navigine_sdk_flutter_List_Venue_CreateHandle();
+    for (final element in value)  {
+        final _elementHandle = navigine_sdk_flutter_Venue_ToFfi(element);
+        _navigine_sdk_flutter_List_Venue_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_Venue_ReleaseFfiHandle(_elementHandle);
+    }
+    return _result;
+}
+
+List<Venue> navigine_sdk_flutter_List_Venue_FromFfi(Pointer<Void> handle)  {
+    final result = List<Venue>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_Venue_Iterator(handle);
+    while (_navigine_sdk_flutter_List_Venue_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_Venue_IteratorGet(_iteratorHandle);
+        result.add(navigine_sdk_flutter_Venue_FromFfi(_elementHandle));
+        navigine_sdk_flutter_Venue_ReleaseFfiHandle(_elementHandle);
+        _navigine_sdk_flutter_List_Venue_IteratorIncrement(_iteratorHandle);
+    }
+    return result;
+}
+
+void navigine_sdk_flutter_List_Venue_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Venue_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_List_Venue_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_create_handle_nullable'));
+
+final _navigine_sdk_flutter_List_Venue_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_release_handle_nullable'));
+
+final _navigine_sdk_flutter_List_Venue_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Venue_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_List_Venue_ToFfiNullable(List<Venue>? value)  {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_List_Venue_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_Venue_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_Venue_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+List<Venue>? navigine_sdk_flutter_List_Venue_FromFfiNullable(Pointer<Void> handle)  {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_List_Venue_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_Venue_FromFfi(_handle);
+    navigine_sdk_flutter_List_Venue_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_List_Venue_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_Venue_ReleaseHandleNullable(handle);
+
+final _navigine_sdk_flutter_List_ReferencePoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_List_ReferencePoint_create_handle'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_release_handle'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_insert'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_release_handle'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_is_valid'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_increment'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_iterator_get'));
+
+Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfi(List<ReferencePoint> value)  {
+    final _result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandle();
+    for (final element in value)  {
+        final _elementHandle = navigine_sdk_flutter_ReferencePoint_ToFfi(element);
+        _navigine_sdk_flutter_List_ReferencePoint_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
+    }
+    return _result;
+}
+
+List<ReferencePoint> navigine_sdk_flutter_List_ReferencePoint_FromFfi(Pointer<Void> handle)  {
+    final result = List<ReferencePoint>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_ReferencePoint_Iterator(handle);
+    while (_navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_ReferencePoint_IteratorGet(_iteratorHandle);
+        result.add(navigine_sdk_flutter_ReferencePoint_FromFfi(_elementHandle));
+        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
+        _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement(_iteratorHandle);
+    }
+    return result;
+}
+
+void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_create_handle_nullable'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_release_handle_nullable'));
+
+final _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_ReferencePoint_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfiNullable(List<ReferencePoint>? value)  {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_List_ReferencePoint_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+List<ReferencePoint>? navigine_sdk_flutter_List_ReferencePoint_FromFfiNullable(Pointer<Void> handle)  {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_ReferencePoint_FromFfi(_handle);
+    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable(handle);
+
+final _navigine_sdk_flutter_List_Zone_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_List_Zone_create_handle'));
+
+final _navigine_sdk_flutter_List_Zone_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_release_handle'));
+
+final _navigine_sdk_flutter_List_Zone_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_insert'));
+
+final _navigine_sdk_flutter_List_Zone_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_iterator'));
+
+final _navigine_sdk_flutter_List_Zone_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_iterator_release_handle'));
+
+final _navigine_sdk_flutter_List_Zone_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_iterator_is_valid'));
+
+final _navigine_sdk_flutter_List_Zone_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_iterator_increment'));
+
+final _navigine_sdk_flutter_List_Zone_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_iterator_get'));
+
+Pointer<Void> navigine_sdk_flutter_List_Zone_ToFfi(List<Zone> value)  {
+    final _result = _navigine_sdk_flutter_List_Zone_CreateHandle();
+    for (final element in value)  {
+        final _elementHandle = navigine_sdk_flutter_Zone_ToFfi(element);
+        _navigine_sdk_flutter_List_Zone_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_Zone_ReleaseFfiHandle(_elementHandle);
+    }
+    return _result;
+}
+
+List<Zone> navigine_sdk_flutter_List_Zone_FromFfi(Pointer<Void> handle)  {
+    final result = List<Zone>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_Zone_Iterator(handle);
+    while (_navigine_sdk_flutter_List_Zone_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_Zone_IteratorGet(_iteratorHandle);
+        result.add(navigine_sdk_flutter_Zone_FromFfi(_elementHandle));
+        navigine_sdk_flutter_Zone_ReleaseFfiHandle(_elementHandle);
+        _navigine_sdk_flutter_List_Zone_IteratorIncrement(_iteratorHandle);
+    }
+    return result;
+}
+
+void navigine_sdk_flutter_List_Zone_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Zone_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_List_Zone_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_create_handle_nullable'));
+
+final _navigine_sdk_flutter_List_Zone_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_release_handle_nullable'));
+
+final _navigine_sdk_flutter_List_Zone_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_Zone_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_List_Zone_ToFfiNullable(List<Zone>? value)  {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_List_Zone_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_Zone_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_Zone_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+List<Zone>? navigine_sdk_flutter_List_Zone_FromFfiNullable(Pointer<Void> handle)  {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_List_Zone_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_Zone_FromFfi(_handle);
+    navigine_sdk_flutter_List_Zone_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_List_Zone_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_Zone_ReleaseHandleNullable(handle);
 
 final _navigine_sdk_flutter_List_Wifi_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
@@ -762,199 +958,3 @@ List<Beacon>? navigine_sdk_flutter_List_Beacon_FromFfiNullable(Pointer<Void> han
 
 void navigine_sdk_flutter_List_Beacon_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
   _navigine_sdk_flutter_List_Beacon_ReleaseHandleNullable(handle);
-
-final _navigine_sdk_flutter_List_ReferencePoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(),
-    Pointer<Void> Function()
-  >('navigine_sdk_flutter_List_ReferencePoint_create_handle'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_release_handle'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Pointer<Void>),
-    void Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_insert'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_release_handle'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int8 Function(Pointer<Void>, Pointer<Void>),
-    int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_is_valid'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_increment'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_iterator_get'));
-
-Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfi(List<ReferencePoint> value)  {
-    final _result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandle();
-    for (final element in value)  {
-        final _elementHandle = navigine_sdk_flutter_ReferencePoint_ToFfi(element);
-        _navigine_sdk_flutter_List_ReferencePoint_Insert(_result, _elementHandle);
-        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
-    }
-    return _result;
-}
-
-List<ReferencePoint> navigine_sdk_flutter_List_ReferencePoint_FromFfi(Pointer<Void> handle)  {
-    final result = List<ReferencePoint>.empty(growable: true);
-    final _iteratorHandle = _navigine_sdk_flutter_List_ReferencePoint_Iterator(handle);
-    while (_navigine_sdk_flutter_List_ReferencePoint_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _elementHandle = _navigine_sdk_flutter_List_ReferencePoint_IteratorGet(_iteratorHandle);
-        result.add(navigine_sdk_flutter_ReferencePoint_FromFfi(_elementHandle));
-        navigine_sdk_flutter_ReferencePoint_ReleaseFfiHandle(_elementHandle);
-        _navigine_sdk_flutter_List_ReferencePoint_IteratorIncrement(_iteratorHandle);
-    }
-    return result;
-}
-
-void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_create_handle_nullable'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_release_handle_nullable'));
-
-final _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_ReferencePoint_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_List_ReferencePoint_ToFfiNullable(List<ReferencePoint>? value)  {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_List_ReferencePoint_ToFfi(value);
-    final result = _navigine_sdk_flutter_List_ReferencePoint_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-List<ReferencePoint>? navigine_sdk_flutter_List_ReferencePoint_FromFfiNullable(Pointer<Void> handle)  {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_List_ReferencePoint_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_List_ReferencePoint_FromFfi(_handle);
-    navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_List_ReferencePoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_List_ReferencePoint_ReleaseHandleNullable(handle);
-
-final _navigine_sdk_flutter_List_Venue_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(),
-    Pointer<Void> Function()
-  >('navigine_sdk_flutter_List_Venue_create_handle'));
-
-final _navigine_sdk_flutter_List_Venue_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_release_handle'));
-
-final _navigine_sdk_flutter_List_Venue_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Pointer<Void>),
-    void Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_insert'));
-
-final _navigine_sdk_flutter_List_Venue_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_iterator'));
-
-final _navigine_sdk_flutter_List_Venue_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_iterator_release_handle'));
-
-final _navigine_sdk_flutter_List_Venue_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int8 Function(Pointer<Void>, Pointer<Void>),
-    int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_iterator_is_valid'));
-
-final _navigine_sdk_flutter_List_Venue_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_iterator_increment'));
-
-final _navigine_sdk_flutter_List_Venue_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_iterator_get'));
-
-Pointer<Void> navigine_sdk_flutter_List_Venue_ToFfi(List<Venue> value)  {
-    final _result = _navigine_sdk_flutter_List_Venue_CreateHandle();
-    for (final element in value)  {
-        final _elementHandle = navigine_sdk_flutter_Venue_ToFfi(element);
-        _navigine_sdk_flutter_List_Venue_Insert(_result, _elementHandle);
-        navigine_sdk_flutter_Venue_ReleaseFfiHandle(_elementHandle);
-    }
-    return _result;
-}
-
-List<Venue> navigine_sdk_flutter_List_Venue_FromFfi(Pointer<Void> handle)  {
-    final result = List<Venue>.empty(growable: true);
-    final _iteratorHandle = _navigine_sdk_flutter_List_Venue_Iterator(handle);
-    while (_navigine_sdk_flutter_List_Venue_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _elementHandle = _navigine_sdk_flutter_List_Venue_IteratorGet(_iteratorHandle);
-        result.add(navigine_sdk_flutter_Venue_FromFfi(_elementHandle));
-        navigine_sdk_flutter_Venue_ReleaseFfiHandle(_elementHandle);
-        _navigine_sdk_flutter_List_Venue_IteratorIncrement(_iteratorHandle);
-    }
-    return result;
-}
-
-void navigine_sdk_flutter_List_Venue_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_Venue_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_List_Venue_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_create_handle_nullable'));
-
-final _navigine_sdk_flutter_List_Venue_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_release_handle_nullable'));
-
-final _navigine_sdk_flutter_List_Venue_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_List_Venue_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_List_Venue_ToFfiNullable(List<Venue>? value)  {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_List_Venue_ToFfi(value);
-    final result = _navigine_sdk_flutter_List_Venue_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_List_Venue_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-List<Venue>? navigine_sdk_flutter_List_Venue_FromFfiNullable(Pointer<Void> handle)  {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_List_Venue_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_List_Venue_FromFfi(_handle);
-    navigine_sdk_flutter_List_Venue_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_List_Venue_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_List_Venue_ReleaseHandleNullable(handle);

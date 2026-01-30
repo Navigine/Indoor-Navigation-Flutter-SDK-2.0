@@ -5,6 +5,7 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/bounding_box.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera_callback.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera_listener.dart';
@@ -17,6 +18,7 @@ import 'package:navigine_sdk/com/navigine/idl/pick_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
+import 'package:navigine_sdk/com/navigine/idl/sublocation_change_listener.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
 part 'location_window.impl.dart';
@@ -47,6 +49,31 @@ abstract class LocationWindow implements Finalizable {
      *
      */
     void setSublocationId(int id);
+
+    /**
+     *
+     * @brief Returns current sublocation ID if set, otherwise null.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_common_example.dart dart_LocationWindow_getSublocationId
+     *
+     */
+    int? getSublocationId();
+
+    /**
+     *
+     * @brief Calculates camera that fits provided bounding box.
+     * @param boundingBox Metrics bounding box to enclose.
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_common_example.dart dart_LocationWindow_getEnclosingCamera
+     *
+     */
+    Camera getEnclosingCamera(BoundingBox boundingBox);
 
     /**
      *
@@ -332,6 +359,32 @@ abstract class LocationWindow implements Finalizable {
      *
      */
     void removeCameraListener(CameraListener listener);
+
+    /**
+     *
+     * @brief Adds listener for sublocation change events.
+     * @param listener Sublocation change listener @see SublocationChangeListener "SublocationChangeListener".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_common_example.dart dart_LocationWindow_addSublocationChangeListener
+     *
+     */
+    void addSublocationChangeListener(SublocationChangeListener listener);
+
+    /**
+     *
+     * @brief Removes previously added sublocation change listener.
+     * @param listener Listener instance to remove @see SublocationChangeListener "SublocationChangeListener".
+     *
+     *
+     *
+     * Dart code snippet:
+     * @snippet location_window_common_example.dart dart_LocationWindow_removeSublocationChangeListener
+     *
+     */
+    void removeSublocationChangeListener(SublocationChangeListener listener);
 
     /**
      *

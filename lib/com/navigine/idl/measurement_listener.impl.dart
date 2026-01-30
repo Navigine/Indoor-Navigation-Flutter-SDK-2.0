@@ -102,110 +102,6 @@ void navigine_sdk_flutter_MeasurementListener_ReleaseFfiHandleNullable(Pointer<V
 
 // End of MeasurementListener "private" section.
 
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(),
-    Pointer<Void> Function()
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_create_handle'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_release_handle'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_Put = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>, Pointer<Void>, Pointer<Void>),
-    void Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_put'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_release_handle'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int8 Function(Pointer<Void>, Pointer<Void>),
-    int Function(Pointer<Void>, Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_is_valid'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_increment'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetKey = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_get_key'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetValue = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_get_value'));
-
-Pointer<Void> navigine_sdk_flutter_Map_String_SignalMeasurement_ToFfi(Map<String, SignalMeasurement> value) {
-    final _result = _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandle();
-    for (final entry in value.entries)  {
-        final _keyHandle = (entry.key);
-        final _valueHandle = navigine_sdk_flutter_SignalMeasurement_ToFfi(entry.value);
-        _navigine_sdk_flutter_Map_String_SignalMeasurement_Put(_result, _keyHandle, _valueHandle);
-        navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_valueHandle);
-    }
-    return _result;
-}
-
-Map<String, SignalMeasurement> navigine_sdk_flutter_Map_String_SignalMeasurement_FromFfi(Pointer<Void> handle) {
-    final result = Map<String, SignalMeasurement>();
-    final _iteratorHandle = _navigine_sdk_flutter_Map_String_SignalMeasurement_Iterator(handle);
-    while (_navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIsValid(handle, _iteratorHandle) != 0)  {
-        final _keyHandle = _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetKey(_iteratorHandle);
-        final _valueHandle = _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetValue(_iteratorHandle);
-        result[navigine_sdk_flutter_String_FromFfi(_keyHandle)] = navigine_sdk_flutter_SignalMeasurement_FromFfi(_valueHandle);
-        navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_keyHandle);navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_valueHandle);_navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIncrement(_iteratorHandle);
-    }
-    _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorReleaseHandle(_iteratorHandle);
-    return result;
-}
-
-void navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_create_handle_nullable'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_release_handle_nullable'));
-
-final _navigine_sdk_flutter_Map_String_SignalMeasurement_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Map_String_SignalMeasurement_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_Map_String_SignalMeasurement_ToFfiNullable(Map<String, SignalMeasurement>? value) {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_Map_String_SignalMeasurement_ToFfi(value);
-    final result = _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-Map<String, SignalMeasurement>? navigine_sdk_flutter_Map_String_SignalMeasurement_FromFfiNullable(Pointer<Void> handle) {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_Map_String_SignalMeasurement_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_Map_String_SignalMeasurement_FromFfi(_handle);
-    navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandleNullable(Pointer<Void> handle) => _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandleNullable(handle);
-
 final _navigine_sdk_flutter_Map_SensorType_SensorMeasurement_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),
     Pointer<Void> Function()
@@ -309,3 +205,107 @@ Map<SensorType, SensorMeasurement>? navigine_sdk_flutter_Map_SensorType_SensorMe
 }
 
 void navigine_sdk_flutter_Map_SensorType_SensorMeasurement_ReleaseFfiHandleNullable(Pointer<Void> handle) => _navigine_sdk_flutter_Map_SensorType_SensorMeasurement_ReleaseHandleNullable(handle);
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_create_handle'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_release_handle'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_Put = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_put'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_release_handle'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_is_valid'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_increment'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetKey = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_get_key'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetValue = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_iterator_get_value'));
+
+Pointer<Void> navigine_sdk_flutter_Map_String_SignalMeasurement_ToFfi(Map<String, SignalMeasurement> value) {
+    final _result = _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandle();
+    for (final entry in value.entries)  {
+        final _keyHandle = (entry.key);
+        final _valueHandle = navigine_sdk_flutter_SignalMeasurement_ToFfi(entry.value);
+        _navigine_sdk_flutter_Map_String_SignalMeasurement_Put(_result, _keyHandle, _valueHandle);
+        navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_valueHandle);
+    }
+    return _result;
+}
+
+Map<String, SignalMeasurement> navigine_sdk_flutter_Map_String_SignalMeasurement_FromFfi(Pointer<Void> handle) {
+    final result = Map<String, SignalMeasurement>();
+    final _iteratorHandle = _navigine_sdk_flutter_Map_String_SignalMeasurement_Iterator(handle);
+    while (_navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _keyHandle = _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetKey(_iteratorHandle);
+        final _valueHandle = _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorGetValue(_iteratorHandle);
+        result[navigine_sdk_flutter_String_FromFfi(_keyHandle)] = navigine_sdk_flutter_SignalMeasurement_FromFfi(_valueHandle);
+        navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_keyHandle);navigine_sdk_flutter_SignalMeasurement_ReleaseFfiHandle(_valueHandle);_navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorIncrement(_iteratorHandle);
+    }
+    _navigine_sdk_flutter_Map_String_SignalMeasurement_IteratorReleaseHandle(_iteratorHandle);
+    return result;
+}
+
+void navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_create_handle_nullable'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_release_handle_nullable'));
+
+final _navigine_sdk_flutter_Map_String_SignalMeasurement_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Map_String_SignalMeasurement_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_Map_String_SignalMeasurement_ToFfiNullable(Map<String, SignalMeasurement>? value) {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_Map_String_SignalMeasurement_ToFfi(value);
+    final result = _navigine_sdk_flutter_Map_String_SignalMeasurement_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+Map<String, SignalMeasurement>? navigine_sdk_flutter_Map_String_SignalMeasurement_FromFfiNullable(Pointer<Void> handle) {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_Map_String_SignalMeasurement_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_Map_String_SignalMeasurement_FromFfi(_handle);
+    navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseFfiHandleNullable(Pointer<Void> handle) => _navigine_sdk_flutter_Map_String_SignalMeasurement_ReleaseHandleNullable(handle);

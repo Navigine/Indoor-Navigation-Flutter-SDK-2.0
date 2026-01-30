@@ -280,6 +280,49 @@ class NavigineSdk$Impl extends __lib.NativeBase implements NavigineSdk, Finaliza
         return _result;
     }
 
+    @override
+    MqttSession getMqttSession(NavigationManager navigationManager) {
+        final _getMqttSessionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_getMqttSession__NavigationManager'));
+        final _navigationManagerHandle = navigine_sdk_flutter_NavigationManager_ToFfi(navigationManager);
+        final _handle = this.handle;
+        final __resultHandle = _getMqttSessionFfi(_handle, _navigationManagerHandle);
+        navigine_sdk_flutter_NavigationManager_ReleaseFfiHandle(_navigationManagerHandle);
+        final _result = navigine_sdk_flutter_MqttSession_FromFfi(__resultHandle);
+        navigine_sdk_flutter_MqttSession_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    StorageManager getStorageManager() {
+        final _getStorageManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, ),
+            Pointer<Void> Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_NavigineSdk_getStorageManager'));
+        final _handle = this.handle;
+        final __resultHandle = _getStorageManagerFfi(_handle, );
+        final _result = navigine_sdk_flutter_StorageManager_FromFfi(__resultHandle);
+        navigine_sdk_flutter_StorageManager_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    UserLocationLayer getUserLocationLayer(LocationWindow locationWindow) {
+        final _getUserLocationLayerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_getUserLocationLayer__LocationWindow'));
+        final _locationWindowHandle = navigine_sdk_flutter_LocationWindow_ToFfi(locationWindow);
+        final _handle = this.handle;
+        final __resultHandle = _getUserLocationLayerFfi(_handle, _locationWindowHandle);
+        navigine_sdk_flutter_LocationWindow_ReleaseFfiHandle(_locationWindowHandle);
+        final _result = navigine_sdk_flutter_UserLocationLayer_FromFfi(__resultHandle);
+        navigine_sdk_flutter_UserLocationLayer_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
 
 
 

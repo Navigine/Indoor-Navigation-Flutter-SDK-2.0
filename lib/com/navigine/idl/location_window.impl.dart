@@ -34,6 +34,34 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
 
     @override
+    int? getSublocationId() {
+        final _getSublocationIdFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, ),
+            Pointer<Void> Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_getSublocationId'));
+        final _handle = this.handle;
+        final __resultHandle = _getSublocationIdFfi(_handle, );
+        final _result = navigine_sdk_flutter_int_FromFfiNullable(__resultHandle);
+        navigine_sdk_flutter_int_ReleaseFfiHandleNullable(__resultHandle);
+        return _result;
+    }
+
+    @override
+    Camera getEnclosingCamera(BoundingBox boundingBox) {
+        final _getEnclosingCameraFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_getEnclosingCamera__BoundingBox'));
+        final _boundingBoxHandle = navigine_sdk_flutter_BoundingBox_ToFfi(boundingBox);
+        final _handle = this.handle;
+        final __resultHandle = _getEnclosingCameraFfi(_handle, _boundingBoxHandle);
+        navigine_sdk_flutter_BoundingBox_ReleaseFfiHandle(_boundingBoxHandle);
+        final _result = navigine_sdk_flutter_Camera_FromFfi(__resultHandle);
+        navigine_sdk_flutter_Camera_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
     Point screenPositionToMeters(math.Point<double> point) {
         final _screenPositionToMetersFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
@@ -309,6 +337,30 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
         final _handle = this.handle;
         _removeCameraListenerFfi(_handle, _listenerHandle);
         navigine_sdk_flutter_CameraListener_ReleaseFfiHandle(_listenerHandle);
+    }
+
+    @override
+    void addSublocationChangeListener(SublocationChangeListener listener) {
+        final _addSublocationChangeListenerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_addSublocationChangeListener__Listener'));
+        final _listenerHandle = navigine_sdk_flutter_SublocationChangeListener_ToFfi(listener);
+        final _handle = this.handle;
+        _addSublocationChangeListenerFfi(_handle, _listenerHandle);
+        navigine_sdk_flutter_SublocationChangeListener_ReleaseFfiHandle(_listenerHandle);
+    }
+
+    @override
+    void removeSublocationChangeListener(SublocationChangeListener listener) {
+        final _removeSublocationChangeListenerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_removeSublocationChangeListener__Listener'));
+        final _listenerHandle = navigine_sdk_flutter_SublocationChangeListener_ToFfi(listener);
+        final _handle = this.handle;
+        _removeSublocationChangeListenerFfi(_handle, _listenerHandle);
+        navigine_sdk_flutter_SublocationChangeListener_ReleaseFfiHandle(_listenerHandle);
     }
 
     @override
