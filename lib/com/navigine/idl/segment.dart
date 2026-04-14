@@ -15,8 +15,9 @@ part 'segment.impl.dart';
  *
  *
  *
- * Dart code snippet:
- * @snippet geometry_utils_example.dart dart_Segment_constructor
+ *
+ *Dart code snippet:
+ *@snippet geometry_utils_example.dart dart_Segment_constructor
  *
  */
 class Segment {
@@ -27,8 +28,9 @@ class Segment {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_Segment_getStart
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_Segment_getStart
      *
      */
     Point start;
@@ -37,8 +39,9 @@ class Segment {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_Segment_getEnd
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_Segment_getEnd
      *
      */
     Point end;

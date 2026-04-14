@@ -25,8 +25,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getPoint
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getPoint
      *
      */
     Point get point;
@@ -35,8 +36,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getLocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getLocationId
      *
      */
     int get locationId;
@@ -45,8 +47,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getSublocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getSublocationId
      *
      */
     int get sublocationId;
@@ -55,8 +58,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getId
      *
      */
     int get id;
@@ -65,8 +69,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getName
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getName
      *
      */
     String get name;
@@ -75,8 +80,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getPhone
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getPhone
      *
      */
     String get phone;
@@ -85,8 +91,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getDescript
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getDescript
      *
      */
     String get descript;
@@ -95,8 +102,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getAlias
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getAlias
      *
      */
     String get alias;
@@ -105,8 +113,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getCategoryId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getCategoryId
      *
      */
     int get categoryId;
@@ -115,8 +124,9 @@ abstract class Venue implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Venue_getImageUrl
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Venue_getImageUrl
      *
      */
     String? get imageUrl;

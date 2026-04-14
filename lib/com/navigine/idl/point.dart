@@ -15,8 +15,9 @@ part 'point.impl.dart';
  *
  *
  *
- * Dart code snippet:
- * @snippet geometry_utils_example.dart dart_Point_constructor
+ *
+ *Dart code snippet:
+ *@snippet geometry_utils_example.dart dart_Point_constructor
  *
  */
 class Point {
@@ -27,8 +28,9 @@ class Point {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_Point_getX
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_Point_getX
      *
      */
     double x;
@@ -37,8 +39,9 @@ class Point {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_Point_getY
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_Point_getY
      *
      */
     double y;

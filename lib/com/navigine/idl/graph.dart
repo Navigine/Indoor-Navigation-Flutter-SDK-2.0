@@ -26,8 +26,9 @@ abstract class Graph implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Graph_getVertices
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Graph_getVertices
      *
      */
     List<GraphVertex> get vertexes;
@@ -35,8 +36,10 @@ abstract class Graph implements Finalizable {
      * @brief List of edges that connected vertexes @see GraphEdge "GraphEdge"
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Graph_getEdges
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Graph_getEdges
      *
      */
     List<GraphEdge> get edges;

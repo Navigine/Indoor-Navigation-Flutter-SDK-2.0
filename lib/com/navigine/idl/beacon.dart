@@ -27,8 +27,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getPoint
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getPoint
      *
      */
     Point get point;
@@ -37,8 +38,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getLocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getLocationId
      *
      */
     int get locationId;
@@ -47,8 +49,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getSublocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getSublocationId
      *
      */
     int get sublocationId;
@@ -57,8 +60,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getName
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getName
      *
      */
     String get name;
@@ -67,8 +71,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getMajor
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getMajor
      *
      */
     int get major;
@@ -77,8 +82,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getMinor
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getMinor
      *
      */
     int get minor;
@@ -87,8 +93,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getUuid
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getUuid
      *
      */
     String get uuid;
@@ -97,8 +104,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getPower
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getPower
      *
      */
     int? get power;
@@ -107,8 +115,9 @@ abstract class Beacon implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Beacon_getStatus
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Beacon_getStatus
      *
      */
     TransmitterStatus get status;

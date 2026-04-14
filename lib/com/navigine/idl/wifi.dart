@@ -27,8 +27,9 @@ abstract class Wifi implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Wifi_getPoint
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Wifi_getPoint
      *
      */
     Point get point;
@@ -37,8 +38,9 @@ abstract class Wifi implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Wifi_getLocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Wifi_getLocationId
      *
      */
     int get locationId;
@@ -47,8 +49,9 @@ abstract class Wifi implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Wifi_getSublocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Wifi_getSublocationId
      *
      */
     int get sublocationId;
@@ -57,8 +60,9 @@ abstract class Wifi implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Wifi_getName
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Wifi_getName
      *
      */
     String get name;
@@ -67,8 +71,9 @@ abstract class Wifi implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Wifi_getMac
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Wifi_getMac
      *
      */
     String get mac;
@@ -77,8 +82,9 @@ abstract class Wifi implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Wifi_getStatus
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Wifi_getStatus
      *
      */
     TransmitterStatus get status;

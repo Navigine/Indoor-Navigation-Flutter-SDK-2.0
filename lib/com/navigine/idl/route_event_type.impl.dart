@@ -4,23 +4,27 @@ part of 'route_event_type.dart';
 
 int navigine_sdk_flutter_RouteEventType_ToFfi(RouteEventType value) {
     switch (value) {
-    case RouteEventType.TURN_LEFT:
+    case RouteEventType.TURN_EVENT:
         return 0;
-    case RouteEventType.TURN_RIGHT:
+    case RouteEventType.TRANSITION_ENTRY_EVENT:
         return 1;
-    case RouteEventType.TRANSITION:
+    case RouteEventType.TRANSITION_EXIT_EVENT:
         return 2;
+    case RouteEventType.TARGET_REACHED_EVENT:
+        return 3;
     }
 }
 
 RouteEventType navigine_sdk_flutter_RouteEventType_FromFfi(int handle) {
     switch (handle) {
     case 0:
-        return RouteEventType.TURN_LEFT;
+        return RouteEventType.TURN_EVENT;
     case 1:
-        return RouteEventType.TURN_RIGHT;
+        return RouteEventType.TRANSITION_ENTRY_EVENT;
     case 2:
-        return RouteEventType.TRANSITION;
+        return RouteEventType.TRANSITION_EXIT_EVENT;
+    case 3:
+        return RouteEventType.TARGET_REACHED_EVENT;
     default:
         throw StateError("Invalid numeric value $handle for RouteEventType enum.");
     }

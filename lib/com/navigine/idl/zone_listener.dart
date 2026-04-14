@@ -22,14 +22,14 @@ part 'zone_listener.impl.dart';
 abstract class ZoneListener {
 
     /**
-     *
      * @brief Called when user handle particular zone event
      * @param zoneEvent handled @see ZoneEvent "ZoneEvent".
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneListener_onZoneEvent
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneListener_onZoneEvent
      *
      */
     void onZoneEvent(ZoneEvent zoneEvent);

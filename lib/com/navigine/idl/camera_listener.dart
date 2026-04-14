@@ -23,7 +23,6 @@ part 'camera_listener.impl.dart';
 abstract class CameraListener {
 
     /**
-     *
      * @brief Triggered when the camera position changed.
      * @param reason reason of camera update.
      * @param finished true if the camera finished moving, false otherwise.
@@ -31,8 +30,9 @@ abstract class CameraListener {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_window_camera_example.dart dart_Camera_constructor
+     *
+     *Dart code snippet:
+     *@snippet location_window_camera_example.dart dart_Camera_constructor
      *
      */
     void onCameraPositionChanged(CameraUpdateReason reason, bool finished);

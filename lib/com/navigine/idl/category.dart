@@ -22,8 +22,9 @@ class Category {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Category_getId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Category_getId
      *
      */
     int id;
@@ -32,8 +33,9 @@ class Category {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Category_getName
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Category_getName
      *
      */
     String name;
@@ -42,8 +44,9 @@ class Category {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Category_getImageUrl
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Category_getImageUrl
      *
      */
     String? imageUrl;

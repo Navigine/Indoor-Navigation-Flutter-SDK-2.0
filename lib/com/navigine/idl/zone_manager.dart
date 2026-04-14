@@ -18,29 +18,29 @@ part 'zone_manager.impl.dart';
 abstract class ZoneManager implements Finalizable {
 
     /**
-     *
      * @brief Method is used to add @see ZoneListener "ZoneListener" class element
      * which will notify entering or leaving @see Zone "Zone"s.
      * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Сorresponding @see ZoneListener "ZoneListener" class.
+     * @param listener Corresponding @see ZoneListener "ZoneListener" class.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneManager_addZoneListener
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneManager_addZoneListener
      *
      */
     void addZoneListener(ZoneListener listener);
 
     /**
-     *
      * @brief Method is used for removing previously added @see ZoneListener "ZoneListener" class element.
-     * @param listener Сorresponding @see ZoneListener "ZoneListener" class to remove.
+     * @param listener Corresponding @see ZoneListener "ZoneListener" class to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneManager_removeZoneListener
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneManager_removeZoneListener
      *
      */
     void removeZoneListener(ZoneListener listener);

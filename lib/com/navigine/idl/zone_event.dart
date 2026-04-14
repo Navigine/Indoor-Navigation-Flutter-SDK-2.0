@@ -25,8 +25,9 @@ class ZoneEvent {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneEvent_getType
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneEvent_getType
      *
      */
     ZoneEventType type;
@@ -35,8 +36,9 @@ class ZoneEvent {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneEvent_getLocationId
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneEvent_getLocationId
      *
      */
     int locationId;
@@ -45,8 +47,9 @@ class ZoneEvent {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneEvent_getSublocationId
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneEvent_getSublocationId
      *
      */
     int sublocationId;
@@ -55,8 +58,9 @@ class ZoneEvent {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneEvent_getId
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneEvent_getId
      *
      */
     int id;
@@ -65,8 +69,9 @@ class ZoneEvent {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneEvent_getName
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneEvent_getName
      *
      */
     String name;
@@ -75,8 +80,9 @@ class ZoneEvent {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet zone_manager_example.dart dart_ZoneEvent_getAlias
+     *
+     *Dart code snippet:
+     *@snippet zone_manager_example.dart dart_ZoneEvent_getAlias
      *
      */
     String alias;

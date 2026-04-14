@@ -32,8 +32,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getElevationGraph
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getElevationGraph
      *
      */
     ElevationGraph getElevationGraph(String tag);
@@ -44,8 +45,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getGraphTags
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getGraphTags
      *
      */
     List<String> getGraphTags();
@@ -57,8 +59,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getSublocationById
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getSublocationById
      *
      */
     Sublocation getSublocationById(int id);
@@ -70,8 +73,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getCategoryById
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getCategoryById
      *
      */
     Category? getCategoryById(int id);
@@ -81,8 +85,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getId
      *
      */
     int get id;
@@ -91,8 +96,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getVersion
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getVersion
      *
      */
     int get version;
@@ -101,8 +107,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getName
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getName
      *
      */
     String get name;
@@ -111,8 +118,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getDescript
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getDescript
      *
      */
     String get descript;
@@ -121,8 +129,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getCategories
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getCategories
      *
      */
     List<Category> get categories;
@@ -131,8 +140,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getSublocations
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getSublocations
      *
      */
     List<Sublocation> get sublocations;
@@ -141,8 +151,9 @@ abstract class Location implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Location_getModified
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Location_getModified
      *
      */
     bool get modified;

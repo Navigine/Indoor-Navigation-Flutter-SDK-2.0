@@ -19,7 +19,6 @@ part 'measurement_manager.impl.dart';
 abstract class MeasurementManager implements Finalizable {
 
     /**
-     *
      * @brief Method is used to add @see MeasurementListener "MeasurementListener" class element
      * which will notify about new sensor or signal measurements.
      * @note Do not forget to remove listener if it is no longer needed!
@@ -27,27 +26,40 @@ abstract class MeasurementManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_addMeasurementListener
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_addMeasurementListener
      *
      */
     void addMeasurementListener(MeasurementListener listener);
 
     /**
-     *
      * @brief Method is used for removing previously added @see MeasurementListener "MeasurementListener" class element.
      * @param listener Corresponding @see MeasurementListener "MeasurementListener" class to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeMeasurementListener
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeMeasurementListener
      *
      */
     void removeMeasurementListener(MeasurementListener listener);
 
     /**
+     * @brief Sets the interval in milliseconds between measurement batches delivered to @see MeasurementListener "MeasurementListener". Default is 1000 ms. Values less than or equal to zero are treated as the default.
+     * @param intervalMs wait time in milliseconds before the next publish cycle
      *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_setPublishIntervalMs
+     *
+     */
+    void setPublishIntervalMs(int intervalMs);
+
+    /**
      * @brief Method adds a beacon generator for simulating BLE beacon signals.
      * @param uuid UUID of the beacon.
      * @param major Major value of the beacon.
@@ -60,14 +72,14 @@ abstract class MeasurementManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_addBeaconGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_addBeaconGenerator
      *
      */
     String addBeaconGenerator(String uuid, int major, int minor, int power, int timeout, int rssiMin, int rssiMax);
 
     /**
-     *
      * @brief Method adds an Eddystone generator for simulating Eddystone beacon signals.
      * @param namespaceId Namespace ID of the Eddystone beacon.
      * @param instanceId Instance ID of the Eddystone beacon.
@@ -79,39 +91,39 @@ abstract class MeasurementManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_addEddystoneGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_addEddystoneGenerator
      *
      */
     String addEddystoneGenerator(String namespaceId, String instanceId, int power, int timeout, int rssiMin, int rssiMax);
 
     /**
-     *
      * @brief Method removes all BLE beacon generators.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeBleGenerators
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeBleGenerators
      *
      */
     void removeBleGenerators();
 
     /**
-     *
      * @brief Method removes a specific BLE beacon generator by its identifier.
      * @param id Unique identifier of the BLE generator to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeBleGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeBleGenerator
      *
      */
     void removeBleGenerator(String id);
 
     /**
-     *
      * @brief Method adds a Wi-Fi generator for simulating Wi-Fi signals.
      * @param mac MAC address of the Wi-Fi access point.
      * @param timeout Duration of the generator in milliseconds.
@@ -121,39 +133,39 @@ abstract class MeasurementManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_addWifiGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_addWifiGenerator
      *
      */
     String addWifiGenerator(String mac, int timeout, int rssiMin, int rssiMax);
 
     /**
-     *
      * @brief Method removes a specific Wi-Fi generator by its identifier.
      * @param id Unique identifier of the Wi-Fi generator to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiGenerator
      *
      */
     void removeWifiGenerator(String id);
 
     /**
-     *
      * @brief Method removes all Wi-Fi generators.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiGenerators
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiGenerators
      *
      */
     void removeWifiGenerators();
 
     /**
-     *
      * @brief Method adds a Wi-Fi RTT generator for simulating Wi-Fi Round-Trip Time signals.
      * @param mac MAC address of the Wi-Fi access point.
      * @param timeout Duration of the generator in milliseconds.
@@ -167,39 +179,39 @@ abstract class MeasurementManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_addWifiRttGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_addWifiRttGenerator
      *
      */
     String addWifiRttGenerator(String mac, int timeout, int distMin, int distMax, int stdDevMin, int stdDevMax, int rssiMin, int rssiMax);
 
     /**
-     *
      * @brief Method removes a specific Wi-Fi RTT generator by its identifier.
      * @param hash Unique identifier of the Wi-Fi RTT generator to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiRttGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiRttGenerator
      *
      */
     void removeWifiRttGenerator(String hash);
 
     /**
-     *
      * @brief Method removes all Wi-Fi RTT generators.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiRttGenerators
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeWifiRttGenerators
      *
      */
     void removeWifiRttGenerators();
 
     /**
-     *
      * @brief Method adds a location generator for simulating location measurements.
      * @param latMin Minimum latitude for the simulated location.
      * @param latMax Maximum latitude for the simulated location.
@@ -212,33 +224,34 @@ abstract class MeasurementManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_addLocationGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_addLocationGenerator
      *
      */
     String addLocationGenerator(double latMin, double latMax, double lonMin, double lonMax, double accMin, double accMax, int timeout);
 
     /**
-     *
      * @brief Method removes a specific location generator by its identifier.
      * @param id Unique identifier of the location generator to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeLocationGenerator
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeLocationGenerator
      *
      */
     void removeLocationGenerator(String id);
 
     /**
-     *
      * @brief Method removes all location generators.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementManager_removeLocationGenerators
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementManager_removeLocationGenerators
      *
      */
     void removeLocationGenerators();

@@ -26,8 +26,9 @@ class Position {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_Position_getPoint
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_Position_getPoint
      *
      */
     GlobalPoint point;
@@ -36,8 +37,9 @@ class Position {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_Position_getAccuracy
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_Position_getAccuracy
      *
      */
     double accuracy;
@@ -52,8 +54,9 @@ class Position {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_Position_getHeading
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_Position_getHeading
      *
      */
     double? heading;
@@ -62,8 +65,9 @@ class Position {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_Position_getHeadingAccuracy
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_Position_getHeadingAccuracy
      *
      */
     double? headingAccuracy;
@@ -72,8 +76,9 @@ class Position {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_Position_getLocationPoint
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_Position_getLocationPoint
      *
      */
     LocationPoint? locationPoint;
@@ -82,8 +87,9 @@ class Position {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_Position_getLocationHeading
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_Position_getLocationHeading
      *
      */
     double? locationHeading;

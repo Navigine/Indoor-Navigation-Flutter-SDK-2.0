@@ -12,7 +12,14 @@ part 'location_polygon.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_geometry_classes
  *
+ *
  * @brief Class is used for representing certain polygon within the location @see Polygon "Polygon"
+ *
+ *
+ *
+ *
+ *Dart code snippet:
+ *@snippet location_window_map_objects_example.dart dart_LocationPolygon_record
  *
  */
 class LocationPolygon {

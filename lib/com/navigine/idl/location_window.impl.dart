@@ -364,6 +364,30 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
 
     @override
+    void addBuildingListener(BuildingListener listener) {
+        final _addBuildingListenerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_addBuildingListener__Listener'));
+        final _listenerHandle = navigine_sdk_flutter_BuildingListener_ToFfi(listener);
+        final _handle = this.handle;
+        _addBuildingListenerFfi(_handle, _listenerHandle);
+        navigine_sdk_flutter_BuildingListener_ReleaseFfiHandle(_listenerHandle);
+    }
+
+    @override
+    void removeBuildingListener(BuildingListener listener) {
+        final _removeBuildingListenerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_removeBuildingListener__Listener'));
+        final _listenerHandle = navigine_sdk_flutter_BuildingListener_ToFfi(listener);
+        final _handle = this.handle;
+        _removeBuildingListenerFfi(_handle, _listenerHandle);
+        navigine_sdk_flutter_BuildingListener_ReleaseFfiHandle(_listenerHandle);
+    }
+
+    @override
     void flyTo(Camera camera, int duration, CameraCallback callback) {
         final _flyToFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Void Function(Pointer<Void>, Pointer<Void>, Int32, Pointer<Void>),
@@ -438,17 +462,17 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
 
     @override
-    void applyFilter(String filter, String layer) {
-        final _applyFilterFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    void applyLayerFilter(String layer, List<MapFilterCondition> conditions) {
+        final _applyLayerFilterFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Void Function(Pointer<Void>, Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_LocationWindow_applyFilter__Filter_Layer'));
-        final _filterHandle = navigine_sdk_flutter_String_ToFfi(filter);
+          >('navigine_sdk_flutter_LocationWindow_applyLayerFilter__Layer_Conditions'));
         final _layerHandle = navigine_sdk_flutter_String_ToFfi(layer);
+        final _conditionsHandle = navigine_sdk_flutter_List_MapFilterCondition_ToFfi(conditions);
         final _handle = this.handle;
-        _applyFilterFfi(_handle, _filterHandle, _layerHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_filterHandle);
+        _applyLayerFilterFfi(_handle, _layerHandle, _conditionsHandle);
         navigine_sdk_flutter_String_ReleaseFfiHandle(_layerHandle);
+        navigine_sdk_flutter_List_MapFilterCondition_ReleaseFfiHandle(_conditionsHandle);
     }
 
     void setDebugFlag(DebugFlag flag, bool on) {
@@ -763,6 +787,104 @@ LocationWindow? navigine_sdk_flutter_LocationWindow_FromFfiNullable(Pointer<Void
   handle.address != 0 ? navigine_sdk_flutter_LocationWindow_FromFfi(handle) : null;
 
 // End of LocationWindow "private" section.
+
+final _navigine_sdk_flutter_List_MapFilterCondition_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(),
+    Pointer<Void> Function()
+  >('navigine_sdk_flutter_List_MapFilterCondition_create_handle'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_release_handle'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_Insert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>, Pointer<Void>),
+    void Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_insert'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_Iterator = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_iterator'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_IteratorReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_iterator_release_handle'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_IteratorIsValid = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Int8 Function(Pointer<Void>, Pointer<Void>),
+    int Function(Pointer<Void>, Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_iterator_is_valid'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_IteratorIncrement = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_iterator_increment'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_IteratorGet = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_iterator_get'));
+
+Pointer<Void> navigine_sdk_flutter_List_MapFilterCondition_ToFfi(List<MapFilterCondition> value)  {
+    final _result = _navigine_sdk_flutter_List_MapFilterCondition_CreateHandle();
+    for (final element in value)  {
+        final _elementHandle = navigine_sdk_flutter_MapFilterCondition_ToFfi(element);
+        _navigine_sdk_flutter_List_MapFilterCondition_Insert(_result, _elementHandle);
+        navigine_sdk_flutter_MapFilterCondition_ReleaseFfiHandle(_elementHandle);
+    }
+    return _result;
+}
+
+List<MapFilterCondition> navigine_sdk_flutter_List_MapFilterCondition_FromFfi(Pointer<Void> handle)  {
+    final result = List<MapFilterCondition>.empty(growable: true);
+    final _iteratorHandle = _navigine_sdk_flutter_List_MapFilterCondition_Iterator(handle);
+    while (_navigine_sdk_flutter_List_MapFilterCondition_IteratorIsValid(handle, _iteratorHandle) != 0)  {
+        final _elementHandle = _navigine_sdk_flutter_List_MapFilterCondition_IteratorGet(_iteratorHandle);
+        result.add(navigine_sdk_flutter_MapFilterCondition_FromFfi(_elementHandle));
+        navigine_sdk_flutter_MapFilterCondition_ReleaseFfiHandle(_elementHandle);
+        _navigine_sdk_flutter_List_MapFilterCondition_IteratorIncrement(_iteratorHandle);
+    }
+    return result;
+}
+
+void navigine_sdk_flutter_List_MapFilterCondition_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_List_MapFilterCondition_ReleaseHandle(handle);
+
+final _navigine_sdk_flutter_List_MapFilterCondition_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_create_handle_nullable'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Void Function(Pointer<Void>),
+    void Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_release_handle_nullable'));
+
+final _navigine_sdk_flutter_List_MapFilterCondition_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_List_MapFilterCondition_get_value_nullable'));
+
+Pointer<Void> navigine_sdk_flutter_List_MapFilterCondition_ToFfiNullable(List<MapFilterCondition>? value)  {
+    if (value == null) return Pointer<Void>.fromAddress(0);
+    final _handle = navigine_sdk_flutter_List_MapFilterCondition_ToFfi(value);
+    final result = _navigine_sdk_flutter_List_MapFilterCondition_CreateHandleNullable(_handle);
+    navigine_sdk_flutter_List_MapFilterCondition_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+List<MapFilterCondition>? navigine_sdk_flutter_List_MapFilterCondition_FromFfiNullable(Pointer<Void> handle)  {
+    if (handle.address == 0) return null;
+    final _handle = _navigine_sdk_flutter_List_MapFilterCondition_GetValueNullable(handle);
+    final result = navigine_sdk_flutter_List_MapFilterCondition_FromFfi(_handle);
+    navigine_sdk_flutter_List_MapFilterCondition_ReleaseFfiHandle(_handle);
+    return result;
+}
+
+void navigine_sdk_flutter_List_MapFilterCondition_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
+  _navigine_sdk_flutter_List_MapFilterCondition_ReleaseHandleNullable(handle);
 
 final _navigine_sdk_flutter_List_String_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(),

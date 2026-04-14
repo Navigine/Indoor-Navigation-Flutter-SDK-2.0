@@ -12,7 +12,7 @@ part 'elevation_graph.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_location_elements
  *
- * @brief Сlass describing a graph that connects the sublocations.
+ * @brief Class describing a graph that connects the sublocations.
  *
  * Referenced from @see Location "Location"
  */
@@ -24,8 +24,9 @@ abstract class ElevationGraph implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_ElevationGraph_getEdges
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_ElevationGraph_getEdges
      *
      */
     List<GraphEdge> get edges;

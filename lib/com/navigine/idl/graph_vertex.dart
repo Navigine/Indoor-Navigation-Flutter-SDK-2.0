@@ -24,8 +24,8 @@ abstract class GraphVertex implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphVertex_getId
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphVertex_getId
      *
      */
     int get id;
@@ -34,8 +34,8 @@ abstract class GraphVertex implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphVertex_getPoint
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphVertex_getPoint
      *
      */
     Point get point;
@@ -44,8 +44,8 @@ abstract class GraphVertex implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphVertex_getName
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphVertex_getName
      *
      */
     String get name;
@@ -54,8 +54,8 @@ abstract class GraphVertex implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphVertex_getIsExternal
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphVertex_getIsExternal
      *
      */
     bool get isExternal;
@@ -64,8 +64,8 @@ abstract class GraphVertex implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphVertex_getIsElevation
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphVertex_getIsElevation
      *
      */
     bool get isElevation;

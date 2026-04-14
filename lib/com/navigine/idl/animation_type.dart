@@ -9,9 +9,16 @@ part 'animation_type.impl.dart';
 /**
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_location_view
+ *
  * @brief Enum described animation functions.
  *
  * Referenced from @see CircleMapObject "CircleMapObject", @see IconMapObject "IconMapObject", @see LocationWindow "LocationWindow".
+ *
+ *
+ *
+ *
+ *Dart code snippet:
+ *@snippet location_window_camera_example.dart dart_AnimationType_enum
  *
  */
 enum AnimationType {

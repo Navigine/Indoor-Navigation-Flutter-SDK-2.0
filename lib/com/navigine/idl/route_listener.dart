@@ -22,14 +22,14 @@ part 'route_listener.impl.dart';
 abstract class RouteListener {
 
     /**
-     *
      * @brief Called when new route has been calculated
      * @param paths calculated list of @see RoutePath "RoutePath"s to added targets.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RouteListener_onPathsUpdated
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RouteListener_onPathsUpdated
      *
      */
     void onPathsUpdated(List<RoutePath> paths);

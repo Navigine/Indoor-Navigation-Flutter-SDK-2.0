@@ -26,27 +26,27 @@ part 'measurement_listener.impl.dart';
 abstract class MeasurementListener {
 
     /**
-     *
      * @brief Called when new sensor measurements are detected.
      * @param sensors A map of sensor types to their corresponding @see SensorMeasurement "SensorMeasurement" values.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementListener_onSensorMeasurementDetected
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementListener_onSensorMeasurementDetected
      *
      */
     void onSensorMeasurementDetected(Map<SensorType, SensorMeasurement> sensors);
 
     /**
-     *
      * @brief Called when new signal measurements are detected.
      * @param signals A map of signal identifiers to their corresponding @see SignalMeasurement "SignalMeasurement" values.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_MeasurementListener_onSignalMeasurementDetected
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_MeasurementListener_onSignalMeasurementDetected
      *
      */
     void onSignalMeasurementDetected(Map<String, SignalMeasurement> signals);

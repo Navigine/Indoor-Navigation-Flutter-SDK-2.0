@@ -3,8 +3,8 @@ part of 'route_event.dart';
 // RouteEvent "private" section, not exported.
 
 final _navigine_sdk_flutter_RouteEvent_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint32, Int32, Float),
-    Pointer<Void> Function(int, int, double)
+    Pointer<Void> Function(Uint32, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>),
+    Pointer<Void> Function(int, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>)
   >('navigine_sdk_flutter_RouteEvent_create_handle'));
 
 final _navigine_sdk_flutter_RouteEvent_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
@@ -17,40 +17,60 @@ final _navigine_sdk_flutter_RouteEvent_GetFieldtype = __lib.catchArgumentError((
     int Function(Pointer<Void>)
   >('navigine_sdk_flutter_RouteEvent_get_field_type'));
 
-final _navigine_sdk_flutter_RouteEvent_GetFieldvalue = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteEvent_get_field_value'));
+final _navigine_sdk_flutter_RouteEvent_GetFieldturnEvent = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_RouteEvent_get_field_turnEvent'));
 
-final _navigine_sdk_flutter_RouteEvent_GetFielddistance = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Float Function(Pointer<Void>),
-    double Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteEvent_get_field_distance'));
+final _navigine_sdk_flutter_RouteEvent_GetFieldtransitionEntryEvent = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_RouteEvent_get_field_transitionEntryEvent'));
+
+final _navigine_sdk_flutter_RouteEvent_GetFieldtransitionExitEvent = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_RouteEvent_get_field_transitionExitEvent'));
+
+final _navigine_sdk_flutter_RouteEvent_GetFieldtargetReachedEvent = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Pointer<Void> Function(Pointer<Void>),
+    Pointer<Void> Function(Pointer<Void>)
+  >('navigine_sdk_flutter_RouteEvent_get_field_targetReachedEvent'));
 
 
 Pointer<Void> navigine_sdk_flutter_RouteEvent_ToFfi(RouteEvent value) {
     final _typeHandle = navigine_sdk_flutter_RouteEventType_ToFfi(value.type);
-    final _valueHandle = navigine_sdk_flutter_int_ToFfi(value.value);
-    final _distanceHandle = navigine_sdk_flutter_double_ToFfi(value.distance);
-    final _result = _navigine_sdk_flutter_RouteEvent_CreateHandle(_typeHandle, _valueHandle, _distanceHandle);
+    final _turnEventHandle = navigine_sdk_flutter_TurnEvent_ToFfiNullable(value.turnEvent);
+    final _transitionEntryEventHandle = navigine_sdk_flutter_TransitionEntryEvent_ToFfiNullable(value.transitionEntryEvent);
+    final _transitionExitEventHandle = navigine_sdk_flutter_TransitionExitEvent_ToFfiNullable(value.transitionExitEvent);
+    final _targetReachedEventHandle = navigine_sdk_flutter_TargetReachedEvent_ToFfiNullable(value.targetReachedEvent);
+    final _result = _navigine_sdk_flutter_RouteEvent_CreateHandle(_typeHandle, _turnEventHandle, _transitionEntryEventHandle, _transitionExitEventHandle, _targetReachedEventHandle);
     navigine_sdk_flutter_RouteEventType_ReleaseFfiHandle(_typeHandle);
-    navigine_sdk_flutter_int_ReleaseFfiHandle(_valueHandle);
-    navigine_sdk_flutter_double_ReleaseFfiHandle(_distanceHandle);
+    navigine_sdk_flutter_TurnEvent_ReleaseFfiHandleNullable(_turnEventHandle);
+    navigine_sdk_flutter_TransitionEntryEvent_ReleaseFfiHandleNullable(_transitionEntryEventHandle);
+    navigine_sdk_flutter_TransitionExitEvent_ReleaseFfiHandleNullable(_transitionExitEventHandle);
+    navigine_sdk_flutter_TargetReachedEvent_ReleaseFfiHandleNullable(_targetReachedEventHandle);
     return _result;
 }
 
 RouteEvent navigine_sdk_flutter_RouteEvent_FromFfi(Pointer<Void> handle) {
     final _typeHandle = _navigine_sdk_flutter_RouteEvent_GetFieldtype(handle);
-    final _valueHandle = _navigine_sdk_flutter_RouteEvent_GetFieldvalue(handle);
-    final _distanceHandle = _navigine_sdk_flutter_RouteEvent_GetFielddistance(handle);
+    final _turnEventHandle = _navigine_sdk_flutter_RouteEvent_GetFieldturnEvent(handle);
+    final _transitionEntryEventHandle = _navigine_sdk_flutter_RouteEvent_GetFieldtransitionEntryEvent(handle);
+    final _transitionExitEventHandle = _navigine_sdk_flutter_RouteEvent_GetFieldtransitionExitEvent(handle);
+    final _targetReachedEventHandle = _navigine_sdk_flutter_RouteEvent_GetFieldtargetReachedEvent(handle);
     final _result = RouteEvent(
       navigine_sdk_flutter_RouteEventType_FromFfi(_typeHandle),
-      navigine_sdk_flutter_int_FromFfi(_valueHandle),
-      navigine_sdk_flutter_double_FromFfi(_distanceHandle),
+      navigine_sdk_flutter_TurnEvent_FromFfiNullable(_turnEventHandle),
+      navigine_sdk_flutter_TransitionEntryEvent_FromFfiNullable(_transitionEntryEventHandle),
+      navigine_sdk_flutter_TransitionExitEvent_FromFfiNullable(_transitionExitEventHandle),
+      navigine_sdk_flutter_TargetReachedEvent_FromFfiNullable(_targetReachedEventHandle),
     );
       navigine_sdk_flutter_RouteEventType_ReleaseFfiHandle(_typeHandle);
-      navigine_sdk_flutter_int_ReleaseFfiHandle(_valueHandle);
-      navigine_sdk_flutter_double_ReleaseFfiHandle(_distanceHandle);
+      navigine_sdk_flutter_TurnEvent_ReleaseFfiHandleNullable(_turnEventHandle);
+      navigine_sdk_flutter_TransitionEntryEvent_ReleaseFfiHandleNullable(_transitionEntryEventHandle);
+      navigine_sdk_flutter_TransitionExitEvent_ReleaseFfiHandleNullable(_transitionExitEventHandle);
+      navigine_sdk_flutter_TargetReachedEvent_ReleaseFfiHandleNullable(_targetReachedEventHandle);
     return _result;
 }
 

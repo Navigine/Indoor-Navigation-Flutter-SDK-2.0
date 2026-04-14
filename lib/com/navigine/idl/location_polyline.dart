@@ -12,7 +12,14 @@ part 'location_polyline.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_geometry_classes
  *
+ *
  * @brief Class is used for representing certain polyline within the location @see Polyline "Polyline"
+ *
+ *
+ *
+ *
+ *Dart code snippet:
+ *@snippet location_window_map_objects_example.dart dart_LocationPolyline_record
  *
  */
 class LocationPolyline {

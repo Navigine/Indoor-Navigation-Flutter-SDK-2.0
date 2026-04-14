@@ -10,6 +10,7 @@ part 'route_options.impl.dart';
 /**
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_secondary_classes
+ *
  * @brief Class is used for describing routing options of @see AsyncRouteManager "AsyncRouteManager".
  *
  * Referenced from: @see AsyncRouteManager "AsyncRouteManager".
@@ -17,8 +18,8 @@ part 'route_options.impl.dart';
  *
  *
  *
- * Dart code snippet:
- * @snippet async_route_manager_example.dart dart_RouteOptions_constructor
+ *Dart code snippet:
+ *@snippet async_route_manager_example.dart dart_RouteOptions_constructor
  *
  */
 class RouteOptions {

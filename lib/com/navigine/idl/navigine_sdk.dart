@@ -42,141 +42,138 @@ part 'navigine_sdk.impl.dart';
 abstract class NavigineSdk implements Finalizable {
 
     /**
-     *
      * @brief Method initializes Navigation library and returns NavigineSdk instance.
      * @return instance of SDK
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getInstance
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getInstance
      *
      */
     static NavigineSdk getInstance() => $prototype.getInstance();
 
     /**
-     *
      * @brief Method returns NavigineSdk SDK Version.
      * @return version of SDK
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getVersion
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getVersion
      *
      */
     static String getVersion() => $prototype.getVersion();
 
     /**
-     *
      * @brief Method returns persistent device id.
      * @return persistent device id
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getDeviceId
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getDeviceId
      *
      */
     static String getDeviceId() => $prototype.getDeviceId();
 
     /**
+     * @brief Method returns current User-Agent string.
+     * @return User-Agent string
      *
+     */
+    static String getUserAgent() => $prototype.getUserAgent();
+
+    /**
      * @brief Method returns current timestamp.
      * @return internal timestamp
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getRelativeTime
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getRelativeTime
      *
      */
     static int getRelativeTime() => $prototype.getRelativeTime();
 
     /**
-     *
      * @brief Method is used to set `USER_HASH` from the user's profile in CMS
      * @param userHash auth token in format XXXX-XXXX-XXXX-XXXX
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_setUserHash
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_setUserHash
      *
      */
     void setUserHash(String userHash);
 
     /**
-     *
      * @brief Method is used to set server url
      * @param server custom server url in format: `http[s]://example.com`
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_setServer
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_setServer
      *
      */
     void setServer(String server);
 
     /**
+     * @brief Resets SDK to the initial connection state: default production server URL, empty user hash, and a new session propagated to managers (same effect on session-aware managers as changing server or user hash). Call from the UI thread.
      *
+     */
+    void reset();
+
+    /**
      * @brief @see LocationManager "LocationManager" instance, which could be used for working with the @see Location "Location".
      * @return @see LocationManager "LocationManager" instance
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getLocationManager
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getLocationManager
      *
      */
     LocationManager getLocationManager();
 
     /**
-     *
      * @brief @see NavigationManager "NavigationManager" instance, which could be used for working with the @see Position.
      * @param locationManager @see LocationManager "LocationManager" instance
      * @return @see NavigationManager "NavigationManager" instance
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getNavigationManager
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getNavigationManager
      *
      */
     NavigationManager getNavigationManager(LocationManager locationManager);
 
     /**
-     *
      * @brief @see ZoneManager "ZoneManager" instance, which could be used for working with zones and detecting enter and leave events. @see Zone "Zone"
      * @param navigationManager @see NavigationManager "NavigationManager" instance
      * @return @see ZoneManager "ZoneManager" instance
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getZoneManager
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getZoneManager
      *
      */
     ZoneManager getZoneManager(NavigationManager navigationManager);
 
     /**
-     *
-     * @brief @see RouteManager "RouteManager" instance, which could be used for working making routes, setting target points. @see RoutePath "RoutePath"
-     * @param locationManager @see LocationManager "LocationManager" instance
-     * @param navigationManager @see NavigationManager "NavigationManager" instance
-     * @return @see RouteManager "RouteManager" instance
-     *
-     *
-     *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getRouteManager
-     *
-     */
-    RouteManager getRouteManager(LocationManager locationManager, NavigationManager navigationManager);
-
-    /**
-     *
      * @brief @see AsyncRouteManager "AsyncRouteManager" instance, which could be used for working with routing sessions. @see RouteSession "RouteSession"
      * @param locationManager @see LocationManager "LocationManager" instance
      * @param navigationManager @see NavigationManager "NavigationManager" instance
@@ -184,36 +181,81 @@ abstract class NavigineSdk implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getAsyncRouteManager
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getAsyncRouteManager
      *
      */
     AsyncRouteManager getAsyncRouteManager(LocationManager locationManager, NavigationManager navigationManager);
 
     /**
-     *
      * @brief @see NotificationManager "NotificationManager" instance, which could be used for working with notifications when detecting beacons. @see Notification "Notification"
      * @param locationManager @see LocationManager "LocationManager" instance
      * @return @see NotificationManager "NotificationManager" instance
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getNotificationManager
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getNotificationManager
      *
      */
     NotificationManager getNotificationManager(LocationManager locationManager);
 
     /**
+     * @cond
+     */
+    String getErrorDescription(int errorCode);
+
+    LocationWindow createLocationWindow(PlatformView platformView);
+
+    /**
+     * @endcond
      *
+     * Returns a manager that allows to manage user storages
+     * @return Storage manager instance @see StorageManager "StorageManager"
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getStorageManager
+     *
+     */
+    StorageManager getStorageManager();
+
+    /**
+     *
+     * Create layer with the user location icon.
+     *
+     */
+    UserLocationLayer getUserLocationLayer(LocationWindow locationWindow);
+
+    /**
+     * @brief @see RouteManager "RouteManager" instance, which could be used for working making routes, setting target points. @see RoutePath "RoutePath"
+     * @param locationManager @see LocationManager "LocationManager" instance
+     * @param navigationManager @see NavigationManager "NavigationManager" instance
+     * @return @see RouteManager "RouteManager" instance
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getRouteManager
+     *
+     */
+    RouteManager getRouteManager(LocationManager locationManager, NavigationManager navigationManager);
+
+    /**
      * @brief @see MeasurementManager "MeasurementManager" instance, which could be used for managing measurement generators and handling sensor and signal measurements.
      * @param locationManager @see LocationManager "LocationManager" instance
      * @return @see MeasurementManager "MeasurementManager" instance
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getMeasurementManager
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getMeasurementManager
      *
      */
     MeasurementManager getMeasurementManager(LocationManager locationManager);
@@ -234,25 +276,8 @@ abstract class NavigineSdk implements Finalizable {
 
     BeaconProximityEstimator getBeaconProximityEstimator(LocationManager locationManager);
 
-    String getErrorDescription(int errorCode);
-
-    LocationWindow createLocationWindow(PlatformView platformView);
-
     /**
      * @endcond
-     *
-     * Returns a manager that allows to manage locations list
-     * @return Location list manager instance @see LocationListManager "LocationListManager"
-     *
-     *
-     *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getLocationListManager
-     *
-     */
-    LocationListManager getLocationListManager();
-
-    /**
      *
      * @brief @see MqttSession "MqttSession" instance, which could be used for working with MQTT sessions.
      * @param navigationManager @see NavigationManager "NavigationManager" instance
@@ -260,30 +285,25 @@ abstract class NavigineSdk implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getMqttSession
+     *
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getMqttSession
      *
      */
     MqttSession getMqttSession(NavigationManager navigationManager);
 
     /**
-     * Returns a manager that allows to manage user storages
-     * @return Storage manager instance @see StorageManager "StorageManager"
+     * Returns a manager that allows to manage locations list
+     * @return Location list manager instance @see LocationListManager "LocationListManager"
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigine_sdk_example.dart dart_NavigineSdk_getStorageManager
      *
-     */
-    StorageManager getStorageManager();
-
-    /**
-     *
-     * Create layer with the user location icon.
+     *Dart code snippet:
+     *@snippet navigine_sdk_example.dart dart_NavigineSdk_getLocationListManager
      *
      */
-    UserLocationLayer getUserLocationLayer(LocationWindow locationWindow);
+    LocationListManager getLocationListManager();
 
 
 

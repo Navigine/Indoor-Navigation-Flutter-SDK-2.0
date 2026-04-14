@@ -22,40 +22,40 @@ part 'mqtt_session_listener.impl.dart';
 abstract class MqttSessionListener {
 
     /**
-     *
      * @brief Called when MQTT session has been successfully connected to the server.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSessionListener_onConnected
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSessionListener_onConnected
      *
      */
     void onConnected();
 
     /**
-     *
      * @brief Called if MQTT session connection failed or was lost.
      * @param error handled error.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSessionListener_onError
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSessionListener_onError
      *
      */
     void onError(Error error);
 
     /**
-     *
      * @brief Called when a message has been successfully published to MQTT broker.
      * This callback is invoked after a message (either position data or custom message)
      * has been successfully sent to the MQTT broker.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSessionListener_onMessagePublished
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSessionListener_onMessagePublished
      *
      */
     void onMessagePublished();

@@ -36,8 +36,9 @@ abstract class Sublocation implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getImage
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getImage
      *
      */
     ImageWrapper getImage(int? maxTextureSize);
@@ -50,8 +51,9 @@ abstract class Sublocation implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_globalToLocal
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_globalToLocal
      *
      */
     LocationPoint globalToLocal(GlobalPoint globalPoint);
@@ -64,8 +66,9 @@ abstract class Sublocation implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_localToGlobal
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_localToGlobal
      *
      */
     GlobalPoint localToGlobal(LocationPoint localPoint);
@@ -78,8 +81,9 @@ abstract class Sublocation implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getGraph
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getGraph
      *
      */
     Graph getGraph(String tag);
@@ -92,8 +96,9 @@ abstract class Sublocation implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getVenueById
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getVenueById
      *
      */
     Venue getVenueById(int id);
@@ -106,8 +111,9 @@ abstract class Sublocation implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getZoneById
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getZoneById
      *
      */
     Zone getZoneById(int id);
@@ -117,8 +123,9 @@ abstract class Sublocation implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getId
      *
      */
     int get id;
@@ -126,8 +133,10 @@ abstract class Sublocation implements Finalizable {
      * @brief location's identifier to which the sublocation belongs.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getLocation
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getLocation
      *
      */
     int get location;
@@ -135,8 +144,10 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's name.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getName
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getName
      *
      */
     String get name;
@@ -144,8 +155,10 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's width in meters.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getWidth
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getWidth
      *
      */
     double get width;
@@ -153,8 +166,10 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's height in meters.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getHeight
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getHeight
      *
      */
     double get height;
@@ -162,8 +177,10 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's altitude in meters if specified.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getAltitude
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getAltitude
      *
      */
     double? get altitude;
@@ -171,8 +188,10 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's azimuth in degrees clockwise.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getAzimuth
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getAzimuth
      *
      */
     double get azimuth;
@@ -180,8 +199,10 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's center point in WGS84 coordinates @see GlobalPoint "GlobalPoint".
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getOriginPoint
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getOriginPoint
      *
      */
     GlobalPoint get originPoint;
@@ -189,8 +210,10 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's levelId.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getLevelId
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getLevelId
      *
      */
     String get levelId;
@@ -198,17 +221,32 @@ abstract class Sublocation implements Finalizable {
      * @brief sublocation's externalId.
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getExternalId
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getExternalId
      *
      */
     String get externalId;
     /**
+     * @brief sublocation's building name (e.g. "Outdoor" for overview plan).
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getBuildingName
+     *
+     */
+    String get buildingName;
+    /**
      * @brief List of beacons, attached to this sublocation @see Beacon "Beacon".
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getBeacons
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getBeacons
      *
      */
     List<Beacon> get beacons;
@@ -216,8 +254,10 @@ abstract class Sublocation implements Finalizable {
      * @brief List of eddystones, attached to this sublocation @see Eddystone "Eddystone".
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getEddystones
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getEddystones
      *
      */
     List<Eddystone> get eddystones;
@@ -225,8 +265,10 @@ abstract class Sublocation implements Finalizable {
      * @brief List of wifis, attached to this sublocation @see Wifi "Wifi".
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getWifis
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getWifis
      *
      */
     List<Wifi> get wifis;
@@ -236,11 +278,14 @@ abstract class Sublocation implements Finalizable {
     List<ReferencePoint> get referencePoints;
     /**
      * @endcond
+     *
      * @brief List of venues, attached to this sublocation @see Venue "Venue".
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getVenues
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getVenues
      *
      */
     List<Venue> get venues;
@@ -248,8 +293,10 @@ abstract class Sublocation implements Finalizable {
      * @brief List of zones, attached to this sublocation @see Zone "Zone".
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Sublocation_getZones
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Sublocation_getZones
      *
      */
     List<Zone> get zones;

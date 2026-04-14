@@ -18,24 +18,24 @@ abstract class UserLocationView implements Finalizable {
 
 
     /**
-     *
      * @brief Icon map object representing user arrow.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_window_common_example.dart dart_UserLocationView_getArrow
+     *
+     *Dart code snippet:
+     *@snippet location_window_common_example.dart dart_UserLocationView_getArrow
      *
      */
     IconMapObject get arrow;
     /**
-     *
      * @brief Accuracy circle around user position.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_window_common_example.dart dart_UserLocationView_getAccuracyCircle
+     *
+     *Dart code snippet:
+     *@snippet location_window_common_example.dart dart_UserLocationView_getAccuracyCircle
      *
      */
     CircleMapObject get accuracyCircle;

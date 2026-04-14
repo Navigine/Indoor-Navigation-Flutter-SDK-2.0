@@ -28,8 +28,9 @@ abstract class AsyncRouteManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet async_route_manager_example.dart dart_AsyncRouteManager_createRouteSession
+     *
+     *Dart code snippet:
+     *@snippet async_route_manager_example.dart dart_AsyncRouteManager_createRouteSession
      *
      */
     RouteSession createRouteSession(LocationPoint wayPoint, RouteOptions routeOptions);
@@ -49,8 +50,9 @@ abstract class AsyncRouteManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet async_route_manager_example.dart dart_AsyncRouteManager_createRouteSessionWithTag
+     *
+     *Dart code snippet:
+     *@snippet async_route_manager_example.dart dart_AsyncRouteManager_createRouteSessionWithTag
      *
      */
     RouteSession createRouteSessionWithTag(LocationPoint wayPoint, RouteOptions routeOptions, String tag);
@@ -61,8 +63,9 @@ abstract class AsyncRouteManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet async_route_manager_example.dart dart_AsyncRouteManager_cancelRouteSession
+     *
+     *Dart code snippet:
+     *@snippet async_route_manager_example.dart dart_AsyncRouteManager_cancelRouteSession
      *
      */
     void cancelRouteSession(RouteSession session);

@@ -23,27 +23,27 @@ part 'position_listener.impl.dart';
 abstract class PositionListener {
 
     /**
-     *
      * @brief Called when new position has been calculated
      * @param position current user @see Position "Position".
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_PositionListener_onPositionUpdated
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_PositionListener_onPositionUpdated
      *
      */
     void onPositionUpdated(Position position);
 
     /**
-     *
      * @brief Called if unable to calculate user's position
      * @param error handled error.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet navigation_manager_example.dart dart_PositionListener_onPositionError
+     *
+     *Dart code snippet:
+     *@snippet navigation_manager_example.dart dart_PositionListener_onPositionError
      *
      */
     void onPositionError(Error error);

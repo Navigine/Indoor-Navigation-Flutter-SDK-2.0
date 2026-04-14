@@ -33,6 +33,18 @@ class BitmapRegionDecoder$Impl extends __lib.NativeBase implements BitmapRegionD
         navigine_sdk_flutter_BitmapRegionDecoder_ReleaseFfiHandle(__resultHandle);
         return _result;
     }
+    BitmapRegionDecoder newInstanceFromImage(Image data) {
+        final _newInstanceFromImageFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
+          >('navigine_sdk_flutter_BitmapRegionDecoder_newInstanceFromImage__Data'));
+        final _dataHandle = navigine_sdk_flutter_Image_ToFfi(data);
+        final __resultHandle = _newInstanceFromImageFfi(_dataHandle);
+        navigine_sdk_flutter_Image_ReleaseFfiHandle(_dataHandle);
+        final _result = navigine_sdk_flutter_BitmapRegionDecoder_FromFfi(__resultHandle);
+        navigine_sdk_flutter_BitmapRegionDecoder_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
     @override
     ImageWrapper decodeRegion(Rectangle rect, double sampleSize) {
         final _decodeRegionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
@@ -47,6 +59,34 @@ class BitmapRegionDecoder$Impl extends __lib.NativeBase implements BitmapRegionD
         navigine_sdk_flutter_double_ReleaseFfiHandle(_sampleSizeHandle);
         final _result = navigine_sdk_flutter_ImageWrapper_FromFfi(__resultHandle);
         navigine_sdk_flutter_ImageWrapper_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+
+    int get width {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Int32 Function(Pointer<Void>),
+            int Function(Pointer<Void>)
+          >('navigine_sdk_flutter_BitmapRegionDecoder_width_get'));
+
+        final _handle = this.handle;
+        final _widthHandle = _getFfi(_handle);
+        final _result = navigine_sdk_flutter_int_FromFfi(_widthHandle);
+        navigine_sdk_flutter_int_ReleaseFfiHandle(_widthHandle);
+        return _result;
+    }
+
+
+    int get height {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Int32 Function(Pointer<Void>),
+            int Function(Pointer<Void>)
+          >('navigine_sdk_flutter_BitmapRegionDecoder_height_get'));
+
+        final _handle = this.handle;
+        final _heightHandle = _getFfi(_handle);
+        final _result = navigine_sdk_flutter_int_FromFfi(_heightHandle);
+        navigine_sdk_flutter_int_ReleaseFfiHandle(_heightHandle);
         return _result;
     }
 
