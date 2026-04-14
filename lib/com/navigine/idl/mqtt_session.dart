@@ -20,7 +20,6 @@ part 'mqtt_session.impl.dart';
 abstract class MqttSession implements Finalizable {
 
     /**
-     *
      * @brief Method is used to connect to MQTT broker and start publishing position data.
      * @param server MQTT broker server hostname or IP address.
      * @param port MQTT broker server port.
@@ -29,68 +28,68 @@ abstract class MqttSession implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSession_connect
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSession_connect
      *
      */
     void connect(String server, int port, String username, String password);
 
     /**
-     *
      * @brief Method is used to set MQTT sub-topic for publishing position data.
      * The final topic will be "navigine/mobile/positions/" + subTopic + "/" + deviceId.
      * @param subTopic MQTT sub-topic for publishing position data. Must match pattern [0-9a-zA-Z_-]+ and cannot be empty.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSession_setSubTopic
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSession_setSubTopic
      *
      */
     void setSubTopic(String subTopic);
 
     /**
-     *
      * @brief Method is used to add @see MqttSessionListener "MqttSessionListener" class element
      * which will notify about MQTT session connection state changes.
      * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Сorresponding @see MqttSessionListener "MqttSessionListener" class.
+     * @param listener Corresponding @see MqttSessionListener "MqttSessionListener" class.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSession_addListener
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSession_addListener
      *
      */
     void addListener(MqttSessionListener listener);
 
     /**
-     *
      * @brief Method is used for removing previously added @see MqttSessionListener "MqttSessionListener" class element.
-     * @param listener Сorresponding @see MqttSessionListener "MqttSessionListener" class to remove.
+     * @param listener Corresponding @see MqttSessionListener "MqttSessionListener" class to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSession_removeListener
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSession_removeListener
      *
      */
     void removeListener(MqttSessionListener listener);
 
     /**
-     *
      * @brief Method is used to disconnect from MQTT broker and stop publishing position data.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSession_disconnect
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSession_disconnect
      *
      */
     void disconnect();
 
     /**
-     *
      * @brief Method is used to publish a custom message to a specified MQTT topic.
      * The message will be sent asynchronously and the result will be notified through
      * @see MqttSessionListener "MqttSessionListener" callbacks (onMessagePublished for success, onError for failure).
@@ -100,8 +99,9 @@ abstract class MqttSession implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet mqtt_session_example.dart dart_MqttSession_publish
+     *
+     *Dart code snippet:
+     *@snippet mqtt_session_example.dart dart_MqttSession_publish
      *
      */
     void publish(String topic, String message);

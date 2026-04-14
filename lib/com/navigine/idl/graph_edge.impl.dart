@@ -22,16 +22,16 @@ class GraphEdge$Impl extends __lib.NativeBase implements GraphEdge, Finalizable 
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_GraphEdge_free.cast());
 
 
-    double get weight {
+    double? get weight {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Float Function(Pointer<Void>),
-            double Function(Pointer<Void>)
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
           >('navigine_sdk_flutter_GraphEdge_weight_get'));
 
         final _handle = this.handle;
         final _weightHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_double_FromFfi(_weightHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_weightHandle);
+        final _result = navigine_sdk_flutter_double_FromFfiNullable(_weightHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandleNullable(_weightHandle);
         return _result;
     }
 
@@ -64,16 +64,16 @@ class GraphEdge$Impl extends __lib.NativeBase implements GraphEdge, Finalizable 
     }
 
 
-    int get weightCoef {
+    double? get weightCoef {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Int32 Function(Pointer<Void>),
-            int Function(Pointer<Void>)
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
           >('navigine_sdk_flutter_GraphEdge_weightCoef_get'));
 
         final _handle = this.handle;
         final _weightCoefHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_weightCoefHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_weightCoefHandle);
+        final _result = navigine_sdk_flutter_double_FromFfiNullable(_weightCoefHandle);
+        navigine_sdk_flutter_double_ReleaseFfiHandleNullable(_weightCoefHandle);
         return _result;
     }
 

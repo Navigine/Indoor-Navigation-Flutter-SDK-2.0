@@ -16,8 +16,8 @@ part 'rectangle.impl.dart';
  *
  *
  *
- * Dart code snippet:
- * @snippet bitmap_region_decoder_example.dart dart_Rectangle_constructor
+ *Dart code snippet:
+ *@snippet bitmap_region_decoder_example.dart dart_Rectangle_constructor
  *
  */
 class Rectangle {

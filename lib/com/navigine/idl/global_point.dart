@@ -17,8 +17,9 @@ part 'global_point.impl.dart';
  *
  *
  *
- * Dart code snippet:
- * @snippet geometry_utils_example.dart dart_GlobalPoint_constructor
+ *
+ *Dart code snippet:
+ *@snippet geometry_utils_example.dart dart_GlobalPoint_constructor
  *
  */
 class GlobalPoint {
@@ -29,8 +30,9 @@ class GlobalPoint {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_GlobalPoint_getLatitude
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_GlobalPoint_getLatitude
      *
      */
     double latitude;
@@ -39,8 +41,9 @@ class GlobalPoint {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_GlobalPoint_getLongitude
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_GlobalPoint_getLongitude
      *
      */
     double longitude;

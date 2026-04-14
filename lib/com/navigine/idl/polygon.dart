@@ -15,8 +15,8 @@ part 'polygon.impl.dart';
  *
  *
  *
- * Dart code snippet:
- * @snippet geometry_utils_example.dart dart_Polygon_constructor
+ *Dart code snippet:
+ *@snippet geometry_utils_example.dart dart_Polygon_constructor
  *
  */
 class Polygon {
@@ -27,8 +27,8 @@ class Polygon {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_Polygon_getPoints
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_Polygon_getPoints
      *
      */
     List<Point> points;

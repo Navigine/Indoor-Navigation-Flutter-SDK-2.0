@@ -9,27 +9,21 @@ part 'route_event_type.impl.dart';
 /**
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_secondary_classes
- * @brief Enum described toute event types.
+ *
+ * @brief Enum describing route event variants.
  *
  * Referenced from @see RouteEvent "RouteEvent".
  *
  *
  *
- * Dart code snippet:
- * @snippet route_manager_example.dart dart_RouteEventType_values
+ *
+ *Dart code snippet:
+ *@snippet route_manager_example.dart dart_RouteEventType_values
  *
  */
 enum RouteEventType {
-    /**
-     * @brief An event showing a left turn.
-     */
-    TURN_LEFT,
-    /**
-     * @brief An event showing a right turn.
-     */
-    TURN_RIGHT,
-    /**
-     * @brief An event showing a chaning of sublocation (floor).
-     */
-    TRANSITION,
+    TURN_EVENT,
+    TRANSITION_ENTRY_EVENT,
+    TRANSITION_EXIT_EVENT,
+    TARGET_REACHED_EVENT,
 }

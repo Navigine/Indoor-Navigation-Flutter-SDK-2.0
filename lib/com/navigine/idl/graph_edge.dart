@@ -23,18 +23,20 @@ abstract class GraphEdge implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphEdge_getWeight
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphEdge_getWeight
      *
      */
-    double get weight;
+    double? get weight;
     /**
      * @brief Destination vertex id @see GraphVertex "GraphVertex"
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphEdge_getDst
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphEdge_getDst
      *
      */
     int get dst;
@@ -43,8 +45,9 @@ abstract class GraphEdge implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphEdge_getSrc
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphEdge_getSrc
      *
      */
     int get src;
@@ -53,11 +56,12 @@ abstract class GraphEdge implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_GraphEdge_getWeightCoef
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_GraphEdge_getWeightCoef
      *
      */
-    int get weightCoef;
+    double? get weightCoef;
 
 
 }

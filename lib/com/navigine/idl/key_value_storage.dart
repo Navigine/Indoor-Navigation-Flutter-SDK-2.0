@@ -24,8 +24,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_contains
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_contains
      *
      */
     bool contains(String key);
@@ -36,8 +37,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_getKeys
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_getKeys
      *
      */
     List<String> getKeys();
@@ -51,8 +53,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_getInt
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_getInt
      *
      */
     int getInt(String key, int defaultValue);
@@ -66,8 +69,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_getLong
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_getLong
      *
      */
     int getLong(String key, int defaultValue);
@@ -81,8 +85,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_getBool
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_getBool
      *
      */
     bool getBool(String key, bool defaultValue);
@@ -96,8 +101,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_getFloat
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_getFloat
      *
      */
     double getFloat(String key, double defaultValue);
@@ -111,8 +117,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_getDouble
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_getDouble
      *
      */
     double getDouble(String key, double defaultValue);
@@ -126,8 +133,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_getString
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_getString
      *
      */
     String getString(String key, String defaultValue);
@@ -139,8 +147,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_putInt
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_putInt
      *
      */
     void putInt(String key, int value);
@@ -152,8 +161,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_putLong
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_putLong
      *
      */
     void putLong(String key, int value);
@@ -165,8 +175,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_putBool
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_putBool
      *
      */
     void putBool(String key, bool value);
@@ -178,8 +189,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_putFloat
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_putFloat
      *
      */
     void putFloat(String key, double value);
@@ -191,8 +203,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_putDouble
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_putDouble
      *
      */
     void putDouble(String key, double value);
@@ -204,8 +217,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_putString
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_putString
      *
      */
     void putString(String key, String value);
@@ -216,8 +230,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_remove
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_remove
      *
      */
     void remove(String key);
@@ -227,8 +242,9 @@ abstract class KeyValueStorage implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_KeyValueStorage_clear
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_KeyValueStorage_clear
      *
      */
     void clear();

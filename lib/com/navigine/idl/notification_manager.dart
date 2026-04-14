@@ -23,29 +23,29 @@ part 'notification_manager.impl.dart';
 abstract class NotificationManager implements Finalizable {
 
     /**
-     *
      * @brief Method is used to add @see NotificationListener "NotificationListener" class element which will notify
      * all incoming local notification events.
      * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Сorresponding @see NotificationListener "NotificationListener" listener class.
+     * @param listener Corresponding @see NotificationListener "NotificationListener" listener class.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet notification_manager_example.dart dart_NotificationManager_addNotificationListener
+     *
+     *Dart code snippet:
+     *@snippet notification_manager_example.dart dart_NotificationManager_addNotificationListener
      *
      */
     void addNotificationListener(NotificationListener listener);
 
     /**
-     *
      * @brief Method is used for removing previously added @see NotificationListener "NotificationListener" class element.
-     * @param listener Сorresponding @see NotificationListener "NotificationListener" class to remove.
+     * @param listener Corresponding @see NotificationListener "NotificationListener" class to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet notification_manager_example.dart dart_NotificationManager_removeNotificationListener
+     *
+     *Dart code snippet:
+     *@snippet notification_manager_example.dart dart_NotificationManager_removeNotificationListener
      *
      */
     void removeNotificationListener(NotificationListener listener);

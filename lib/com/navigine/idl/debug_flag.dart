@@ -6,6 +6,19 @@ part 'debug_flag.impl.dart';
  * @file com/navigine/idl/debug_flag.dart
  * @brief @copybrief DebugFlag
  */
+/**
+ * @ingroup navigine_dart_classes
+ * @ingroup navigine_dart_location_view
+ *
+ * @brief Debug visualization flags for the map view @see LocationWindow "LocationWindow".
+ *
+ *
+ *
+ *
+ *Dart code snippet:
+ *@snippet location_window_common_example.dart dart_DebugFlag_enum
+ *
+ */
 enum DebugFlag {
     NONE,
     INFOS,

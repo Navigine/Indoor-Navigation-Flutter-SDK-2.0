@@ -25,8 +25,9 @@ abstract class Zone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Zone_getPolygon
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Zone_getPolygon
      *
      */
     Polygon get polygon;
@@ -35,8 +36,9 @@ abstract class Zone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Zone_getLocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Zone_getLocationId
      *
      */
     int get locationId;
@@ -45,8 +47,9 @@ abstract class Zone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Zone_getSublocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Zone_getSublocationId
      *
      */
     int get sublocationId;
@@ -55,8 +58,9 @@ abstract class Zone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Zone_getId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Zone_getId
      *
      */
     int get id;
@@ -65,8 +69,9 @@ abstract class Zone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Zone_getName
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Zone_getName
      *
      */
     String get name;
@@ -75,8 +80,9 @@ abstract class Zone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Zone_getColor
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Zone_getColor
      *
      */
     String get color;
@@ -85,8 +91,9 @@ abstract class Zone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Zone_getAlias
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Zone_getAlias
      *
      */
     String get alias;

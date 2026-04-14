@@ -33,8 +33,9 @@ abstract class AsyncRouteListener {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteChanged
+     *
+     *Dart code snippet:
+     *@snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteChanged
      *
      */
     void onRouteChanged(RouteStatus status, RoutePath currentPath);
@@ -48,8 +49,9 @@ abstract class AsyncRouteListener {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteAdvanced
+     *
+     *Dart code snippet:
+     *@snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteAdvanced
      *
      */
     void onRouteAdvanced(double distance, LocationPoint point);

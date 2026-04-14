@@ -10,14 +10,16 @@ part 'zone_event_type.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_secondary_classes
  *
+ *
  * @brief enum described zone event types
  *
  * Referenced from @see ZoneEvent "ZoneEvent".
  *
  *
  *
- * Dart code snippet:
- * @snippet zone_manager_example.dart dart_ZoneEventType_values
+ *
+ *Dart code snippet:
+ *@snippet zone_manager_example.dart dart_ZoneEventType_values
  *
  */
 enum ZoneEventType {

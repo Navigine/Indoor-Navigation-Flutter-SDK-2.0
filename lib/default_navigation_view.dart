@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:navigine_sdk/error.dart';
-import 'package:navigine_sdk/com/navigine/idl/location.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_listener.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_manager.dart';
+import 'package:navigine_sdk/com/navigine/idl/building.dart';
+import 'package:navigine_sdk/com/navigine/idl/building_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_window.dart';
 import 'package:navigine_sdk/com/navigine/idl/sublocation_change_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/navigine_sdk.dart';
@@ -11,50 +9,78 @@ import 'package:navigine_sdk/com/navigine/idl/camera_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera_update_reason.dart';
 import 'package:navigine_sdk/location_view.dart';
 import 'dart:math' as math;
+import 'default_navigation_view_config.dart';
 import 'widgets/zoom_controls.dart';
+import 'widgets/zoom_controls_config.dart';
 import 'widgets/floor_selector_view.dart';
+import 'widgets/floor_selector_view_config.dart';
 import 'widgets/follow_me_button.dart';
+import 'widgets/follow_me_button_config.dart';
 
-/// @file com/default_navigation_view.dart
-/// @brief @copybrief DefaultNavigationView
-///
-/// @ingroup navigine_dart_classes
-/// @ingroup navigine_dart_location_view
-///
-/// Ready-to-use navigation view with built-in UI:
-/// zoom controls, floor selector, “follow me” toggle and user location layer.
-/// Automatically wires SDK listeners (location, sublocation, camera) and keeps widgets in sync.
-/// `onViewCreated` provides direct access to the underlying [LocationWindow].
+/**
+ * @file com/default_navigation_view.dart
+ * @brief @copybrief DefaultNavigationView
+ */
+/**
+ * @ingroup navigine_dart_classes
+ * @ingroup navigine_dart_default_navigation_view
+ *
+ * @brief Ready-to-use navigation view with built-in UI:
+ * @ref ZoomControls "zoom controls", @ref FloorSelectorView "floor selector", @ref FollowMeButton "follow me" toggle and user location layer.
+ * Automatically wires SDK listeners (building focus, sublocation, camera) and keeps widgets in sync.
+ * Widget configs are passed directly to each widget.
+ *
+ * `onViewCreated` provides direct access to the underlying @ref LocationWindow "LocationWindow".
+ *
+ * Basic usage with default config:
+ * @snippet DefaultNavigationView/dart/default_navigation_view_example.dart dart_DefaultNavigationView_constructor
+ *
+ * Custom config at init (visibility, widget configs passed directly):
+ * @snippet DefaultNavigationView/dart/default_navigation_view_example.dart dart_DefaultNavigationView_config
+ *
+ * Runtime config update via @ref DefaultNavigationViewController "DefaultNavigationViewController":
+ * @snippet DefaultNavigationView/dart/default_navigation_view_example.dart dart_DefaultNavigationView_runtimeConfig
+ *
+ * Direct widget access for advanced customization:
+ * @snippet DefaultNavigationView/dart/default_navigation_view_example.dart dart_DefaultNavigationView_widgetAccess
+ *
+ */
 class DefaultNavigationView extends StatefulWidget {
   const DefaultNavigationView({
     Key? key,
     required this.onViewCreated,
+    this.viewConfig = DefaultNavigationViewConfig.defaultConfig,
+    this.zoomControlsConfig = ZoomControlsConfig.defaultConfig,
+    this.followMeButtonConfig = FollowMeButtonConfig.defaultConfig,
+    this.floorSelectorConfig = FloorSelectorViewConfig.defaultConfig,
+    this.configController,
     this.textDirection,
   }) : super(key: key);
 
   final void Function(LocationWindow) onViewCreated;
+  final DefaultNavigationViewConfig viewConfig;
+  final ZoomControlsConfig zoomControlsConfig;
+  final FollowMeButtonConfig followMeButtonConfig;
+  final FloorSelectorViewConfig floorSelectorConfig;
+  final DefaultNavigationViewController? configController;
   final TextDirection? textDirection;
 
   @override
   State<DefaultNavigationView> createState() => _DefaultNavigationViewState();
 }
 
-class _DefaultNavigationViewState extends State<DefaultNavigationView> implements LocationListener, SublocationChangeListener, CameraListener {
+class _DefaultNavigationViewState extends State<DefaultNavigationView>
+    implements BuildingListener, SublocationChangeListener, CameraListener {
   LocationWindow? _locationWindow;
-  late LocationManager _locationManager;
   UserLocationLayer? _userLocationLayer;
   final GlobalKey<FloorSelectorViewState> _floorSelectorKey = GlobalKey<FloorSelectorViewState>();
   bool _isFollowing = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _locationManager = NavigineSdk.getInstance().getLocationManager();
-  }
+  /// When false, floor selector is hidden (outdoor / no building bbox focus).
+  bool _floorSelectorVisibleForBuildingFocus = false;
 
   @override
   void dispose() {
-    _locationManager.removeLocationListener(this);
+    _locationWindow?.removeBuildingListener(this);
     _locationWindow?.removeSublocationChangeListener(this);
     _locationWindow?.removeCameraListener(this);
     super.dispose();
@@ -66,44 +92,75 @@ class _DefaultNavigationViewState extends State<DefaultNavigationView> implement
     });
     window.addSublocationChangeListener(this);
     window.addCameraListener(this);
-    _locationManager.addLocationListener(this);
+    window.addBuildingListener(this);
     _userLocationLayer = NavigineSdk.getInstance().getUserLocationLayer(window);
     _userLocationLayer!.setVisible(true);
     widget.onViewCreated(window);
   }
 
+  Widget _buildContent(
+    DefaultNavigationViewConfig viewConfig,
+    ZoomControlsConfig zoomConfig,
+    FollowMeButtonConfig followMeConfig,
+    FloorSelectorViewConfig floorConfig,
+  ) {
+    final children = <Widget>[
+      LocationView(
+        onViewCreated: _handleViewCreated,
+        textDirection: widget.textDirection,
+      ),
+    ];
+    if ((viewConfig.visibleWidgets & NavigationWidgetVisibility.zoomControls) != 0) {
+      children.add(ZoomControls(
+        zoomInPressed: () {
+          if (_locationWindow == null) return;
+          _locationWindow!.zoomFactor = _locationWindow!.zoomFactor * (3.0 / 2.0);
+        },
+        zoomOutPressed: () {
+          if (_locationWindow == null) return;
+          _locationWindow!.zoomFactor = _locationWindow!.zoomFactor * (2.0 / 3.0);
+        },
+        config: zoomConfig,
+      ));
+    }
+    children.add(Visibility(
+      visible: (viewConfig.visibleWidgets & NavigationWidgetVisibility.floorSelector) != 0
+          && _floorSelectorVisibleForBuildingFocus,
+      maintainState: true,
+      child: FloorSelectorView(
+        key: _floorSelectorKey,
+        onFloorSelected: (id, name) => _locationWindow?.setSublocationId(id),
+        config: floorConfig,
+      ),
+    ));
+    if ((viewConfig.visibleWidgets & NavigationWidgetVisibility.followMeButton) != 0) {
+      children.add(FollowMeButton(
+        isFollowing: _isFollowing,
+        onPressed: _handleFollowMePressed,
+        config: followMeConfig,
+      ));
+    }
+    return Stack(children: children);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        LocationView(
-          onViewCreated: _handleViewCreated,
-          textDirection: widget.textDirection,
+    if (widget.configController != null) {
+      return ListenableBuilder(
+        listenable: widget.configController!,
+        builder: (context, _) => _buildContent(
+          widget.configController!.viewConfig,
+          widget.configController!.zoomControlsConfig,
+          widget.configController!.followMeButtonConfig,
+          widget.configController!.floorSelectorConfig,
         ),
-
-        ZoomControls(
-          zoomInPressed: () {
-            if (_locationWindow == null) return;
-            double currentZoom = _locationWindow!.zoomFactor;
-            _locationWindow!.zoomFactor = currentZoom * (3.0 / 2.0);
-            },
-          zoomOutPressed: () {
-            if (_locationWindow == null) return;
-            double currentZoom = _locationWindow!.zoomFactor;
-            _locationWindow!.zoomFactor = currentZoom * (2.0 / 3.0);
-            },
-        ),
-        FloorSelectorView(
-          key: _floorSelectorKey,
-          onFloorSelected: (id, name) {
-            _locationWindow?.setSublocationId(id);
-            },
-        ),
-        FollowMeButton(
-          isFollowing: _isFollowing,
-          onPressed: _handleFollowMePressed,
-        ),
-      ],
+      );
+    }
+    return _buildContent(
+      widget.viewConfig,
+      widget.zoomControlsConfig,
+      widget.followMeButtonConfig,
+      widget.floorSelectorConfig,
     );
   }
 
@@ -126,19 +183,29 @@ class _DefaultNavigationViewState extends State<DefaultNavigationView> implement
   }
 
   @override
-  void onLocationLoaded(Location location) {
-    final floors = location.sublocations.map((s) => LevelInfo(
-      levelId: s.levelId,
-      sublocationId: s.id,
-    )).toList();
-    _floorSelectorKey.currentState?.setFloors(floors);
+  void onActiveBuildingFocused(Building activeBuilding) {
+    final floors = <LevelInfo>[];
+    for (final s in activeBuilding.sublocations) {
+      floors.add(LevelInfo(levelId: s.levelId, sublocationId: s.id));
+    }
+    setState(() {
+      _floorSelectorVisibleForBuildingFocus = true;
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final selector = _floorSelectorKey.currentState;
+      selector?.setFloors(floors);
+      selector?.setSublocationId(activeBuilding.getActiveSublocationId());
+    });
   }
 
   @override
-  void onLocationUploaded(int locationId) {}
-
-  @override
-  void onLocationFailed(int locationId, Error error) {}
+  void onActiveBuildingLeft() {
+    setState(() {
+      _floorSelectorVisibleForBuildingFocus = false;
+    });
+    _floorSelectorKey.currentState?.setFloors([]);
+  }
 
   @override
   void onActiveSublocationChanged(int sublocationId) {

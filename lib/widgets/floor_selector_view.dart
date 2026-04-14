@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'widget_styles.dart';
+import 'floor_selector_view_config.dart';
+
+/**
+ * @file com/widgets/floor_selector_view.dart
+ * @brief @copybrief FloorSelectorView
+ */
 
 /// Floor info model.
 class LevelInfo {
@@ -11,11 +17,24 @@ class LevelInfo {
 /// Callback invoked when a floor (sublocation) is selected.
 typedef FloorSelectedCallback = void Function(int sublocationId, String levelId);
 
-/// Vertical floor selector for navigation view.
-/// Shows available sublocations, scrolls when needed, hides for single-floor cases.
+/**
+ * @ingroup navigine_dart_classes
+ * @ingroup navigine_dart_default_navigation_view
+ *
+ * @brief Vertical floor selector for navigation view.
+ * Shows available sublocations, scrolls when needed, hides for single-floor cases.
+ *
+ * @ref FloorSelectorViewConfig "FloorSelectorViewConfig" for styling.
+ */
 class FloorSelectorView extends StatefulWidget {
   final FloorSelectedCallback? onFloorSelected;
-  const FloorSelectorView({Key? key, this.onFloorSelected}) : super(key: key);
+  final FloorSelectorViewConfig config;
+
+  const FloorSelectorView({
+    Key? key,
+    this.onFloorSelected,
+    this.config = FloorSelectorViewConfig.defaultConfig,
+  }) : super(key: key);
 
   @override
   State<FloorSelectorView> createState() => FloorSelectorViewState();
@@ -164,14 +183,15 @@ class FloorSelectorViewState extends State<FloorSelectorView> {
     if (_height <= 0) return const SizedBox.shrink();
 
     final safePadding = MediaQuery.of(context).padding;
+    final padding = widget.config.padding ?? EdgeInsets.only(
+      left: kStandardLeftPadding + safePadding.left,
+      top: kFloorSelectorTopPadding + safePadding.top,
+    );
 
     return Align(
       alignment: Alignment.topLeft,
       child: Padding(
-        padding: EdgeInsets.only(
-          left: kStandardLeftPadding + safePadding.left,
-          top: kFloorSelectorTopPadding + safePadding.top,
-        ),
+        padding: padding,
         child: Container(
           width: kStandardButtonWidth,
           height: _height,
@@ -195,8 +215,10 @@ class FloorSelectorViewState extends State<FloorSelectorView> {
                   itemBuilder: (context, i) {
                     final level = _floors[i];
                     final selected = i == _selectedFloorIndex;
+                    final accentColor = widget.config.accentColor ?? kBaseBlueColor;
+                    final textColor = widget.config.textColor ?? kBaseBlackColor;
                     return Material(
-                      color: selected ? kBaseBlueColor : Colors.white,
+                      color: selected ? accentColor : Colors.white,
                       child: InkWell(
                         onTap: () {
                           if (i == _selectedFloorIndex) return;
@@ -211,7 +233,7 @@ class FloorSelectorViewState extends State<FloorSelectorView> {
                           child: Text(
                             _display(level.levelId),
                             style: TextStyle(
-                              color: selected ? Colors.white : kBaseBlackColor,
+                              color: selected ? Colors.white : textColor,
                               fontSize: kFloorSelectorFontSize,
                             ),
                           ),

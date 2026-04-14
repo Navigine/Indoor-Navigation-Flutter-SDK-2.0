@@ -28,7 +28,7 @@ public class SdkHandler extends BaseMethodHandler {
     }
 
     private void initSdk(MethodCall call, MethodChannel.Result result) {
-        Navigine.initialize(binding_.getApplicationContext(), "navigine");
+        Navigine.initialize(binding_.getApplicationContext(), "navigine", false);
         result.success(null);
     }
 }

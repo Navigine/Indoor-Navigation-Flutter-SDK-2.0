@@ -10,14 +10,16 @@ part 'route_status.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_secondary_classes
  *
+ *
  * @brief Enum describing possible router states.
  *
  * Referenced from @see AsyncRouteListener "AsyncRouteListener".
  *
  *
  *
- * Dart code snippet:
- * @snippet async_route_manager_example.dart dart_RouteStatus_values
+ *
+ *Dart code snippet:
+ *@snippet async_route_manager_example.dart dart_RouteStatus_values
  *
  */
 enum RouteStatus {

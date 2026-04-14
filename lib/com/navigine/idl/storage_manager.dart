@@ -24,8 +24,9 @@ abstract class StorageManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_StorageManager_getStorageList
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_StorageManager_getStorageList
      *
      */
     List<String> getStorageList();
@@ -37,8 +38,9 @@ abstract class StorageManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_StorageManager_getStorage
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_StorageManager_getStorage
      *
      */
     KeyValueStorage getStorage(String name);
@@ -50,8 +52,9 @@ abstract class StorageManager implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet storage_manager_example.dart dart_StorageManager_removeStorage
+     *
+     *Dart code snippet:
+     *@snippet storage_manager_example.dart dart_StorageManager_removeStorage
      *
      */
     void removeStorage(String name);

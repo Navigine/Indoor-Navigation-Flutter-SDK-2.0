@@ -39,4 +39,16 @@ enum SensorType {
      * @brief Orientation sensor type
      */
     ORIENTATION,
+    /**
+     * @brief NMEA GNSS sentence metadata. @see SensorMeasurement "SensorMeasurement" values: x = sentence number, y = satellite count, z unused.
+     */
+    NMEA,
+    /**
+     * @brief Odometer / wheel speed. Values: x = speed (m/s), y = accuracy if present else 0, z unused.
+     */
+    ODOMETER,
+    /**
+     * @brief Raw GNSS vectors (pseudo-ranges, etc.) — summarized for the API. Values: x = pseudoRanges count, y = pseudoRangeRates count, z = satellitesPositions count.
+     */
+    GNSS,
 }

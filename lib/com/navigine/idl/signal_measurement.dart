@@ -24,8 +24,9 @@ class SignalMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SignalMeasurement_getType
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getType
      *
      */
     SignalType type;
@@ -34,8 +35,9 @@ class SignalMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SignalMeasurement_getId
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getId
      *
      */
     String id;
@@ -44,8 +46,9 @@ class SignalMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SignalMeasurement_getRssi
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getRssi
      *
      */
     double rssi;
@@ -54,8 +57,9 @@ class SignalMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SignalMeasurement_getDistance
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getDistance
      *
      */
     double distance;
@@ -64,8 +68,9 @@ class SignalMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SignalMeasurement_getTime
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getTime
      *
      */
     int time;

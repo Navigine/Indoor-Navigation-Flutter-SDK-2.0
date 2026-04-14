@@ -1,7 +1,10 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_event_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/target_reached_event.dart';
+import 'package:navigine_sdk/com/navigine/idl/transition_entry_event.dart';
+import 'package:navigine_sdk/com/navigine/idl/transition_exit_event.dart';
+import 'package:navigine_sdk/com/navigine/idl/turn_event.dart';
 
 part 'route_event.impl.dart';
 /**
@@ -12,43 +15,67 @@ part 'route_event.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_secondary_classes
  *
- * @brief Class is used for storing the route path events.
+ * @brief Class storing one route event payload.
  *
- * Referenced from: @see RoutePath "RoutePath".
+ * Referenced from @see RoutePath "RoutePath", @see RouteNode "RouteNode".
  *
  */
 class RouteEvent {
     /// @brief Default constructor
-    RouteEvent(this.type, this.value, this.distance);
+    RouteEvent(this.type, this.turnEvent, this.transitionEntryEvent, this.transitionExitEvent, this.targetReachedEvent);
     /**
-     * @brief Incoming event type @see RouteEventType "RouteEventType"
+     * @brief Active event variant discriminator.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RouteEvent_getType
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RouteEvent_getType
      *
      */
     RouteEventType type;
     /**
-     * @brief Indicates angle in degrees for TURN_LEFT/TURN_RIGHT types @see RouteEventType "RouteEventType"
-     * and target sublocation unique identifier if type is TRANSITION @see Sublocation "Sublocation"
+     * @brief Payload for turn events, set when type is TURN_EVENT.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RouteEvent_getValue
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RouteEvent_getTurnEvent
      *
      */
-    int value;
+    TurnEvent? turnEvent;
     /**
-     * @brief distance from the beginning of the route to incoming event in meters.
+     * @brief Payload for transition entry events.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RouteEvent_getDistance
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RouteEvent_getTransitionEntryEvent
      *
      */
-    double distance;
+    TransitionEntryEvent? transitionEntryEvent;
+    /**
+     * @brief Payload for transition exit events.
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RouteEvent_getTransitionExitEvent
+     *
+     */
+    TransitionExitEvent? transitionExitEvent;
+    /**
+     * @brief Payload for target reached events.
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RouteEvent_getTargetReachedEvent
+     *
+     */
+    TargetReachedEvent? targetReachedEvent;
 }

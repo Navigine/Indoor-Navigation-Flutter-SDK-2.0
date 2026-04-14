@@ -2,8 +2,7 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
-import 'package:navigine_sdk/com/navigine/idl/route_event.dart';
+import 'package:navigine_sdk/com/navigine/idl/route_node.dart';
 
 part 'route_path.impl.dart';
 /**
@@ -11,10 +10,8 @@ part 'route_path.impl.dart';
  * @brief @copybrief RoutePath
  */
 /**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
  *
- * @brief class is used for storing the route path between the two points on the location.
+ * @brief Class is used for storing the route path between two points in location.
  *
  * Referenced from: @see AsyncRouteListener "AsyncRouteListener", @see AsyncRouteManager "AsyncRouteManager", @see Location "Location",
  * @see RouteListener "RouteListener", @see RouteManager "RouteManager"
@@ -23,73 +20,67 @@ part 'route_path.impl.dart';
 abstract class RoutePath implements Finalizable {
 
     /**
-     *
-     * @brief Returns the leading segment of the route.
-     *
-     * Returns the portion of the route from the start up to the specified advance distance along the route.
-     * If advance exceeds the total route length, the entire route is returned.
-     *
-     * @param advance Distance along the route (in meters).
-     * @return The covered (passed) segment of the route (from start to advance), or nil if the segment is empty.
+     * @brief Returns the leading segment of the route up to advance meters.
+     * @param advance distance along route (meters).
+     * @return route head segment.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RoutePath_head
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RoutePath_head
      *
      */
     RoutePath head(double advance);
 
     /**
-     *
-     * @brief Returns the remaining segment of the route.
-     *
-     * Returns the portion of the route starting from the specified advance distance to the end of the route.
-     * If advance is less than or equal to zero, the entire route is returned.
-     *
-     * @param advance Distance along the route (in meters).
-     * @return The remaining segment of the route (from advance to end), or nil if the segment is empty.
+     * @brief Returns the route segment after advance meters.
+     * @param advance distance along route (meters).
+     * @return route tail segment.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RoutePath_tail
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RoutePath_tail
      *
      */
     RoutePath tail(double advance);
 
     /**
-     * @brief Total lenth of the route path in meters.
+     * @brief Returns route nodes with points and events.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RoutePath_getLength
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RoutePath_getNodes
+     *
+     */
+    List<RouteNode> nodes();
+
+    /**
+     * @brief Total route length in meters.
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RoutePath_getLength
      *
      */
     double get length;
     /**
-     * @brief List of consecutive incoming events @see RouteEvent "RouteEvent".
+     * @brief Total route weight/cost.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RoutePath_getEvents
      *
-     */
-    List<RouteEvent> get events;
-    /**
-     * @brief List of consecutive points. @see LocationPoint.
-     *
-     * @note points could be on different sublocations if target sublocation is different from the starting one
-     *
-     *
-     *
-     * Dart code snippet:
-     * @snippet route_manager_example.dart dart_RoutePath_getPoints
+     *Dart code snippet:
+     *@snippet route_manager_example.dart dart_RoutePath_getWeight
      *
      */
-    List<LocationPoint> get points;
+    double get weight;
 
 
 }

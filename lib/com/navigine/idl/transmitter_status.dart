@@ -10,14 +10,16 @@ part 'transmitter_status.impl.dart';
  * @ingroup navigine_dart_classes
  * @ingroup navigine_dart_secondary_classes
  *
+ *
  * @brief enum described possible transmitter state.
  *
  * Referenced from @see Beacon "Beacon", @see Eddystone "Eddystone", @see Wifi "Wifi".
  *
  *
  *
- * Dart code snippet:
- * @snippet location_manager_example.dart dart_TransmitterStatus_values
+ *
+ *Dart code snippet:
+ *@snippet location_manager_example.dart dart_TransmitterStatus_values
  *
  */
 enum TransmitterStatus {

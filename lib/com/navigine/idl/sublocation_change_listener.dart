@@ -29,8 +29,9 @@ abstract class SublocationChangeListener {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_window_common_example.dart dart_SublocationChangeListener_onActiveSublocationChanged
+     *
+     *Dart code snippet:
+     *@snippet location_window_common_example.dart dart_SublocationChangeListener_onActiveSublocationChanged
      *
      */
     void onActiveSublocationChanged(int sublocationId);

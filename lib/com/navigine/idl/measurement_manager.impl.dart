@@ -46,6 +46,18 @@ class MeasurementManager$Impl extends __lib.NativeBase implements MeasurementMan
     }
 
     @override
+    void setPublishIntervalMs(int intervalMs) {
+        final _setPublishIntervalMsFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Int32),
+            void Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_MeasurementManager_setPublishIntervalMs__IntervalMs'));
+        final _intervalMsHandle = navigine_sdk_flutter_int_ToFfi(intervalMs);
+        final _handle = this.handle;
+        _setPublishIntervalMsFfi(_handle, _intervalMsHandle);
+        navigine_sdk_flutter_int_ReleaseFfiHandle(_intervalMsHandle);
+    }
+
+    @override
     String addBeaconGenerator(String uuid, int major, int minor, int power, int timeout, int rssiMin, int rssiMax) {
         final _addBeaconGeneratorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Int32, Int32, Int32, Int32, Int32, Int32),

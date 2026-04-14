@@ -16,6 +16,12 @@ int navigine_sdk_flutter_SensorType_ToFfi(SensorType value) {
         return 4;
     case SensorType.ORIENTATION:
         return 5;
+    case SensorType.NMEA:
+        return 6;
+    case SensorType.ODOMETER:
+        return 7;
+    case SensorType.GNSS:
+        return 8;
     }
 }
 
@@ -33,6 +39,12 @@ SensorType navigine_sdk_flutter_SensorType_FromFfi(int handle) {
         return SensorType.LOCATION;
     case 5:
         return SensorType.ORIENTATION;
+    case 6:
+        return SensorType.NMEA;
+    case 7:
+        return SensorType.ODOMETER;
+    case 8:
+        return SensorType.GNSS;
     default:
         throw StateError("Invalid numeric value $handle for SensorType enum.");
     }

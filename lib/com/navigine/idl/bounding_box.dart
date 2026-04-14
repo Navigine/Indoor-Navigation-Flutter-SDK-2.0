@@ -15,8 +15,9 @@ part 'bounding_box.impl.dart';
  *
  *
  *
- * Dart code snippet:
- * @snippet geometry_utils_example.dart dart_BoundingBox_constructor
+ *
+ *Dart code snippet:
+ *@snippet geometry_utils_example.dart dart_BoundingBox_constructor
  *
  */
 class BoundingBox {
@@ -27,8 +28,9 @@ class BoundingBox {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_BoundingBox_getBottomLeft
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_BoundingBox_getBottomLeft
      *
      */
     Point bottomLeft;
@@ -37,8 +39,9 @@ class BoundingBox {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet geometry_utils_example.dart dart_BoundingBox_getTopRight
+     *
+     *Dart code snippet:
+     *@snippet geometry_utils_example.dart dart_BoundingBox_getTopRight
      *
      */
     Point topRight;

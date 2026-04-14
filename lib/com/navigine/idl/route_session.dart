@@ -18,29 +18,29 @@ part 'route_session.impl.dart';
 abstract class RouteSession implements Finalizable {
 
     /**
-     *
      * @brief Method is used to add @see AsyncRouteListener "AsyncRouteListener" class element
      * which will notify async route events.
      * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Сorresponding @see AsyncRouteListener "AsyncRouteListener" class.
+     * @param listener Corresponding @see AsyncRouteListener "AsyncRouteListener" class.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet async_route_manager_example.dart dart_RouteSession_addRouteListener
+     *
+     *Dart code snippet:
+     *@snippet async_route_manager_example.dart dart_RouteSession_addRouteListener
      *
      */
     void addRouteListener(AsyncRouteListener listener);
 
     /**
-     *
      * @brief Method is used for removing previously added @see AsyncRouteListener "AsyncRouteListener" class element.
-     * @param listener Сorresponding @see AsyncRouteListener "AsyncRouteListener" class to remove.
+     * @param listener Corresponding @see AsyncRouteListener "AsyncRouteListener" class to remove.
      *
      *
      *
-     * Dart code snippet:
-     * @snippet async_route_manager_example.dart dart_RouteSession_addRouteListener
+     *
+     *Dart code snippet:
+     *@snippet async_route_manager_example.dart dart_RouteSession_removeRouteListener
      *
      */
     void removeRouteListener(AsyncRouteListener listener);

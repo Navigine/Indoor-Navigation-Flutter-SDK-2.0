@@ -22,9 +22,14 @@ abstract class CameraCallback {
     }
 
     /**
-     *
      * @brief Called when the move if finished.
      * @param completed determine whether the movement is finished or cancelled
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_window_camera_example.dart dart_CameraCallback_onMoveFinished
      *
      */
     void onMoveFinished(bool completed);

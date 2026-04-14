@@ -25,8 +25,9 @@ abstract class Notification implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet notification_manager_example.dart dart_Notification_getId
+     *
+     *Dart code snippet:
+     *@snippet notification_manager_example.dart dart_Notification_getId
      *
      */
     int get id;
@@ -35,8 +36,9 @@ abstract class Notification implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet notification_manager_example.dart dart_Notification_getTitle
+     *
+     *Dart code snippet:
+     *@snippet notification_manager_example.dart dart_Notification_getTitle
      *
      */
     String get title;
@@ -45,8 +47,9 @@ abstract class Notification implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet notification_manager_example.dart dart_Notification_getContent
+     *
+     *Dart code snippet:
+     *@snippet notification_manager_example.dart dart_Notification_getContent
      *
      */
     String get content;
@@ -55,8 +58,9 @@ abstract class Notification implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet notification_manager_example.dart dart_Notification_getImageUrl
+     *
+     *Dart code snippet:
+     *@snippet notification_manager_example.dart dart_Notification_getImageUrl
      *
      */
     String? get imageUrl;

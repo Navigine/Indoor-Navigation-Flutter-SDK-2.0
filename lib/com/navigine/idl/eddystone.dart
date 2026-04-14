@@ -27,8 +27,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Eddystone_getPoint
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Eddystone_getPoint
      *
      */
     Point get point;
@@ -37,8 +38,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet
-     * @snippet location_manager_example.dart dart_Eddystone_getLocationId
+     *
+     *Dart code snippet
+     *@snippet location_manager_example.dart dart_Eddystone_getLocationId
      *
      */
     int get locationId;
@@ -47,8 +49,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Eddystone_getSublocationId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Eddystone_getSublocationId
      *
      */
     int get sublocationId;
@@ -57,8 +60,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Eddystone_getName
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Eddystone_getName
      *
      */
     String get name;
@@ -67,8 +71,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Eddystone_getNamespaceId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Eddystone_getNamespaceId
      *
      */
     String get namespaceId;
@@ -77,8 +82,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Eddystone_getInstanceId
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Eddystone_getInstanceId
      *
      */
     String get instanceId;
@@ -87,8 +93,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Eddystone_getPower
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Eddystone_getPower
      *
      */
     int? get power;
@@ -97,8 +104,9 @@ abstract class Eddystone implements Finalizable {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_manager_example.dart dart_Eddystone_getStatus
+     *
+     *Dart code snippet:
+     *@snippet location_manager_example.dart dart_Eddystone_getStatus
      *
      */
     TransmitterStatus get status;

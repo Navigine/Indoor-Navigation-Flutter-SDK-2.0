@@ -25,8 +25,9 @@ class SensorMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SensorMeasurement_getType
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SensorMeasurement_getType
      *
      */
     SensorType type;
@@ -35,8 +36,9 @@ class SensorMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SensorMeasurement_getValues
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SensorMeasurement_getValues
      *
      */
     Vector3d values;
@@ -45,8 +47,9 @@ class SensorMeasurement {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet measurement_manager_example.dart dart_SensorMeasurement_getTime
+     *
+     *Dart code snippet:
+     *@snippet measurement_manager_example.dart dart_SensorMeasurement_getTime
      *
      */
     int time;

@@ -24,8 +24,9 @@ class LocationInfo {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_list_manager_example.dart dart_LocationInfo_getId
+     *
+     *Dart code snippet:
+     *@snippet location_list_manager_example.dart dart_LocationInfo_getId
      *
      */
     int id;
@@ -34,8 +35,9 @@ class LocationInfo {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_list_manager_example.dart dart_LocationInfo_getVersion
+     *
+     *Dart code snippet:
+     *@snippet location_list_manager_example.dart dart_LocationInfo_getVersion
      *
      */
     int version;
@@ -44,8 +46,9 @@ class LocationInfo {
      *
      *
      *
-     * Dart code snippet:
-     * @snippet location_list_manager_example.dart dart_LocationInfo_getName
+     *
+     *Dart code snippet:
+     *@snippet location_list_manager_example.dart dart_LocationInfo_getName
      *
      */
     String name;
