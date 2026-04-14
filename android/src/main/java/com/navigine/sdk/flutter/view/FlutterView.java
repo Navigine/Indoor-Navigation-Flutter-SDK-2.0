@@ -12,6 +12,8 @@ public class FlutterView extends PlatformGLSurfaceView implements LifecycleListe
     private final ViewFactory factory;
     private boolean isInitialize = false;
 
+    private int w, h, oldw, oldh = 0;
+
     public FlutterView(Context context, int id, ViewFactory factory) {
         super(context);
         this.id = id;
@@ -29,6 +31,9 @@ public class FlutterView extends PlatformGLSurfaceView implements LifecycleListe
         this.onContextCreated();
         this.start();
         ((ViewRenderer) super.renderer).init();
+        if (w != 0 && h != 0 && oldw !=0 && oldh != 0) {
+            super.onSizeChanged(w, h, oldw, oldh);
+        }
     }
 
     @Override
@@ -40,7 +45,6 @@ public class FlutterView extends PlatformGLSurfaceView implements LifecycleListe
     public void start() {
         if (this.isInitialize && this.factory.getLifecycle().isForeground()) {
             super.start();
-            requestRender();
         }
     }
 
@@ -55,6 +59,11 @@ public class FlutterView extends PlatformGLSurfaceView implements LifecycleListe
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         if (this.isInitialize) {
             super.onSizeChanged(w, h, oldw, oldh);
+        } else {
+            this.w = w;
+            this.h = h;
+            this.oldw = oldw;
+            this.oldh = oldh;
         }
     }
 
