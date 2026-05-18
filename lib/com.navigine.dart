@@ -110,7 +110,6 @@ export 'com/navigine/idl/sublocation.dart' show Sublocation;
 export 'com/navigine/idl/transmitter_status.dart' show TransmitterStatus;
 export 'com/navigine/idl/vector3d.dart' show Vector3d;
 export 'com/navigine/idl/user_location_layer.dart' show UserLocationLayer;
-export 'com/navigine/idl/user_location_view.dart' show UserLocationView;
 export 'com/navigine/idl/venue.dart' show Venue;
 export 'com/navigine/idl/wifi.dart' show Wifi;
 export 'com/navigine/idl/zone_event_type.dart' show ZoneEventType;
