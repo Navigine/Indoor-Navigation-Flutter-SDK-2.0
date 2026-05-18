@@ -16,6 +16,7 @@ import 'package:navigine_sdk/com/navigine/idl/dotted_polyline_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/input_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_filter_condition.dart';
+import 'package:navigine_sdk/com/navigine/idl/model_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/pick_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart';
@@ -240,6 +241,33 @@ abstract class LocationWindow implements Finalizable {
      *
      */
     bool removeDottedPolylineMapObject(DottedPolylineMapObject dottedPolylineMapObject);
+
+    /**
+     * @brief Creates and adds a 3D model map object (Wavefront OBJ + texture via ModelProvider).
+     * @return A ModelMapObject instance @see ModelMapObject "ModelMapObject" if successful, null otherwise.
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_window_map_objects_example.dart dart_LocationWindow_addModelMapObject
+     *
+     */
+    ModelMapObject addModelMapObject();
+
+    /**
+     * @brief Removes a model map object from the location view.
+     * @param modelMapObject The model instance to remove @see ModelMapObject "ModelMapObject".
+     * @return true if the operation is successful, false otherwise.
+     *
+     *
+     *
+     *
+     *Dart code snippet:
+     *@snippet location_window_map_objects_example.dart dart_LocationWindow_removeModelMapObject
+     *
+     */
+    bool removeModelMapObject(ModelMapObject modelMapObject);
 
     /**
      * @brief Removes all map objects from the location view.

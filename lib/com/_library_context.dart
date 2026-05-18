@@ -5,6 +5,7 @@ import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_sdk_method_channel.dart';
+import 'package:navigine_sdk/com/exception.dart';
 
 final nativeLibrary = _loadNativeLibrary(_getLibraryPath("navigine"));
 
@@ -90,6 +91,9 @@ abstract class AsyncDispatcherHeap<T> {
 
   void requestData(T object, Pointer<Void> nativeData);
 
+  void onHandlerException(
+      T? object, Pointer<Void> nativeData, Object e, StackTrace stackTrace);
+
   int get sendPort => _port.sendPort.nativePort;
 
   void _removeObject(Pointer<Void> nativeObject) {
@@ -114,7 +118,22 @@ abstract class AsyncDispatcherHeap<T> {
         malloc.free(dataPtr);
         break;
       case _GetPlatformObjectData:
-        requestData(_heap[callbackData.nativeObject]!, callbackData.nativeData);
+        try {
+          final obj = _heap[callbackData.nativeObject];
+          if (obj == null) {
+            onHandlerException(null, callbackData.nativeData,
+                NativeNullException(), StackTrace.current);
+            return;
+          }
+          requestData(obj, callbackData.nativeData);
+        } catch (e, stack) {
+          onHandlerException(
+            _heap[callbackData.nativeObject],
+            callbackData.nativeData,
+            e,
+            stack,
+          );
+        }
         break;
       default:
         assert(false);
