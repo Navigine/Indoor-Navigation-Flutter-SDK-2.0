@@ -62,6 +62,7 @@ export 'com/navigine/idl/map_object_pick_result.dart' show MapObjectPickResult;
 export 'com/navigine/idl/map_object_type.dart' show MapObjectType;
 export 'com/navigine/idl/measurement_listener.dart' show MeasurementListener;
 export 'com/navigine/idl/measurement_manager.dart' show MeasurementManager;
+export 'com/navigine/idl/model_map_object.dart' show ModelMapObject;
 export 'com/navigine/idl/mqtt_session_listener.dart' show MqttSessionListener;
 export 'com/navigine/idl/mqtt_session.dart' show MqttSession;
 export 'com/navigine/idl/navigation_manager.dart' show NavigationManager;
