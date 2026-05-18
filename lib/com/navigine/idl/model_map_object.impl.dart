@@ -1,25 +1,25 @@
-part of 'icon_map_object.dart';
+part of 'model_map_object.dart';
 
-// IconMapObject "private" section, not exported.
+// ModelMapObject "private" section, not exported.
 
-final _navigine_sdk_flutter_IconMapObject_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_ModelMapObject_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Pointer<Void> Function(Pointer<Void>),
     Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_IconMapObject_copy_handle'));
+  >('navigine_sdk_flutter_ModelMapObject_copy_handle'));
 
-final _navigine_sdk_flutter_IconMapObject_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+final _navigine_sdk_flutter_ModelMapObject_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
     Void Function(Pointer<Void>),
     void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_IconMapObject_release_handle'));
+  >('navigine_sdk_flutter_ModelMapObject_release_handle'));
 
-final _navigine_sdk_flutter_IconMapObject_free = __lib.nativeLibrary.lookup<
+final _navigine_sdk_flutter_ModelMapObject_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
-  >('navigine_sdk_flutter_IconMapObject_free');
+  >('navigine_sdk_flutter_ModelMapObject_free');
 
 
-class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Finalizable {
-    IconMapObject$Impl(Pointer<Void> handle) : super(handle);
-    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_IconMapObject_free.cast());
+class ModelMapObject$Impl extends __lib.NativeBase implements ModelMapObject, Finalizable {
+    ModelMapObject$Impl(Pointer<Void> handle) : super(handle);
+    static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_ModelMapObject_free.cast());
 
     // MapObject methods
     @override
@@ -139,7 +139,7 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _setPositionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Pointer<Void>),
             int Function(Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_IconMapObject_setPosition__Point'));
+          >('navigine_sdk_flutter_ModelMapObject_setPosition__Point'));
         final _pointHandle = navigine_sdk_flutter_LocationPoint_ToFfi(point);
         final _handle = this.handle;
         final __resultHandle = _setPositionFfi(_handle, _pointHandle);
@@ -154,7 +154,7 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _setPositionAnimatedFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Pointer<Void>, Float, Uint32),
             int Function(Pointer<Void>, Pointer<Void>, double, int)
-          >('navigine_sdk_flutter_IconMapObject_setPositionAnimated__Point_Duration_Type'));
+          >('navigine_sdk_flutter_ModelMapObject_setPositionAnimated__Point_Duration_Type'));
         final _pointHandle = navigine_sdk_flutter_LocationPoint_ToFfi(point);
         final _durationHandle = navigine_sdk_flutter_double_ToFfi(duration);
         final _typeHandle = navigine_sdk_flutter_AnimationType_ToFfi(type);
@@ -169,15 +169,15 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
     }
 
     @override
-    bool setBitmap(ImageProvider bitmap) {
-        final _setBitmapFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    bool setModel(ModelProvider model) {
+        final _setModelFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Pointer<Void>),
             int Function(Pointer<Void>, Pointer<Void>)
-          >('navigine_sdk_flutter_IconMapObject_setBitmap__Bitmap'));
-        final _bitmapHandle = navigine_sdk_flutter_ImageProvider_ToFfi(bitmap);
+          >('navigine_sdk_flutter_ModelMapObject_setModel__Model'));
+        final _modelHandle = navigine_sdk_flutter_ModelProvider_ToFfi(model);
         final _handle = this.handle;
-        final __resultHandle = _setBitmapFfi(_handle, _bitmapHandle);
-        navigine_sdk_flutter_ImageProvider_ReleaseFfiHandle(_bitmapHandle);
+        final __resultHandle = _setModelFfi(_handle, _modelHandle);
+        navigine_sdk_flutter_ModelProvider_ReleaseFfiHandle(_modelHandle);
         final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
         navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
         return _result;
@@ -188,7 +188,7 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _setSizeFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float, Float),
             int Function(Pointer<Void>, double, double)
-          >('navigine_sdk_flutter_IconMapObject_setSize__Width_Height'));
+          >('navigine_sdk_flutter_ModelMapObject_setSize__Width_Height'));
         final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
         final _heightHandle = navigine_sdk_flutter_double_ToFfi(height);
         final _handle = this.handle;
@@ -205,7 +205,7 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _setCollisionEnabledFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Uint8),
             int Function(Pointer<Void>, int)
-          >('navigine_sdk_flutter_IconMapObject_setCollisionEnabled__Enabled'));
+          >('navigine_sdk_flutter_ModelMapObject_setCollisionEnabled__Enabled'));
         final _enabledHandle = navigine_sdk_flutter_bool_ToFfi(enabled);
         final _handle = this.handle;
         final __resultHandle = _setCollisionEnabledFfi(_handle, _enabledHandle);
@@ -220,7 +220,7 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _setAngleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
-          >('navigine_sdk_flutter_IconMapObject_setAngle__Angle'));
+          >('navigine_sdk_flutter_ModelMapObject_setAngle__Angle'));
         final _angleHandle = navigine_sdk_flutter_double_ToFfi(angle);
         final _handle = this.handle;
         final __resultHandle = _setAngleFfi(_handle, _angleHandle);
@@ -235,7 +235,7 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _setAngleAnimatedFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float, Float, Uint32),
             int Function(Pointer<Void>, double, double, int)
-          >('navigine_sdk_flutter_IconMapObject_setAngleAnimated__Angle_Duration_Type'));
+          >('navigine_sdk_flutter_ModelMapObject_setAngleAnimated__Angle_Duration_Type'));
         final _angleHandle = navigine_sdk_flutter_double_ToFfi(angle);
         final _durationHandle = navigine_sdk_flutter_double_ToFfi(duration);
         final _typeHandle = navigine_sdk_flutter_AnimationType_ToFfi(type);
@@ -254,7 +254,7 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         final _setBufferFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float, Float),
             int Function(Pointer<Void>, double, double)
-          >('navigine_sdk_flutter_IconMapObject_setBuffer__Width_Height'));
+          >('navigine_sdk_flutter_ModelMapObject_setBuffer__Width_Height'));
         final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
         final _heightHandle = navigine_sdk_flutter_double_ToFfi(height);
         final _handle = this.handle;
@@ -267,28 +267,11 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
     }
 
     @override
-    bool setOffset(double width, double height) {
-        final _setOffsetFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Float, Float),
-            int Function(Pointer<Void>, double, double)
-          >('navigine_sdk_flutter_IconMapObject_setOffset__Width_Height'));
-        final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
-        final _heightHandle = navigine_sdk_flutter_double_ToFfi(height);
-        final _handle = this.handle;
-        final __resultHandle = _setOffsetFfi(_handle, _widthHandle, _heightHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_heightHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
-    @override
     bool setPriority(double priority) {
         final _setPriorityFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
-          >('navigine_sdk_flutter_IconMapObject_setPriority__Priority'));
+          >('navigine_sdk_flutter_ModelMapObject_setPriority__Priority'));
         final _priorityHandle = navigine_sdk_flutter_double_ToFfi(priority);
         final _handle = this.handle;
         final __resultHandle = _setPriorityFfi(_handle, _priorityHandle);
@@ -298,53 +281,38 @@ class IconMapObject$Impl extends __lib.NativeBase implements IconMapObject, Fina
         return _result;
     }
 
-    @override
-    bool setFlat(bool flat) {
-        final _setFlatFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Uint8),
-            int Function(Pointer<Void>, int)
-          >('navigine_sdk_flutter_IconMapObject_setFlat__Flat'));
-        final _flatHandle = navigine_sdk_flutter_bool_ToFfi(flat);
-        final _handle = this.handle;
-        final __resultHandle = _setFlatFfi(_handle, _flatHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(_flatHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
-        return _result;
-    }
-
 
 
 
 }
 
-Pointer<Void> navigine_sdk_flutter_IconMapObject_ToFfi(IconMapObject value) {
+Pointer<Void> navigine_sdk_flutter_ModelMapObject_ToFfi(ModelMapObject value) {
     if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_IconMapObject_CopyHandle((value as __lib.NativeBase).handle);
+        return _navigine_sdk_flutter_ModelMapObject_CopyHandle((value as __lib.NativeBase).handle);
     }
     else  {
         return Pointer<Void>.fromAddress(0);
     }
 }
 
-IconMapObject navigine_sdk_flutter_IconMapObject_FromFfi(Pointer<Void> handle) {
+ModelMapObject navigine_sdk_flutter_ModelMapObject_FromFfi(Pointer<Void> handle) {
     if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_IconMapObject_CopyHandle(handle);
-    final result = IconMapObject$Impl(_copiedHandle);
-    IconMapObject$Impl._finalizer.attach(result, _copiedHandle);
+    final _copiedHandle = _navigine_sdk_flutter_ModelMapObject_CopyHandle(handle);
+    final result = ModelMapObject$Impl(_copiedHandle);
+    ModelMapObject$Impl._finalizer.attach(result, _copiedHandle);
     return result;
 }
 
-Pointer<Void> navigine_sdk_flutter_IconMapObject_ToFfiNullable(IconMapObject? value) => 
-  value != null ? navigine_sdk_flutter_IconMapObject_ToFfi(value) : Pointer<Void>.fromAddress(0);
+Pointer<Void> navigine_sdk_flutter_ModelMapObject_ToFfiNullable(ModelMapObject? value) => 
+  value != null ? navigine_sdk_flutter_ModelMapObject_ToFfi(value) : Pointer<Void>.fromAddress(0);
 
-void navigine_sdk_flutter_IconMapObject_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_IconMapObject_ReleaseHandle(handle);
+void navigine_sdk_flutter_ModelMapObject_ReleaseFfiHandle(Pointer<Void> handle) => 
+  _navigine_sdk_flutter_ModelMapObject_ReleaseHandle(handle);
 
-void navigine_sdk_flutter_IconMapObject_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_IconMapObject_ReleaseHandle(handle);
+void navigine_sdk_flutter_ModelMapObject_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
+  _navigine_sdk_flutter_ModelMapObject_ReleaseHandle(handle);
 
-IconMapObject? navigine_sdk_flutter_IconMapObject_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_IconMapObject_FromFfi(handle) : null;
+ModelMapObject? navigine_sdk_flutter_ModelMapObject_FromFfiNullable(Pointer<Void> handle) => 
+  handle.address != 0 ? navigine_sdk_flutter_ModelMapObject_FromFfi(handle) : null;
 
-// End of IconMapObject "private" section.
+// End of ModelMapObject "private" section.

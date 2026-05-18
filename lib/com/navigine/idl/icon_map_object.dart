@@ -7,7 +7,7 @@ import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
-import 'package:navigine_sdk/image_wrapper.dart';
+import 'package:navigine_sdk/image_provider.dart';
 
 part 'icon_map_object.impl.dart';
 /**
@@ -58,8 +58,8 @@ abstract class IconMapObject implements MapObject, Finalizable {
     bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
 
     /**
-     * @brief Method is used to specify the bitmap image for the icon.
-     * @param bitmap Platform bitmap object.
+     * @brief Method is used to specify the decoded raster for the icon.
+     * @param bitmap Image provider: Android com.navigine.image.ImageProvider; iOS UIImage via binding; Flutter navigine_sdk ImageProvider.
      * @return true if the operation is successful, false otherwise.
      *
      *
@@ -69,7 +69,7 @@ abstract class IconMapObject implements MapObject, Finalizable {
      *@snippet location_window_map_objects_example.dart dart_IconMapObject_setBitmap
      *
      */
-    bool setBitmap(ImageWrapper bitmap);
+    bool setBitmap(ImageProvider bitmap);
 
     /**
      * @brief Method is used to specify the size of the icon.
@@ -146,7 +146,7 @@ abstract class IconMapObject implements MapObject, Finalizable {
     bool setBuffer(double width, double height);
 
     /**
-     * @brief Method is used to specify an offset for the circle’s position.
+     * @brief Method is used to specify an offset for the icon’s anchor on screen.
      * @param width Horizontal offset in pixels.
      * @param height Vertical offset in pixels.
      * @return true if the operation is successful, false otherwise.

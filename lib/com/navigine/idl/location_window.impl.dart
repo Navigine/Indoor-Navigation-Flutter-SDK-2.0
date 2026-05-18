@@ -234,6 +234,34 @@ class LocationWindow$Impl extends __lib.NativeBase implements LocationWindow, Fi
     }
 
     @override
+    ModelMapObject addModelMapObject() {
+        final _addModelMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, ),
+            Pointer<Void> Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_addModelMapObject'));
+        final _handle = this.handle;
+        final __resultHandle = _addModelMapObjectFfi(_handle, );
+        final _result = navigine_sdk_flutter_ModelMapObject_FromFfi(__resultHandle);
+        navigine_sdk_flutter_ModelMapObject_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
+    bool removeModelMapObject(ModelMapObject modelMapObject) {
+        final _removeModelMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_removeModelMapObject__ModelMapObject'));
+        final _modelMapObjectHandle = navigine_sdk_flutter_ModelMapObject_ToFfi(modelMapObject);
+        final _handle = this.handle;
+        final __resultHandle = _removeModelMapObjectFfi(_handle, _modelMapObjectHandle);
+        navigine_sdk_flutter_ModelMapObject_ReleaseFfiHandle(_modelMapObjectHandle);
+        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
+        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        return _result;
+    }
+
+    @override
     void removeAllMapObjects() {
         final _removeAllMapObjectsFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Void Function(Pointer<Void>, ),

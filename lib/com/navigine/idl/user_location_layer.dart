@@ -11,6 +11,9 @@ part 'user_location_layer.impl.dart';
  * @brief @copybrief UserLocationLayer
  */
 /**
+ * @ingroup navigine_dart_classes
+ * @ingroup navigine_dart_location_view
+ *
  *
  * @brief Layer that automatically renders current user position (arrow and accuracy circle) on the map.
  *        Provides visibility and anchoring controls.

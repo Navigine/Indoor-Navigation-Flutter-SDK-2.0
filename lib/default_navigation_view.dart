@@ -185,7 +185,7 @@ class _DefaultNavigationViewState extends State<DefaultNavigationView>
   @override
   void onActiveBuildingFocused(Building activeBuilding) {
     final floors = <LevelInfo>[];
-    for (final s in activeBuilding.sublocations) {
+    for (final s in activeBuilding.getSublocations()) {
       floors.add(LevelInfo(levelId: s.levelId, sublocationId: s.id));
     }
     setState(() {

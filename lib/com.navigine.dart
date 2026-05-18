@@ -1,6 +1,8 @@
 export 'error.dart' show Error;
 export 'com/exception.dart' show nativeAssert;
 export 'image_wrapper.dart' show ImageWrapper;
+export 'image_provider.dart' show ImageProvider;
+export 'model_provider.dart' show ModelProvider;
 export 'default_navigation_view.dart' show DefaultNavigationView;
 export 'default_navigation_view_config.dart' show DefaultNavigationViewConfig, DefaultNavigationViewController, NavigationWidgetVisibility;
 export 'widgets/zoom_controls_config.dart' show ZoomControlsConfig;

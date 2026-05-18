@@ -41,4 +41,9 @@ enum MapObjectType {
      * @see CircleMapObject "CircleMapObject"
      */
     CIRCLE,
+    /**
+     * @brief Model.
+     * @see ModelMapObject "ModelMapObject"
+     */
+    MODEL,
 }
