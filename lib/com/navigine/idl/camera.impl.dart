@@ -3,8 +3,8 @@ part of 'camera.dart';
 // Camera "private" section, not exported.
 
 final _navigine_sdk_flutter_Camera_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>, Float, Float),
-    Pointer<Void> Function(Pointer<Void>, double, double)
+    Pointer<Void> Function(Pointer<Void>, Float, Float, Float),
+    Pointer<Void> Function(Pointer<Void>, double, double, double)
   >('navigine_sdk_flutter_Camera_create_handle'));
 
 final _navigine_sdk_flutter_Camera_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
@@ -27,15 +27,22 @@ final _navigine_sdk_flutter_Camera_GetFieldrotation = __lib.catchArgumentError((
     double Function(Pointer<Void>)
   >('navigine_sdk_flutter_Camera_get_field_rotation'));
 
+final _navigine_sdk_flutter_Camera_GetFieldtilt = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Float Function(Pointer<Void>),
+    double Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Camera_get_field_tilt'));
+
 
 Pointer<Void> navigine_sdk_flutter_Camera_ToFfi(Camera value) {
     final _pointHandle = navigine_sdk_flutter_Point_ToFfi(value.point);
     final _zoomHandle = navigine_sdk_flutter_double_ToFfi(value.zoom);
     final _rotationHandle = navigine_sdk_flutter_double_ToFfi(value.rotation);
-    final _result = _navigine_sdk_flutter_Camera_CreateHandle(_pointHandle, _zoomHandle, _rotationHandle);
+    final _tiltHandle = navigine_sdk_flutter_double_ToFfi(value.tilt);
+    final _result = _navigine_sdk_flutter_Camera_CreateHandle(_pointHandle, _zoomHandle, _rotationHandle, _tiltHandle);
     navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
     navigine_sdk_flutter_double_ReleaseFfiHandle(_zoomHandle);
     navigine_sdk_flutter_double_ReleaseFfiHandle(_rotationHandle);
+    navigine_sdk_flutter_double_ReleaseFfiHandle(_tiltHandle);
     return _result;
 }
 
@@ -43,14 +50,17 @@ Camera navigine_sdk_flutter_Camera_FromFfi(Pointer<Void> handle) {
     final _pointHandle = _navigine_sdk_flutter_Camera_GetFieldpoint(handle);
     final _zoomHandle = _navigine_sdk_flutter_Camera_GetFieldzoom(handle);
     final _rotationHandle = _navigine_sdk_flutter_Camera_GetFieldrotation(handle);
+    final _tiltHandle = _navigine_sdk_flutter_Camera_GetFieldtilt(handle);
     final _result = Camera(
       navigine_sdk_flutter_Point_FromFfi(_pointHandle),
       navigine_sdk_flutter_double_FromFfi(_zoomHandle),
       navigine_sdk_flutter_double_FromFfi(_rotationHandle),
+      navigine_sdk_flutter_double_FromFfi(_tiltHandle),
     );
       navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
       navigine_sdk_flutter_double_ReleaseFfiHandle(_zoomHandle);
       navigine_sdk_flutter_double_ReleaseFfiHandle(_rotationHandle);
+      navigine_sdk_flutter_double_ReleaseFfiHandle(_tiltHandle);
     return _result;
 }
 
