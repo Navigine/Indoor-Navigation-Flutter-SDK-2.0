@@ -25,7 +25,7 @@ part 'camera.impl.dart';
  */
 class Camera {
     /// @brief Default constructor
-    Camera(this.point, this.zoom, this.rotation);
+    Camera(this.point, this.zoom, this.rotation, this.tilt);
     /**
      * @brief point the camera is looking at @see Point "Point"
      */
@@ -35,8 +35,13 @@ class Camera {
      */
     double zoom;
     /**
-     * @brief angle between `Location North` (top of the image) and the direction of interest on the view plane
-     * in degrees in the range [0, 360).
+     * @brief Map azimuth in degrees: angle between `Location North` (top of the image) and the direction of interest
+     * on the view plane, in the range [0, 360).
      */
     double rotation;
+    /**
+     * @brief Camera tilt in degrees. 0 means vertical downward (map seen from above).
+     * Positive values tilt the eye toward the horizon; the renderer clamps tilt to device limits when applying.
+     */
+    double tilt;
 }
