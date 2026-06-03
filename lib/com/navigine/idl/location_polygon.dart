@@ -4,43 +4,29 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon.dart';
 
 part 'location_polygon.impl.dart';
-/**
- * @file com/navigine/idl/location_polygon.dart
- * @brief @copybrief LocationPolygon
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_geometry_classes
- *
- *
- * @brief Class is used for representing certain polygon within the location @see Polygon "Polygon"
- *
- *
- *
- *
- *Dart code snippet:
- *@snippet location_window_map_objects_example.dart dart_LocationPolygon_record
- *
- */
+/// Class is used for representing certain polygon within the location [Polygon]
+///
+/// Example:
+/// ```dart
+/// List<Point> ring = [
+///  Point(1.0, 2.0),
+///  Point(3.0, 4.0),
+///  Point(5.0, 2.0),
+/// ];
+/// Polygon metricPolygon = Polygon(ring);
+/// LocationPolygon locationPolygon = LocationPolygon(metricPolygon, 42, 7);
+/// Polygon polygonBack = locationPolygon.polygon;
+/// print(
+///  "LocationPolygon: location ${locationPolygon.locationId} sublocation ${locationPolygon.sublocationId} vertices ${polygonBack.points.length}",
+/// );
+/// ```
 class LocationPolygon {
-    /// @brief Default constructor
+    /// Default constructor.
     LocationPolygon(this.polygon, this.locationId, this.sublocationId);
-    /**
-     *
-     * @brief Metrics polygon @see Polygon "Polygon".
-     *
-     */
+    /// Metrics polygon [Polygon].
     Polygon polygon;
-    /**
-     *
-     * @brief location polygon location identifier.
-     *
-     */
+    /// location polygon location identifier.
     int locationId;
-    /**
-     *
-     * @brief location polygon sublocation identifier.
-     *
-     */
+    /// location polygon sublocation identifier.
     int sublocationId;
 }

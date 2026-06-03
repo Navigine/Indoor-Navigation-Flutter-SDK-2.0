@@ -5,58 +5,44 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/key_value_storage.dart';
 
 part 'storage_manager.impl.dart';
-/**
- * @file com/navigine/idl/storage_manager.dart
- * @brief @copybrief StorageManager
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_managers
- * @brief Interface for managing multiple key-value storages, providing access and lifecycle control.
- *
- * Referenced from @see NavigineSdk "NavigineSdk".
- */
+/// Interface for managing multiple key-value storages, providing access and lifecycle control.
+/// Referenced from [NavigineSdk].
 abstract class StorageManager implements Finalizable {
 
-    /**
-     * Returns the list of all existing user storages.
-     * @return List of storage names (implementation currently returns them in alphabetical order).
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet storage_manager_example.dart dart_StorageManager_getStorageList
-     *
-     */
+    /// Returns the list of all existing user storages.
+    /// Returns List of storage names (implementation currently returns them in alphabetical order).
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get list of all existing storages
+    /// List<String> storageList = _storageManager!.getStorageList();
+    /// print("Existing storages: $storageList");
+    /// ```
     List<String> getStorageList();
 
-    /**
-     * Returns a handle to a storage by name, creating it if it does not exist.
-     * @param name Storage name (case-sensitive).
-     * @return Key–value storage instance @see KeyValueStorage "KeyValueStorage"
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet storage_manager_example.dart dart_StorageManager_getStorage
-     *
-     */
+    /// Returns a handle to a storage by name, creating it if it does not exist.
+    /// [name] Storage name (case-sensitive).
+    /// Returns Key–value storage instance [KeyValueStorage]
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get or create different storage instances
+    /// _userStorage = _storageManager!.getStorage("user_preferences");
+    /// _appStorage = _storageManager!.getStorage("app_settings");
+    /// _cacheStorage = _storageManager!.getStorage("cache");
+    /// ```
     KeyValueStorage getStorage(String name);
 
-    /**
-     * Removes the storage and all its persisted data. If the storage does not exist, this is a no-op.
-     * @param name Storage name (case-sensitive).
-     * @note Existing handles to this storage become invalid after removal and further operations may fail.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet storage_manager_example.dart dart_StorageManager_removeStorage
-     *
-     */
+    /// Removes the storage and all its persisted data. If the storage does not exist, this is a no-op.
+    /// **Note:** Existing handles to this storage become invalid after removal and further operations may fail.
+    /// [name] Storage name (case-sensitive).
+    ///
+    /// Example:
+    /// ```dart
+    /// // Remove storage and all its data
+    /// _storageManager!.removeStorage("test_storage");
+    /// print("Removed test storage");
+    /// ```
     void removeStorage(String name);
 
 

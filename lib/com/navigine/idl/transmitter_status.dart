@@ -2,41 +2,23 @@ import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
 part 'transmitter_status.impl.dart';
-/**
- * @file com/navigine/idl/transmitter_status.dart
- * @brief @copybrief TransmitterStatus
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- *
- *
- * @brief enum described possible transmitter state.
- *
- * Referenced from @see Beacon "Beacon", @see Eddystone "Eddystone", @see Wifi "Wifi".
- *
- *
- *
- *
- *Dart code snippet:
- *@snippet location_manager_example.dart dart_TransmitterStatus_values
- *
- */
+/// enum described possible transmitter state.
+/// Referenced from [Beacon], [Eddystone], [Wifi].
+///
+/// Example:
+/// ```dart
+/// // Get all transmitter status values
+/// print('Available transmitter statuses:');
+/// print('  - TransmitterStatus.active: ${TransmitterStatus.active}');
+/// print('  - TransmitterStatus.inactive: ${TransmitterStatus.inactive}');
+/// ```
 enum TransmitterStatus {
-    /**
-     * @brief Syncronized with CMS.
-     */
+    /// Syncronized with CMS.
     NONE,
-    /**
-     * @brief Added in SDK but not syncronized with CMS.
-     */
+    /// Added in SDK but not syncronized with CMS.
     NEW,
-    /**
-     * @brief Deleted in SDK but not syncronized with CMS.
-     */
+    /// Deleted in SDK but not syncronized with CMS.
     DELETED,
-    /**
-     * @brief Changed in SDK but not syncronized with CMS.
-     */
+    /// Changed in SDK but not syncronized with CMS.
     MODIFIED,
 }

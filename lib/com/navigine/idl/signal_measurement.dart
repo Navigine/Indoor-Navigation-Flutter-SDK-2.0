@@ -4,74 +4,54 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/signal_type.dart';
 
 part 'signal_measurement.impl.dart';
-/**
- * @file com/navigine/idl/signal_measurement.dart
- * @brief @copybrief SignalMeasurement
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- * @brief Structure representing a signal measurement with type, identifier, RSSI, distance, and timestamp.
- *
- * Referenced from @see MeasurementListener "MeasurementListener".
- *
- */
+/// Structure representing a signal measurement with type, identifier, RSSI, distance, and timestamp.
+/// Referenced from [MeasurementListener].
 class SignalMeasurement {
-    /// @brief Default constructor
+    /// Default constructor.
     SignalMeasurement(this.type, this.id, this.rssi, this.distance, this.time);
-    /**
-     * @brief Type of the signal
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getType
-     *
-     */
+    /// Type of the signal
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get signal type
+    /// SignalType type = measurement.type;
+    /// print("Signal type: $type");
+    /// ```
     SignalType type;
-    /**
-     * @brief Unique identifier of the signal (e.g., MAC address or UUID)
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getId
-     *
-     */
+    /// Unique identifier of the signal (e.g., MAC address or UUID)
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get signal identifier
+    /// String id = measurement.id;
+    /// print("Signal ID: $id");
+    /// ```
     String id;
-    /**
-     * @brief Received Signal Strength Indicator (RSSI) in dBm
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getRssi
-     *
-     */
+    /// Received Signal Strength Indicator (RSSI) in dBm
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get RSSI value
+    /// double rssi = measurement.rssi;
+    /// print("Signal RSSI: $rssi dBm");
+    /// ```
     double rssi;
-    /**
-     * @brief Estimated distance to the signal source in meters
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getDistance
-     *
-     */
+    /// Estimated distance to the signal source in meters
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get estimated distance
+    /// double distance = measurement.distance;
+    /// print("Signal distance: $distance meters");
+    /// ```
     double distance;
-    /**
-     * @brief Timestamp of the measurement in milliseconds
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SignalMeasurement_getTime
-     *
-     */
+    /// Timestamp of the measurement in milliseconds
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get measurement timestamp
+    /// int time = measurement.time;
+    /// print("Signal measurement time: $time ms");
+    /// ```
     int time;
 }

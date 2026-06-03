@@ -3,48 +3,36 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 part 'global_point.impl.dart';
-/**
- * @file com/navigine/idl/global_point.dart
- * @brief @copybrief GlobalPoint
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_geometry_classes
- *
- * @brief A point at the specified WGS84 coordinates.
- *
- * Referenced from @see GeometryUtils "GeometryUtils", @see NavigationManager "NavigationManager", @see Position "Position", @see Sublocation "Sublocation".
- *
- *
- *
- *
- *Dart code snippet:
- *@snippet geometry_utils_example.dart dart_GlobalPoint_constructor
- *
- */
+/// A point at the specified WGS84 coordinates.
+/// Referenced from [GeometryUtils], [NavigationManager], [Position], [Sublocation].
+///
+/// Example:
+/// ```dart
+/// // Create global points with latitude, longitude
+/// GlobalPoint globalPoint1 = GlobalPoint(55.7558, 37.6176); // Moscow
+/// GlobalPoint globalPoint2 = GlobalPoint(59.9311, 30.3609); // St. Petersburg
+/// GlobalPoint globalPoint3 = GlobalPoint(55.7522, 37.6156); // Moscow center
+/// print("Created global points: GP1(${globalPoint1.latitude}, ${globalPoint1.longitude}), GP2(${globalPoint2.latitude}, ${globalPoint2.longitude})");
+/// ```
 class GlobalPoint {
-    /// @brief Default constructor
+    /// Default constructor.
     GlobalPoint(this.latitude, this.longitude);
-    /**
-     * @brief point's latitude.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet geometry_utils_example.dart dart_GlobalPoint_getLatitude
-     *
-     */
+    /// point's latitude.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get latitude
+    /// double lat1 = globalPoint1.latitude;
+    /// print("GlobalPoint1 latitude: $lat1");
+    /// ```
     double latitude;
-    /**
-     * @brief point's longitude.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet geometry_utils_example.dart dart_GlobalPoint_getLongitude
-     *
-     */
+    /// point's longitude.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get longitude
+    /// double lon1 = globalPoint1.longitude;
+    /// print("GlobalPoint1 longitude: $lon1");
+    /// ```
     double longitude;
 }

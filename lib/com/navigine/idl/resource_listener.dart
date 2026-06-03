@@ -8,10 +8,6 @@ import 'package:navigine_sdk/com/navigine/idl/image.dart';
 import 'package:navigine_sdk/error.dart';
 
 part 'resource_listener.impl.dart';
-/**
- * @file com/navigine/idl/resource_listener.dart
- * @brief @copybrief ResourceListener
- */
 abstract class ResourceListener {
 
     void onLoaded(String imageUrl, Image image);

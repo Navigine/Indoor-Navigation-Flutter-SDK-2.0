@@ -5,52 +5,36 @@ import 'package:navigine_sdk/com/navigine/idl/sensor_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/vector3d.dart';
 
 part 'sensor_measurement.impl.dart';
-/**
- * @file com/navigine/idl/sensor_measurement.dart
- * @brief @copybrief SensorMeasurement
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- * @brief Structure representing a sensor measurement with type, values, and timestamp.
- *
- * Referenced from @see MeasurementListener "MeasurementListener".
- *
- */
+/// Structure representing a sensor measurement with type, values, and timestamp.
+/// Referenced from [MeasurementListener].
 class SensorMeasurement {
-    /// @brief Default constructor
+    /// Default constructor.
     SensorMeasurement(this.type, this.values, this.time);
-    /**
-     * @brief Type of the sensor
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SensorMeasurement_getType
-     *
-     */
+    /// Type of the sensor
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get sensor type
+    /// SensorType type = measurement.type;
+    /// print("Sensor type: $type");
+    /// ```
     SensorType type;
-    /**
-     * @brief 3D vector containing sensor measurement values
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SensorMeasurement_getValues
-     *
-     */
+    /// 3D vector containing sensor measurement values
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get sensor values
+    /// Vector3d values = measurement.values;
+    /// print("Sensor values - X: ${values.x}, Y: ${values.y}, Z: ${values.z}");
+    /// ```
     Vector3d values;
-    /**
-     * @brief Timestamp of the measurement in milliseconds
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_SensorMeasurement_getTime
-     *
-     */
+    /// Timestamp of the measurement in milliseconds
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get measurement timestamp
+    /// int time = measurement.time;
+    /// print("Measurement time: $time ms");
+    /// ```
     int time;
 }

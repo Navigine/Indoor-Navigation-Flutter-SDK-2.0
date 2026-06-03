@@ -3,42 +3,25 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 part 'transition_entry_event.impl.dart';
-/**
- * @file com/navigine/idl/transition_entry_event.dart
- * @brief @copybrief TransitionEntryEvent
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- *
- * @brief Event describing entering another level/sublocation transition.
- *
- * Referenced from @see RouteEvent "RouteEvent".
- *
- */
+/// Event describing entering another level/sublocation transition.
+/// Referenced from [RouteEvent].
 class TransitionEntryEvent {
-    /// @brief Default constructor
+    /// Default constructor.
     TransitionEntryEvent(this.from, this.to);
-    /**
-     * @brief Source level identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_TransitionEntryEvent_getFrom
-     *
-     */
+    /// Source level identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// int from = event.from;
+    /// print("Transition entry from: $from");
+    /// ```
     int from;
-    /**
-     * @brief Destination level identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_TransitionEntryEvent_getTo
-     *
-     */
+    /// Destination level identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// int to = event.to;
+    /// print("Transition entry to: $to");
+    /// ```
     int to;
 }

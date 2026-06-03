@@ -7,10 +7,6 @@ import 'package:navigine_sdk/com/navigine/idl/reference_entry.dart';
 import 'package:navigine_sdk/com/navigine/idl/transmitter_status.dart';
 
 part 'reference_point.impl.dart';
-/**
- * @file com/navigine/idl/reference_point.dart
- * @brief @copybrief ReferencePoint
- */
 abstract class ReferencePoint implements Finalizable {
 
 

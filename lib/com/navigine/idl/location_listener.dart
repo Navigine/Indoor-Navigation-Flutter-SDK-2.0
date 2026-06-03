@@ -8,54 +8,39 @@ import 'package:navigine_sdk/com/navigine/idl/location.dart';
 import 'package:navigine_sdk/error.dart';
 
 part 'location_listener.impl.dart';
-/**
- * @file com/navigine/idl/location_listener.dart
- * @brief @copybrief LocationListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_listeners
- * @brief Class provides a callback to be invoked when @see LocationManager "LocationManager"
- * class downloads the location from server or load it from the storage.
- *
- * Referenced from @see LocationManager "LocationManager".
- * @note The callback is invoked in the UI thread.
- */
+/// Class provides a callback to be invoked when [LocationManager]
+/// class downloads the location from server or load it from the storage.
+/// Referenced from [LocationManager].
+/// **Note:** The callback is invoked in the UI thread.
 abstract class LocationListener {
 
-    /**
-     * @brief Called when new location version has been downloaded from server or load it from the storage
-     * @param location @see Location "Location" instance or nil if server url or `USER_HASH` was changed.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_LocationListener_onLocationLoaded
-     *
-     */
+    /// Called when new location version has been downloaded from server or load it from the storage
+    /// [location] [Location] instance or nil if server url or `USER_HASH` was changed.
+    ///
+    /// Example:
+    /// ```dart
+    /// void onLocationLoaded(Location? location) {
+    ///  print('Location loaded successfully');
+    ///  _currentLocation = location;
+    ///  if (location != null) {
+    ///    demonstrateLocationUsage(location);
+    ///  }
+    /// }
+    /// ```
     void onLocationLoaded(Location location);
 
-    /**
-     * @cond
-     */
     void onLocationUploaded(int locationId);
 
-    /**
-     * @endcond
-     *
-     *
-     * @brief Called if unable to download location version from CMS
-     * @param locationId location unique identifier in SMC.
-     * @param error handled error.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_LocationListener_onLocationFailed
-     *
-     */
+    /// Called if unable to download location version from CMS
+    /// [locationId] location unique identifier in SMC.
+    /// [error] handled error.
+    ///
+    /// Example:
+    /// ```dart
+    /// void onLocationFailed(int locationId, Object error) {
+    ///  print('Failed to load location $locationId: $error');
+    /// }
+    /// ```
     void onLocationFailed(int locationId, Error error);
 
 

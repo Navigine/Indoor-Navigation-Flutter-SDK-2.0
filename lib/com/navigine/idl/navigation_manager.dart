@@ -7,37 +7,22 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/position_listener.dart';
 
 part 'navigation_manager.impl.dart';
-/**
- * @file com/navigine/idl/navigation_manager.dart
- * @brief @copybrief NavigationManager
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_managers
- * @brief Class is used for evaluating navigation and calculating users' @see Position "Position"
- *
- * Referenced from @see NavigineSdk "NavigineSdk".
- */
+/// Class is used for evaluating navigation and calculating users' [Position]
+/// Referenced from [NavigineSdk].
 abstract class NavigationManager implements Finalizable {
 
-    /**
-     * @brief Method is used to add @see PositionListener "PositionListener" class element
-     * which will notify about new user position.
-     * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Corresponding @see PositionListener "PositionListener" class.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet navigation_manager_example.dart dart_NavigationManager_addPositionListener
-     *
-     */
+    /// Method is used to add [PositionListener] class element
+    /// which will notify about new user position.
+    /// **Note:** Do not forget to remove listener if it is no longer needed!
+    /// [listener] Corresponding [PositionListener] class.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Add position listener
+    /// _navigationManager!.addPositionListener(_positionListener!);
+    /// ```
     void addPositionListener(PositionListener listener);
 
-    /**
-     * @cond
-     */
     void startLogRecording();
 
     void addCheckPoint(LocationPoint point);
@@ -46,20 +31,14 @@ abstract class NavigationManager implements Finalizable {
 
     void addLocationMeasurement(GlobalPoint point, double accuracy, String provider);
 
-    /**
-     * @endcond
-     *
-     *
-     * @brief Method is used for removing previously added @see PositionListener "PositionListener" class element.
-     * @param listener Corresponding @see PositionListener "PositionListener" class to remove.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet navigation_manager_example.dart dart_NavigationManager_removePositionListener
-     *
-     */
+    /// Method is used for removing previously added [PositionListener] class element.
+    /// [listener] Corresponding [PositionListener] class to remove.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Remove position listener
+    /// _navigationManager!.removePositionListener(_positionListener!);
+    /// ```
     void removePositionListener(PositionListener listener);
 
 

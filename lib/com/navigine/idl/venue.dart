@@ -5,130 +5,104 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
 part 'venue.impl.dart';
-/**
- * @file com/navigine/idl/venue.dart
- * @brief @copybrief Venue
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_elements
- * @brief Class is used for storing venue.
- *
- * Referenced from @see Sublocation "Sublocation".
- *
- */
+/// Class is used for storing venue.
+/// Referenced from [Sublocation].
 abstract class Venue implements Finalizable {
 
 
-    /**
-     * @brief venue's X and Y coordinates in meters as @see Point "Point" (within the sublocation).
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getPoint
-     *
-     */
+    /// venue's X and Y coordinates in meters as [Point] (within the sublocation).
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue point
+    /// Point? point = venue.getPoint();
+    /// if (point != null) {
+    ///  demonstratePointUsage(point);
+    /// }
+    /// ```
     Point get point;
-    /**
-     * @brief venue's location identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getLocationId
-     *
-     */
+    /// venue's location identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue location ID
+    /// int locationId = venue.getLocationId();
+    /// print('Venue location ID: $locationId');
+    /// ```
     int get locationId;
-    /**
-     * @brief venue's sublocation identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getSublocationId
-     *
-     */
+    /// venue's sublocation identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue sublocation ID
+    /// int sublocationId = venue.getSublocationId();
+    /// print('Venue sublocation ID: $sublocationId');
+    /// ```
     int get sublocationId;
-    /**
-     * @brief venue's identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getId
-     *
-     */
+    /// venue's identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue ID
+    /// int venueId = venue.getId();
+    /// print('Venue ID: $venueId');
+    /// ```
     int get id;
-    /**
-     * @brief venue's name.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getName
-     *
-     */
+    /// venue's name.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue name
+    /// String? venueName = venue.getName();
+    /// print('Venue name: $venueName');
+    /// ```
     String get name;
-    /**
-     * @brief venue's phone.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getPhone
-     *
-     */
+    /// venue's phone.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue phone
+    /// String? phone = venue.getPhone();
+    /// print('Venue phone: $phone');
+    /// ```
     String get phone;
-    /**
-     * @brief venue's description.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getDescript
-     *
-     */
+    /// venue's description.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue description
+    /// String? venueDescription = venue.getDescript();
+    /// print('Venue description: $venueDescription');
+    /// ```
     String get descript;
-    /**
-     * @brief venue's alias.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getAlias
-     *
-     */
+    /// venue's alias.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue alias
+    /// String? alias = venue.getAlias();
+    /// print('Venue alias: $alias');
+    /// ```
     String get alias;
-    /**
-     * @brief venue's category unique identifier @see Category "Category"
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getCategoryId
-     *
-     */
+    /// venue's category unique identifier [Category]
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get category ID
+    /// int categoryId = venue.getCategoryId();
+    /// print('Venue category ID: $categoryId');
+    /// ```
     int get categoryId;
-    /**
-     * @brief venue's image url if specified.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Venue_getImageUrl
-     *
-     */
+    /// venue's image url if specified.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get venue image URL
+    /// String? imageUrl = venue.getImageUrl();
+    /// if (imageUrl != null) {
+    ///  print('Venue image URL: $imageUrl');
+    /// }
+    /// ```
     String? get imageUrl;
 
 

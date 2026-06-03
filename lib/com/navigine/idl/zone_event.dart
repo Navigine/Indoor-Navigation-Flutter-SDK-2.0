@@ -4,86 +4,63 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_event_type.dart';
 
 part 'zone_event.impl.dart';
-/**
- * @file com/navigine/idl/zone_event.dart
- * @brief @copybrief ZoneEvent
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- *
- * @brief Class described user zone event.
- *
- * Referenced from @see ZoneListener "ZoneListener".
- *
- */
+/// Class described user zone event.
+/// Referenced from [ZoneListener].
 class ZoneEvent {
-    /// @brief Default constructor
+    /// Default constructor.
     ZoneEvent(this.type, this.locationId, this.sublocationId, this.id, this.name, this.alias);
-    /**
-     * @brief Handled zone event type.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet zone_manager_example.dart dart_ZoneEvent_getType
-     *
-     */
+    /// Handled zone event type.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get event type
+    /// ZoneEventType type = zoneEvent.type;
+    /// print("Zone event type: $type");
+    /// ```
     ZoneEventType type;
-    /**
-     * @brief zone's location identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet zone_manager_example.dart dart_ZoneEvent_getLocationId
-     *
-     */
+    /// zone's location identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get location ID
+    /// int locationId = zoneEvent.locationId;
+    /// print("Zone location ID: $locationId");
+    /// ```
     int locationId;
-    /**
-     * @brief zone's sublocationId identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet zone_manager_example.dart dart_ZoneEvent_getSublocationId
-     *
-     */
+    /// zone's sublocationId identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get sublocation ID
+    /// int sublocationId = zoneEvent.sublocationId;
+    /// print("Zone sublocation ID: $sublocationId");
+    /// ```
     int sublocationId;
-    /**
-     * @brief zone's identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet zone_manager_example.dart dart_ZoneEvent_getId
-     *
-     */
+    /// zone's identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone ID
+    /// int id = zoneEvent.id;
+    /// print("Zone ID: $id");
+    /// ```
     int id;
-    /**
-     * @brief zone's name.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet zone_manager_example.dart dart_ZoneEvent_getName
-     *
-     */
+    /// zone's name.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone name
+    /// String name = zoneEvent.name;
+    /// print("Zone name: $name");
+    /// ```
     String name;
-    /**
-     * @brief zone's alias.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet zone_manager_example.dart dart_ZoneEvent_getAlias
-     *
-     */
+    /// zone's alias.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone alias
+    /// String alias = zoneEvent.alias;
+    /// print("Zone alias: $alias");
+    /// ```
     String alias;
 }

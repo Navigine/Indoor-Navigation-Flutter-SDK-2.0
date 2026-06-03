@@ -8,64 +8,55 @@ import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 
 part 'polygon_map_object.impl.dart';
-/**
- * @file com/navigine/idl/polygon_map_object.dart
- * @brief @copybrief PolygonMapObject
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Represents a polygon object on the location view.
- *
- * Referenced from @see LocationWindow "LocationWindow".
- *
- */
+/// Represents a polygon object on the location view.
+/// Referenced from [LocationWindow].
 abstract class PolygonMapObject implements MapObject, Finalizable {
 
-    /**
-     * @brief Method is used to specify the source polygon of the object.
-     * @param polygon Metrics coordinates of the polygon @see LocationPolygon "LocationPolygon".
-     * @return true if success, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_PolygonMapObject_setPolygon
-     *
-     */
+    /// Method is used to specify the source polygon of the object.
+    /// [polygon] Metrics coordinates of the polygon [LocationPolygon].
+    /// Returns true if success, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set polygon geometry
+    /// List<Point> points = [
+    ///  Point(100.0, 200.0),
+    ///  Point(150.0, 250.0),
+    ///  Point(200.0, 200.0),
+    ///  Point(150.0, 150.0),
+    /// ];
+    /// Polygon metricPolygon = Polygon(points);
+    /// LocationPolygon polygon = LocationPolygon(metricPolygon, 1, 0);
+    /// bool success = _polygonMapObject!.setPolygon(polygon);
+    /// print("Set polygon with ${points.length} points: $success");
+    /// ```
     bool setPolygon(LocationPolygon polygon);
 
-    /**
-     * @brief Method is used to specify the color of the object.
-     * @param red Red RGBA component.
-     * @param green Green RGBA component.
-     * @param blue Blue RGBA component.
-     * @param alpha Opacity multiplier. Values below 0 will be set to 0. Default: 1.
-     * @return true if success, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_PolygonMapObject_setColor
-     *
-     */
+    /// Method is used to specify the color of the object.
+    /// [red] Red RGBA component.
+    /// [green] Green RGBA component.
+    /// [blue] Blue RGBA component.
+    /// [alpha] Opacity multiplier. Values below 0 will be set to 0. Default: 1.
+    /// Returns true if success, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set polygon color
+    /// bool colorSuccess = _polygonMapObject!.setColor(0.0, 1.0, 0.0, 0.7);
+    /// print("Set polygon color to green with 70% opacity: $colorSuccess");
+    /// ```
     bool setColor(double red, double green, double blue, double alpha);
 
-    /**
-     * @brief Method is used to specify the rendering order of the object.
-     * @param order The rendering order value. Default: 0.
-     * @return true if success, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_PolygonMapObject_setOrder
-     *
-     */
+    /// Method is used to specify the rendering order of the object.
+    /// [order] The rendering order value. Default: 0.
+    /// Returns true if success, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set polygon rendering order
+    /// bool orderSuccess = _polygonMapObject!.setOrder(2);
+    /// print("Set polygon rendering order to 2: $orderSuccess");
+    /// ```
     bool setOrder(int order);
 
 

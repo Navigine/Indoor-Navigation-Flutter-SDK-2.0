@@ -4,42 +4,25 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/turn_type.dart';
 
 part 'turn_event.impl.dart';
-/**
- * @file com/navigine/idl/turn_event.dart
- * @brief @copybrief TurnEvent
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- *
- * @brief Class describing turn guidance event.
- *
- * Referenced from @see RouteEvent "RouteEvent".
- *
- */
+/// Class describing turn guidance event.
+/// Referenced from [RouteEvent].
 class TurnEvent {
-    /// @brief Default constructor
+    /// Default constructor.
     TurnEvent(this.type, this.angle);
-    /**
-     * @brief Turn direction/severity type.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_TurnEvent_getType
-     *
-     */
+    /// Turn direction/severity type.
+    ///
+    /// Example:
+    /// ```dart
+    /// TurnType type = event.type;
+    /// print("Turn type: $type");
+    /// ```
     TurnType type;
-    /**
-     * @brief Signed turn angle in degrees.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_TurnEvent_getAngle
-     *
-     */
+    /// Signed turn angle in degrees.
+    ///
+    /// Example:
+    /// ```dart
+    /// int angle = event.angle;
+    /// print("Turn angle: $angle");
+    /// ```
     int angle;
 }

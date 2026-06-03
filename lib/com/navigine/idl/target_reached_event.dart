@@ -4,42 +4,25 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 
 part 'target_reached_event.impl.dart';
-/**
- * @file com/navigine/idl/target_reached_event.dart
- * @brief @copybrief TargetReachedEvent
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- *
- * @brief Event indicating the route target has been reached.
- *
- * Referenced from @see RouteEvent "RouteEvent".
- *
- */
+/// Event indicating the route target has been reached.
+/// Referenced from [RouteEvent].
 class TargetReachedEvent {
-    /// @brief Default constructor
+    /// Default constructor.
     TargetReachedEvent(this.index, this.point);
-    /**
-     * @brief Index of reached target in target list.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_TargetReachedEvent_getIndex
-     *
-     */
+    /// Index of reached target in target list.
+    ///
+    /// Example:
+    /// ```dart
+    /// int index = event.index;
+    /// print("Reached target index: $index");
+    /// ```
     int index;
-    /**
-     * @brief Location point where target was reached.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_TargetReachedEvent_getPoint
-     *
-     */
+    /// Location point where target was reached.
+    ///
+    /// Example:
+    /// ```dart
+    /// LocationPoint point = event.point;
+    /// _demonstrateLocationPointUsage(point);
+    /// ```
     LocationPoint point;
 }

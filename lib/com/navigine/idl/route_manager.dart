@@ -7,164 +7,131 @@ import 'package:navigine_sdk/com/navigine/idl/route_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 
 part 'route_manager.impl.dart';
-/**
- * @file com/navigine/idl/route_manager.dart
- * @brief @copybrief RouteManager
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_managers
- * @brief Class is used for evaluating @see RoutePath "RoutePath" from point to point.
- *
- * Referenced from @see NavigineSdk "NavigineSdk".
- */
+/// Class is used for evaluating [RoutePath] from point to point.
+/// Referenced from [NavigineSdk].
 abstract class RouteManager implements Finalizable {
 
-    /**
-     * @brief Method is used to build a route between points
-     * about evaluated @see RoutePath "RoutePath" from your position to target point.
-     * @param from starting @see LocationPoint "LocationPoint".
-     * @param to destination @see LocationPoint "LocationPoint".
-     * @return @see RoutePath "RoutePath" from starting to destination point.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_makeRoute
-     *
-     */
+    /// Method is used to build a route between points
+    /// about evaluated [RoutePath] from your position to target point.
+    /// [from] starting [LocationPoint].
+    /// [to] destination [LocationPoint].
+    /// Returns [RoutePath] from starting to destination point.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Make route from point to point
+    /// RoutePath routePath = _routeManager!.makeRoute(startLocationPoint, endLocationPoint);
+    /// print("Route created with length: ${routePath.length} meters");
+    /// ```
     RoutePath makeRoute(LocationPoint from, LocationPoint to);
 
-    /**
-     * @brief Method is used to build a route between the starting point and several destination points
-     * @param from starting @see LocationPoint "LocationPoint".
-     * @param to destination list of @see LocationPoint "LocationPoint"s.
-     * @return vector of @see RoutePath "RoutePath"s from starting to destination point.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_makeRoutes
-     *
-     */
+    /// Method is used to build a route between the starting point and several destination points
+    /// [from] starting [LocationPoint].
+    /// [to] destination list of [LocationPoint]s.
+    /// Returns vector of [RoutePath]s from starting to destination point.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Make routes to multiple destinations
+    /// List<LocationPoint> destinations = [
+    ///  LocationPoint(point: Point(x: 30.0, y: 40.0), locationId: 12345, sublocationId: 1),
+    ///  LocationPoint(point: Point(x: 70.0, y: 80.0), locationId: 12345, sublocationId: 1),
+    /// ];
+    /// List<RoutePath> routePaths = _routeManager!.makeRoutes(startLocationPoint, destinations);
+    /// print("Created ${routePaths.length} routes");
+    /// ```
     List<RoutePath> makeRoutes(LocationPoint from, List<LocationPoint> to);
 
-    /**
-     * @brief Method is used to set target point in your location.
-     * Through @see RouteListener "RouteListener" you will be notified about new paths to target point.
-     * @param target finish @see LocationPoint "LocationPoint".
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_setTarget
-     *
-     */
+    /// Method is used to set target point in your location.
+    /// Through [RouteListener] you will be notified about new paths to target point.
+    /// [target] finish [LocationPoint].
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set target point
+    /// _routeManager!.setTarget(endLocationPoint);
+    /// ```
     void setTarget(LocationPoint target);
 
-    /**
-     * @brief Method is used to add target point in your location.
-     * Through @see RouteListener "RouteListener" you will be notified about new paths to target point.
-     * @param target finish @see LocationPoint "LocationPoint".
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_addTarget
-     *
-     */
+    /// Method is used to add target point in your location.
+    /// Through [RouteListener] you will be notified about new paths to target point.
+    /// [target] finish [LocationPoint].
+    ///
+    /// Example:
+    /// ```dart
+    /// // Add additional target point
+    /// LocationPoint additionalTarget = LocationPoint(point: Point(x: 90.0, y: 100.0), locationId: 12345, sublocationId: 1);
+    /// _routeManager!.addTarget(additionalTarget);
+    /// ```
     void addTarget(LocationPoint target);
 
-    /**
-     * @brief Method is used for removing current target points to where the routes were built.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_cancelTarget
-     *
-     */
+    /// Method is used for removing current target points to where the routes were built.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Cancel current target
+    /// _routeManager!.cancelTarget();
+    /// ```
     void cancelTarget();
 
-    /**
-     * @brief Method is used for removing all target points to where the routes were built.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_clearTargets
-     *
-     */
+    /// Method is used for removing all target points to where the routes were built.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Clear all targets
+    /// _routeManager!.clearTargets();
+    /// ```
     void clearTargets();
 
-    /**
-     * @brief Method is used to select graph tag (Default: "default").
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_setGraphTag
-     *
-     */
+    /// Method is used to select graph tag (Default: "default").
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set graph tag
+    /// _routeManager!.setGraphTag("main");
+    /// ```
     void setGraphTag(String tag);
 
-    /**
-     * @brief Method is used to get current graph tag (Default: "default").
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_getGraphTag
-     *
-     */
+    /// Method is used to get current graph tag (Default: "default").
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get current graph tag
+    /// String currentGraphTag = _routeManager!.getGraphTag();
+    /// print("Current graph tag: $currentGraphTag");
+    /// ```
     String getGraphTag();
 
-    /**
-     * @brief Method is used to get all graph tags,
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_getGraphTags
-     *
-     */
+    /// Method is used to get all graph tags,
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get all graph tags
+    /// List<String> graphTags = _routeManager!.getGraphTags();
+    /// print("Available graph tags: $graphTags");
+    /// ```
     List<String> getGraphTags();
 
-    /**
-     * @brief Method is used to add @see RouteListener "RouteListener" class element
-     * which will notify about evaluated route path from your position to target point.
-     * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Corresponding @see RouteListener "RouteListener" class.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_addRouteListener
-     *
-     */
+    /// Method is used to add [RouteListener] class element
+    /// which will notify about evaluated route path from your position to target point.
+    /// **Note:** Do not forget to remove listener if it is no longer needed!
+    /// [listener] Corresponding [RouteListener] class.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Add route listener
+    /// _routeManager!.addRouteListener(_routeListener!);
+    /// ```
     void addRouteListener(RouteListener listener);
 
-    /**
-     * @brief Method is used for removing previously added @see RouteListener "RouteListener" class element.
-     * @param listener Corresponding @see RouteListener "RouteListener" class to remove.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteManager_removeRouteListener
-     *
-     */
+    /// Method is used for removing previously added [RouteListener] class element.
+    /// [listener] Corresponding [RouteListener] class to remove.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Remove route listener
+    /// _routeManager!.removeRouteListener(_routeListener!);
+    /// ```
     void removeRouteListener(RouteListener listener);
 
 

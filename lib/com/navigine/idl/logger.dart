@@ -5,10 +5,6 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/navigine/idl/log_listener.dart';
 
 part 'logger.impl.dart';
-/**
- * @file com/navigine/idl/logger.dart
- * @brief @copybrief Logger
- */
 abstract class Logger implements Finalizable {
 
     static Logger getLogger() => $prototype.getLogger();

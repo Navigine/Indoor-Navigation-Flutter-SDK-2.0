@@ -6,130 +6,103 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 
 part 'map_object.impl.dart';
-/**
- * @file com/navigine/idl/map_object.dart
- * @brief @copybrief MapObject
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Base interface for handling objects on the location view.
- *
- * Used to manage objects in @see LocationWindow "LocationWindow".
- * Can be handled in the `pickMapObjectAt` method @see LocationWindow "LocationWindow".
- *
- * Referenced from @see CircleMapObject "CircleMapObject", @see IconMapObject "IconMapObject", @see PolylineMapObject "PolylineMapObject", @see PolygonMapObject "PolygonMapObject", @see DottedPolylineMapObject "DottedPolylineMapObject", @see ModelMapObject "ModelMapObject".
- *
- */
+/// Base interface for handling objects on the location view.
+/// Used to manage objects in [LocationWindow].
+/// Can be handled in the `pickMapObjectAt` method [LocationWindow].
+/// Referenced from [CircleMapObject], [IconMapObject], [PolylineMapObject], [PolygonMapObject], [DottedPolylineMapObject], [ModelMapObject].
 abstract class MapObject implements Finalizable {
 
-    /**
-     * @brief Gets the unique identifier of the map object.
-     * @return The unique identifier of the map object.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_getId
-     *
-     */
+    /// Gets the unique identifier of the map object.
+    /// Returns The unique identifier of the map object.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get object ID
+    /// int objectId = _circleMapObject!.id;
+    /// print("Circle object ID: $objectId");
+    /// ```
     int getId();
 
-    /**
-     * @brief Gets the type of the map object.
-     * @return The type of the map object @see MapObjectType "MapObjectType".
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_getType
-     *
-     */
+    /// Gets the type of the map object.
+    /// Returns The type of the map object [MapObjectType].
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get object type
+    /// String objectTypeString = _circleMapObject!.type;
+    /// print("Circle object type: $objectTypeString");
+    /// ```
     MapObjectType getType();
 
-    /**
-     * @brief Gets the user-defined data associated with the map object.
-     * @return The data stored in the map object.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_getData
-     *
-     */
+    /// Gets the user-defined data associated with the map object.
+    /// Returns The data stored in the map object.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get custom data
+    /// Map<String, dynamic> retrievedData = _circleMapObject!.data;
+    /// print("Circle custom data: $retrievedData");
+    /// ```
     Uint8List getData();
 
-    /**
-     * @brief Method is used to specify the visibility of the map object.
-     * @param visible Specifies whether the object is visible (true) or hidden (false). Default: true.
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_setVisible
-     *
-     */
+    /// Method is used to specify the visibility of the map object.
+    /// [visible] Specifies whether the object is visible (true) or hidden (false). Default: true.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set visibility
+    /// bool visibleSuccess = _circleMapObject!.setVisible(true);
+    /// print("Set circle visibility to true: $visibleSuccess");
+    /// ```
     bool setVisible(bool visible);
 
-    /**
-     * @brief Method is used to specify whether the map object can be interacted with.
-     * @param interactive Specifies whether the object can be picked in the `pickMapObjectAt` method (true) or not (false). Default: false.
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_setInteractive
-     *
-     */
+    /// Method is used to specify whether the map object can be interacted with.
+    /// [interactive] Specifies whether the object can be picked in the `pickMapObjectAt` method (true) or not (false). Default: false.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set interactive mode
+    /// bool interactiveSuccess = _circleMapObject!.setInteractive(true);
+    /// print("Set circle interactive to true: $interactiveSuccess");
+    /// ```
     bool setInteractive(bool interactive);
 
-    /**
-     * @brief Method is used to set user-defined data for the map object.
-     * @param data Data to store in the map object.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_setData
-     *
-     */
+    /// Method is used to set user-defined data for the map object.
+    /// [data] Data to store in the map object.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set custom data
+    /// Map<String, dynamic> customData = {"key": "value", "number": 42};
+    /// bool dataSuccess = _circleMapObject!.setData(customData);
+    /// print("Set circle custom data: $dataSuccess");
+    /// ```
     void setData(Uint8List data);
 
-    /**
-     * @brief Method is used to set the title of the map object.
-     * @param title The title to display on the location view.
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_setTitle
-     *
-     */
+    /// Method is used to set the title of the map object.
+    /// [title] The title to display on the location view.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set title
+    /// bool titleSuccess = _circleMapObject!.setTitle("Circle Object");
+    /// print("Set circle title to 'Circle Object': $titleSuccess");
+    /// ```
     bool setTitle(String title);
 
-    /**
-     * @brief Method is used to set the opacity of the map object.
-     * @param alpha Opacity multiplier. Values below 0 will be set to 0. Values above 1 will be set to 1. Default: 1.
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_MapObject_setAlpha
-     *
-     */
+    /// Method is used to set the opacity of the map object.
+    /// [alpha] Opacity multiplier. Values below 0 will be set to 0. Values above 1 will be set to 1. Default: 1.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set alpha transparency
+    /// bool alphaSuccess = _circleMapObject!.setAlpha(0.7);
+    /// print("Set circle alpha to 0.7: $alphaSuccess");
+    /// ```
     bool setAlpha(double alpha);
 
 

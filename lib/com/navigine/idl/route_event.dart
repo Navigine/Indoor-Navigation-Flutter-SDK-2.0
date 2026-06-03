@@ -7,75 +7,58 @@ import 'package:navigine_sdk/com/navigine/idl/transition_exit_event.dart';
 import 'package:navigine_sdk/com/navigine/idl/turn_event.dart';
 
 part 'route_event.impl.dart';
-/**
- * @file com/navigine/idl/route_event.dart
- * @brief @copybrief RouteEvent
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- *
- * @brief Class storing one route event payload.
- *
- * Referenced from @see RoutePath "RoutePath", @see RouteNode "RouteNode".
- *
- */
+/// Class storing one route event payload.
+/// Referenced from [RoutePath], [RouteNode].
 class RouteEvent {
-    /// @brief Default constructor
+    /// Default constructor.
     RouteEvent(this.type, this.turnEvent, this.transitionEntryEvent, this.transitionExitEvent, this.targetReachedEvent);
-    /**
-     * @brief Active event variant discriminator.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteEvent_getType
-     *
-     */
+    /// Active event variant discriminator.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get event type
+    /// RouteEventType type = event.type;
+    /// print("Event type: $type");
+    /// ```
     RouteEventType type;
-    /**
-     * @brief Payload for turn events, set when type is TURN_EVENT.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteEvent_getTurnEvent
-     *
-     */
+    /// Payload for turn events, set when type is TURN_EVENT.
+    ///
+    /// Example:
+    /// ```dart
+    /// TurnEvent? turnEvent = event.turnEvent;
+    /// if (turnEvent != null) {
+    ///  _demonstrateTurnEventUsage(turnEvent);
+    /// }
+    /// ```
     TurnEvent? turnEvent;
-    /**
-     * @brief Payload for transition entry events.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteEvent_getTransitionEntryEvent
-     *
-     */
+    /// Payload for transition entry events.
+    ///
+    /// Example:
+    /// ```dart
+    /// TransitionEntryEvent? entryEvent = event.transitionEntryEvent;
+    /// if (entryEvent != null) {
+    ///  _demonstrateTransitionEntryEventUsage(entryEvent);
+    /// }
+    /// ```
     TransitionEntryEvent? transitionEntryEvent;
-    /**
-     * @brief Payload for transition exit events.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteEvent_getTransitionExitEvent
-     *
-     */
+    /// Payload for transition exit events.
+    ///
+    /// Example:
+    /// ```dart
+    /// TransitionExitEvent? exitEvent = event.transitionExitEvent;
+    /// if (exitEvent != null) {
+    ///  _demonstrateTransitionExitEventUsage(exitEvent);
+    /// }
+    /// ```
     TransitionExitEvent? transitionExitEvent;
-    /**
-     * @brief Payload for target reached events.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RouteEvent_getTargetReachedEvent
-     *
-     */
+    /// Payload for target reached events.
+    ///
+    /// Example:
+    /// ```dart
+    /// TargetReachedEvent? reachedEvent = event.targetReachedEvent;
+    /// if (reachedEvent != null) {
+    ///  _demonstrateTargetReachedEventUsage(reachedEvent);
+    /// }
+    /// ```
     TargetReachedEvent? targetReachedEvent;
 }

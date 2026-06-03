@@ -9,51 +9,42 @@ import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_status.dart';
 
 part 'async_route_listener.impl.dart';
-/**
- * @file com/navigine/idl/async_route_listener.dart
- * @brief @copybrief AsyncRouteListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_listeners
- * @brief Class provides a callback to be invoked when @see RouteSession "RouteSession"
- * handle changed/advanced events.
- *
- * Referenced from @see AsyncRouteManager "AsyncRouteManager" @see RouteSession "RouteSession".
- * @note The callback is invoked in the UI thread.
- */
+/// Class provides a callback to be invoked when [RouteSession]
+/// handle changed/advanced events.
+/// Referenced from [AsyncRouteManager] [RouteSession].
+/// **Note:** The callback is invoked in the UI thread.
 abstract class AsyncRouteListener {
 
-    /**
-     * @brief Called when new route was built or
-     *     old route was rebuilt after missing previouse one.
-     *
-     * @param status @see RouteStatus "RouteStatus" indicating the current router state
-     * @param currentPath @see RoutePath "RoutePath" from current postion to destination point (null if status is not new_route)
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteChanged
-     *
-     */
+    /// Called when new route was built or
+    /// old route was rebuilt after missing previouse one.
+    /// [status] [RouteStatus] indicating the current router state
+    /// [currentPath] [RoutePath] from current postion to destination point (null if status is not new_route)
+    ///
+    /// Example:
+    /// ```dart
+    /// onRouteChanged: (RouteStatus status, RoutePath currentPath) {
+    ///  print("Route changed with status: $status");
+    ///  if (status == RouteStatus.newRoute && currentPath != null) {
+    ///    _demonstrateRoutePathUsage(currentPath);
+    ///  } else {
+    ///    print("Route not ready, status: $status");
+    ///  }
+    /// },
+    /// ```
     void onRouteChanged(RouteStatus status, RoutePath currentPath);
 
-    /**
-     * @brief Called when user has progressed along the route
-     *     that was built in the method `onRouteChanged`
-     *
-     * @param distance distance from the beginning or the route (unit meters)
-     * @param point current location point on the route
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet async_route_manager_example.dart dart_AsyncRouteListener_onRouteAdvanced
-     *
-     */
+    /// Called when user has progressed along the route
+    /// that was built in the method `onRouteChanged`
+    /// [distance] distance from the beginning or the route (unit meters)
+    /// [point] current location point on the route
+    ///
+    /// Example:
+    /// ```dart
+    /// onRouteAdvanced: (double distance, LocationPoint point) {
+    ///  print("Route advanced: $distance meters");
+    ///  _demonstrateLocationPointUsage(point);
+    /// },
+    /// ```
     void onRouteAdvanced(double distance, LocationPoint point);
 
 

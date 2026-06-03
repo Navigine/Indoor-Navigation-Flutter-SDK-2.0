@@ -5,43 +5,27 @@ import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 
 part 'map_object_pick_result.impl.dart';
-/**
- * @file com/navigine/idl/map_object_pick_result.dart
- * @brief @copybrief MapObjectPickResult
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Class is useed to handle information in @see PickListener "PickListener".
- *
- * Referenced from @see PickListener "PickListener".
- *
- */
+/// Class is useed to handle information in [PickListener].
+/// Referenced from [PickListener].
 abstract class MapObjectPickResult implements Finalizable {
 
 
-    /**
-     * @brief Location of the picked map object @see LocationPoint "LocationPoint".
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_interaction_example.dart dart_MapObjectPickResult_getPoint
-     *
-     */
+    /// Location of the picked map object [LocationPoint].
+    ///
+    /// Example:
+    /// ```dart
+    /// LocationPoint point = mapObjectPickResult.point;
+    /// print("Map object picked at screen position (${screenPosition.x}, ${screenPosition.y})");
+    /// print("  Object location: (${point.x}, ${point.y})");
+    /// ```
     LocationPoint get point;
-    /**
-     * @brief Picked map object @see MapObject "MapObject".
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_interaction_example.dart dart_MapObjectPickResult_getMapObject
-     *
-     */
+    /// Picked map object [MapObject].
+    ///
+    /// Example:
+    /// ```dart
+    /// MapObject mapObject = mapObjectPickResult.mapObject;
+    /// print("  Object type: ${mapObject.runtimeType}");
+    /// ```
     MapObject get mapObject;
 
 
