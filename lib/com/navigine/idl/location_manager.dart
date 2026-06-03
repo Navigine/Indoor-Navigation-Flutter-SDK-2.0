@@ -5,96 +5,67 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_listener.dart';
 
 part 'location_manager.impl.dart';
-/**
- * @file com/navigine/idl/location_manager.dart
- * @brief @copybrief LocationManager
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_managers
- * @brief Class is used for downloading and working with @see Location "Location".
- *
- * Referenced from @see NavigineSdk "NavigineSdk".
- */
+/// Class is used for downloading and working with [Location].
+/// Referenced from [NavigineSdk].
 abstract class LocationManager implements Finalizable {
 
-    /**
-     * @brief Method is used to add @see LocationListener "LocationListener" element
-     * which will notify about newly downloaded and set location.
-     * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Corresponding @see LocationListener "LocationListener" class.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_LocationManager_addLocationListener
-     *
-     */
+    /// Method is used to add [LocationListener] element
+    /// which will notify about newly downloaded and set location.
+    /// **Note:** Do not forget to remove listener if it is no longer needed!
+    /// [listener] Corresponding [LocationListener] class.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Add location listener
+    /// _locationManager!.addLocationListener(this);
+    /// ```
     void addLocationListener(LocationListener listener);
 
-    /**
-     * @brief Method is used for removing previously added @see LocationListener "LocationListener" class element.
-     * @param listener Corresponding @see LocationListener "LocationListener" class to remove.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_LocationManager_removeLocationListener
-     *
-     */
+    /// Method is used for removing previously added [LocationListener] class element.
+    /// [listener] Corresponding [LocationListener] class to remove.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Remove location listener
+    /// _locationManager!.removeLocationListener(this);
+    /// ```
     void removeLocationListener(LocationListener listener);
 
-    /**
-     * @brief Method is used for setting current location, which will be downloaded from server or from storage, if it was downloaded before.
-     * Result will be handled by @see LocationListener "LocationListener"
-     * @param locationId location id from CMS
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_LocationManager_setLocationId
-     *
-     */
+    /// Method is used for setting current location, which will be downloaded from server or from storage, if it was downloaded before.
+    /// Result will be handled by [LocationListener]
+    /// [locationId] location id from CMS
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set location ID to load
+    /// _locationManager!.setLocationId(12345);
+    /// ```
     void setLocationId(int locationId);
 
-    /**
-     * @brief Method returns current location unique identifier
-     * @return current location unique identifier
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_LocationManager_getLocationId
-     *
-     */
+    /// Method returns current location unique identifier
+    /// Returns current location unique identifier
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get current location ID
+    /// int currentLocationId = _locationManager!.getLocationId();
+    /// print('Current location ID: $currentLocationId');
+    /// ```
     int getLocationId();
 
-    /**
-     * @cond
-     */
     void commitChanges();
 
     void revertChanges();
 
-    /**
-     * @endcond
-     *
-     *
-     * @brief Method is used to change interval in seconds check for new version from server
-     * Default: 300s
-     * @param interval update interval in seconds
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_LocationManager_setLocationUpdateInterval
-     *
-     */
+    /// Method is used to change interval in seconds check for new version from server
+    /// Default: 300s
+    /// [interval] update interval in seconds
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set location update interval (in seconds)
+    /// _locationManager!.setLocationUpdateInterval(600); // 10 minutes
+    /// ```
     void setLocationUpdateInterval(int interval);
 
 

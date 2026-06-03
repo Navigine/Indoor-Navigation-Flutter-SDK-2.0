@@ -7,45 +7,33 @@ import 'package:navigine_sdk/com/navigine/idl/position.dart';
 import 'package:navigine_sdk/error.dart';
 
 part 'position_listener.impl.dart';
-/**
- * @file com/navigine/idl/position_listener.dart
- * @brief @copybrief PositionListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_listeners
- * @brief Class provides a callback to be invoked when @see NavigationManager "NavigationManager"
- * updates the position of the device.
- *
- * Referenced from @see NavigationManager "NavigationManager" @see RouteManager "RouteManager".
- * @note The callback is invoked in the UI thread.
- */
+/// Class provides a callback to be invoked when [NavigationManager]
+/// updates the position of the device.
+/// Referenced from [NavigationManager] [RouteManager].
+/// **Note:** The callback is invoked in the UI thread.
 abstract class PositionListener {
 
-    /**
-     * @brief Called when new position has been calculated
-     * @param position current user @see Position "Position".
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet navigation_manager_example.dart dart_PositionListener_onPositionUpdated
-     *
-     */
+    /// Called when new position has been calculated
+    /// [position] current user [Position].
+    ///
+    /// Example:
+    /// ```dart
+    /// onPositionUpdated: (Position position) {
+    ///  print("Position updated successfully");
+    ///  _demonstratePositionUsage(position);
+    /// },
+    /// ```
     void onPositionUpdated(Position position);
 
-    /**
-     * @brief Called if unable to calculate user's position
-     * @param error handled error.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet navigation_manager_example.dart dart_PositionListener_onPositionError
-     *
-     */
+    /// Called if unable to calculate user's position
+    /// [error] handled error.
+    ///
+    /// Example:
+    /// ```dart
+    /// onPositionError: (Error error) {
+    ///  print("Position error: ${error.message}");
+    /// },
+    /// ```
     void onPositionError(Error error);
 
 

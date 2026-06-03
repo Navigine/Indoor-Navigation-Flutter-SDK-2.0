@@ -7,45 +7,34 @@ import 'package:navigine_sdk/com/navigine/idl/notification.dart';
 import 'package:navigine_sdk/error.dart';
 
 part 'notification_listener.impl.dart';
-/**
- * @file com/navigine/idl/notification_listener.dart
- * @brief @copybrief NotificationListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_listeners
- * @brief Class provides a callback to be invoked when @see NotificationManager "NotificationManager"
- * detects local notification events.
- *
- * Referenced from @see NotificationManager "NotificationManager".
- * @note The callback is invoked in the UI thread.
- */
+/// Class provides a callback to be invoked when [NotificationManager]
+/// detects local notification events.
+/// Referenced from [NotificationManager].
+/// **Note:** The callback is invoked in the UI thread.
 abstract class NotificationListener {
 
-    /**
-     * @brief Called when iBeacon signal mathed all parameters in notification
-     * @param notification notification instance created in CMS @see Notification "Notification".
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet notification_manager_example.dart dart_NotificationListener_onNotificationLoaded
-     *
-     */
+    /// Called when iBeacon signal mathed all parameters in notification
+    /// [notification] notification instance created in CMS [Notification].
+    ///
+    /// Example:
+    /// ```dart
+    /// onNotificationLoaded: (Notification notification) {
+    ///  print("Notification loaded");
+    ///  _demonstrateNotificationUsage(notification);
+    /// },
+    /// ```
     void onNotificationLoaded(Notification notification);
 
-    /**
-     * @brief Called if unable to calculate notification or network errors.
-     * @param error handled error.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet notification_manager_example.dart dart_NotificationListener_onNotificationFailed
-     *
-     */
+    /// Called if unable to calculate notification or network errors.
+    /// [error] handled error.
+    ///
+    /// Example:
+    /// ```dart
+    /// onNotificationFailed: (Error error) {
+    ///  print("Notification failed: ${error.message}");
+    ///  _demonstrateErrorHandling(error);
+    /// },
+    /// ```
     void onNotificationFailed(Error error);
 
 

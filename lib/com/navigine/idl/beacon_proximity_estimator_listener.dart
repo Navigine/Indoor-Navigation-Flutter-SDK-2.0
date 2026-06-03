@@ -8,10 +8,6 @@ import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_entry.dart';
 import 'package:navigine_sdk/error.dart';
 
 part 'beacon_proximity_estimator_listener.impl.dart';
-/**
- * @file com/navigine/idl/beacon_proximity_estimator_listener.dart
- * @brief @copybrief BeaconProximityEstimatorListener
- */
 abstract class BeaconProximityEstimatorListener {
 
     void onScanResultReady(List<BeaconProximityEntry> beacons);

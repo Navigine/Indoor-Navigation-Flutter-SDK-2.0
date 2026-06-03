@@ -7,34 +7,22 @@ import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/camera_update_reason.dart';
 
 part 'camera_listener.impl.dart';
-/**
- * @file com/navigine/idl/camera_listener.dart
- * @brief @copybrief CameraListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Class is used to listen for camera updates
- *
- * Referenced from @see LocationWindow "LocationWindow".
- *
- */
+/// Class is used to listen for camera updates
+/// Referenced from [LocationWindow].
 abstract class CameraListener {
 
-    /**
-     * @brief Triggered when the camera position changed.
-     * @param reason reason of camera update.
-     * @param finished true if the camera finished moving, false otherwise.
-     *      If a movement is cancelled then reason represents initiator of cancellation.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_camera_example.dart dart_Camera_constructor
-     *
-     */
+    /// Triggered when the camera position changed.
+    /// If a movement is cancelled then reason represents initiator of cancellation.
+    /// [reason] reason of camera update.
+    /// [finished] true if the camera finished moving, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Create camera with constructor
+    /// Point newPoint = Point(100.0, 200.0);
+    /// Camera newCamera = Camera(newPoint, 50.0, 0.0, 0.0);
+    /// print("Created camera with point (${newPoint.x}, ${newPoint.y}), zoom 50.0, rotation 0°, tilt 0°");
+    /// ```
     void onCameraPositionChanged(CameraUpdateReason reason, bool finished);
 
 

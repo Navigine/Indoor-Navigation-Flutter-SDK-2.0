@@ -6,10 +6,6 @@ import 'package:navigine_sdk/com/navigine/idl/location_edit_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
 part 'location_edit_manager.impl.dart';
-/**
- * @file com/navigine/idl/location_edit_manager.dart
- * @brief @copybrief LocationEditManager
- */
 abstract class LocationEditManager implements Finalizable {
 
     void addBeacon(int subLocId, String uuid, int major, int minor, Point point, String name, int? power);

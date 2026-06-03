@@ -3,46 +3,30 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
 part 'bounding_box.impl.dart';
-/**
- * @file com/navigine/idl/bounding_box.dart
- * @brief @copybrief BoundingBox
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_geometry_classes
- *
- * @brief Axis-aligned bounding box defined by two corner points.
- *
- *
- *
- *
- *Dart code snippet:
- *@snippet geometry_utils_example.dart dart_BoundingBox_constructor
- *
- */
+/// Axis-aligned bounding box defined by two corner points.
+///
+/// Example:
+/// ```dart
+/// BoundingBox boundingBox = BoundingBox(bottomLeft, topRight);
+/// print("Created bounding box: bottomLeft(${boundingBox.bottomLeft.x}, ${boundingBox.bottomLeft.y}), topRight(${boundingBox.topRight.x}, ${boundingBox.topRight.y})");
+/// ```
 class BoundingBox {
-    /// @brief Default constructor
+    /// Default constructor.
     BoundingBox(this.bottomLeft, this.topRight);
-    /**
-     * @brief Lower-left corner of the bounding box.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet geometry_utils_example.dart dart_BoundingBox_getBottomLeft
-     *
-     */
+    /// Lower-left corner of the bounding box.
+    ///
+    /// Example:
+    /// ```dart
+    /// Point leftCorner = boundingBox.bottomLeft;
+    /// print("Bottom-left corner: (${leftCorner.x}, ${leftCorner.y})");
+    /// ```
     Point bottomLeft;
-    /**
-     * @brief Upper-right corner of the bounding box.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet geometry_utils_example.dart dart_BoundingBox_getTopRight
-     *
-     */
+    /// Upper-right corner of the bounding box.
+    ///
+    /// Example:
+    /// ```dart
+    /// Point rightCorner = boundingBox.topRight;
+    /// print("Top-right corner: (${rightCorner.x}, ${rightCorner.y})");
+    /// ```
     Point topRight;
 }

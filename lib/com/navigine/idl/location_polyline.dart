@@ -4,43 +4,23 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline.dart';
 
 part 'location_polyline.impl.dart';
-/**
- * @file com/navigine/idl/location_polyline.dart
- * @brief @copybrief LocationPolyline
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_geometry_classes
- *
- *
- * @brief Class is used for representing certain polyline within the location @see Polyline "Polyline"
- *
- *
- *
- *
- *Dart code snippet:
- *@snippet location_window_map_objects_example.dart dart_LocationPolyline_record
- *
- */
+/// Class is used for representing certain polyline within the location [Polyline]
+///
+/// Example:
+/// ```dart
+/// List<Point> linePts = [Point(0.0, 0.0), Point(10.0, 10.0)];
+/// Polyline metricPolyline = Polyline(linePts);
+/// LocationPolyline locationPolyline = LocationPolyline(metricPolyline, 42, 7);
+/// Polyline polylineBack = locationPolyline.polyline;
+/// print("LocationPolyline points ${polylineBack.points.length}");
+/// ```
 class LocationPolyline {
-    /// @brief Default constructor
+    /// Default constructor.
     LocationPolyline(this.polyline, this.locationId, this.sublocationId);
-    /**
-     *
-     * @brief Metrics polyline @see Polyline.
-     *
-     */
+    /// Metrics polyline @see Polyline.
     Polyline polyline;
-    /**
-     *
-     * @brief location polyline location identifier.
-     *
-     */
+    /// location polyline location identifier.
     int locationId;
-    /**
-     *
-     * @brief location polyline sublocation identifier.
-     *
-     */
+    /// location polyline sublocation identifier.
     int sublocationId;
 }

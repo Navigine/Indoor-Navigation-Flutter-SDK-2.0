@@ -5,10 +5,6 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/reference_entry_type.dart';
 
 part 'reference_entry.impl.dart';
-/**
- * @file com/navigine/idl/reference_entry.dart
- * @brief @copybrief ReferenceEntry
- */
 abstract class ReferenceEntry implements Finalizable {
 
 

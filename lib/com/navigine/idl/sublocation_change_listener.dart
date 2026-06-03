@@ -6,34 +6,20 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/exception.dart' as exception;
 
 part 'sublocation_change_listener.impl.dart';
-/**
- * @file com/navigine/idl/sublocation_change_listener.dart
- * @brief @copybrief SublocationChangeListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Class is used to listen for sublocation change events
- *
- * Referenced from @see LocationWindow "LocationWindow".
- *
- */
+/// Class is used to listen for sublocation change events
+/// Referenced from [LocationWindow].
 abstract class SublocationChangeListener {
 
-    /**
-     * @brief Called when active sublocation changes.
-     * @param sublocationId New active sublocation identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_common_example.dart dart_SublocationChangeListener_onActiveSublocationChanged
-     *
-     */
+    /// Called when active sublocation changes.
+    /// [sublocationId] New active sublocation identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onActiveSublocationChanged(int sublocationId) {
+    ///  print("Active sublocation changed to: $sublocationId");
+    /// }
+    /// ```
     void onActiveSublocationChanged(int sublocationId);
 
 

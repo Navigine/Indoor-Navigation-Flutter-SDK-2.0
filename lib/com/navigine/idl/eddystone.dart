@@ -6,109 +6,87 @@ import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/transmitter_status.dart';
 
 part 'eddystone.impl.dart';
-/**
- * @file com/navigine/idl/eddystone.dart
- * @brief @copybrief Eddystone
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_elements
- * @ingroup navigine_dart_transmitters
- * @brief Class is used for storing <a href="https://en.wikipedia.org/wiki/Eddystone_(Google)">Eddystone</a>.
- *
- * Referenced from @see Sublocation "Sublocation".
- *
- */
+/// Class is used for storing <a href="https://en.wikipedia.org/wiki/Eddystone_(Google)">Eddystone</a>.
+/// Referenced from [Sublocation].
 abstract class Eddystone implements Finalizable {
 
 
-    /**
-     * @brief eddystone's X and Y coordinates in meters as @see Point "Point" (within the sublocation).
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Eddystone_getPoint
-     *
-     */
+    /// eddystone's X and Y coordinates in meters as [Point] (within the sublocation).
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone point
+    /// Point? point = eddystone.getPoint();
+    /// if (point != null) {
+    ///  demonstratePointUsage(point);
+    /// }
+    /// ```
     Point get point;
-    /**
-     * @brief eddystone's location identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet
-     *@snippet location_manager_example.dart dart_Eddystone_getLocationId
-     *
-     */
+    /// eddystone's location identifier.
+    /// Dart code snippet
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone location ID
+    /// int locationId = eddystone.getLocationId();
+    /// print('Eddystone location ID: $locationId');
+    /// ```
     int get locationId;
-    /**
-     * @brief eddystone's sublocation identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Eddystone_getSublocationId
-     *
-     */
+    /// eddystone's sublocation identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone sublocation ID
+    /// int sublocationId = eddystone.getSublocationId();
+    /// print('Eddystone sublocation ID: $sublocationId');
+    /// ```
     int get sublocationId;
-    /**
-     * @brief eddystone's name.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Eddystone_getName
-     *
-     */
+    /// eddystone's name.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone name
+    /// String? eddystoneName = eddystone.getName();
+    /// print('Eddystone name: $eddystoneName');
+    /// ```
     String get name;
-    /**
-     * @brief eddystone's namespaceId.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Eddystone_getNamespaceId
-     *
-     */
+    /// eddystone's namespaceId.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone namespace ID
+    /// String? namespaceId = eddystone.getNamespaceId();
+    /// print('Eddystone namespace ID: $namespaceId');
+    /// ```
     String get namespaceId;
-    /**
-     * @brief eddystone's instanceId.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Eddystone_getInstanceId
-     *
-     */
+    /// eddystone's instanceId.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone instance ID
+    /// String? instanceId = eddystone.getInstanceId();
+    /// print('Eddystone instance ID: $instanceId');
+    /// ```
     String get instanceId;
-    /**
-     * @brief eddystone's power.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Eddystone_getPower
-     *
-     */
+    /// eddystone's power.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone power
+    /// int? power = eddystone.getPower();
+    /// if (power != null) {
+    ///  print('Eddystone power: $power');
+    /// }
+    /// ```
     int? get power;
-    /**
-     * @brief eddystone status. @see TransmitterStatus "TransmitterStatus"
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Eddystone_getStatus
-     *
-     */
+    /// eddystone status. [TransmitterStatus]
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get Eddystone status
+    /// TransmitterStatus status = eddystone.getStatus();
+    /// print('Eddystone status: $status');
+    /// ```
     TransmitterStatus get status;
 
 

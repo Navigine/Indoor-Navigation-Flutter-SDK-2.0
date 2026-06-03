@@ -6,80 +6,55 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
 part 'user_location_layer.impl.dart';
-/**
- * @file com/navigine/idl/user_location_layer.dart
- * @brief @copybrief UserLocationLayer
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- *
- * @brief Layer that automatically renders current user position (arrow and accuracy circle) on the map.
- *        Provides visibility and anchoring controls.
- * Referenced from @see LocationView "LocationView".
- *
- */
+/// Layer that automatically renders current user position (arrow and accuracy circle) on the map.
+/// Provides visibility and anchoring controls.
+/// Referenced from [LocationView].
 abstract class UserLocationLayer implements Finalizable {
 
-    /**
-     * @brief Shows or hides user location layer.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_common_example.dart dart_UserLocationLayer_setVisible
-     *
-     */
+    /// Shows or hides user location layer.
+    ///
+    /// Example:
+    /// ```dart
+    /// _userLocationLayer!.setVisible(true);
+    /// print("User location layer set visible");
+    /// ```
     void setVisible(bool visible);
 
-    /**
-     * @brief Returns true if user location layer is visible.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_common_example.dart dart_UserLocationLayer_isVisible
-     *
-     */
+    /// Returns true if user location layer is visible.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool visible = _userLocationLayer!.isVisible();
+    /// print("User location layer is visible: $visible");
+    /// ```
     bool isVisible();
 
-    /**
-     * @brief Sets anchor point for user indicator in screen pixels.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_common_example.dart dart_UserLocationLayer_setAnchor
-     *
-     */
+    /// Sets anchor point for user indicator in screen pixels.
+    ///
+    /// Example:
+    /// ```dart
+    /// ScreenPoint anchor = ScreenPoint(100.0, 200.0);
+    /// _userLocationLayer!.setAnchor(anchor);
+    /// print("Set user location anchor to: (${anchor.x}, ${anchor.y})");
+    /// ```
     void setAnchor(math.Point<double> anchor);
 
-    /**
-     * @brief Resets anchor to default (center).
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_common_example.dart dart_UserLocationLayer_resetAnchor
-     *
-     */
+    /// Resets anchor to default (center).
+    ///
+    /// Example:
+    /// ```dart
+    /// _userLocationLayer!.resetAnchor();
+    /// print("Anchor reset to default");
+    /// ```
     void resetAnchor();
 
-    /**
-     * @brief Returns true if custom anchor is enabled.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_common_example.dart dart_UserLocationLayer_anchorEnabled
-     *
-     */
+    /// Returns true if custom anchor is enabled.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool anchorEnabled = _userLocationLayer!.anchorEnabled();
+    /// print("Anchor enabled: $anchorEnabled");
+    /// ```
     bool anchorEnabled();
 
 

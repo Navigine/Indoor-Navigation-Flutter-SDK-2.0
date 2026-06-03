@@ -10,143 +10,119 @@ import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 import 'package:navigine_sdk/model_provider.dart';
 
 part 'model_map_object.impl.dart';
-/**
- * @file com/navigine/idl/model_map_object.dart
- * @brief @copybrief ModelMapObject
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief A 3D model map object (Wavefront OBJ) placed on the location view.
- *
- * Geometry and texture come from @see ModelProvider "ModelProvider". The mesh is loaded asynchronously in the render pipeline; blocking calls occur only inside provider callbacks.
- *
- * Referenced from @see LocationWindow "LocationWindow" (addModelMapObject).
- *
- */
+/// A 3D model map object (Wavefront OBJ) placed on the location view.
+/// Geometry and texture come from [ModelProvider]. The mesh is loaded asynchronously in the render pipeline; blocking calls occur only inside provider callbacks.
+/// Referenced from [LocationWindow] (addModelMapObject).
 abstract class ModelMapObject implements MapObject, Finalizable {
 
-    /**
-     * @brief Sets the anchor position of the model in metric coordinates.
-     * @param point Center / placement point @see LocationPoint "LocationPoint".
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setPosition
-     *
-     */
+    /// Sets the anchor position of the model in metric coordinates.
+    /// [point] Center / placement point [LocationPoint].
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool posOk = m.setPosition(LocationPoint(12.0, 34.0));
+    /// print("Model setPosition: $posOk");
+    /// ```
     bool setPosition(LocationPoint point);
 
-    /**
-     * @brief Animates the model anchor to a new position.
-     * @param point Target metrics coordinates @see LocationPoint "LocationPoint".
-     * @param duration Animation duration in seconds.
-     * @param type Animation easing @see AnimationType "AnimationType".
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setPositionAnimated
-     *
-     */
+    /// Animates the model anchor to a new position.
+    /// [point] Target metrics coordinates [LocationPoint].
+    /// [duration] Animation duration in seconds.
+    /// [type] Animation easing [AnimationType].
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool posAnimOk = m.setPositionAnimated(
+    ///  LocationPoint(15.0, 40.0),
+    ///  0.5,
+    ///  AnimationType.SINE,
+    /// );
+    /// print("Model setPositionAnimated: $posAnimOk");
+    /// ```
     bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
 
-    /**
-     * @brief Sets the 3D asset (OBJ source + texture ImageProvider).
-     * @param model Model provider @see ModelProvider "ModelProvider".
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setModel
-     *
-     */
+    /// Sets the 3D asset (OBJ source + texture ImageProvider).
+    /// [model] Model provider [ModelProvider].
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// ImageProvider texture = ImageProvider.fromImageProvider(
+    ///  const AssetImage('assets/model_texture.png'),
+    ///  cacheable: true,
+    /// );
+    /// ModelProvider modelProvider = ModelProvider(
+    ///  texture,
+    ///  onModelRequest: () async {
+    ///    final bytes = await File('/path/to/model.obj').readAsBytes();
+    ///    return ByteData.sublistView(bytes);
+    ///  },
+    /// );
+    /// bool modelOk = m.setModel(modelProvider);
+    /// print("Model setModel: $modelOk");
+    /// ```
     bool setModel(ModelProvider model);
 
-    /**
-     * @brief Sets the on-screen size of the model in pixels (width and height).
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setSize
-     *
-     */
+    /// Sets the on-screen size of the model in pixels (width and height).
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool sizeOk = m.setSize(64.0, 64.0);
+    /// print("Model setSize: $sizeOk");
+    /// ```
     bool setSize(double width, double height);
 
-    /**
-     * @brief Enables or disables collision tests for this object.
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setCollisionEnabled
-     *
-     */
+    /// Enables or disables collision tests for this object.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool collOk = m.setCollisionEnabled(true);
+    /// print("Model setCollisionEnabled: $collOk");
+    /// ```
     bool setCollisionEnabled(bool enabled);
 
-    /**
-     * @brief Sets rotation angle in degrees (around the placement axis used by the engine).
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setAngle
-     *
-     */
+    /// Sets rotation angle in degrees (around the placement axis used by the engine).
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool angleOk = m.setAngle(45.0);
+    /// print("Model setAngle: $angleOk");
+    /// ```
     bool setAngle(double angle);
 
-    /**
-     * @brief Animates rotation to the given angle.
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setAngleAnimated
-     *
-     */
+    /// Animates rotation to the given angle.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool angleAnimOk = m.setAngleAnimated(90.0, 0.5, AnimationType.QUINT);
+    /// print("Model setAngleAnimated: $angleAnimOk");
+    /// ```
     bool setAngleAnimated(double angle, double duration, AnimationType type);
 
-    /**
-     * @brief Extra hit-test padding around the model in pixels.
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setBuffer
-     *
-     */
+    /// Extra hit-test padding around the model in pixels.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool bufOk = m.setBuffer(4.0, 4.0);
+    /// print("Model setBuffer: $bufOk");
+    /// ```
     bool setBuffer(double width, double height);
 
-    /**
-     * @brief Render order priority (higher draws above).
-     * @return true if the operation is successful, false otherwise.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_map_objects_example.dart dart_ModelMapObject_setPriority
-     *
-     */
+    /// Render order priority (higher draws above).
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool priOk = m.setPriority(10.0);
+    /// print("Model setPriority: $priOk");
+    /// ```
     bool setPriority(double priority);
 
 

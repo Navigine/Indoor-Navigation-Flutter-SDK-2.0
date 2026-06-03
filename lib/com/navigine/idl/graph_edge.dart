@@ -4,63 +4,45 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 part 'graph_edge.impl.dart';
-/**
- * @file com/navigine/idl/graph_edge.dart
- * @brief @copybrief GraphEdge
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_elements
- *
- * @brief Class is used for storing graph edge.
- *
- */
+/// Class is used for storing graph edge.
 abstract class GraphEdge implements Finalizable {
 
 
-    /**
-     * @brief Edge weight.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_GraphEdge_getWeight
-     *
-     */
+    /// Edge weight.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get edge weight
+    /// double weight = edge.getWeight();
+    /// print('Edge weight: $weight');
+    /// ```
     double? get weight;
-    /**
-     * @brief Destination vertex id @see GraphVertex "GraphVertex"
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_GraphEdge_getDst
-     *
-     */
+    /// Destination vertex id [GraphVertex]
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get destination vertex ID
+    /// int dst = edge.getDst();
+    /// print('Edge destination ID: $dst');
+    /// ```
     int get dst;
-    /**
-     * @brief Source vertex id @see GraphVertex "GraphVertex"
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_GraphEdge_getSrc
-     *
-     */
+    /// Source vertex id [GraphVertex]
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get source vertex ID
+    /// int src = edge.getSrc();
+    /// print('Edge source ID: $src');
+    /// ```
     int get src;
-    /**
-     * @brief Edge weight coefficient.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_GraphEdge_getWeightCoef
-     *
-     */
+    /// Edge weight coefficient.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get edge weight coefficient
+    /// int weightCoef = edge.getWeightCoef();
+    /// print('Edge weight coefficient: $weightCoef');
+    /// ```
     double? get weightCoef;
 
 

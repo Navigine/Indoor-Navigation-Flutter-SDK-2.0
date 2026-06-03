@@ -3,51 +3,38 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 part 'category.impl.dart';
-/**
- * @file com/navigine/idl/category.dart
- * @brief @copybrief Category
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_elements
- * @brief class is used for storing venue categories.
- *
- * Referenced from @see Location "Location" @see Venue "Venue".
- */
+/// class is used for storing venue categories.
+/// Referenced from [Location] [Venue].
 class Category {
-    /// @brief Default constructor
+    /// Default constructor.
     Category(this.id, this.name, this.imageUrl);
-    /**
-     * @brief category identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Category_getId
-     *
-     */
+    /// category identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get category ID
+    /// int categoryId = category.getId();
+    /// print('Category ID: $categoryId');
+    /// ```
     int id;
-    /**
-     * @brief category name.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Category_getName
-     *
-     */
+    /// category name.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get category name
+    /// String? categoryName = category.getName();
+    /// print('Category name: $categoryName');
+    /// ```
     String name;
-    /**
-     * @brief image source. If presented.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Category_getImageUrl
-     *
-     */
+    /// image source. If presented.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get category image URL
+    /// String? imageUrl = category.getImageUrl();
+    /// if (imageUrl != null) {
+    ///  print('Category image URL: $imageUrl');
+    /// }
+    /// ```
     String? imageUrl;
 }

@@ -7,10 +7,6 @@ import 'package:navigine_sdk/com/navigine/idl/location.dart';
 import 'package:navigine_sdk/error.dart';
 
 part 'location_edit_listener.impl.dart';
-/**
- * @file com/navigine/idl/location_edit_listener.dart
- * @brief @copybrief LocationEditListener
- */
 abstract class LocationEditListener {
 
     void onLocationEditSuccess(Location location);

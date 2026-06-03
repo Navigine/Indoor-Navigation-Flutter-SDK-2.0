@@ -5,81 +5,69 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_node.dart';
 
 part 'route_path.impl.dart';
-/**
- * @file com/navigine/idl/route_path.dart
- * @brief @copybrief RoutePath
- */
-/**
- *
- * @brief Class is used for storing the route path between two points in location.
- *
- * Referenced from: @see AsyncRouteListener "AsyncRouteListener", @see AsyncRouteManager "AsyncRouteManager", @see Location "Location",
- * @see RouteListener "RouteListener", @see RouteManager "RouteManager"
- *
- */
+/// Class is used for storing the route path between two points in location.
+/// Referenced from: [AsyncRouteListener], [AsyncRouteManager], [Location],
+/// [RouteListener], [RouteManager]
 abstract class RoutePath implements Finalizable {
 
-    /**
-     * @brief Returns the leading segment of the route up to advance meters.
-     * @param advance distance along route (meters).
-     * @return route head segment.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RoutePath_head
-     *
-     */
+    /// Returns the leading segment of the route up to advance meters.
+    /// [advance] distance along route (meters).
+    /// Returns route head segment.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get head of route (first 10 meters)
+    /// RoutePath? headPath = path.head(10.0);
+    /// if (headPath != null) {
+    ///  print("Head path length: ${headPath.length} meters");
+    /// }
+    /// ```
     RoutePath head(double advance);
 
-    /**
-     * @brief Returns the route segment after advance meters.
-     * @param advance distance along route (meters).
-     * @return route tail segment.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RoutePath_tail
-     *
-     */
+    /// Returns the route segment after advance meters.
+    /// [advance] distance along route (meters).
+    /// Returns route tail segment.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get tail of route (remaining after 10 meters)
+    /// RoutePath? tailPath = path.tail(10.0);
+    /// if (tailPath != null) {
+    ///  print("Tail path length: ${tailPath.length} meters");
+    /// }
+    /// ```
     RoutePath tail(double advance);
 
-    /**
-     * @brief Returns route nodes with points and events.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RoutePath_getNodes
-     *
-     */
+    /// Returns route nodes with points and events.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get route nodes
+    /// List<RouteNode> nodes = path.nodes;
+    /// print("Route has ${nodes.length} nodes");
+    /// for (int j = 0; j < nodes.length; j++) {
+    ///  _demonstrateRouteNodeUsage(nodes[j]);
+    /// }
+    /// ```
     List<RouteNode> nodes();
 
-    /**
-     * @brief Total route length in meters.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RoutePath_getLength
-     *
-     */
+    /// Total route length in meters.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get route length
+    /// double length = path.length;
+    /// print("Route length: $length meters");
+    /// ```
     double get length;
-    /**
-     * @brief Total route weight/cost.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet route_manager_example.dart dart_RoutePath_getWeight
-     *
-     */
+    /// Total route weight/cost.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get total route weight
+    /// double weight = path.weight;
+    /// print("Route weight: $weight");
+    /// ```
     double get weight;
 
 

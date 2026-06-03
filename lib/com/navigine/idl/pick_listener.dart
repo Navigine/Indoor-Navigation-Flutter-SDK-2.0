@@ -9,47 +9,51 @@ import 'package:navigine_sdk/com/navigine/idl/map_object_pick_result.dart';
 import 'package:navigine_sdk/screen_point.dart';
 
 part 'pick_listener.impl.dart';
-/**
- * @file com/navigine/idl/pick_listener.dart
- * @brief @copybrief PickListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Class is used to handle for picking objects on the location view
- *
- * Referenced from @see LocationWindow "LocationWindow".
- *
- */
+/// Class is used to handle for picking objects on the location view
+/// Referenced from [LocationWindow].
 abstract class PickListener {
 
-    /**
-     * @brief Receive the result from @see LocationWindow "LocationWindow" `pickMapObjectAt` method
-     * @param mapObjectPickResult @see MapObjectPickResult "MapObjectPickResult" instance or `nil` if no objects was found.
-     * @param screenPosition position where the object was picked in pixels.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_interaction_example.dart dart_PickListener_onMapObjectPickComplete
-     *
-     */
+    /// Receive the result from [LocationWindow] `pickMapObjectAt` method
+    /// [mapObjectPickResult] [MapObjectPickResult] instance or `nil` if no objects was found.
+    /// [screenPosition] position where the object was picked in pixels.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onMapObjectPickComplete(MapObjectPickResult? mapObjectPickResult, math.Point<double> screenPosition) {
+    ///  if (mapObjectPickResult != null) {
+    ///    // [dart_MapObjectPickResult_getPoint]
+    ///    LocationPoint point = mapObjectPickResult.point;
+    ///    print("Map object picked at screen position (${screenPosition.x}, ${screenPosition.y})");
+    ///    print("  Object location: (${point.x}, ${point.y})");
+    ///    // [dart_MapObjectPickResult_getPoint]
+    ///    // [dart_MapObjectPickResult_getMapObject]
+    ///    MapObject mapObject = mapObjectPickResult.mapObject;
+    ///    print("  Object type: ${mapObject.runtimeType}");
+    ///    // [dart_MapObjectPickResult_getMapObject]
+    ///  } else {
+    ///    print("No map object found at screen position (${screenPosition.x}, ${screenPosition.y})");
+    ///  }
+    /// }
+    /// ```
     void onMapObjectPickComplete(MapObjectPickResult mapObjectPickResult, math.Point<double> screenPosition);
 
-    /**
-     * @brief Receive the result from @see LocationWindow "LocationWindow" `pickMapFeatureAt`
-     * @param mapFeaturePickResult dictionary of properties of the picked feature or `nil` if no objects was found.
-     * @param screenPosition position where the object was picked in pixels.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_interaction_example.dart dart_PickListener_onMapFeaturePickComplete
-     *
-     */
+    /// Receive the result from [LocationWindow] `pickMapFeatureAt`
+    /// [mapFeaturePickResult] dictionary of properties of the picked feature or `nil` if no objects was found.
+    /// [screenPosition] position where the object was picked in pixels.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onMapFeaturePickComplete(Map<String, String>? mapFeaturePickResult, math.Point<double> screenPosition) {
+    ///  if (mapFeaturePickResult != null) {
+    ///    print("Map feature picked at screen position (${screenPosition.x}, ${screenPosition.y})");
+    ///    print("  Feature properties: $mapFeaturePickResult");
+    ///  } else {
+    ///    print("No map feature found at screen position (${screenPosition.x}, ${screenPosition.y})");
+    ///  }
+    /// }
+    /// ```
     void onMapFeaturePickComplete(Map<String, String> mapFeaturePickResult, math.Point<double> screenPosition);
 
 

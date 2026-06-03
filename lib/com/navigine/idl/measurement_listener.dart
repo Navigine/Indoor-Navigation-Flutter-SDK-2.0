@@ -9,46 +9,34 @@ import 'package:navigine_sdk/com/navigine/idl/sensor_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/signal_measurement.dart';
 
 part 'measurement_listener.impl.dart';
-/**
- * @file com/navigine/idl/measurement_listener.dart
- * @brief @copybrief MeasurementListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_listeners
- * @brief Class provides callbacks to be invoked when @see MeasurementManager "MeasurementManager"
- * detects new sensor or signal measurements.
- *
- * Referenced from @see MeasurementManager "MeasurementManager".
- *
- * @note The callbacks are invoked in the UI thread.
- */
+/// Class provides callbacks to be invoked when [MeasurementManager]
+/// detects new sensor or signal measurements.
+/// Referenced from [MeasurementManager].
+/// **Note:** The callbacks are invoked in the UI thread.
 abstract class MeasurementListener {
 
-    /**
-     * @brief Called when new sensor measurements are detected.
-     * @param sensors A map of sensor types to their corresponding @see SensorMeasurement "SensorMeasurement" values.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_MeasurementListener_onSensorMeasurementDetected
-     *
-     */
+    /// Called when new sensor measurements are detected.
+    /// [sensors] A map of sensor types to their corresponding [SensorMeasurement] values.
+    ///
+    /// Example:
+    /// ```dart
+    /// onSensorMeasurementDetected: (Map<SensorType, SensorMeasurement> sensors) {
+    ///  print("Sensor measurements detected");
+    ///  _demonstrateSensorMeasurements(sensors);
+    /// },
+    /// ```
     void onSensorMeasurementDetected(Map<SensorType, SensorMeasurement> sensors);
 
-    /**
-     * @brief Called when new signal measurements are detected.
-     * @param signals A map of signal identifiers to their corresponding @see SignalMeasurement "SignalMeasurement" values.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet measurement_manager_example.dart dart_MeasurementListener_onSignalMeasurementDetected
-     *
-     */
+    /// Called when new signal measurements are detected.
+    /// [signals] A map of signal identifiers to their corresponding [SignalMeasurement] values.
+    ///
+    /// Example:
+    /// ```dart
+    /// onSignalMeasurementDetected: (Map<String, SignalMeasurement> signals) {
+    ///  print("Signal measurements detected");
+    ///  _demonstrateSignalMeasurements(signals);
+    /// },
+    /// ```
     void onSignalMeasurementDetected(Map<String, SignalMeasurement> signals);
 
 

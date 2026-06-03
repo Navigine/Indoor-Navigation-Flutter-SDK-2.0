@@ -4,45 +4,30 @@ import 'package:navigine_sdk/com/_native_base.dart' as __lib;
 import 'package:navigine_sdk/com/navigine/idl/async_route_listener.dart';
 
 part 'route_session.impl.dart';
-/**
- * @file com/navigine/idl/route_session.dart
- * @brief @copybrief RouteSession
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_managers
- * @brief Class is used for managing async route listeners
- *
- * Referenced from @see AsyncRouteManager "AsyncRouteManager".
- */
+/// Class is used for managing async route listeners
+/// Referenced from [AsyncRouteManager].
 abstract class RouteSession implements Finalizable {
 
-    /**
-     * @brief Method is used to add @see AsyncRouteListener "AsyncRouteListener" class element
-     * which will notify async route events.
-     * @note Do not forget to remove listener if it is no longer needed!
-     * @param listener Corresponding @see AsyncRouteListener "AsyncRouteListener" class.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet async_route_manager_example.dart dart_RouteSession_addRouteListener
-     *
-     */
+    /// Method is used to add [AsyncRouteListener] class element
+    /// which will notify async route events.
+    /// **Note:** Do not forget to remove listener if it is no longer needed!
+    /// [listener] Corresponding [AsyncRouteListener] class.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Add route listener to session
+    /// session.addRouteListener(_asyncRouteListener!);
+    /// ```
     void addRouteListener(AsyncRouteListener listener);
 
-    /**
-     * @brief Method is used for removing previously added @see AsyncRouteListener "AsyncRouteListener" class element.
-     * @param listener Corresponding @see AsyncRouteListener "AsyncRouteListener" class to remove.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet async_route_manager_example.dart dart_RouteSession_removeRouteListener
-     *
-     */
+    /// Method is used for removing previously added [AsyncRouteListener] class element.
+    /// [listener] Corresponding [AsyncRouteListener] class to remove.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Remove route listener
+    /// _currentSession!.removeRouteListener(_asyncRouteListener!);
+    /// ```
     void removeRouteListener(AsyncRouteListener listener);
 
 

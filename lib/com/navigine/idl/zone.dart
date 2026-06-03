@@ -5,97 +5,73 @@ import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon.dart';
 
 part 'zone.impl.dart';
-/**
- * @file com/navigine/idl/zone.dart
- * @brief @copybrief Zone
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_elements
- * @brief Class is used for storing location polygonal zones.
- *
- * Referenced from @see Sublocation "Sublocation".
- *
- */
+/// Class is used for storing location polygonal zones.
+/// Referenced from [Sublocation].
 abstract class Zone implements Finalizable {
 
 
-    /**
-     * @brief zone's list of points composing the polygonal zone @see Polygon "Polygon"
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Zone_getPolygon
-     *
-     */
+    /// zone's list of points composing the polygonal zone [Polygon]
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone polygon
+    /// List<Point> polygon = zone.getPolygon();
+    /// print('Zone polygon points: ${polygon.length}');
+    /// ```
     Polygon get polygon;
-    /**
-     * @brief zone's location identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Zone_getLocationId
-     *
-     */
+    /// zone's location identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone location ID
+    /// int locationId = zone.getLocationId();
+    /// print('Zone location ID: $locationId');
+    /// ```
     int get locationId;
-    /**
-     * @brief zone's sublocationId identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Zone_getSublocationId
-     *
-     */
+    /// zone's sublocationId identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone sublocation ID
+    /// int sublocationId = zone.getSublocationId();
+    /// print('Zone sublocation ID: $sublocationId');
+    /// ```
     int get sublocationId;
-    /**
-     * @brief zone's identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Zone_getId
-     *
-     */
+    /// zone's identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone ID
+    /// int zoneId = zone.getId();
+    /// print('Zone ID: $zoneId');
+    /// ```
     int get id;
-    /**
-     * @brief zone's name.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Zone_getName
-     *
-     */
+    /// zone's name.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone name
+    /// String? zoneName = zone.getName();
+    /// print('Zone name: $zoneName');
+    /// ```
     String get name;
-    /**
-     * @brief zone's color.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Zone_getColor
-     *
-     */
+    /// zone's color.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone color
+    /// String? color = zone.getColor();
+    /// print('Zone color: $color');
+    /// ```
     String get color;
-    /**
-     * @brief zone's alias.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_manager_example.dart dart_Zone_getAlias
-     *
-     */
+    /// zone's alias.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get zone alias
+    /// String? alias = zone.getAlias();
+    /// print('Zone alias: $alias');
+    /// ```
     String get alias;
 
 

@@ -7,55 +7,52 @@ import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/building.dart';
 
 part 'building_listener.impl.dart';
-/**
- * @file com/navigine/idl/building_listener.dart
- * @brief @copybrief BuildingListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Listener for outdoor scenario when camera focuses on a building or leaves it.
- *
- */
+/// Listener for outdoor scenario when camera focuses on a building or leaves it.
 abstract class BuildingListener {
 
-    /**
-     * @brief Called when camera enters a building's bounding box.
-     * @param activeBuilding The building that is now focused.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_building_example.dart dart_BuildingListener_onActiveBuildingFocused
-     *
-     */
+    /// Called when camera enters a building's bounding box.
+    /// [activeBuilding] The building that is now focused.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onActiveBuildingFocused(Building activeBuilding) {
+    ///  // [dart_Building_getSublocations]
+    ///  final floors = activeBuilding.getSublocations();
+    ///  print('Focused building, floor count: ${floors.length}');
+    ///  // [dart_Building_getSublocations]
+    ///  // [dart_Building_getActiveSublocationId]
+    ///  final activeFloorId = activeBuilding.getActiveSublocationId();
+    ///  print('Active sublocation id: $activeFloorId');
+    ///  // [dart_Building_getActiveSublocationId]
+    ///  // [dart_Building_setActiveSublocationId]
+    ///  activeBuilding.setActiveSublocationId(activeFloorId);
+    ///  // [dart_Building_setActiveSublocationId]
+    /// }
+    /// ```
     void onActiveBuildingFocused(Building activeBuilding);
 
-    /**
-     * @brief Called when camera leaves all buildings (no building bbox contains the camera).
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_building_example.dart dart_BuildingListener_onActiveBuildingLeft
-     *
-     */
+    /// Called when camera leaves all buildings (no building bbox contains the camera).
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onActiveBuildingLeft() {
+    ///  print('Camera left all building areas');
+    /// }
+    /// ```
     void onActiveBuildingLeft();
 
-    /**
-     * @brief Called when the active sublocation (floor) of the focused building changes.
-     * @param activeSublocationId New active sublocation id.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_building_example.dart dart_BuildingListener_onActiveSublocationChanged
-     *
-     */
+    /// Called when the active sublocation (floor) of the focused building changes.
+    /// [activeSublocationId] New active sublocation id.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onActiveSublocationChanged(int activeSublocationId) {
+    ///  print('Active floor changed to sublocation id: $activeSublocationId');
+    /// }
+    /// ```
     void onActiveSublocationChanged(int activeSublocationId);
 
 

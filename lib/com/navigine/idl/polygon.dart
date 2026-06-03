@@ -3,33 +3,24 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 
 part 'polygon.impl.dart';
-/**
- * @file com/navigine/idl/polygon.dart
- * @brief @copybrief Polygon
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_geometry_classes
- *
- * @brief A polygon with specified list of points.
- *
- *
- *
- *Dart code snippet:
- *@snippet geometry_utils_example.dart dart_Polygon_constructor
- *
- */
+/// A polygon with specified list of points.
+///
+/// Example:
+/// ```dart
+/// // Create polygon
+/// Polygon polygon = Polygon(polygonPoints);
+/// print("Created polygon with ${polygon.points.length} points");
+/// ```
 class Polygon {
-    /// @brief Default constructor
+    /// Default constructor.
     Polygon(this.points);
-    /**
-     * @brief Ring specifying the area.
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet geometry_utils_example.dart dart_Polygon_getPoints
-     *
-     */
+    /// Ring specifying the area.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get polygon points
+    /// List<Point> points = polygon.points;
+    /// print("Polygon points: ${points.map((p) => "(${p.x}, ${p.y})").join(", ")}");
+    /// ```
     List<Point> points;
 }

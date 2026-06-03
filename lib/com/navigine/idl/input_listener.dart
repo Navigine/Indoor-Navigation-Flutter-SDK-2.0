@@ -7,58 +7,44 @@ import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/screen_point.dart';
 
 part 'input_listener.impl.dart';
-/**
- * @file com/navigine/idl/input_listener.dart
- * @brief @copybrief InputListener
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_location_view
- *
- * @brief Class is used to listen for interactions with location view
- *
- * Referenced from @see LocationWindow "LocationWindow".
- *
- */
+/// Class is used to listen for interactions with location view
+/// Referenced from [LocationWindow].
 abstract class InputListener {
 
-    /**
-     * @brief Called when a tap occurred.
-     * @param screenPoint point in screen coordinates.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_interaction_example.dart dart_InputListener_onViewTap
-     *
-     */
+    /// Called when a tap occurred.
+    /// [screenPoint] point in screen coordinates.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onViewTap(math.Point<double> screenPoint) {
+    ///  print("View tapped at screen position (${screenPoint.x}, ${screenPoint.y})");
+    /// }
+    /// ```
     void onViewTap(math.Point<double> screenPoint);
 
-    /**
-     * @brief Called when a double tap occurred.
-     * @param screenPoint point in screen coordinates.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_interaction_example.dart dart_InputListener_onViewDoubleTap
-     *
-     */
+    /// Called when a double tap occurred.
+    /// [screenPoint] point in screen coordinates.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onViewDoubleTap(math.Point<double> screenPoint) {
+    ///  print("View double tapped at screen position (${screenPoint.x}, ${screenPoint.y})");
+    /// }
+    /// ```
     void onViewDoubleTap(math.Point<double> screenPoint);
 
-    /**
-     * @brief Called when a long tap occurred.
-     * @param screenPoint point in screen coordinates.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_window_interaction_example.dart dart_InputListener_onViewLongTap
-     *
-     */
+    /// Called when a long tap occurred.
+    /// [screenPoint] point in screen coordinates.
+    ///
+    /// Example:
+    /// ```dart
+    /// @override
+    /// void onViewLongTap(math.Point<double> screenPoint) {
+    ///  print("View long tapped at screen position (${screenPoint.x}, ${screenPoint.y})");
+    /// }
+    /// ```
     void onViewLongTap(math.Point<double> screenPoint);
 
 

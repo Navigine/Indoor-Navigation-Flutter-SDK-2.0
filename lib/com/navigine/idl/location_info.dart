@@ -3,53 +3,36 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 part 'location_info.impl.dart';
-/**
- * @file com/navigine/idl/location_info.dart
- * @brief @copybrief LocationInfo
- */
-/**
- * @ingroup navigine_dart_classes
- * @ingroup navigine_dart_secondary_classes
- *
- * @brief General information about location
- *
- * Referenced from: @see LocationListListener "LocationListListener", @see LocationListListener "LocationListListener"
- *
- */
+/// General information about location
+/// Referenced from: [LocationListListener], [LocationListListener]
 class LocationInfo {
-    /// @brief Default constructor
+    /// Default constructor.
     LocationInfo(this.id, this.version, this.name);
-    /**
-     * @brief Unique location identifier.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_list_manager_example.dart dart_LocationInfo_getId
-     *
-     */
+    /// Unique location identifier.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get location ID
+    /// int id = locationInfo.id;
+    /// print("Location ID: $id");
+    /// ```
     int id;
-    /**
-     * @brief Current location version.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_list_manager_example.dart dart_LocationInfo_getVersion
-     *
-     */
+    /// Current location version.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get location version
+    /// int version = locationInfo.version;
+    /// print("Location version: $version");
+    /// ```
     int version;
-    /**
-     * @brief location name.
-     *
-     *
-     *
-     *
-     *Dart code snippet:
-     *@snippet location_list_manager_example.dart dart_LocationInfo_getName
-     *
-     */
+    /// location name.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get location name
+    /// String name = locationInfo.name;
+    /// print("Location name: $name");
+    /// ```
     String name;
 }
