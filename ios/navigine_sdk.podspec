@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license          = { :file => '../LICENSE.md' }
   s.source           = { :path => '.' }
   s.platform = :ios, "7.0"
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'navigine_sdk/Sources/navigine_sdk/**/*.swift'
   s.dependency 'Flutter'
   s.ios.deployment_target = '11.0'
 

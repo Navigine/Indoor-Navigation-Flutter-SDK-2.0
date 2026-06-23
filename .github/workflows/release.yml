@@ -9,6 +9,9 @@ on:
         default: ''
         type: multiline
 
+permissions:
+  contents: write
+
 jobs:
   create-release:
     name: Create Release
@@ -22,16 +25,17 @@ jobs:
         run: echo "current_version=$(cat VERSION)" >> $GITHUB_OUTPUT
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ steps.version.outputs.current_version }}
-          release_name: Release v${{ steps.version.outputs.current_version }}
-          body: ${{ github.event.inputs.release_body || format('v{0}', steps.version.outputs.current_version) }}
-          draft: false
-          prerelease: false
+        run: |
+          VERSION="${{ steps.version.outputs.current_version }}"
+          BODY="${{ github.event.inputs.release_body }}"
+          if [ -z "$BODY" ]; then
+            BODY="v${VERSION}"
+          fi
+          gh release create "v${VERSION}" \
+            --title "Release v${VERSION}" \
+            --notes "$BODY"
 
   publish-pub:
     name: Publish to pub.dev
