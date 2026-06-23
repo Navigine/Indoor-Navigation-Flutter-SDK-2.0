@@ -31,12 +31,10 @@ int _navigine_sdk_flutter_MqttSessionListener_onConnectedStatic(Pointer<Void> _o
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-    }
     return 0;
 }
 
-int _navigine_sdk_flutter_MqttSessionListener_onErrorStatic(Pointer<Void> _obj, Pointer<Void> error) {
+int _navigine_sdk_flutter_MqttSessionListener_onErrorStatic(Pointer<Void> _obj, ErrorNative error) {
     
     final listener = MqttSessionListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -44,16 +42,13 @@ int _navigine_sdk_flutter_MqttSessionListener_onErrorStatic(Pointer<Void> _obj, 
     }
     try  {
         listener.onError(
-          navigine_sdk_flutter_Error_FromFfi(error),
+          ErrorImpl.fromNative(error),
         );
         
     }
     catch (e, stack)  {
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
-    }
-    finally  {
-        navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
     }
     return 0;
 }
@@ -73,50 +68,49 @@ int _navigine_sdk_flutter_MqttSessionListener_onMessagePublishedStatic(Pointer<V
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-    }
     return 0;
 }
 
 
-class _MqttSessionListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _MqttSessionListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_MqttSessionListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_MqttSessionListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_MqttSessionListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension MqttSessionListenerImpl on MqttSessionListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<MqttSessionListener>>{};
-    static final _listenerToPointer = WeakMap<MqttSessionListener, _MqttSessionListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<MqttSessionListener, _navigine_sdk_flutter_MqttSessionListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(MqttSessionListener obj) {
+        final ptr = _navigine_sdk_flutter_MqttSessionListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>)>(_navigine_sdk_flutter_MqttSessionListener_onConnectedStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, ErrorNative)>(_navigine_sdk_flutter_MqttSessionListener_onErrorStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>)>(_navigine_sdk_flutter_MqttSessionListener_onMessagePublishedStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_MqttSessionListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_MqttSessionListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(MqttSessionListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_MqttSessionListener_ToFfi(MqttSessionListener value) {
-    final result = _navigine_sdk_flutter_MqttSessionListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>)>(_navigine_sdk_flutter_MqttSessionListener_onConnectedStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_MqttSessionListener_onErrorStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>)>(_navigine_sdk_flutter_MqttSessionListener_onMessagePublishedStatic, __lib.unknownError),
-    );
-    MqttSessionListenerImpl._pointerToListener[result] = WeakReference(value);
-    MqttSessionListenerImpl._listenerToPointer[value] = _MqttSessionListenerWrapper(result);
-    _navigine_sdk_flutter_MqttSessionListener_SetPorts(result, __lib.createPortWithCallback(MqttSessionListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_MqttSessionListener_ToFfiNullable(MqttSessionListener? value) => 
-  value != null ? navigine_sdk_flutter_MqttSessionListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_MqttSessionListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_MqttSessionListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of MqttSessionListener "private" section.

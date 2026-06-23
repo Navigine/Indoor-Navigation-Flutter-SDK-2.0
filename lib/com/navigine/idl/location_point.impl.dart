@@ -2,90 +2,54 @@ part of 'location_point.dart';
 
 // LocationPoint "private" section, not exported.
 
-final _navigine_sdk_flutter_LocationPoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>, Int32, Int32),
-    Pointer<Void> Function(Pointer<Void>, int, int)
-  >('navigine_sdk_flutter_LocationPoint_create_handle'));
-
-final _navigine_sdk_flutter_LocationPoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationPoint_release_handle'));
-
-final _navigine_sdk_flutter_LocationPoint_GetFieldpoint = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationPoint_get_field_point'));
-
-final _navigine_sdk_flutter_LocationPoint_GetFieldlocationId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationPoint_get_field_locationId'));
-
-final _navigine_sdk_flutter_LocationPoint_GetFieldsublocationId = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationPoint_get_field_sublocationId'));
-
-
-Pointer<Void> navigine_sdk_flutter_LocationPoint_ToFfi(LocationPoint value) {
-    final _pointHandle = navigine_sdk_flutter_Point_ToFfi(value.point);
-    final _locationIdHandle = navigine_sdk_flutter_int_ToFfi(value.locationId);
-    final _sublocationIdHandle = navigine_sdk_flutter_int_ToFfi(value.sublocationId);
-    final _result = _navigine_sdk_flutter_LocationPoint_CreateHandle(_pointHandle, _locationIdHandle, _sublocationIdHandle);
-    navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-    navigine_sdk_flutter_int_ReleaseFfiHandle(_locationIdHandle);
-    navigine_sdk_flutter_int_ReleaseFfiHandle(_sublocationIdHandle);
-    return _result;
+final class LocationPointNative extends Struct {
+    external PointNative point;
+    @Int32()
+    external int locationId;
+    @Int32()
+    external int sublocationId;
 }
 
-LocationPoint navigine_sdk_flutter_LocationPoint_FromFfi(Pointer<Void> handle) {
-    final _pointHandle = _navigine_sdk_flutter_LocationPoint_GetFieldpoint(handle);
-    final _locationIdHandle = _navigine_sdk_flutter_LocationPoint_GetFieldlocationId(handle);
-    final _sublocationIdHandle = _navigine_sdk_flutter_LocationPoint_GetFieldsublocationId(handle);
-    final _result = LocationPoint(
-      navigine_sdk_flutter_Point_FromFfi(_pointHandle),
-      navigine_sdk_flutter_int_FromFfi(_locationIdHandle),
-      navigine_sdk_flutter_int_FromFfi(_sublocationIdHandle),
-    );
-      navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-      navigine_sdk_flutter_int_ReleaseFfiHandle(_locationIdHandle);
-      navigine_sdk_flutter_int_ReleaseFfiHandle(_sublocationIdHandle);
-    return _result;
+final LocationPointNative Function(PointNative, int, int) _LocationPointNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<LocationPointNative Function(PointNative, Int32, Int32)>>('navigine_sdk_flutter_LocationPoint_init')
+  .asFunction<LocationPointNative Function(PointNative, int, int)>(isLeaf: true));
+
+extension LocationPointImpl on LocationPoint  {
+    static LocationPoint fromNative(LocationPointNative native, {bool takeOwnership = true})  {
+        return LocationPoint(
+          PointImpl.fromNative(native.point, takeOwnership: takeOwnership),
+          native.locationId,
+          native.sublocationId,
+        );
+    }
+
+    static LocationPointNative toNative(LocationPoint obj)  {
+        return _LocationPointNativeInit(
+          PointImpl.toNative(obj.point),
+          obj.locationId,
+          obj.sublocationId,
+        );
+    }
+
+    static LocationPoint? fromPointer(Pointer<Void> ptr, {bool needFree = true, bool takeOwnership = true})  {
+        if (ptr == nullptr) {
+          return null;
+        }
+        final result = LocationPointImpl.fromNative(ptr.cast<LocationPointNative>().ref, takeOwnership: takeOwnership);
+        if (needFree) {
+          malloc.free(ptr);
+        }
+        return result;
+    }
+
+    static Pointer<Void> toPointer(LocationPoint? val)  {
+        if (val == null) {
+          return nullptr;
+        }
+        final result = malloc<LocationPointNative>();
+        result.ref = toNative(val);
+        return result.cast();
+    }
 }
 
-void navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_LocationPoint_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_LocationPoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationPoint_create_handle_nullable'));
-
-final _navigine_sdk_flutter_LocationPoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationPoint_release_handle_nullable'));
-
-final _navigine_sdk_flutter_LocationPoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationPoint_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_LocationPoint_ToFfiNullable(LocationPoint? value) {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_LocationPoint_ToFfi(value);
-    final result = _navigine_sdk_flutter_LocationPoint_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-LocationPoint? navigine_sdk_flutter_LocationPoint_FromFfiNullable(Pointer<Void> handle) {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_LocationPoint_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_LocationPoint_FromFfi(_handle);
-    navigine_sdk_flutter_LocationPoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_LocationPoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_LocationPoint_ReleaseHandleNullable(handle);
+// End of LocationPoint "private" section.

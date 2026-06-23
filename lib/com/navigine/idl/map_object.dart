@@ -1,15 +1,19 @@
 import 'dart:ffi';
 import 'dart:typed_data';
+import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 
 part 'map_object.impl.dart';
 /// Base interface for handling objects on the location view.
 /// Used to manage objects in [LocationWindow].
 /// Can be handled in the `pickMapObjectAt` method [LocationWindow].
-/// Referenced from [CircleMapObject], [IconMapObject], [PolylineMapObject], [PolygonMapObject], [DottedPolylineMapObject], [ModelMapObject].
+/// Referenced from [CircleMapObject], [IconMapObject], [ClusterMapObject], [PolylineMapObject], [PolygonMapObject], [DottedPolylineMapObject], [ModelMapObject].
 abstract class MapObject implements Finalizable {
 
     /// Gets the unique identifier of the map object.
@@ -104,6 +108,8 @@ abstract class MapObject implements Finalizable {
     /// print("Set circle alpha to 0.7: $alphaSuccess");
     /// ```
     bool setAlpha(double alpha);
+
+    bool isValid();
 
 
 

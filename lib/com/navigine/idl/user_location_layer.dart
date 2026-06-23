@@ -1,8 +1,9 @@
 import 'dart:ffi';
 import 'dart:math' as math;
+import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 import 'package:navigine_sdk/screen_point.dart';
 
 part 'user_location_layer.impl.dart';
@@ -56,6 +57,8 @@ abstract class UserLocationLayer implements Finalizable {
     /// print("Anchor enabled: $anchorEnabled");
     /// ```
     bool anchorEnabled();
+
+    bool isValid();
 
 
 

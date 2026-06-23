@@ -1,6 +1,12 @@
 import 'dart:ffi';
+import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/containers__conversion.dart';
+import 'package:navigine_sdk/com/lazy_list.dart';
+import 'package:navigine_sdk/com/lazy_map.dart';
+import 'package:navigine_sdk/com/native_types.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
 
 part 'map_filter_condition.impl.dart';
 /// A single filter condition: property must match one of the given values.

@@ -2,219 +2,156 @@ part of 'geometry_utils.dart';
 
 // GeometryUtils "private" section, not exported.
 
-final _navigine_sdk_flutter_GeometryUtils_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GeometryUtils_copy_handle'));
-
-final _navigine_sdk_flutter_GeometryUtils_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GeometryUtils_release_handle'));
+final _navigine_sdk_flutter_GeometryUtils_check = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Bool Function(Pointer<Void>),
+    bool Function(Pointer<Void>)
+  >('navigine_sdk_flutter_GeometryUtils_check'));
 
 final _navigine_sdk_flutter_GeometryUtils_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_GeometryUtils_free');
 
 
-class GeometryUtils$Impl extends __lib.NativeBase implements GeometryUtils, Finalizable {
-    GeometryUtils$Impl(Pointer<Void> handle) : super(handle);
+class GeometryUtils$Impl implements GeometryUtils, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_GeometryUtils_free.cast());
+
+    GeometryUtils$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    GeometryUtils$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory GeometryUtils$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        weak_interface_wrapper.createFromNative(ptr);
+
+    @override
+    bool isValid() => _navigine_sdk_flutter_GeometryUtils_check(ptr);
+
+    static Pointer<Void> getNativePtr(GeometryUtils? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as GeometryUtils$Impl).ptr;
+    }
+
+    static GeometryUtils? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return GeometryUtils$Impl.fromNativePtr(ptr);
+    }
 
     double distanceBetweenGlobalPoints(GlobalPoint from, GlobalPoint to) {
         final _distanceBetweenGlobalPointsFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Float Function(Pointer<Void>, Pointer<Void>),
-            double Function(Pointer<Void>, Pointer<Void>)
+            Float Function(GlobalPointNative, GlobalPointNative),
+            double Function(GlobalPointNative, GlobalPointNative)
           >('navigine_sdk_flutter_GeometryUtils_distanceBetweenGlobalPoints__From_To'));
-        final _fromHandle = navigine_sdk_flutter_GlobalPoint_ToFfi(from);
-        final _toHandle = navigine_sdk_flutter_GlobalPoint_ToFfi(to);
-        final __resultHandle = _distanceBetweenGlobalPointsFfi(_fromHandle, _toHandle);
-        navigine_sdk_flutter_GlobalPoint_ReleaseFfiHandle(_fromHandle);
-        navigine_sdk_flutter_GlobalPoint_ReleaseFfiHandle(_toHandle);
-        final _result = navigine_sdk_flutter_double_FromFfi(__resultHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _distanceBetweenGlobalPointsFfi(GlobalPointImpl.toNative(from), GlobalPointImpl.toNative(to));
+        final _result = __resultHandle;
         return _result;
     }
     double distanceBetweenPoints(Point from, Point to) {
         final _distanceBetweenPointsFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Float Function(Pointer<Void>, Pointer<Void>),
-            double Function(Pointer<Void>, Pointer<Void>)
+            Float Function(PointNative, PointNative),
+            double Function(PointNative, PointNative)
           >('navigine_sdk_flutter_GeometryUtils_distanceBetweenPoints__From_To'));
-        final _fromHandle = navigine_sdk_flutter_Point_ToFfi(from);
-        final _toHandle = navigine_sdk_flutter_Point_ToFfi(to);
-        final __resultHandle = _distanceBetweenPointsFfi(_fromHandle, _toHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_fromHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_toHandle);
-        final _result = navigine_sdk_flutter_double_FromFfi(__resultHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _distanceBetweenPointsFfi(PointImpl.toNative(from), PointImpl.toNative(to));
+        final _result = __resultHandle;
         return _result;
     }
     double segmentLength(Segment segment) {
         final _segmentLengthFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Float Function(Pointer<Void>),
-            double Function(Pointer<Void>)
+            Float Function(SegmentNative),
+            double Function(SegmentNative)
           >('navigine_sdk_flutter_GeometryUtils_segmentLength__Segment'));
-        final _segmentHandle = navigine_sdk_flutter_Segment_ToFfi(segment);
-        final __resultHandle = _segmentLengthFfi(_segmentHandle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segmentHandle);
-        final _result = navigine_sdk_flutter_double_FromFfi(__resultHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _segmentLengthFfi(SegmentImpl.toNative(segment));
+        final _result = __resultHandle;
         return _result;
     }
     double polygonArea(Polygon polygon) {
         final _polygonAreaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Float Function(Pointer<Void>),
-            double Function(Pointer<Void>)
+            Float Function(PolygonNative),
+            double Function(PolygonNative)
           >('navigine_sdk_flutter_GeometryUtils_polygonArea__Polygon'));
-        final _polygonHandle = navigine_sdk_flutter_Polygon_ToFfi(polygon);
-        final __resultHandle = _polygonAreaFfi(_polygonHandle);
-        navigine_sdk_flutter_Polygon_ReleaseFfiHandle(_polygonHandle);
-        final _result = navigine_sdk_flutter_double_FromFfi(__resultHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _polygonAreaFfi(PolygonImpl.toNative(polygon));
+        final _result = __resultHandle;
         return _result;
     }
     Point polygonCenter(Polygon polygon) {
         final _polygonCenterFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            PointNative Function(PolygonNative),
+            PointNative Function(PolygonNative)
           >('navigine_sdk_flutter_GeometryUtils_polygonCenter__Polygon'));
-        final _polygonHandle = navigine_sdk_flutter_Polygon_ToFfi(polygon);
-        final __resultHandle = _polygonCenterFfi(_polygonHandle);
-        navigine_sdk_flutter_Polygon_ReleaseFfiHandle(_polygonHandle);
-        final _result = navigine_sdk_flutter_Point_FromFfi(__resultHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _polygonCenterFfi(PolygonImpl.toNative(polygon));
+        final _result = PointImpl.fromNative(__resultHandle);
         return _result;
     }
     bool polygonContainsPoint(Polygon polygon, Point point) {
         final _polygonContainsPointFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
+            Uint8 Function(PolygonNative, PointNative),
+            int Function(PolygonNative, PointNative)
           >('navigine_sdk_flutter_GeometryUtils_polygonContainsPoint__Polygon_Point'));
-        final _polygonHandle = navigine_sdk_flutter_Polygon_ToFfi(polygon);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final __resultHandle = _polygonContainsPointFfi(_polygonHandle, _pointHandle);
-        navigine_sdk_flutter_Polygon_ReleaseFfiHandle(_polygonHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _polygonContainsPointFfi(PolygonImpl.toNative(polygon), PointImpl.toNative(point));
+        final _result = (__resultHandle != 0);
         return _result;
     }
     double segmentPointDistance(Segment segment, Point point) {
         final _segmentPointDistanceFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Float Function(Pointer<Void>, Pointer<Void>),
-            double Function(Pointer<Void>, Pointer<Void>)
+            Float Function(SegmentNative, PointNative),
+            double Function(SegmentNative, PointNative)
           >('navigine_sdk_flutter_GeometryUtils_segmentPointDistance__Segment_Point'));
-        final _segmentHandle = navigine_sdk_flutter_Segment_ToFfi(segment);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final __resultHandle = _segmentPointDistanceFfi(_segmentHandle, _pointHandle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segmentHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        final _result = navigine_sdk_flutter_double_FromFfi(__resultHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _segmentPointDistanceFfi(SegmentImpl.toNative(segment), PointImpl.toNative(point));
+        final _result = __resultHandle;
         return _result;
     }
     bool segmentIntersectsSegment(Segment segment1, Segment segment2) {
         final _segmentIntersectsSegmentFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
+            Uint8 Function(SegmentNative, SegmentNative),
+            int Function(SegmentNative, SegmentNative)
           >('navigine_sdk_flutter_GeometryUtils_segmentIntersectsSegment__Segment1_Segment2'));
-        final _segment1Handle = navigine_sdk_flutter_Segment_ToFfi(segment1);
-        final _segment2Handle = navigine_sdk_flutter_Segment_ToFfi(segment2);
-        final __resultHandle = _segmentIntersectsSegmentFfi(_segment1Handle, _segment2Handle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segment1Handle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segment2Handle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _segmentIntersectsSegmentFfi(SegmentImpl.toNative(segment1), SegmentImpl.toNative(segment2));
+        final _result = (__resultHandle != 0);
         return _result;
     }
     Point segmentIntersectionSegment(Segment segment1, Segment segment2) {
         final _segmentIntersectionSegmentFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+            PointNative Function(SegmentNative, SegmentNative),
+            PointNative Function(SegmentNative, SegmentNative)
           >('navigine_sdk_flutter_GeometryUtils_segmentIntersectionSegment__Segment1_Segment2'));
-        final _segment1Handle = navigine_sdk_flutter_Segment_ToFfi(segment1);
-        final _segment2Handle = navigine_sdk_flutter_Segment_ToFfi(segment2);
-        final __resultHandle = _segmentIntersectionSegmentFfi(_segment1Handle, _segment2Handle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segment1Handle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segment2Handle);
-        final _result = navigine_sdk_flutter_Point_FromFfi(__resultHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _segmentIntersectionSegmentFfi(SegmentImpl.toNative(segment1), SegmentImpl.toNative(segment2));
+        final _result = PointImpl.fromNative(__resultHandle);
         return _result;
     }
     double divisionRatioBySegment(Segment segment1, Segment segment2) {
         final _divisionRatioBySegmentFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Float Function(Pointer<Void>, Pointer<Void>),
-            double Function(Pointer<Void>, Pointer<Void>)
+            Float Function(SegmentNative, SegmentNative),
+            double Function(SegmentNative, SegmentNative)
           >('navigine_sdk_flutter_GeometryUtils_divisionRatioBySegment__Segment1_Segment2'));
-        final _segment1Handle = navigine_sdk_flutter_Segment_ToFfi(segment1);
-        final _segment2Handle = navigine_sdk_flutter_Segment_ToFfi(segment2);
-        final __resultHandle = _divisionRatioBySegmentFfi(_segment1Handle, _segment2Handle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segment1Handle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segment2Handle);
-        final _result = navigine_sdk_flutter_double_FromFfi(__resultHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _divisionRatioBySegmentFfi(SegmentImpl.toNative(segment1), SegmentImpl.toNative(segment2));
+        final _result = __resultHandle;
         return _result;
     }
     Point getRatioPoint(Segment segment, double r) {
         final _getRatioPointFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, Double),
-            Pointer<Void> Function(Pointer<Void>, double)
+            PointNative Function(SegmentNative, Double),
+            PointNative Function(SegmentNative, double)
           >('navigine_sdk_flutter_GeometryUtils_getRatioPoint__Segment_R'));
-        final _segmentHandle = navigine_sdk_flutter_Segment_ToFfi(segment);
-        final _rHandle = navigine_sdk_flutter_double_ToFfi(r);
-        final __resultHandle = _getRatioPointFfi(_segmentHandle, _rHandle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segmentHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_rHandle);
-        final _result = navigine_sdk_flutter_Point_FromFfi(__resultHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _getRatioPointFfi(SegmentImpl.toNative(segment), r);
+        final _result = PointImpl.fromNative(__resultHandle);
         return _result;
     }
     double getProjectionRatio(Segment segment, Point point) {
         final _getProjectionRatioFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Double Function(Pointer<Void>, Pointer<Void>),
-            double Function(Pointer<Void>, Pointer<Void>)
+            Double Function(SegmentNative, PointNative),
+            double Function(SegmentNative, PointNative)
           >('navigine_sdk_flutter_GeometryUtils_getProjectionRatio__Segment_Point'));
-        final _segmentHandle = navigine_sdk_flutter_Segment_ToFfi(segment);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final __resultHandle = _getProjectionRatioFfi(_segmentHandle, _pointHandle);
-        navigine_sdk_flutter_Segment_ReleaseFfiHandle(_segmentHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        final _result = navigine_sdk_flutter_double_FromFfi(__resultHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _getProjectionRatioFfi(SegmentImpl.toNative(segment), PointImpl.toNative(point));
+        final _result = __resultHandle;
         return _result;
     }
 
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_GeometryUtils_ToFfi(GeometryUtils value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_GeometryUtils_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-GeometryUtils navigine_sdk_flutter_GeometryUtils_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_GeometryUtils_CopyHandle(handle);
-    final result = GeometryUtils$Impl(_copiedHandle);
-    GeometryUtils$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_GeometryUtils_ToFfiNullable(GeometryUtils? value) => 
-  value != null ? navigine_sdk_flutter_GeometryUtils_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_GeometryUtils_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_GeometryUtils_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_GeometryUtils_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_GeometryUtils_ReleaseHandle(handle);
-
-GeometryUtils? navigine_sdk_flutter_GeometryUtils_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_GeometryUtils_FromFfi(handle) : null;
 
 // End of GeometryUtils "private" section.

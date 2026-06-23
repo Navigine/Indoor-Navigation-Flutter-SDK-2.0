@@ -24,8 +24,8 @@ int _navigine_sdk_flutter_CameraListener_onCameraPositionChangedStatic(Pointer<V
     }
     try  {
         listener.onCameraPositionChanged(
-          navigine_sdk_flutter_CameraUpdateReason_FromFfi(reason),
-          navigine_sdk_flutter_bool_FromFfi(finished),
+          CameraUpdateReasonImpl.fromInt(reason),
+          (finished != 0),
         );
         
     }
@@ -33,50 +33,47 @@ int _navigine_sdk_flutter_CameraListener_onCameraPositionChangedStatic(Pointer<V
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_CameraUpdateReason_ReleaseFfiHandle(reason);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(finished);
-    }
     return 0;
 }
 
 
-class _CameraListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _CameraListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_CameraListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_CameraListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_CameraListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension CameraListenerImpl on CameraListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<CameraListener>>{};
-    static final _listenerToPointer = WeakMap<CameraListener, _CameraListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<CameraListener, _navigine_sdk_flutter_CameraListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(CameraListener obj) {
+        final ptr = _navigine_sdk_flutter_CameraListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, Uint32, Uint8)>(_navigine_sdk_flutter_CameraListener_onCameraPositionChangedStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_CameraListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_CameraListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(CameraListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_CameraListener_ToFfi(CameraListener value) {
-    final result = _navigine_sdk_flutter_CameraListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Uint32, Uint8)>(_navigine_sdk_flutter_CameraListener_onCameraPositionChangedStatic, __lib.unknownError),
-    );
-    CameraListenerImpl._pointerToListener[result] = WeakReference(value);
-    CameraListenerImpl._listenerToPointer[value] = _CameraListenerWrapper(result);
-    _navigine_sdk_flutter_CameraListener_SetPorts(result, __lib.createPortWithCallback(CameraListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_CameraListener_ToFfiNullable(CameraListener? value) => 
-  value != null ? navigine_sdk_flutter_CameraListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_CameraListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_CameraListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of CameraListener "private" section.

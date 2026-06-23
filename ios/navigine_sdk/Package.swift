@@ -33,7 +33,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/Navigine/Indoor-Navigation-iOS-Mobile-SDK-2.0-Flutter.git",
-            exact: "2.25.2"
+            exact: "2.26.0"
         ),
     ],
     targets: [
@@ -42,7 +42,7 @@ let package = Package(
             dependencies: [
                 .product(name: "NavigineFlutter", package: "Indoor-Navigation-iOS-Mobile-SDK-2.0-Flutter"),
             ],
-            path: "Classes",
+            path: "Sources/navigine_sdk",
             linkerSettings: navigineLinkerSettings
         ),
     ]

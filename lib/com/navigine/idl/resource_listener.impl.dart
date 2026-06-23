@@ -16,7 +16,7 @@ final _navigine_sdk_flutter_ResourceListener_SetPorts = __lib.catchArgumentError
     Pointer<Void> Function(Pointer<Void>, int, int)
   >('navigine_sdk_flutter_ResourceListener_set_ports'));
 
-int _navigine_sdk_flutter_ResourceListener_onLoadedStatic(Pointer<Void> _obj, Pointer<Void> imageUrl, Pointer<Void> image) {
+int _navigine_sdk_flutter_ResourceListener_onLoadedStatic(Pointer<Void> _obj, NativeString imageUrl, Pointer<Void> image) {
     
     final listener = ResourceListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -24,8 +24,8 @@ int _navigine_sdk_flutter_ResourceListener_onLoadedStatic(Pointer<Void> _obj, Po
     }
     try  {
         listener.onLoaded(
-          navigine_sdk_flutter_String_FromFfi(imageUrl),
-          navigine_sdk_flutter_Image_FromFfi(image),
+          toPlatformString(imageUrl),
+          Image$Impl.fromNativePtr(image),
         );
         
     }
@@ -33,14 +33,10 @@ int _navigine_sdk_flutter_ResourceListener_onLoadedStatic(Pointer<Void> _obj, Po
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_String_ReleaseFfiHandle(imageUrl);
-        navigine_sdk_flutter_Image_ReleaseFfiHandle(image);
-    }
     return 0;
 }
 
-int _navigine_sdk_flutter_ResourceListener_onFailedStatic(Pointer<Void> _obj, Pointer<Void> imageUrl, Pointer<Void> error) {
+int _navigine_sdk_flutter_ResourceListener_onFailedStatic(Pointer<Void> _obj, NativeString imageUrl, ErrorNative error) {
     
     final listener = ResourceListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -48,8 +44,8 @@ int _navigine_sdk_flutter_ResourceListener_onFailedStatic(Pointer<Void> _obj, Po
     }
     try  {
         listener.onFailed(
-          navigine_sdk_flutter_String_FromFfi(imageUrl),
-          navigine_sdk_flutter_Error_FromFfi(error),
+          toPlatformString(imageUrl),
+          ErrorImpl.fromNative(error),
         );
         
     }
@@ -57,51 +53,48 @@ int _navigine_sdk_flutter_ResourceListener_onFailedStatic(Pointer<Void> _obj, Po
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_String_ReleaseFfiHandle(imageUrl);
-        navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
-    }
     return 0;
 }
 
 
-class _ResourceListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _ResourceListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_ResourceListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_ResourceListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_ResourceListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension ResourceListenerImpl on ResourceListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<ResourceListener>>{};
-    static final _listenerToPointer = WeakMap<ResourceListener, _ResourceListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<ResourceListener, _navigine_sdk_flutter_ResourceListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(ResourceListener obj) {
+        final ptr = _navigine_sdk_flutter_ResourceListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, NativeString, Pointer<Void>)>(_navigine_sdk_flutter_ResourceListener_onLoadedStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, NativeString, ErrorNative)>(_navigine_sdk_flutter_ResourceListener_onFailedStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_ResourceListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_ResourceListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(ResourceListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_ResourceListener_ToFfi(ResourceListener value) {
-    final result = _navigine_sdk_flutter_ResourceListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ResourceListener_onLoadedStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ResourceListener_onFailedStatic, __lib.unknownError),
-    );
-    ResourceListenerImpl._pointerToListener[result] = WeakReference(value);
-    ResourceListenerImpl._listenerToPointer[value] = _ResourceListenerWrapper(result);
-    _navigine_sdk_flutter_ResourceListener_SetPorts(result, __lib.createPortWithCallback(ResourceListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_ResourceListener_ToFfiNullable(ResourceListener? value) => 
-  value != null ? navigine_sdk_flutter_ResourceListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_ResourceListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_ResourceListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of ResourceListener "private" section.

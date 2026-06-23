@@ -2,36 +2,55 @@ part of 'wifi.dart';
 
 // Wifi "private" section, not exported.
 
-final _navigine_sdk_flutter_Wifi_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Wifi_copy_handle'));
-
-final _navigine_sdk_flutter_Wifi_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Wifi_release_handle'));
+final _navigine_sdk_flutter_Wifi_check = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Bool Function(Pointer<Void>),
+    bool Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Wifi_check'));
 
 final _navigine_sdk_flutter_Wifi_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_Wifi_free');
 
 
-class Wifi$Impl extends __lib.NativeBase implements Wifi, Finalizable {
-    Wifi$Impl(Pointer<Void> handle) : super(handle);
+class Wifi$Impl implements Wifi, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_Wifi_free.cast());
+
+    Wifi$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    Wifi$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory Wifi$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        weak_interface_wrapper.createFromNative(ptr);
+
+    @override
+    bool isValid() => _navigine_sdk_flutter_Wifi_check(ptr);
+
+    static Pointer<Void> getNativePtr(Wifi? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as Wifi$Impl).ptr;
+    }
+
+    static Wifi? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return Wifi$Impl.fromNativePtr(ptr);
+    }
 
 
     Point get point {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            PointNative Function(Pointer<Void>),
+            PointNative Function(Pointer<Void>)
           >('navigine_sdk_flutter_Wifi_point_get'));
 
-        final _handle = this.handle;
-        final _pointHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_Point_FromFfi(_pointHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
+        final _pointHandle = _getFfi(this.ptr);
+        final _result = PointImpl.fromNative(_pointHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -42,10 +61,9 @@ class Wifi$Impl extends __lib.NativeBase implements Wifi, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Wifi_locationId_get'));
 
-        final _handle = this.handle;
-        final _locationIdHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_locationIdHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_locationIdHandle);
+        final _locationIdHandle = _getFfi(this.ptr);
+        final _result = _locationIdHandle;
+        exception.checkCallResult();
         return _result;
     }
 
@@ -56,38 +74,35 @@ class Wifi$Impl extends __lib.NativeBase implements Wifi, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Wifi_sublocationId_get'));
 
-        final _handle = this.handle;
-        final _sublocationIdHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_sublocationIdHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_sublocationIdHandle);
+        final _sublocationIdHandle = _getFfi(this.ptr);
+        final _result = _sublocationIdHandle;
+        exception.checkCallResult();
         return _result;
     }
 
 
     String get name {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            NativeString Function(Pointer<Void>),
+            NativeString Function(Pointer<Void>)
           >('navigine_sdk_flutter_Wifi_name_get'));
 
-        final _handle = this.handle;
-        final _nameHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_String_FromFfi(_nameHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
+        final _nameHandle = _getFfi(this.ptr);
+        final _result = toPlatformString(_nameHandle);
+        exception.checkCallResult();
         return _result;
     }
 
 
     String get mac {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            NativeString Function(Pointer<Void>),
+            NativeString Function(Pointer<Void>)
           >('navigine_sdk_flutter_Wifi_mac_get'));
 
-        final _handle = this.handle;
-        final _macHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_String_FromFfi(_macHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_macHandle);
+        final _macHandle = _getFfi(this.ptr);
+        final _result = toPlatformString(_macHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -98,10 +113,9 @@ class Wifi$Impl extends __lib.NativeBase implements Wifi, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Wifi_status_get'));
 
-        final _handle = this.handle;
-        final _statusHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_TransmitterStatus_FromFfi(_statusHandle);
-        navigine_sdk_flutter_TransmitterStatus_ReleaseFfiHandle(_statusHandle);
+        final _statusHandle = _getFfi(this.ptr);
+        final _result = TransmitterStatusImpl.fromInt(_statusHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -109,34 +123,5 @@ class Wifi$Impl extends __lib.NativeBase implements Wifi, Finalizable {
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_Wifi_ToFfi(Wifi value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_Wifi_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-Wifi navigine_sdk_flutter_Wifi_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_Wifi_CopyHandle(handle);
-    final result = Wifi$Impl(_copiedHandle);
-    Wifi$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_Wifi_ToFfiNullable(Wifi? value) => 
-  value != null ? navigine_sdk_flutter_Wifi_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_Wifi_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_Wifi_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_Wifi_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_Wifi_ReleaseHandle(handle);
-
-Wifi? navigine_sdk_flutter_Wifi_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_Wifi_FromFfi(handle) : null;
 
 // End of Wifi "private" section.

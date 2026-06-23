@@ -1,7 +1,10 @@
 import 'dart:ffi';
+import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/signal_type.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
 
 part 'signal_measurement.impl.dart';
 /// Structure representing a signal measurement with type, identifier, RSSI, distance, and timestamp.

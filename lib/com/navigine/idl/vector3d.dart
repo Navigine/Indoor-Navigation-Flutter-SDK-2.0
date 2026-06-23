@@ -1,6 +1,6 @@
 import 'dart:ffi';
+import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 
 part 'vector3d.impl.dart';
 /// Structure representing a 3D vector for sensor measurements.

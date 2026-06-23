@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import 'package:navigine_sdk/com/_library_context.dart' as __lib;
+import 'package:ffi/ffi.dart';
 
 part 'camera_update_reason.impl.dart';
 /// Reason of the camera update.
@@ -9,6 +9,6 @@ enum CameraUpdateReason {
     /// For example: zoom, scroll, rotate, fling.
     GESTURES,
     /// Application.
-    /// By calling the LocationLiew::move methods.
+    /// By calling the LocationView::move methods.
     APPLICATION,
 }

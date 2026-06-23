@@ -2,24 +2,37 @@ part of 'notification_manager.dart';
 
 // NotificationManager "private" section, not exported.
 
-final _navigine_sdk_flutter_NotificationManager_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_NotificationManager_copy_handle'));
-
-final _navigine_sdk_flutter_NotificationManager_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_NotificationManager_release_handle'));
-
 final _navigine_sdk_flutter_NotificationManager_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_NotificationManager_free');
 
 
-class NotificationManager$Impl extends __lib.NativeBase implements NotificationManager, Finalizable {
-    NotificationManager$Impl(Pointer<Void> handle) : super(handle);
+class NotificationManager$Impl implements NotificationManager, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_NotificationManager_free.cast());
+
+    NotificationManager$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    NotificationManager$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory NotificationManager$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        NotificationManager$Impl.fromNativePtrImpl(ptr);
+
+
+    static Pointer<Void> getNativePtr(NotificationManager? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as NotificationManager$Impl).ptr;
+    }
+
+    static NotificationManager? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return NotificationManager$Impl.fromNativePtr(ptr);
+    }
 
     @override
     void addNotificationListener(NotificationListener listener) {
@@ -27,10 +40,8 @@ class NotificationManager$Impl extends __lib.NativeBase implements NotificationM
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_NotificationManager_addNotificationListener__Listener'));
-        final _listenerHandle = navigine_sdk_flutter_NotificationListener_ToFfi(listener);
-        final _handle = this.handle;
-        _addNotificationListenerFfi(_handle, _listenerHandle);
-        navigine_sdk_flutter_NotificationListener_ReleaseFfiHandle(_listenerHandle);
+        _addNotificationListenerFfi(this.ptr, NotificationListenerImpl.getNativePtr(listener));
+        exception.checkCallResult();
     }
 
     @override
@@ -39,44 +50,13 @@ class NotificationManager$Impl extends __lib.NativeBase implements NotificationM
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_NotificationManager_removeNotificationListener__Listener'));
-        final _listenerHandle = navigine_sdk_flutter_NotificationListener_ToFfi(listener);
-        final _handle = this.handle;
-        _removeNotificationListenerFfi(_handle, _listenerHandle);
-        navigine_sdk_flutter_NotificationListener_ReleaseFfiHandle(_listenerHandle);
+        _removeNotificationListenerFfi(this.ptr, NotificationListenerImpl.getNativePtr(listener));
+        exception.checkCallResult();
     }
 
 
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_NotificationManager_ToFfi(NotificationManager value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_NotificationManager_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-NotificationManager navigine_sdk_flutter_NotificationManager_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_NotificationManager_CopyHandle(handle);
-    final result = NotificationManager$Impl(_copiedHandle);
-    NotificationManager$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_NotificationManager_ToFfiNullable(NotificationManager? value) => 
-  value != null ? navigine_sdk_flutter_NotificationManager_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_NotificationManager_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_NotificationManager_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_NotificationManager_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_NotificationManager_ReleaseHandle(handle);
-
-NotificationManager? navigine_sdk_flutter_NotificationManager_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_NotificationManager_FromFfi(handle) : null;
 
 // End of NotificationManager "private" section.

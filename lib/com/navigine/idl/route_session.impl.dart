@@ -2,24 +2,44 @@ part of 'route_session.dart';
 
 // RouteSession "private" section, not exported.
 
-final _navigine_sdk_flutter_RouteSession_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteSession_copy_handle'));
-
-final _navigine_sdk_flutter_RouteSession_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteSession_release_handle'));
+final _navigine_sdk_flutter_RouteSession_check = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Bool Function(Pointer<Void>),
+    bool Function(Pointer<Void>)
+  >('navigine_sdk_flutter_RouteSession_check'));
 
 final _navigine_sdk_flutter_RouteSession_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_RouteSession_free');
 
 
-class RouteSession$Impl extends __lib.NativeBase implements RouteSession, Finalizable {
-    RouteSession$Impl(Pointer<Void> handle) : super(handle);
+class RouteSession$Impl implements RouteSession, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_RouteSession_free.cast());
+
+    RouteSession$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    RouteSession$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory RouteSession$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        weak_interface_wrapper.createFromNative(ptr);
+
+    @override
+    bool isValid() => _navigine_sdk_flutter_RouteSession_check(ptr);
+
+    static Pointer<Void> getNativePtr(RouteSession? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as RouteSession$Impl).ptr;
+    }
+
+    static RouteSession? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return RouteSession$Impl.fromNativePtr(ptr);
+    }
 
     @override
     void addRouteListener(AsyncRouteListener listener) {
@@ -27,10 +47,8 @@ class RouteSession$Impl extends __lib.NativeBase implements RouteSession, Finali
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_RouteSession_addRouteListener__Listener'));
-        final _listenerHandle = navigine_sdk_flutter_AsyncRouteListener_ToFfi(listener);
-        final _handle = this.handle;
-        _addRouteListenerFfi(_handle, _listenerHandle);
-        navigine_sdk_flutter_AsyncRouteListener_ReleaseFfiHandle(_listenerHandle);
+        _addRouteListenerFfi(this.ptr, AsyncRouteListenerImpl.getNativePtr(listener));
+        exception.checkCallResult();
     }
 
     @override
@@ -39,44 +57,13 @@ class RouteSession$Impl extends __lib.NativeBase implements RouteSession, Finali
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_RouteSession_removeRouteListener__Listener'));
-        final _listenerHandle = navigine_sdk_flutter_AsyncRouteListener_ToFfi(listener);
-        final _handle = this.handle;
-        _removeRouteListenerFfi(_handle, _listenerHandle);
-        navigine_sdk_flutter_AsyncRouteListener_ReleaseFfiHandle(_listenerHandle);
+        _removeRouteListenerFfi(this.ptr, AsyncRouteListenerImpl.getNativePtr(listener));
+        exception.checkCallResult();
     }
 
 
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_RouteSession_ToFfi(RouteSession value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_RouteSession_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-RouteSession navigine_sdk_flutter_RouteSession_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_RouteSession_CopyHandle(handle);
-    final result = RouteSession$Impl(_copiedHandle);
-    RouteSession$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_RouteSession_ToFfiNullable(RouteSession? value) => 
-  value != null ? navigine_sdk_flutter_RouteSession_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_RouteSession_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_RouteSession_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_RouteSession_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_RouteSession_ReleaseHandle(handle);
-
-RouteSession? navigine_sdk_flutter_RouteSession_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_RouteSession_FromFfi(handle) : null;
 
 // End of RouteSession "private" section.

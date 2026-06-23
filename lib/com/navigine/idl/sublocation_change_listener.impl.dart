@@ -24,7 +24,7 @@ int _navigine_sdk_flutter_SublocationChangeListener_onActiveSublocationChangedSt
     }
     try  {
         listener.onActiveSublocationChanged(
-          navigine_sdk_flutter_int_FromFfi(sublocationId),
+          sublocationId,
         );
         
     }
@@ -32,49 +32,47 @@ int _navigine_sdk_flutter_SublocationChangeListener_onActiveSublocationChangedSt
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_int_ReleaseFfiHandle(sublocationId);
-    }
     return 0;
 }
 
 
-class _SublocationChangeListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _SublocationChangeListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_SublocationChangeListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_SublocationChangeListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_SublocationChangeListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension SublocationChangeListenerImpl on SublocationChangeListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<SublocationChangeListener>>{};
-    static final _listenerToPointer = WeakMap<SublocationChangeListener, _SublocationChangeListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<SublocationChangeListener, _navigine_sdk_flutter_SublocationChangeListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(SublocationChangeListener obj) {
+        final ptr = _navigine_sdk_flutter_SublocationChangeListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, Int32)>(_navigine_sdk_flutter_SublocationChangeListener_onActiveSublocationChangedStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_SublocationChangeListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_SublocationChangeListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(SublocationChangeListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_SublocationChangeListener_ToFfi(SublocationChangeListener value) {
-    final result = _navigine_sdk_flutter_SublocationChangeListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Int32)>(_navigine_sdk_flutter_SublocationChangeListener_onActiveSublocationChangedStatic, __lib.unknownError),
-    );
-    SublocationChangeListenerImpl._pointerToListener[result] = WeakReference(value);
-    SublocationChangeListenerImpl._listenerToPointer[value] = _SublocationChangeListenerWrapper(result);
-    _navigine_sdk_flutter_SublocationChangeListener_SetPorts(result, __lib.createPortWithCallback(SublocationChangeListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_SublocationChangeListener_ToFfiNullable(SublocationChangeListener? value) => 
-  value != null ? navigine_sdk_flutter_SublocationChangeListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_SublocationChangeListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_SublocationChangeListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of SublocationChangeListener "private" section.

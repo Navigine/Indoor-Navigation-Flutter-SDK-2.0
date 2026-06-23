@@ -16,7 +16,7 @@ final _navigine_sdk_flutter_PositionListener_SetPorts = __lib.catchArgumentError
     Pointer<Void> Function(Pointer<Void>, int, int)
   >('navigine_sdk_flutter_PositionListener_set_ports'));
 
-int _navigine_sdk_flutter_PositionListener_onPositionUpdatedStatic(Pointer<Void> _obj, Pointer<Void> position) {
+int _navigine_sdk_flutter_PositionListener_onPositionUpdatedStatic(Pointer<Void> _obj, PositionNative position) {
     
     final listener = PositionListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -24,7 +24,7 @@ int _navigine_sdk_flutter_PositionListener_onPositionUpdatedStatic(Pointer<Void>
     }
     try  {
         listener.onPositionUpdated(
-          navigine_sdk_flutter_Position_FromFfi(position),
+          PositionImpl.fromNative(position),
         );
         
     }
@@ -32,13 +32,10 @@ int _navigine_sdk_flutter_PositionListener_onPositionUpdatedStatic(Pointer<Void>
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_Position_ReleaseFfiHandle(position);
-    }
     return 0;
 }
 
-int _navigine_sdk_flutter_PositionListener_onPositionErrorStatic(Pointer<Void> _obj, Pointer<Void> error) {
+int _navigine_sdk_flutter_PositionListener_onPositionErrorStatic(Pointer<Void> _obj, ErrorNative error) {
     
     final listener = PositionListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -46,7 +43,7 @@ int _navigine_sdk_flutter_PositionListener_onPositionErrorStatic(Pointer<Void> _
     }
     try  {
         listener.onPositionError(
-          navigine_sdk_flutter_Error_FromFfi(error),
+          ErrorImpl.fromNative(error),
         );
         
     }
@@ -54,50 +51,48 @@ int _navigine_sdk_flutter_PositionListener_onPositionErrorStatic(Pointer<Void> _
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
-    }
     return 0;
 }
 
 
-class _PositionListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _PositionListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_PositionListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_PositionListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_PositionListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension PositionListenerImpl on PositionListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<PositionListener>>{};
-    static final _listenerToPointer = WeakMap<PositionListener, _PositionListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<PositionListener, _navigine_sdk_flutter_PositionListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(PositionListener obj) {
+        final ptr = _navigine_sdk_flutter_PositionListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, PositionNative)>(_navigine_sdk_flutter_PositionListener_onPositionUpdatedStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, ErrorNative)>(_navigine_sdk_flutter_PositionListener_onPositionErrorStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_PositionListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_PositionListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(PositionListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_PositionListener_ToFfi(PositionListener value) {
-    final result = _navigine_sdk_flutter_PositionListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_PositionListener_onPositionUpdatedStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_PositionListener_onPositionErrorStatic, __lib.unknownError),
-    );
-    PositionListenerImpl._pointerToListener[result] = WeakReference(value);
-    PositionListenerImpl._listenerToPointer[value] = _PositionListenerWrapper(result);
-    _navigine_sdk_flutter_PositionListener_SetPorts(result, __lib.createPortWithCallback(PositionListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_PositionListener_ToFfiNullable(PositionListener? value) => 
-  value != null ? navigine_sdk_flutter_PositionListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_PositionListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_PositionListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of PositionListener "private" section.

@@ -2,68 +2,35 @@ part of 'route_event_type.dart';
 
 // RouteEventType "private" section, not exported.
 
-int navigine_sdk_flutter_RouteEventType_ToFfi(RouteEventType value) {
-    switch (value) {
-    case RouteEventType.TURN_EVENT:
-        return 0;
-    case RouteEventType.TRANSITION_ENTRY_EVENT:
-        return 1;
-    case RouteEventType.TRANSITION_EXIT_EVENT:
-        return 2;
-    case RouteEventType.TARGET_REACHED_EVENT:
-        return 3;
+extension RouteEventTypeImpl on RouteEventType  {
+    static int toInt(RouteEventType e) => e.index;
+
+    static RouteEventType fromInt(int val)  {
+        if (val < 0 || val >= RouteEventType.values.length) {
+          throw StateError('Invalid numeric value $val for RouteEventType enum.');
+        }
+        return RouteEventType.values[val];
+    }
+
+    static RouteEventType? fromPointer(Pointer<Void> ptr, {bool needFree = true})  {
+        if (ptr == nullptr) {
+          return null;
+        }
+        final result = fromInt(ptr.cast<Int32>().value);
+        if (needFree) {
+          malloc.free(ptr);
+        }
+        return result;
+    }
+
+    static Pointer<Void> toPointer(RouteEventType? val)  {
+        if (val == null) {
+          return nullptr;
+        }
+        final result = malloc<Int32>();
+        result.value = toInt(val);
+        return result.cast();
     }
 }
-
-RouteEventType navigine_sdk_flutter_RouteEventType_FromFfi(int handle) {
-    switch (handle) {
-    case 0:
-        return RouteEventType.TURN_EVENT;
-    case 1:
-        return RouteEventType.TRANSITION_ENTRY_EVENT;
-    case 2:
-        return RouteEventType.TRANSITION_EXIT_EVENT;
-    case 3:
-        return RouteEventType.TARGET_REACHED_EVENT;
-    default:
-        throw StateError("Invalid numeric value $handle for RouteEventType enum.");
-    }
-}
-
-void navigine_sdk_flutter_RouteEventType_ReleaseFfiHandle(int handle) {}
-
-final _navigine_sdk_flutter_RouteEventType_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint32),
-    Pointer<Void> Function(int)
-  >('navigine_sdk_flutter_RouteEventType_create_handle_nullable'));
-
-final _navigine_sdk_flutter_RouteEventType_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteEventType_release_handle_nullable'));
-
-final _navigine_sdk_flutter_RouteEventType_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Uint32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_RouteEventType_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_RouteEventType_ToFfiNullable(RouteEventType? value) {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_RouteEventType_ToFfi(value);
-    final result = _navigine_sdk_flutter_RouteEventType_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_RouteEventType_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-RouteEventType? navigine_sdk_flutter_RouteEventType_FromFfiNullable(Pointer<Void> handle) {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_RouteEventType_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_RouteEventType_FromFfi(_handle);
-    navigine_sdk_flutter_RouteEventType_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_RouteEventType_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_RouteEventType_ReleaseHandleNullable(handle);
 
 // End of RouteEventType "private" section.

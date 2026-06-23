@@ -2,10 +2,13 @@ import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/image.dart';
 import 'package:navigine_sdk/com/navigine/idl/rectangle.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 import 'package:navigine_sdk/image_wrapper.dart';
 
 part 'bitmap_region_decoder.impl.dart';
@@ -14,7 +17,7 @@ abstract class BitmapRegionDecoder implements Finalizable {
 
     /// Method is used to create instance of BitmapRegionDecoder
     /// [data] raw image data (could be raw svg string)
-    /// Returns nstance of decoder, which could be used for decoding byte array to bitmap.
+    /// Returns instance of decoder, which could be used for decoding byte array to bitmap.
     ///
     /// Example:
     /// ```dart
@@ -53,6 +56,8 @@ abstract class BitmapRegionDecoder implements Finalizable {
     /// ```
     ImageWrapper decodeRegion(Rectangle rect, double sampleSize);
 
+    bool isValid();
+
     /// Width of the source image in pixels (after header parse / decode metadata).
     ///
     /// Example:
@@ -73,5 +78,5 @@ abstract class BitmapRegionDecoder implements Finalizable {
 
     /// @nodoc
     @visibleForTesting
-    static dynamic $prototype = BitmapRegionDecoder$Impl(Pointer<Void>.fromAddress(0));
+    static dynamic $prototype = BitmapRegionDecoder$Impl.fromExternalPtr(Pointer<Void>.fromAddress(0));
 }

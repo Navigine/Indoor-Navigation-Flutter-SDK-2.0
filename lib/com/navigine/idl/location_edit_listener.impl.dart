@@ -24,7 +24,7 @@ int _navigine_sdk_flutter_LocationEditListener_onLocationEditSuccessStatic(Point
     }
     try  {
         listener.onLocationEditSuccess(
-          navigine_sdk_flutter_Location_FromFfi(location),
+          Location$Impl.fromNativePtr(location),
         );
         
     }
@@ -32,13 +32,10 @@ int _navigine_sdk_flutter_LocationEditListener_onLocationEditSuccessStatic(Point
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_Location_ReleaseFfiHandle(location);
-    }
     return 0;
 }
 
-int _navigine_sdk_flutter_LocationEditListener_onLocationEditErrorStatic(Pointer<Void> _obj, Pointer<Void> error) {
+int _navigine_sdk_flutter_LocationEditListener_onLocationEditErrorStatic(Pointer<Void> _obj, ErrorNative error) {
     
     final listener = LocationEditListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -46,7 +43,7 @@ int _navigine_sdk_flutter_LocationEditListener_onLocationEditErrorStatic(Pointer
     }
     try  {
         listener.onLocationEditError(
-          navigine_sdk_flutter_Error_FromFfi(error),
+          ErrorImpl.fromNative(error),
         );
         
     }
@@ -54,50 +51,48 @@ int _navigine_sdk_flutter_LocationEditListener_onLocationEditErrorStatic(Pointer
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_Error_ReleaseFfiHandle(error);
-    }
     return 0;
 }
 
 
-class _LocationEditListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _LocationEditListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_LocationEditListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_LocationEditListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_LocationEditListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension LocationEditListenerImpl on LocationEditListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<LocationEditListener>>{};
-    static final _listenerToPointer = WeakMap<LocationEditListener, _LocationEditListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<LocationEditListener, _navigine_sdk_flutter_LocationEditListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(LocationEditListener obj) {
+        final ptr = _navigine_sdk_flutter_LocationEditListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_LocationEditListener_onLocationEditSuccessStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, ErrorNative)>(_navigine_sdk_flutter_LocationEditListener_onLocationEditErrorStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_LocationEditListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_LocationEditListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(LocationEditListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_LocationEditListener_ToFfi(LocationEditListener value) {
-    final result = _navigine_sdk_flutter_LocationEditListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_LocationEditListener_onLocationEditSuccessStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_LocationEditListener_onLocationEditErrorStatic, __lib.unknownError),
-    );
-    LocationEditListenerImpl._pointerToListener[result] = WeakReference(value);
-    LocationEditListenerImpl._listenerToPointer[value] = _LocationEditListenerWrapper(result);
-    _navigine_sdk_flutter_LocationEditListener_SetPorts(result, __lib.createPortWithCallback(LocationEditListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_LocationEditListener_ToFfiNullable(LocationEditListener? value) => 
-  value != null ? navigine_sdk_flutter_LocationEditListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_LocationEditListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_LocationEditListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of LocationEditListener "private" section.

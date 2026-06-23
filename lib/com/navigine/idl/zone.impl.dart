@@ -2,36 +2,55 @@ part of 'zone.dart';
 
 // Zone "private" section, not exported.
 
-final _navigine_sdk_flutter_Zone_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Zone_copy_handle'));
-
-final _navigine_sdk_flutter_Zone_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Zone_release_handle'));
+final _navigine_sdk_flutter_Zone_check = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Bool Function(Pointer<Void>),
+    bool Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Zone_check'));
 
 final _navigine_sdk_flutter_Zone_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_Zone_free');
 
 
-class Zone$Impl extends __lib.NativeBase implements Zone, Finalizable {
-    Zone$Impl(Pointer<Void> handle) : super(handle);
+class Zone$Impl implements Zone, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_Zone_free.cast());
+
+    Zone$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    Zone$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory Zone$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        weak_interface_wrapper.createFromNative(ptr);
+
+    @override
+    bool isValid() => _navigine_sdk_flutter_Zone_check(ptr);
+
+    static Pointer<Void> getNativePtr(Zone? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as Zone$Impl).ptr;
+    }
+
+    static Zone? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return Zone$Impl.fromNativePtr(ptr);
+    }
 
 
     Polygon get polygon {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            PolygonNative Function(Pointer<Void>),
+            PolygonNative Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_polygon_get'));
 
-        final _handle = this.handle;
-        final _polygonHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_Polygon_FromFfi(_polygonHandle);
-        navigine_sdk_flutter_Polygon_ReleaseFfiHandle(_polygonHandle);
+        final _polygonHandle = _getFfi(this.ptr);
+        final _result = PolygonImpl.fromNative(_polygonHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -42,10 +61,9 @@ class Zone$Impl extends __lib.NativeBase implements Zone, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_locationId_get'));
 
-        final _handle = this.handle;
-        final _locationIdHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_locationIdHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_locationIdHandle);
+        final _locationIdHandle = _getFfi(this.ptr);
+        final _result = _locationIdHandle;
+        exception.checkCallResult();
         return _result;
     }
 
@@ -56,10 +74,9 @@ class Zone$Impl extends __lib.NativeBase implements Zone, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_sublocationId_get'));
 
-        final _handle = this.handle;
-        final _sublocationIdHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_sublocationIdHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_sublocationIdHandle);
+        final _sublocationIdHandle = _getFfi(this.ptr);
+        final _result = _sublocationIdHandle;
+        exception.checkCallResult();
         return _result;
     }
 
@@ -70,52 +87,48 @@ class Zone$Impl extends __lib.NativeBase implements Zone, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_id_get'));
 
-        final _handle = this.handle;
-        final _idHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_idHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_idHandle);
+        final _idHandle = _getFfi(this.ptr);
+        final _result = _idHandle;
+        exception.checkCallResult();
         return _result;
     }
 
 
     String get name {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            NativeString Function(Pointer<Void>),
+            NativeString Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_name_get'));
 
-        final _handle = this.handle;
-        final _nameHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_String_FromFfi(_nameHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
+        final _nameHandle = _getFfi(this.ptr);
+        final _result = toPlatformString(_nameHandle);
+        exception.checkCallResult();
         return _result;
     }
 
 
     String get color {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            NativeString Function(Pointer<Void>),
+            NativeString Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_color_get'));
 
-        final _handle = this.handle;
-        final _colorHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_String_FromFfi(_colorHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_colorHandle);
+        final _colorHandle = _getFfi(this.ptr);
+        final _result = toPlatformString(_colorHandle);
+        exception.checkCallResult();
         return _result;
     }
 
 
     String get alias {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            NativeString Function(Pointer<Void>),
+            NativeString Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_alias_get'));
 
-        final _handle = this.handle;
-        final _aliasHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_String_FromFfi(_aliasHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_aliasHandle);
+        final _aliasHandle = _getFfi(this.ptr);
+        final _result = toPlatformString(_aliasHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -123,34 +136,5 @@ class Zone$Impl extends __lib.NativeBase implements Zone, Finalizable {
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_Zone_ToFfi(Zone value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_Zone_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-Zone navigine_sdk_flutter_Zone_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_Zone_CopyHandle(handle);
-    final result = Zone$Impl(_copiedHandle);
-    Zone$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_Zone_ToFfiNullable(Zone? value) => 
-  value != null ? navigine_sdk_flutter_Zone_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_Zone_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_Zone_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_Zone_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_Zone_ReleaseHandle(handle);
-
-Zone? navigine_sdk_flutter_Zone_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_Zone_FromFfi(handle) : null;
 
 // End of Zone "private" section.

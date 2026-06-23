@@ -1,10 +1,13 @@
 import 'dart:ffi';
+import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/navigine/idl/route_event_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/target_reached_event.dart';
 import 'package:navigine_sdk/com/navigine/idl/transition_entry_event.dart';
 import 'package:navigine_sdk/com/navigine/idl/transition_exit_event.dart';
 import 'package:navigine_sdk/com/navigine/idl/turn_event.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
 
 part 'route_event.impl.dart';
 /// Class storing one route event payload.

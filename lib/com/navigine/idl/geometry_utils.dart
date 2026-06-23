@@ -1,12 +1,12 @@
 import 'dart:ffi';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon.dart';
 import 'package:navigine_sdk/com/navigine/idl/segment.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 
 part 'geometry_utils.impl.dart';
 /// A set of functions for working with geometries.
@@ -173,9 +173,11 @@ abstract class GeometryUtils implements Finalizable {
     /// ```
     static double getProjectionRatio(Segment segment, Point point) => $prototype.getProjectionRatio(segment, point);
 
+    bool isValid();
+
 
 
     /// @nodoc
     @visibleForTesting
-    static dynamic $prototype = GeometryUtils$Impl(Pointer<Void>.fromAddress(0));
+    static dynamic $prototype = GeometryUtils$Impl.fromExternalPtr(Pointer<Void>.fromAddress(0));
 }

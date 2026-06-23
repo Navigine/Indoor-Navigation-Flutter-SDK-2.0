@@ -2,36 +2,55 @@ part of 'image.dart';
 
 // Image "private" section, not exported.
 
-final _navigine_sdk_flutter_Image_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Image_copy_handle'));
-
-final _navigine_sdk_flutter_Image_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_Image_release_handle'));
+final _navigine_sdk_flutter_Image_check = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Bool Function(Pointer<Void>),
+    bool Function(Pointer<Void>)
+  >('navigine_sdk_flutter_Image_check'));
 
 final _navigine_sdk_flutter_Image_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_Image_free');
 
 
-class Image$Impl extends __lib.NativeBase implements Image, Finalizable {
-    Image$Impl(Pointer<Void> handle) : super(handle);
+class Image$Impl implements Image, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_Image_free.cast());
+
+    Image$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    Image$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory Image$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        weak_interface_wrapper.createFromNative(ptr);
+
+    @override
+    bool isValid() => _navigine_sdk_flutter_Image_check(ptr);
+
+    static Pointer<Void> getNativePtr(Image? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as Image$Impl).ptr;
+    }
+
+    static Image? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return Image$Impl.fromNativePtr(ptr);
+    }
 
 
     Uint8List get data {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            NativeBytes Function(Pointer<Void>),
+            NativeBytes Function(Pointer<Void>)
           >('navigine_sdk_flutter_Image_data_get'));
 
-        final _handle = this.handle;
-        final _dataHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_Uint8List_FromFfi(_dataHandle);
-        navigine_sdk_flutter_Uint8List_ReleaseFfiHandle(_dataHandle);
+        final _dataHandle = _getFfi(this.ptr);
+        final _result = toPlatformBytes(_dataHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -42,10 +61,9 @@ class Image$Impl extends __lib.NativeBase implements Image, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Image_width_get'));
 
-        final _handle = this.handle;
-        final _widthHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_widthHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_widthHandle);
+        final _widthHandle = _getFfi(this.ptr);
+        final _result = _widthHandle;
+        exception.checkCallResult();
         return _result;
     }
 
@@ -56,10 +74,9 @@ class Image$Impl extends __lib.NativeBase implements Image, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Image_height_get'));
 
-        final _handle = this.handle;
-        final _heightHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_heightHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_heightHandle);
+        final _heightHandle = _getFfi(this.ptr);
+        final _result = _heightHandle;
+        exception.checkCallResult();
         return _result;
     }
 
@@ -70,10 +87,9 @@ class Image$Impl extends __lib.NativeBase implements Image, Finalizable {
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Image_type_get'));
 
-        final _handle = this.handle;
-        final _typeHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_ImageType_FromFfi(_typeHandle);
-        navigine_sdk_flutter_ImageType_ReleaseFfiHandle(_typeHandle);
+        final _typeHandle = _getFfi(this.ptr);
+        final _result = ImageTypeImpl.fromInt(_typeHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -81,34 +97,5 @@ class Image$Impl extends __lib.NativeBase implements Image, Finalizable {
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_Image_ToFfi(Image value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_Image_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-Image navigine_sdk_flutter_Image_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_Image_CopyHandle(handle);
-    final result = Image$Impl(_copiedHandle);
-    Image$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_Image_ToFfiNullable(Image? value) => 
-  value != null ? navigine_sdk_flutter_Image_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_Image_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_Image_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_Image_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_Image_ReleaseHandle(handle);
-
-Image? navigine_sdk_flutter_Image_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_Image_FromFfi(handle) : null;
 
 // End of Image "private" section.

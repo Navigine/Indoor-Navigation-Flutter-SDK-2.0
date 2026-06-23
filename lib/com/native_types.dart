@@ -1,8 +1,38 @@
 import 'dart:ffi';
 
+import 'package:ffi/ffi.dart';
 import 'package:meta/meta.dart';
 
 import '_library_context.dart' as __lib;
+
+@internal
+NativeString Function(Pointer<Utf8>, int) newNativeString = __lib
+    .nativeLibrary
+    .lookup<NativeFunction<NativeString Function(Pointer<Utf8>, Size)>>(
+        'navigine_sdk_flutter_new_native_string')
+    .asFunction(isLeaf: true);
+
+@internal
+NativeBytes Function(Pointer<Uint8>, int) newNativeBytes = __lib.nativeLibrary
+    .lookup<NativeFunction<NativeBytes Function(Pointer<Uint8>, Size)>>(
+        'navigine_sdk_flutter_new_native_bytes')
+    .asFunction(isLeaf: true);
+
+@internal
+Pointer<Void> Function(bool, int, NativeString) newImageProvider = __lib
+    .nativeLibrary
+    .lookup<NativeFunction<Pointer<Void> Function(Bool, Int64, NativeString)>>(
+        'navigine_sdk_flutter_new_image_provider')
+    .asFunction(isLeaf: true);
+
+@internal
+Pointer<Void> Function(int, int, NativeString, Pointer<Void>)
+    newModelProvider = __lib.nativeLibrary
+        .lookup<
+            NativeFunction<
+                Pointer<Void> Function(Int64, Int64, NativeString,
+                    Pointer<Void>)>>('navigine_sdk_flutter_new_model_provider')
+        .asFunction(isLeaf: true);
 
 @internal
 NativeImageProvider Function(int, int) newNativeImageProvider = __lib
@@ -11,27 +41,12 @@ NativeImageProvider Function(int, int) newNativeImageProvider = __lib
         'navigine_sdk_flutter_new_native_image_provider')
     .asFunction(isLeaf: true);
 
-@internal
-NativeBytes Function(int) newNativeBytes = __lib.nativeLibrary
-    .lookup<NativeFunction<NativeBytes Function(Uint64)>>(
-        'navigine_sdk_flutter_new_native_bytes')
-    .asFunction(isLeaf: true);
+final class NativeString extends Struct {
+  external Pointer<Utf8> ptr;
 
-@internal
-Pointer<Void> Function(bool, int, Pointer<Void>) newImageProvider = __lib
-    .nativeLibrary
-    .lookup<NativeFunction<Pointer<Void> Function(Bool, Int64, Pointer<Void>)>>(
-        'navigine_sdk_flutter_new_image_provider')
-    .asFunction(isLeaf: true);
-
-@internal
-Pointer<Void> Function(int, int, Pointer<Void>, Pointer<Void>)
-    newModelProvider = __lib.nativeLibrary
-        .lookup<
-            NativeFunction<
-                Pointer<Void> Function(Int64, Int64, Pointer<Void>,
-                    Pointer<Void>)>>('navigine_sdk_flutter_new_model_provider')
-        .asFunction(isLeaf: true);
+  @Size()
+  external int size;
+}
 
 final class NativeImageProvider extends Struct {
   external Pointer<Void> p;
@@ -39,7 +54,8 @@ final class NativeImageProvider extends Struct {
 }
 
 final class NativeBytes extends Struct {
-  external Pointer<Uint8> data;
+  external Pointer<Uint8> ptr;
+
   @Size()
   external int size;
 }

@@ -2,24 +2,37 @@ part of 'location_manager.dart';
 
 // LocationManager "private" section, not exported.
 
-final _navigine_sdk_flutter_LocationManager_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationManager_copy_handle'));
-
-final _navigine_sdk_flutter_LocationManager_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationManager_release_handle'));
-
 final _navigine_sdk_flutter_LocationManager_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_LocationManager_free');
 
 
-class LocationManager$Impl extends __lib.NativeBase implements LocationManager, Finalizable {
-    LocationManager$Impl(Pointer<Void> handle) : super(handle);
+class LocationManager$Impl implements LocationManager, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_LocationManager_free.cast());
+
+    LocationManager$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    LocationManager$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory LocationManager$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        LocationManager$Impl.fromNativePtrImpl(ptr);
+
+
+    static Pointer<Void> getNativePtr(LocationManager? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as LocationManager$Impl).ptr;
+    }
+
+    static LocationManager? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return LocationManager$Impl.fromNativePtr(ptr);
+    }
 
     @override
     void addLocationListener(LocationListener listener) {
@@ -27,10 +40,8 @@ class LocationManager$Impl extends __lib.NativeBase implements LocationManager, 
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_LocationManager_addLocationListener__Listener'));
-        final _listenerHandle = navigine_sdk_flutter_LocationListener_ToFfi(listener);
-        final _handle = this.handle;
-        _addLocationListenerFfi(_handle, _listenerHandle);
-        navigine_sdk_flutter_LocationListener_ReleaseFfiHandle(_listenerHandle);
+        _addLocationListenerFfi(this.ptr, LocationListenerImpl.getNativePtr(listener));
+        exception.checkCallResult();
     }
 
     @override
@@ -39,10 +50,8 @@ class LocationManager$Impl extends __lib.NativeBase implements LocationManager, 
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_LocationManager_removeLocationListener__Listener'));
-        final _listenerHandle = navigine_sdk_flutter_LocationListener_ToFfi(listener);
-        final _handle = this.handle;
-        _removeLocationListenerFfi(_handle, _listenerHandle);
-        navigine_sdk_flutter_LocationListener_ReleaseFfiHandle(_listenerHandle);
+        _removeLocationListenerFfi(this.ptr, LocationListenerImpl.getNativePtr(listener));
+        exception.checkCallResult();
     }
 
     @override
@@ -51,10 +60,8 @@ class LocationManager$Impl extends __lib.NativeBase implements LocationManager, 
             Void Function(Pointer<Void>, Int32),
             void Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_LocationManager_setLocationId__LocationId'));
-        final _locationIdHandle = navigine_sdk_flutter_int_ToFfi(locationId);
-        final _handle = this.handle;
-        _setLocationIdFfi(_handle, _locationIdHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_locationIdHandle);
+        _setLocationIdFfi(this.ptr, locationId);
+        exception.checkCallResult();
     }
 
     @override
@@ -63,10 +70,9 @@ class LocationManager$Impl extends __lib.NativeBase implements LocationManager, 
             Int32 Function(Pointer<Void>, ),
             int Function(Pointer<Void>, )
           >('navigine_sdk_flutter_LocationManager_getLocationId'));
-        final _handle = this.handle;
-        final __resultHandle = _getLocationIdFfi(_handle, );
-        final _result = navigine_sdk_flutter_int_FromFfi(__resultHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _getLocationIdFfi(this.ptr, );
+        final _result = __resultHandle;
+        exception.checkCallResult();
         return _result;
     }
 
@@ -76,8 +82,8 @@ class LocationManager$Impl extends __lib.NativeBase implements LocationManager, 
             Void Function(Pointer<Void>, ),
             void Function(Pointer<Void>, )
           >('navigine_sdk_flutter_LocationManager_commitChanges'));
-        final _handle = this.handle;
-        _commitChangesFfi(_handle, );
+        _commitChangesFfi(this.ptr, );
+        exception.checkCallResult();
     }
 
     @override
@@ -86,8 +92,8 @@ class LocationManager$Impl extends __lib.NativeBase implements LocationManager, 
             Void Function(Pointer<Void>, ),
             void Function(Pointer<Void>, )
           >('navigine_sdk_flutter_LocationManager_revertChanges'));
-        final _handle = this.handle;
-        _revertChangesFfi(_handle, );
+        _revertChangesFfi(this.ptr, );
+        exception.checkCallResult();
     }
 
     @override
@@ -96,44 +102,13 @@ class LocationManager$Impl extends __lib.NativeBase implements LocationManager, 
             Void Function(Pointer<Void>, Int32),
             void Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_LocationManager_setLocationUpdateInterval__Interval'));
-        final _intervalHandle = navigine_sdk_flutter_int_ToFfi(interval);
-        final _handle = this.handle;
-        _setLocationUpdateIntervalFfi(_handle, _intervalHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_intervalHandle);
+        _setLocationUpdateIntervalFfi(this.ptr, interval);
+        exception.checkCallResult();
     }
 
 
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_LocationManager_ToFfi(LocationManager value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_LocationManager_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-LocationManager navigine_sdk_flutter_LocationManager_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_LocationManager_CopyHandle(handle);
-    final result = LocationManager$Impl(_copiedHandle);
-    LocationManager$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_LocationManager_ToFfiNullable(LocationManager? value) => 
-  value != null ? navigine_sdk_flutter_LocationManager_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_LocationManager_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_LocationManager_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_LocationManager_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_LocationManager_ReleaseHandle(handle);
-
-LocationManager? navigine_sdk_flutter_LocationManager_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_LocationManager_FromFfi(handle) : null;
 
 // End of LocationManager "private" section.

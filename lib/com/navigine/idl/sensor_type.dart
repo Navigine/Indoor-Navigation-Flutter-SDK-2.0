@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import 'package:navigine_sdk/com/_library_context.dart' as __lib;
+import 'package:ffi/ffi.dart';
 
 part 'sensor_type.impl.dart';
 /// Enum defining types of sensors used in measurements.
