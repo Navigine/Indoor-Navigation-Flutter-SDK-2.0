@@ -1,7 +1,7 @@
 import 'dart:ffi';
+import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/location_listener.dart';
 
 part 'location_manager.impl.dart';

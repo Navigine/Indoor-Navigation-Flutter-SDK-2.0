@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'CoreGraphics','Foundation','OpenGLES','CoreMotion','CoreFoundation','UIKit','QuartzCore','SystemConfiguration','CoreLocation', 'CoreText', 'CoreBluetooth', 'GLKit', 'Metal'
 
-  navigine_sdk_version = '2.25.2'
+  navigine_sdk_version = '2.26.0'
 
   s.libraries = 'c++'
   s.static_framework = true

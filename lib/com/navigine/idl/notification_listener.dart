@@ -1,7 +1,6 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_weak_map.dart';
+import 'package:navigine_sdk/com/_weak_map.dart' as weak_map;
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/notification.dart';
 import 'package:navigine_sdk/error.dart';
@@ -13,7 +12,7 @@ part 'notification_listener.impl.dart';
 /// **Note:** The callback is invoked in the UI thread.
 abstract class NotificationListener {
 
-    /// Called when iBeacon signal mathed all parameters in notification
+    /// Called when iBeacon signal matched all parameters in notification
     /// [notification] notification instance created in CMS [Notification].
     ///
     /// Example:

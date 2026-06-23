@@ -1,6 +1,9 @@
 import 'dart:ffi';
+import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/containers__conversion.dart';
+import 'package:navigine_sdk/com/lazy_list.dart';
+import 'package:navigine_sdk/com/lazy_map.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_event.dart';
 

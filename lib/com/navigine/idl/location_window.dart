@@ -2,8 +2,11 @@ import 'dart:ffi';
 import 'dart:math' as math;
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/containers__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/lazy_list.dart';
+import 'package:navigine_sdk/com/lazy_map.dart';
+import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/bounding_box.dart';
 import 'package:navigine_sdk/com/navigine/idl/building_listener.dart';
@@ -11,6 +14,7 @@ import 'package:navigine_sdk/com/navigine/idl/camera.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera_callback.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/circle_map_object.dart';
+import 'package:navigine_sdk/com/navigine/idl/cluster_map_object_controller.dart';
 import 'package:navigine_sdk/com/navigine/idl/debug_flag.dart';
 import 'package:navigine_sdk/com/navigine/idl/dotted_polyline_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
@@ -22,6 +26,9 @@ import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/sublocation_change_listener.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 import 'package:navigine_sdk/screen_point.dart';
 
 part 'location_window.impl.dart';
@@ -142,6 +149,28 @@ abstract class LocationWindow implements Finalizable {
     /// }
     /// ```
     bool removeIconMapObject(IconMapObject iconMapObject);
+
+    /// Creates an icon map object controller for the location view.
+    /// Returns Cluster controller instance [ClusterMapObjectController].
+    ///
+    /// Example:
+    /// ```dart
+    /// _clusterMapObjectController = _locationWindow!.addClusterMapObjectController();
+    /// print("Added cluster map object controller");
+    /// ```
+    ClusterMapObjectController addClusterMapObjectController();
+
+    /// Removes an icon map object controller from the location view.
+    /// [controller] The controller instance to remove.
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// final controllerRemoved =
+    ///    _locationWindow!.removeClusterMapObjectController(controller);
+    /// print("Removed cluster map object controller: $controllerRemoved");
+    /// ```
+    bool removeClusterMapObjectController(ClusterMapObjectController controller);
 
     /// Creates and adds a polygon map object to the location view.
     /// Returns A PolygonMapObject instance [PolygonMapObject] if successful, null otherwise.
@@ -514,6 +543,8 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     static bool getDebugFlag(DebugFlag flag) => $prototype.getDebugFlag(flag);
 
+    bool isValid();
+
     /// Specifies the zoom level of the location view, in pixels per meter.
     /// Default: approximately 100 meters across the screen width.
     ///
@@ -634,5 +665,5 @@ abstract class LocationWindow implements Finalizable {
 
     /// @nodoc
     @visibleForTesting
-    static dynamic $prototype = LocationWindow$Impl(Pointer<Void>.fromAddress(0));
+    static dynamic $prototype = LocationWindow$Impl.fromExternalPtr(Pointer<Void>.fromAddress(0));
 }

@@ -4,8 +4,8 @@ import 'dart:typed_data';
 
 import 'package:uuid/uuid.dart';
 
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/exception.dart';
+import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/image_provider.dart';
@@ -29,6 +29,38 @@ extension ModelProviderNative on ModelProvider {
   static Pointer<Void> get getTextureNative => _getTextureNative;
 }
 
+class ModelProviderImpl {
+  static Pointer<Void> getNativePtr(ModelProvider? provider) {
+    if (provider == null) return Pointer<Void>.fromAddress(0);
+
+    final heap = ModelProviderNative.heap;
+    final sendPort = heap.sendPort;
+    final executablePort = __lib.createExecutePort();
+    final nativeObject = newModelProvider(
+        sendPort,
+        executablePort,
+        toNativeString(provider.modelId),
+        ModelProviderNative.getTextureNative);
+    if (nativeObject == nullptr) {
+      throw StateError('Failed to create native ModelProvider handle.');
+    }
+
+    final nativeObjectKey =
+        _navigine_sdk_flutter_model_provider_GetObjectKey(nativeObject);
+    if (nativeObjectKey == nullptr) {
+      _navigine_sdk_flutter_model_provider_ReleaseHandle(nativeObject);
+      throw StateError('Failed to get native ModelProvider callback key.');
+    }
+    heap.insertObject(nativeObjectKey, provider);
+
+    return nativeObject;
+  }
+
+  static void releaseNativePtr(Pointer<Void> handle) {
+    _navigine_sdk_flutter_model_provider_ReleaseHandle(handle);
+  }
+}
+
 class _ModelProviderHeap extends __lib.AsyncDispatcherHeap<ModelProvider> {
   static Future<ByteData> _getModel(ModelProvider object) {
     return object.onModelRequest();
@@ -45,7 +77,7 @@ class _ModelProviderHeap extends __lib.AsyncDispatcherHeap<ModelProvider> {
   @override
   void onHandlerException(ModelProvider? object, Pointer<Void> nativeData,
       Object e, StackTrace stackTrace) {
-    _onModelComplete(nativeData, newNativeBytes(0));
+    _onModelComplete(nativeData, newNativeBytes(nullptr, 0));
     if (object != null) {
       object._errorHandler.onError(e, stackTrace);
     } else {
@@ -57,16 +89,7 @@ class _ModelProviderHeap extends __lib.AsyncDispatcherHeap<ModelProvider> {
 NativeBytes _toNativeBytes(ByteData value) {
   final source =
       value.buffer.asUint8List(value.offsetInBytes, value.lengthInBytes);
-  final result = newNativeBytes(source.length);
-
-  if (source.isNotEmpty && result.data == nullptr) {
-    throw StateError('Failed to allocate native model bytes.');
-  }
-  if (result.data != nullptr) {
-    result.data.asTypedList(source.length).setAll(0, source);
-  }
-
-  return result;
+  return toNativeBytes(source);
 }
 
 final void Function(Pointer<Void>, NativeBytes) _onModelComplete =
@@ -87,39 +110,10 @@ final _navigine_sdk_flutter_model_provider_GetObjectKey =
         'navigine_sdk_flutter_model_provider_get_object_key'));
 
 Pointer<Void> _getTexture(Pointer<Void> nativeObject) {
-  return navigine_sdk_flutter_ImageProvider_ToFfi(
+  return toNativeImageProviderPtr(
       ModelProviderNative.heap.findObject(nativeObject).texture);
 }
 
 final Pointer<Void> _getTextureNative =
     Pointer.fromFunction<Pointer<Void> Function(Pointer<Void>)>(_getTexture)
         .cast();
-
-Pointer<Void> navigine_sdk_flutter_ModelProvider_ToFfi(ModelProvider provider) {
-  final heap = ModelProviderNative.heap;
-  final sendPort = heap.sendPort;
-  final executablePort = __lib.createExecutePort();
-  final modelId = navigine_sdk_flutter_String_ToFfi(provider.modelId);
-  final nativeObject = newModelProvider(
-      sendPort, executablePort, modelId, ModelProviderNative.getTextureNative);
-  navigine_sdk_flutter_String_ReleaseFfiHandle(modelId);
-  if (nativeObject == nullptr) {
-    throw StateError('Failed to create native ModelProvider handle.');
-  }
-
-  // `nativeObject` is the transient FFI handle released after the call.
-  // Native async callbacks use the underlying ModelProviderBinding* as key.
-  final nativeObjectKey =
-      _navigine_sdk_flutter_model_provider_GetObjectKey(nativeObject);
-  if (nativeObjectKey == nullptr) {
-    _navigine_sdk_flutter_model_provider_ReleaseHandle(nativeObject);
-    throw StateError('Failed to get native ModelProvider callback key.');
-  }
-  heap.insertObject(nativeObjectKey, provider);
-
-  return nativeObject;
-}
-
-void navigine_sdk_flutter_ModelProvider_ReleaseFfiHandle(
-        Pointer<Void> handle) =>
-    _navigine_sdk_flutter_model_provider_ReleaseHandle(handle);

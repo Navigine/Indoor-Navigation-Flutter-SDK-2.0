@@ -1,12 +1,16 @@
 import 'dart:ffi';
 import 'dart:typed_data';
+import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 import 'package:navigine_sdk/image_provider.dart';
 
 part 'icon_map_object.impl.dart';
@@ -171,6 +175,8 @@ abstract class IconMapObject implements MapObject, Finalizable {
     /// print("Set icon flat mode to true: $flatSuccess");
     /// ```
     bool setFlat(bool flat);
+
+    bool isValid();
 
 
 

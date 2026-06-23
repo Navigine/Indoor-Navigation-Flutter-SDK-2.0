@@ -24,16 +24,13 @@ int _navigine_sdk_flutter_BuildingListener_onActiveBuildingFocusedStatic(Pointer
     }
     try  {
         listener.onActiveBuildingFocused(
-          navigine_sdk_flutter_Building_FromFfi(activeBuilding),
+          Building$Impl.fromNativePtr(activeBuilding),
         );
         
     }
     catch (e, stack)  {
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
-    }
-    finally  {
-        navigine_sdk_flutter_Building_ReleaseFfiHandle(activeBuilding);
     }
     return 0;
 }
@@ -53,8 +50,6 @@ int _navigine_sdk_flutter_BuildingListener_onActiveBuildingLeftStatic(Pointer<Vo
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-    }
     return 0;
 }
 
@@ -66,7 +61,7 @@ int _navigine_sdk_flutter_BuildingListener_onActiveSublocationChangedStatic(Poin
     }
     try  {
         listener.onActiveSublocationChanged(
-          navigine_sdk_flutter_int_FromFfi(activeSublocationId),
+          activeSublocationId,
         );
         
     }
@@ -74,51 +69,49 @@ int _navigine_sdk_flutter_BuildingListener_onActiveSublocationChangedStatic(Poin
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_int_ReleaseFfiHandle(activeSublocationId);
-    }
     return 0;
 }
 
 
-class _BuildingListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _BuildingListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_BuildingListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_BuildingListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_BuildingListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension BuildingListenerImpl on BuildingListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<BuildingListener>>{};
-    static final _listenerToPointer = WeakMap<BuildingListener, _BuildingListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<BuildingListener, _navigine_sdk_flutter_BuildingListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(BuildingListener obj) {
+        final ptr = _navigine_sdk_flutter_BuildingListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_BuildingListener_onActiveBuildingFocusedStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>)>(_navigine_sdk_flutter_BuildingListener_onActiveBuildingLeftStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, Int32)>(_navigine_sdk_flutter_BuildingListener_onActiveSublocationChangedStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_BuildingListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_BuildingListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(BuildingListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_BuildingListener_ToFfi(BuildingListener value) {
-    final result = _navigine_sdk_flutter_BuildingListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_BuildingListener_onActiveBuildingFocusedStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>)>(_navigine_sdk_flutter_BuildingListener_onActiveBuildingLeftStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Int32)>(_navigine_sdk_flutter_BuildingListener_onActiveSublocationChangedStatic, __lib.unknownError),
-    );
-    BuildingListenerImpl._pointerToListener[result] = WeakReference(value);
-    BuildingListenerImpl._listenerToPointer[value] = _BuildingListenerWrapper(result);
-    _navigine_sdk_flutter_BuildingListener_SetPorts(result, __lib.createPortWithCallback(BuildingListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_BuildingListener_ToFfiNullable(BuildingListener? value) => 
-  value != null ? navigine_sdk_flutter_BuildingListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_BuildingListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_BuildingListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of BuildingListener "private" section.

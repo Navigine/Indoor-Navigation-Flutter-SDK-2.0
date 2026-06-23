@@ -1,8 +1,8 @@
 import 'dart:ffi';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/async_route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_estimator.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_edit_manager.dart';
@@ -18,6 +18,9 @@ import 'package:navigine_sdk/com/navigine/idl/route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/storage_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/user_location_layer.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_manager.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 import 'package:navigine_sdk/location_view.dart';
 import 'package:navigine_sdk/platform_view.dart';
 
@@ -274,9 +277,11 @@ abstract class NavigineSdk implements Finalizable {
     /// ```
     LocationListManager getLocationListManager();
 
+    bool isValid();
+
 
 
     /// @nodoc
     @visibleForTesting
-    static dynamic $prototype = NavigineSdk$Impl(Pointer<Void>.fromAddress(0));
+    static dynamic $prototype = NavigineSdk$Impl.fromExternalPtr(Pointer<Void>.fromAddress(0));
 }

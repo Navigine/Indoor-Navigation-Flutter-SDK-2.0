@@ -1,15 +1,21 @@
 import 'dart:ffi';
 
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:flutter/foundation.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
+import 'package:navigine_sdk/com/native_types.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+
+final Pointer<Bool> _lastCallSuccess = __lib.nativeLibrary
+    .lookup<Bool>('navigine_sdk_flutter_last_call_success');
 
 final _nativeAssert = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
+    Void Function(NativeString),
+    void Function(NativeString)
   >('navigine_sdk_flutter_native_assert'));
 
 void nativeAssert(String message) {
-  _nativeAssert(navigine_sdk_flutter_String_ToFfi(message));
+  debugPrint('=== Navigine nativeAssert ===\n$message');
+  _nativeAssert(toNativeString(message));
 }
 
 class AsyncErrorHandler {
@@ -34,5 +40,11 @@ class NativeNullException implements Exception {
   @override
   String toString() {
     return 'NativeNullException: access to deleted native object.';
+  }
+}
+
+void checkCallResult() {
+  if (!_lastCallSuccess.value) {
+    throw const NativeNullException();
   }
 }

@@ -1,13 +1,19 @@
 import 'dart:ffi';
+import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/native_types.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 
 part 'notification.impl.dart';
 /// Class is used for working with the notifications and storing its data.
 /// Referenced from: [NotificationListener].
 abstract class Notification implements Finalizable {
 
+
+    bool isValid();
 
     /// notification's unique identifier.
     ///

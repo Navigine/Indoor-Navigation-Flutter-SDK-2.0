@@ -2,199 +2,126 @@ part of 'location_edit_manager.dart';
 
 // LocationEditManager "private" section, not exported.
 
-final _navigine_sdk_flutter_LocationEditManager_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationEditManager_copy_handle'));
-
-final _navigine_sdk_flutter_LocationEditManager_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_LocationEditManager_release_handle'));
-
 final _navigine_sdk_flutter_LocationEditManager_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_LocationEditManager_free');
 
 
-class LocationEditManager$Impl extends __lib.NativeBase implements LocationEditManager, Finalizable {
-    LocationEditManager$Impl(Pointer<Void> handle) : super(handle);
+class LocationEditManager$Impl implements LocationEditManager, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_LocationEditManager_free.cast());
+
+    LocationEditManager$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    LocationEditManager$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory LocationEditManager$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        LocationEditManager$Impl.fromNativePtrImpl(ptr);
+
+
+    static Pointer<Void> getNativePtr(LocationEditManager? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as LocationEditManager$Impl).ptr;
+    }
+
+    static LocationEditManager? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return LocationEditManager$Impl.fromNativePtr(ptr);
+    }
 
     @override
     void addBeacon(int subLocId, String uuid, int major, int minor, Point point, String name, int? power) {
         final _addBeaconFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Int32, Int32, Pointer<Void>, Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>, int, int, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString, Int32, Int32, PointNative, NativeString, Pointer<Void>),
+            void Function(Pointer<Void>, int, NativeString, int, int, PointNative, NativeString, Pointer<Void>)
           >('navigine_sdk_flutter_LocationEditManager_addBeacon__SubLocId_Uuid_Major_Minor_Point_Name_Power'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _uuidHandle = navigine_sdk_flutter_String_ToFfi(uuid);
-        final _majorHandle = navigine_sdk_flutter_int_ToFfi(major);
-        final _minorHandle = navigine_sdk_flutter_int_ToFfi(minor);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final _nameHandle = navigine_sdk_flutter_String_ToFfi(name);
-        final _powerHandle = navigine_sdk_flutter_int_ToFfiNullable(power);
-        final _handle = this.handle;
-        _addBeaconFfi(_handle, _subLocIdHandle, _uuidHandle, _majorHandle, _minorHandle, _pointHandle, _nameHandle, _powerHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_uuidHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_majorHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_minorHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandleNullable(_powerHandle);
+        _addBeaconFfi(this.ptr, subLocId, toNativeString(uuid), major, minor, PointImpl.toNative(point), toNativeString(name), toNativePtrInt32(power));
+        exception.checkCallResult();
     }
 
     @override
     void editBeacon(int subLocId, String uuid, int major, int minor, Point point, String name, int? power) {
         final _editBeaconFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Int32, Int32, Pointer<Void>, Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>, int, int, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString, Int32, Int32, PointNative, NativeString, Pointer<Void>),
+            void Function(Pointer<Void>, int, NativeString, int, int, PointNative, NativeString, Pointer<Void>)
           >('navigine_sdk_flutter_LocationEditManager_editBeacon__SubLocId_Uuid_Major_Minor_Point_Name_Power'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _uuidHandle = navigine_sdk_flutter_String_ToFfi(uuid);
-        final _majorHandle = navigine_sdk_flutter_int_ToFfi(major);
-        final _minorHandle = navigine_sdk_flutter_int_ToFfi(minor);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final _nameHandle = navigine_sdk_flutter_String_ToFfi(name);
-        final _powerHandle = navigine_sdk_flutter_int_ToFfiNullable(power);
-        final _handle = this.handle;
-        _editBeaconFfi(_handle, _subLocIdHandle, _uuidHandle, _majorHandle, _minorHandle, _pointHandle, _nameHandle, _powerHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_uuidHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_majorHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_minorHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandleNullable(_powerHandle);
+        _editBeaconFfi(this.ptr, subLocId, toNativeString(uuid), major, minor, PointImpl.toNative(point), toNativeString(name), toNativePtrInt32(power));
+        exception.checkCallResult();
     }
 
     @override
     void removeBeacon(int subLocId, String uuid, int major, int minor) {
         final _removeBeaconFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Int32, Int32),
-            void Function(Pointer<Void>, int, Pointer<Void>, int, int)
+            Void Function(Pointer<Void>, Int32, NativeString, Int32, Int32),
+            void Function(Pointer<Void>, int, NativeString, int, int)
           >('navigine_sdk_flutter_LocationEditManager_removeBeacon__SubLocId_Uuid_Major_Minor'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _uuidHandle = navigine_sdk_flutter_String_ToFfi(uuid);
-        final _majorHandle = navigine_sdk_flutter_int_ToFfi(major);
-        final _minorHandle = navigine_sdk_flutter_int_ToFfi(minor);
-        final _handle = this.handle;
-        _removeBeaconFfi(_handle, _subLocIdHandle, _uuidHandle, _majorHandle, _minorHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_uuidHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_majorHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_minorHandle);
+        _removeBeaconFfi(this.ptr, subLocId, toNativeString(uuid), major, minor);
+        exception.checkCallResult();
     }
 
     @override
     void addEddystone(int subLocId, String namespaceId, String instanceId, Point point, String name, int? power) {
         final _addEddystoneFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString, NativeString, PointNative, NativeString, Pointer<Void>),
+            void Function(Pointer<Void>, int, NativeString, NativeString, PointNative, NativeString, Pointer<Void>)
           >('navigine_sdk_flutter_LocationEditManager_addEddystone__SubLocId_NamespaceId_InstanceId_Point_Name_Power'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _namespaceIdHandle = navigine_sdk_flutter_String_ToFfi(namespaceId);
-        final _instanceIdHandle = navigine_sdk_flutter_String_ToFfi(instanceId);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final _nameHandle = navigine_sdk_flutter_String_ToFfi(name);
-        final _powerHandle = navigine_sdk_flutter_int_ToFfiNullable(power);
-        final _handle = this.handle;
-        _addEddystoneFfi(_handle, _subLocIdHandle, _namespaceIdHandle, _instanceIdHandle, _pointHandle, _nameHandle, _powerHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_namespaceIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_instanceIdHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandleNullable(_powerHandle);
+        _addEddystoneFfi(this.ptr, subLocId, toNativeString(namespaceId), toNativeString(instanceId), PointImpl.toNative(point), toNativeString(name), toNativePtrInt32(power));
+        exception.checkCallResult();
     }
 
     @override
     void editEddystone(int subLocId, String namespaceId, String instanceId, Point point, String name, int? power) {
         final _editEddystoneFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString, NativeString, PointNative, NativeString, Pointer<Void>),
+            void Function(Pointer<Void>, int, NativeString, NativeString, PointNative, NativeString, Pointer<Void>)
           >('navigine_sdk_flutter_LocationEditManager_editEddystone__SubLocId_NamespaceId_InstanceId_Point_Name_Power'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _namespaceIdHandle = navigine_sdk_flutter_String_ToFfi(namespaceId);
-        final _instanceIdHandle = navigine_sdk_flutter_String_ToFfi(instanceId);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final _nameHandle = navigine_sdk_flutter_String_ToFfi(name);
-        final _powerHandle = navigine_sdk_flutter_int_ToFfiNullable(power);
-        final _handle = this.handle;
-        _editEddystoneFfi(_handle, _subLocIdHandle, _namespaceIdHandle, _instanceIdHandle, _pointHandle, _nameHandle, _powerHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_namespaceIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_instanceIdHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandleNullable(_powerHandle);
+        _editEddystoneFfi(this.ptr, subLocId, toNativeString(namespaceId), toNativeString(instanceId), PointImpl.toNative(point), toNativeString(name), toNativePtrInt32(power));
+        exception.checkCallResult();
     }
 
     @override
     void removeEddystone(int subLocId, String namespaceId, String instanceId) {
         final _removeEddystoneFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString, NativeString),
+            void Function(Pointer<Void>, int, NativeString, NativeString)
           >('navigine_sdk_flutter_LocationEditManager_removeEddystone__SubLocId_NamespaceId_InstanceId'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _namespaceIdHandle = navigine_sdk_flutter_String_ToFfi(namespaceId);
-        final _instanceIdHandle = navigine_sdk_flutter_String_ToFfi(instanceId);
-        final _handle = this.handle;
-        _removeEddystoneFfi(_handle, _subLocIdHandle, _namespaceIdHandle, _instanceIdHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_namespaceIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_instanceIdHandle);
+        _removeEddystoneFfi(this.ptr, subLocId, toNativeString(namespaceId), toNativeString(instanceId));
+        exception.checkCallResult();
     }
 
     @override
     void addWifi(int subLocId, String mac, Point point, String name) {
         final _addWifiFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString, PointNative, NativeString),
+            void Function(Pointer<Void>, int, NativeString, PointNative, NativeString)
           >('navigine_sdk_flutter_LocationEditManager_addWifi__SubLocId_Mac_Point_Name'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _macHandle = navigine_sdk_flutter_String_ToFfi(mac);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final _nameHandle = navigine_sdk_flutter_String_ToFfi(name);
-        final _handle = this.handle;
-        _addWifiFfi(_handle, _subLocIdHandle, _macHandle, _pointHandle, _nameHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_macHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
+        _addWifiFfi(this.ptr, subLocId, toNativeString(mac), PointImpl.toNative(point), toNativeString(name));
+        exception.checkCallResult();
     }
 
     @override
     void editWifi(int subLocId, String mac, Point point, String name) {
         final _editWifiFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>, Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString, PointNative, NativeString),
+            void Function(Pointer<Void>, int, NativeString, PointNative, NativeString)
           >('navigine_sdk_flutter_LocationEditManager_editWifi__SubLocId_Mac_Point_Name'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _macHandle = navigine_sdk_flutter_String_ToFfi(mac);
-        final _pointHandle = navigine_sdk_flutter_Point_ToFfi(point);
-        final _nameHandle = navigine_sdk_flutter_String_ToFfi(name);
-        final _handle = this.handle;
-        _editWifiFfi(_handle, _subLocIdHandle, _macHandle, _pointHandle, _nameHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_macHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
+        _editWifiFfi(this.ptr, subLocId, toNativeString(mac), PointImpl.toNative(point), toNativeString(name));
+        exception.checkCallResult();
     }
 
     @override
     void removeWifi(int subLocId, String mac) {
         final _removeWifiFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString),
+            void Function(Pointer<Void>, int, NativeString)
           >('navigine_sdk_flutter_LocationEditManager_removeWifi__SubLocId_Mac'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _macHandle = navigine_sdk_flutter_String_ToFfi(mac);
-        final _handle = this.handle;
-        _removeWifiFfi(_handle, _subLocIdHandle, _macHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_macHandle);
+        _removeWifiFfi(this.ptr, subLocId, toNativeString(mac));
+        exception.checkCallResult();
     }
 
     @override
@@ -203,8 +130,8 @@ class LocationEditManager$Impl extends __lib.NativeBase implements LocationEditM
             Void Function(Pointer<Void>, ),
             void Function(Pointer<Void>, )
           >('navigine_sdk_flutter_LocationEditManager_addWifiRtt'));
-        final _handle = this.handle;
-        _addWifiRttFfi(_handle, );
+        _addWifiRttFfi(this.ptr, );
+        exception.checkCallResult();
     }
 
     @override
@@ -213,22 +140,18 @@ class LocationEditManager$Impl extends __lib.NativeBase implements LocationEditM
             Void Function(Pointer<Void>, ),
             void Function(Pointer<Void>, )
           >('navigine_sdk_flutter_LocationEditManager_editWifiRtt'));
-        final _handle = this.handle;
-        _editWifiRttFfi(_handle, );
+        _editWifiRttFfi(this.ptr, );
+        exception.checkCallResult();
     }
 
     @override
     void removeWifiRtt(int subLocId, String mac) {
         final _removeWifiRttFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Int32, Pointer<Void>),
-            void Function(Pointer<Void>, int, Pointer<Void>)
+            Void Function(Pointer<Void>, Int32, NativeString),
+            void Function(Pointer<Void>, int, NativeString)
           >('navigine_sdk_flutter_LocationEditManager_removeWifiRtt__SubLocId_Mac'));
-        final _subLocIdHandle = navigine_sdk_flutter_int_ToFfi(subLocId);
-        final _macHandle = navigine_sdk_flutter_String_ToFfi(mac);
-        final _handle = this.handle;
-        _removeWifiRttFfi(_handle, _subLocIdHandle, _macHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_subLocIdHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_macHandle);
+        _removeWifiRttFfi(this.ptr, subLocId, toNativeString(mac));
+        exception.checkCallResult();
     }
 
     @override
@@ -237,10 +160,8 @@ class LocationEditManager$Impl extends __lib.NativeBase implements LocationEditM
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_LocationEditManager_addLocationEditListener__LocationEditListener'));
-        final _locationEditListenerHandle = navigine_sdk_flutter_LocationEditListener_ToFfi(locationEditListener);
-        final _handle = this.handle;
-        _addLocationEditListenerFfi(_handle, _locationEditListenerHandle);
-        navigine_sdk_flutter_LocationEditListener_ReleaseFfiHandle(_locationEditListenerHandle);
+        _addLocationEditListenerFfi(this.ptr, LocationEditListenerImpl.getNativePtr(locationEditListener));
+        exception.checkCallResult();
     }
 
     @override
@@ -249,44 +170,13 @@ class LocationEditManager$Impl extends __lib.NativeBase implements LocationEditM
             Void Function(Pointer<Void>, Pointer<Void>),
             void Function(Pointer<Void>, Pointer<Void>)
           >('navigine_sdk_flutter_LocationEditManager_removeLocationEditListener__LocationEditListener'));
-        final _locationEditListenerHandle = navigine_sdk_flutter_LocationEditListener_ToFfi(locationEditListener);
-        final _handle = this.handle;
-        _removeLocationEditListenerFfi(_handle, _locationEditListenerHandle);
-        navigine_sdk_flutter_LocationEditListener_ReleaseFfiHandle(_locationEditListenerHandle);
+        _removeLocationEditListenerFfi(this.ptr, LocationEditListenerImpl.getNativePtr(locationEditListener));
+        exception.checkCallResult();
     }
 
 
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_LocationEditManager_ToFfi(LocationEditManager value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_LocationEditManager_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-LocationEditManager navigine_sdk_flutter_LocationEditManager_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_LocationEditManager_CopyHandle(handle);
-    final result = LocationEditManager$Impl(_copiedHandle);
-    LocationEditManager$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_LocationEditManager_ToFfiNullable(LocationEditManager? value) => 
-  value != null ? navigine_sdk_flutter_LocationEditManager_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_LocationEditManager_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_LocationEditManager_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_LocationEditManager_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_LocationEditManager_ReleaseHandle(handle);
-
-LocationEditManager? navigine_sdk_flutter_LocationEditManager_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_LocationEditManager_FromFfi(handle) : null;
 
 // End of LocationEditManager "private" section.

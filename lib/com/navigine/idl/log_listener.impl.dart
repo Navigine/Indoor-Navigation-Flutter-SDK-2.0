@@ -16,7 +16,7 @@ final _navigine_sdk_flutter_LogListener_SetPorts = __lib.catchArgumentError(() =
     Pointer<Void> Function(Pointer<Void>, int, int)
   >('navigine_sdk_flutter_LogListener_set_ports'));
 
-int _navigine_sdk_flutter_LogListener_onMessageRecievedStatic(Pointer<Void> _obj, Pointer<Void> message) {
+int _navigine_sdk_flutter_LogListener_onMessageRecievedStatic(Pointer<Void> _obj, LogMessageNative message) {
     
     final listener = LogListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -24,7 +24,7 @@ int _navigine_sdk_flutter_LogListener_onMessageRecievedStatic(Pointer<Void> _obj
     }
     try  {
         listener.onMessageRecieved(
-          navigine_sdk_flutter_LogMessage_FromFfi(message),
+          LogMessageImpl.fromNative(message),
         );
         
     }
@@ -32,49 +32,47 @@ int _navigine_sdk_flutter_LogListener_onMessageRecievedStatic(Pointer<Void> _obj
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_LogMessage_ReleaseFfiHandle(message);
-    }
     return 0;
 }
 
 
-class _LogListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _LogListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_LogListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_LogListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_LogListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension LogListenerImpl on LogListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<LogListener>>{};
-    static final _listenerToPointer = WeakMap<LogListener, _LogListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<LogListener, _navigine_sdk_flutter_LogListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(LogListener obj) {
+        final ptr = _navigine_sdk_flutter_LogListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, LogMessageNative)>(_navigine_sdk_flutter_LogListener_onMessageRecievedStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_LogListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_LogListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(LogListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_LogListener_ToFfi(LogListener value) {
-    final result = _navigine_sdk_flutter_LogListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_LogListener_onMessageRecievedStatic, __lib.unknownError),
-    );
-    LogListenerImpl._pointerToListener[result] = WeakReference(value);
-    LogListenerImpl._listenerToPointer[value] = _LogListenerWrapper(result);
-    _navigine_sdk_flutter_LogListener_SetPorts(result, __lib.createPortWithCallback(LogListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_LogListener_ToFfiNullable(LogListener? value) => 
-  value != null ? navigine_sdk_flutter_LogListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_LogListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_LogListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of LogListener "private" section.

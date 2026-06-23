@@ -2,24 +2,44 @@ part of 'polyline_map_object.dart';
 
 // PolylineMapObject "private" section, not exported.
 
-final _navigine_sdk_flutter_PolylineMapObject_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_PolylineMapObject_copy_handle'));
-
-final _navigine_sdk_flutter_PolylineMapObject_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_PolylineMapObject_release_handle'));
+final _navigine_sdk_flutter_PolylineMapObject_check = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Bool Function(Pointer<Void>),
+    bool Function(Pointer<Void>)
+  >('navigine_sdk_flutter_PolylineMapObject_check'));
 
 final _navigine_sdk_flutter_PolylineMapObject_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_PolylineMapObject_free');
 
 
-class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObject, Finalizable {
-    PolylineMapObject$Impl(Pointer<Void> handle) : super(handle);
+class PolylineMapObject$Impl implements PolylineMapObject, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_PolylineMapObject_free.cast());
+
+    PolylineMapObject$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    PolylineMapObject$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory PolylineMapObject$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        weak_interface_wrapper.createFromNative(ptr);
+
+    @override
+    bool isValid() => _navigine_sdk_flutter_PolylineMapObject_check(ptr);
+
+    static Pointer<Void> getNativePtr(PolylineMapObject? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as PolylineMapObject$Impl).ptr;
+    }
+
+    static PolylineMapObject? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return PolylineMapObject$Impl.fromNativePtr(ptr);
+    }
 
     // MapObject methods
     @override
@@ -28,10 +48,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Int32 Function(Pointer<Void>, ),
             int Function(Pointer<Void>, )
           >('navigine_sdk_flutter_MapObject_getId'));
-        final _handle = this.handle;
-        final __resultHandle = _getIdFfi(_handle, );
-        final _result = navigine_sdk_flutter_int_FromFfi(__resultHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _getIdFfi(this.ptr, );
+        final _result = __resultHandle;
+        exception.checkCallResult();
         return _result;
     }
 
@@ -41,23 +60,21 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint32 Function(Pointer<Void>, ),
             int Function(Pointer<Void>, )
           >('navigine_sdk_flutter_MapObject_getType'));
-        final _handle = this.handle;
-        final __resultHandle = _getTypeFfi(_handle, );
-        final _result = navigine_sdk_flutter_MapObjectType_FromFfi(__resultHandle);
-        navigine_sdk_flutter_MapObjectType_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _getTypeFfi(this.ptr, );
+        final _result = MapObjectTypeImpl.fromInt(__resultHandle);
+        exception.checkCallResult();
         return _result;
     }
 
     @override
     Uint8List getData() {
         final _getDataFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>, ),
-            Pointer<Void> Function(Pointer<Void>, )
+            NativeBytes Function(Pointer<Void>, ),
+            NativeBytes Function(Pointer<Void>, )
           >('navigine_sdk_flutter_MapObject_getData'));
-        final _handle = this.handle;
-        final __resultHandle = _getDataFfi(_handle, );
-        final _result = navigine_sdk_flutter_Uint8List_FromFfi(__resultHandle);
-        navigine_sdk_flutter_Uint8List_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _getDataFfi(this.ptr, );
+        final _result = toPlatformBytes(__resultHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -67,12 +84,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Uint8),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_MapObject_setVisible__Visible'));
-        final _visibleHandle = navigine_sdk_flutter_bool_ToFfi(visible);
-        final _handle = this.handle;
-        final __resultHandle = _setVisibleFfi(_handle, _visibleHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(_visibleHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setVisibleFfi(this.ptr, (visible ? 1 : 0));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -82,39 +96,31 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Uint8),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_MapObject_setInteractive__Interactive'));
-        final _interactiveHandle = navigine_sdk_flutter_bool_ToFfi(interactive);
-        final _handle = this.handle;
-        final __resultHandle = _setInteractiveFfi(_handle, _interactiveHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(_interactiveHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setInteractiveFfi(this.ptr, (interactive ? 1 : 0));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
     @override
     void setData(Uint8List data) {
         final _setDataFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Void Function(Pointer<Void>, Pointer<Void>),
-            void Function(Pointer<Void>, Pointer<Void>)
+            Void Function(Pointer<Void>, NativeBytes),
+            void Function(Pointer<Void>, NativeBytes)
           >('navigine_sdk_flutter_MapObject_setData__Data'));
-        final _dataHandle = navigine_sdk_flutter_Uint8List_ToFfi(data);
-        final _handle = this.handle;
-        _setDataFfi(_handle, _dataHandle);
-        navigine_sdk_flutter_Uint8List_ReleaseFfiHandle(_dataHandle);
+        _setDataFfi(this.ptr, toNativeBytes(data));
+        exception.checkCallResult();
     }
 
     @override
     bool setTitle(String title) {
         final _setTitleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
+            Uint8 Function(Pointer<Void>, NativeString),
+            int Function(Pointer<Void>, NativeString)
           >('navigine_sdk_flutter_MapObject_setTitle__Title'));
-        final _titleHandle = navigine_sdk_flutter_String_ToFfi(title);
-        final _handle = this.handle;
-        final __resultHandle = _setTitleFfi(_handle, _titleHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_titleHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setTitleFfi(this.ptr, toNativeString(title));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -124,12 +130,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
           >('navigine_sdk_flutter_MapObject_setAlpha__Alpha'));
-        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
-        final _handle = this.handle;
-        final __resultHandle = _setAlphaFfi(_handle, _alphaHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setAlphaFfi(this.ptr, alpha);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -137,15 +140,12 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
     @override
     bool setPolyLine(LocationPolyline polyline) {
         final _setPolyLineFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Pointer<Void>),
-            int Function(Pointer<Void>, Pointer<Void>)
+            Uint8 Function(Pointer<Void>, LocationPolylineNative),
+            int Function(Pointer<Void>, LocationPolylineNative)
           >('navigine_sdk_flutter_PolylineMapObject_setPolyLine__Polyline'));
-        final _polylineHandle = navigine_sdk_flutter_LocationPolyline_ToFfi(polyline);
-        final _handle = this.handle;
-        final __resultHandle = _setPolyLineFfi(_handle, _polylineHandle);
-        navigine_sdk_flutter_LocationPolyline_ReleaseFfiHandle(_polylineHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setPolyLineFfi(this.ptr, LocationPolylineImpl.toNative(polyline));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -155,12 +155,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
           >('navigine_sdk_flutter_PolylineMapObject_setWidth__Width'));
-        final _widthHandle = navigine_sdk_flutter_double_ToFfi(width);
-        final _handle = this.handle;
-        final __resultHandle = _setWidthFfi(_handle, _widthHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_widthHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setWidthFfi(this.ptr, width);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -170,18 +167,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float, Float, Float, Float),
             int Function(Pointer<Void>, double, double, double, double)
           >('navigine_sdk_flutter_PolylineMapObject_setColor__Red_Green_Blue_Alpha'));
-        final _redHandle = navigine_sdk_flutter_double_ToFfi(red);
-        final _greenHandle = navigine_sdk_flutter_double_ToFfi(green);
-        final _blueHandle = navigine_sdk_flutter_double_ToFfi(blue);
-        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
-        final _handle = this.handle;
-        final __resultHandle = _setColorFfi(_handle, _redHandle, _greenHandle, _blueHandle, _alphaHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_redHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_greenHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_blueHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setColorFfi(this.ptr, red, green, blue, alpha);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -191,12 +179,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Int32),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_PolylineMapObject_setOrder__Order'));
-        final _orderHandle = navigine_sdk_flutter_int_ToFfi(order);
-        final _handle = this.handle;
-        final __resultHandle = _setOrderFfi(_handle, _orderHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_orderHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOrderFfi(this.ptr, order);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -206,12 +191,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Uint32),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_PolylineMapObject_setCapType__Cap'));
-        final _capHandle = navigine_sdk_flutter_CapType_ToFfi(cap);
-        final _handle = this.handle;
-        final __resultHandle = _setCapTypeFfi(_handle, _capHandle);
-        navigine_sdk_flutter_CapType_ReleaseFfiHandle(_capHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setCapTypeFfi(this.ptr, CapTypeImpl.toInt(cap));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -221,12 +203,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Uint32),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_PolylineMapObject_setJoinType__Join'));
-        final _joinHandle = navigine_sdk_flutter_JoinType_ToFfi(join);
-        final _handle = this.handle;
-        final __resultHandle = _setJoinTypeFfi(_handle, _joinHandle);
-        navigine_sdk_flutter_JoinType_ReleaseFfiHandle(_joinHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setJoinTypeFfi(this.ptr, JoinTypeImpl.toInt(join));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -236,12 +215,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
           >('navigine_sdk_flutter_PolylineMapObject_setMiterLimit__MiterLimit'));
-        final _miterLimitHandle = navigine_sdk_flutter_double_ToFfi(miterLimit);
-        final _handle = this.handle;
-        final __resultHandle = _setMiterLimitFfi(_handle, _miterLimitHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_miterLimitHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setMiterLimitFfi(this.ptr, miterLimit);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -251,18 +227,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float, Float, Float, Float),
             int Function(Pointer<Void>, double, double, double, double)
           >('navigine_sdk_flutter_PolylineMapObject_setOutlineColor__Red_Green_Blue_Alpha'));
-        final _redHandle = navigine_sdk_flutter_double_ToFfi(red);
-        final _greenHandle = navigine_sdk_flutter_double_ToFfi(green);
-        final _blueHandle = navigine_sdk_flutter_double_ToFfi(blue);
-        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
-        final _handle = this.handle;
-        final __resultHandle = _setOutlineColorFfi(_handle, _redHandle, _greenHandle, _blueHandle, _alphaHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_redHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_greenHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_blueHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOutlineColorFfi(this.ptr, red, green, blue, alpha);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -272,12 +239,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
           >('navigine_sdk_flutter_PolylineMapObject_setOutlineWidth__Radius'));
-        final _radiusHandle = navigine_sdk_flutter_double_ToFfi(radius);
-        final _handle = this.handle;
-        final __resultHandle = _setOutlineWidthFfi(_handle, _radiusHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_radiusHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOutlineWidthFfi(this.ptr, radius);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -287,12 +251,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
           >('navigine_sdk_flutter_PolylineMapObject_setOutlineAlpha__Alpha'));
-        final _alphaHandle = navigine_sdk_flutter_double_ToFfi(alpha);
-        final _handle = this.handle;
-        final __resultHandle = _setOutlineAlphaFfi(_handle, _alphaHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_alphaHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOutlineAlphaFfi(this.ptr, alpha);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -302,12 +263,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Uint32),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_PolylineMapObject_setOutlineCapType__Cap'));
-        final _capHandle = navigine_sdk_flutter_CapType_ToFfi(cap);
-        final _handle = this.handle;
-        final __resultHandle = _setOutlineCapTypeFfi(_handle, _capHandle);
-        navigine_sdk_flutter_CapType_ReleaseFfiHandle(_capHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOutlineCapTypeFfi(this.ptr, CapTypeImpl.toInt(cap));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -317,12 +275,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Uint32),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_PolylineMapObject_setOutlineJoinType__Join'));
-        final _joinHandle = navigine_sdk_flutter_JoinType_ToFfi(join);
-        final _handle = this.handle;
-        final __resultHandle = _setOutlineJoinTypeFfi(_handle, _joinHandle);
-        navigine_sdk_flutter_JoinType_ReleaseFfiHandle(_joinHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOutlineJoinTypeFfi(this.ptr, JoinTypeImpl.toInt(join));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -332,12 +287,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Float),
             int Function(Pointer<Void>, double)
           >('navigine_sdk_flutter_PolylineMapObject_setOutlineMiterLimit__MiterLimit'));
-        final _miterLimitHandle = navigine_sdk_flutter_double_ToFfi(miterLimit);
-        final _handle = this.handle;
-        final __resultHandle = _setOutlineMiterLimitFfi(_handle, _miterLimitHandle);
-        navigine_sdk_flutter_double_ReleaseFfiHandle(_miterLimitHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOutlineMiterLimitFfi(this.ptr, miterLimit);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -347,12 +299,9 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
             Uint8 Function(Pointer<Void>, Int32),
             int Function(Pointer<Void>, int)
           >('navigine_sdk_flutter_PolylineMapObject_setOutlineOrder__Order'));
-        final _orderHandle = navigine_sdk_flutter_int_ToFfi(order);
-        final _handle = this.handle;
-        final __resultHandle = _setOutlineOrderFfi(_handle, _orderHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_orderHandle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(__resultHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(__resultHandle);
+        final __resultHandle = _setOutlineOrderFfi(this.ptr, order);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -360,34 +309,5 @@ class PolylineMapObject$Impl extends __lib.NativeBase implements PolylineMapObje
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_PolylineMapObject_ToFfi(PolylineMapObject value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_PolylineMapObject_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-PolylineMapObject navigine_sdk_flutter_PolylineMapObject_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_PolylineMapObject_CopyHandle(handle);
-    final result = PolylineMapObject$Impl(_copiedHandle);
-    PolylineMapObject$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_PolylineMapObject_ToFfiNullable(PolylineMapObject? value) => 
-  value != null ? navigine_sdk_flutter_PolylineMapObject_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_PolylineMapObject_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_PolylineMapObject_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_PolylineMapObject_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_PolylineMapObject_ReleaseHandle(handle);
-
-PolylineMapObject? navigine_sdk_flutter_PolylineMapObject_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_PolylineMapObject_FromFfi(handle) : null;
 
 // End of PolylineMapObject "private" section.

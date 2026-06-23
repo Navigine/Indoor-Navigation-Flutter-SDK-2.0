@@ -2,80 +2,51 @@ part of 'global_point.dart';
 
 // GlobalPoint "private" section, not exported.
 
-final _navigine_sdk_flutter_GlobalPoint_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Double, Double),
-    Pointer<Void> Function(double, double)
-  >('navigine_sdk_flutter_GlobalPoint_create_handle'));
-
-final _navigine_sdk_flutter_GlobalPoint_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GlobalPoint_release_handle'));
-
-final _navigine_sdk_flutter_GlobalPoint_GetFieldlatitude = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Double Function(Pointer<Void>),
-    double Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GlobalPoint_get_field_latitude'));
-
-final _navigine_sdk_flutter_GlobalPoint_GetFieldlongitude = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Double Function(Pointer<Void>),
-    double Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GlobalPoint_get_field_longitude'));
-
-
-Pointer<Void> navigine_sdk_flutter_GlobalPoint_ToFfi(GlobalPoint value) {
-    final _latitudeHandle = navigine_sdk_flutter_double_ToFfi(value.latitude);
-    final _longitudeHandle = navigine_sdk_flutter_double_ToFfi(value.longitude);
-    final _result = _navigine_sdk_flutter_GlobalPoint_CreateHandle(_latitudeHandle, _longitudeHandle);
-    navigine_sdk_flutter_double_ReleaseFfiHandle(_latitudeHandle);
-    navigine_sdk_flutter_double_ReleaseFfiHandle(_longitudeHandle);
-    return _result;
+final class GlobalPointNative extends Struct {
+    @Double()
+    external double latitude;
+    @Double()
+    external double longitude;
 }
 
-GlobalPoint navigine_sdk_flutter_GlobalPoint_FromFfi(Pointer<Void> handle) {
-    final _latitudeHandle = _navigine_sdk_flutter_GlobalPoint_GetFieldlatitude(handle);
-    final _longitudeHandle = _navigine_sdk_flutter_GlobalPoint_GetFieldlongitude(handle);
-    final _result = GlobalPoint(
-      navigine_sdk_flutter_double_FromFfi(_latitudeHandle),
-      navigine_sdk_flutter_double_FromFfi(_longitudeHandle),
-    );
-      navigine_sdk_flutter_double_ReleaseFfiHandle(_latitudeHandle);
-      navigine_sdk_flutter_double_ReleaseFfiHandle(_longitudeHandle);
-    return _result;
+final GlobalPointNative Function(double, double) _GlobalPointNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<GlobalPointNative Function(Double, Double)>>('navigine_sdk_flutter_GlobalPoint_init')
+  .asFunction<GlobalPointNative Function(double, double)>(isLeaf: true));
+
+extension GlobalPointImpl on GlobalPoint  {
+    static GlobalPoint fromNative(GlobalPointNative native, {bool takeOwnership = true})  {
+        return GlobalPoint(
+          native.latitude,
+          native.longitude,
+        );
+    }
+
+    static GlobalPointNative toNative(GlobalPoint obj)  {
+        return _GlobalPointNativeInit(
+          obj.latitude,
+          obj.longitude,
+        );
+    }
+
+    static GlobalPoint? fromPointer(Pointer<Void> ptr, {bool needFree = true, bool takeOwnership = true})  {
+        if (ptr == nullptr) {
+          return null;
+        }
+        final result = GlobalPointImpl.fromNative(ptr.cast<GlobalPointNative>().ref, takeOwnership: takeOwnership);
+        if (needFree) {
+          malloc.free(ptr);
+        }
+        return result;
+    }
+
+    static Pointer<Void> toPointer(GlobalPoint? val)  {
+        if (val == null) {
+          return nullptr;
+        }
+        final result = malloc<GlobalPointNative>();
+        result.ref = toNative(val);
+        return result.cast();
+    }
 }
 
-void navigine_sdk_flutter_GlobalPoint_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_GlobalPoint_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_GlobalPoint_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GlobalPoint_create_handle_nullable'));
-
-final _navigine_sdk_flutter_GlobalPoint_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GlobalPoint_release_handle_nullable'));
-
-final _navigine_sdk_flutter_GlobalPoint_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GlobalPoint_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_GlobalPoint_ToFfiNullable(GlobalPoint? value) {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_GlobalPoint_ToFfi(value);
-    final result = _navigine_sdk_flutter_GlobalPoint_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_GlobalPoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-GlobalPoint? navigine_sdk_flutter_GlobalPoint_FromFfiNullable(Pointer<Void> handle) {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_GlobalPoint_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_GlobalPoint_FromFfi(_handle);
-    navigine_sdk_flutter_GlobalPoint_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_GlobalPoint_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_GlobalPoint_ReleaseHandleNullable(handle);
+// End of GlobalPoint "private" section.

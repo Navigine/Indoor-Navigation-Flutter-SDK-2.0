@@ -1,8 +1,6 @@
 import 'dart:ffi';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/_weak_map.dart';
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/_weak_map.dart' as weak_map;
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_path.dart';
@@ -16,9 +14,9 @@ part 'async_route_listener.impl.dart';
 abstract class AsyncRouteListener {
 
     /// Called when new route was built or
-    /// old route was rebuilt after missing previouse one.
+    /// old route was rebuilt after missing previous one.
     /// [status] [RouteStatus] indicating the current router state
-    /// [currentPath] [RoutePath] from current postion to destination point (null if status is not new_route)
+    /// [currentPath] [RoutePath] from current position to destination point (null if status is not new_route)
     ///
     /// Example:
     /// ```dart

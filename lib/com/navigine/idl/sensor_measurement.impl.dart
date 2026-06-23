@@ -2,90 +2,54 @@ part of 'sensor_measurement.dart';
 
 // SensorMeasurement "private" section, not exported.
 
-final _navigine_sdk_flutter_SensorMeasurement_CreateHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Uint32, Pointer<Void>, Int64),
-    Pointer<Void> Function(int, Pointer<Void>, int)
-  >('navigine_sdk_flutter_SensorMeasurement_create_handle'));
-
-final _navigine_sdk_flutter_SensorMeasurement_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_SensorMeasurement_release_handle'));
-
-final _navigine_sdk_flutter_SensorMeasurement_GetFieldtype = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Uint32 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_SensorMeasurement_get_field_type'));
-
-final _navigine_sdk_flutter_SensorMeasurement_GetFieldvalues = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_SensorMeasurement_get_field_values'));
-
-final _navigine_sdk_flutter_SensorMeasurement_GetFieldtime = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Int64 Function(Pointer<Void>),
-    int Function(Pointer<Void>)
-  >('navigine_sdk_flutter_SensorMeasurement_get_field_time'));
-
-
-Pointer<Void> navigine_sdk_flutter_SensorMeasurement_ToFfi(SensorMeasurement value) {
-    final _typeHandle = navigine_sdk_flutter_SensorType_ToFfi(value.type);
-    final _valuesHandle = navigine_sdk_flutter_Vector3d_ToFfi(value.values);
-    final _timeHandle = navigine_sdk_flutter_int_ToFfi(value.time);
-    final _result = _navigine_sdk_flutter_SensorMeasurement_CreateHandle(_typeHandle, _valuesHandle, _timeHandle);
-    navigine_sdk_flutter_SensorType_ReleaseFfiHandle(_typeHandle);
-    navigine_sdk_flutter_Vector3d_ReleaseFfiHandle(_valuesHandle);
-    navigine_sdk_flutter_int_ReleaseFfiHandle(_timeHandle);
-    return _result;
+final class SensorMeasurementNative extends Struct {
+    @Uint32()
+    external int type;
+    external Vector3dNative values;
+    @Int64()
+    external int time;
 }
 
-SensorMeasurement navigine_sdk_flutter_SensorMeasurement_FromFfi(Pointer<Void> handle) {
-    final _typeHandle = _navigine_sdk_flutter_SensorMeasurement_GetFieldtype(handle);
-    final _valuesHandle = _navigine_sdk_flutter_SensorMeasurement_GetFieldvalues(handle);
-    final _timeHandle = _navigine_sdk_flutter_SensorMeasurement_GetFieldtime(handle);
-    final _result = SensorMeasurement(
-      navigine_sdk_flutter_SensorType_FromFfi(_typeHandle),
-      navigine_sdk_flutter_Vector3d_FromFfi(_valuesHandle),
-      navigine_sdk_flutter_int_FromFfi(_timeHandle),
-    );
-      navigine_sdk_flutter_SensorType_ReleaseFfiHandle(_typeHandle);
-      navigine_sdk_flutter_Vector3d_ReleaseFfiHandle(_valuesHandle);
-      navigine_sdk_flutter_int_ReleaseFfiHandle(_timeHandle);
-    return _result;
+final SensorMeasurementNative Function(int, Vector3dNative, int) _SensorMeasurementNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<SensorMeasurementNative Function(Uint32, Vector3dNative, Int64)>>('navigine_sdk_flutter_SensorMeasurement_init')
+  .asFunction<SensorMeasurementNative Function(int, Vector3dNative, int)>(isLeaf: true));
+
+extension SensorMeasurementImpl on SensorMeasurement  {
+    static SensorMeasurement fromNative(SensorMeasurementNative native, {bool takeOwnership = true})  {
+        return SensorMeasurement(
+          SensorTypeImpl.fromInt(native.type),
+          Vector3dImpl.fromNative(native.values, takeOwnership: takeOwnership),
+          native.time,
+        );
+    }
+
+    static SensorMeasurementNative toNative(SensorMeasurement obj)  {
+        return _SensorMeasurementNativeInit(
+          SensorTypeImpl.toInt(obj.type),
+          Vector3dImpl.toNative(obj.values),
+          obj.time,
+        );
+    }
+
+    static SensorMeasurement? fromPointer(Pointer<Void> ptr, {bool needFree = true, bool takeOwnership = true})  {
+        if (ptr == nullptr) {
+          return null;
+        }
+        final result = SensorMeasurementImpl.fromNative(ptr.cast<SensorMeasurementNative>().ref, takeOwnership: takeOwnership);
+        if (needFree) {
+          malloc.free(ptr);
+        }
+        return result;
+    }
+
+    static Pointer<Void> toPointer(SensorMeasurement? val)  {
+        if (val == null) {
+          return nullptr;
+        }
+        final result = malloc<SensorMeasurementNative>();
+        result.ref = toNative(val);
+        return result.cast();
+    }
 }
 
-void navigine_sdk_flutter_SensorMeasurement_ReleaseFfiHandle(Pointer<Void> handle) => _navigine_sdk_flutter_SensorMeasurement_ReleaseHandle(handle);
-
-final _navigine_sdk_flutter_SensorMeasurement_CreateHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_SensorMeasurement_create_handle_nullable'));
-
-final _navigine_sdk_flutter_SensorMeasurement_ReleaseHandleNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_SensorMeasurement_release_handle_nullable'));
-
-final _navigine_sdk_flutter_SensorMeasurement_GetValueNullable = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_SensorMeasurement_get_value_nullable'));
-
-Pointer<Void> navigine_sdk_flutter_SensorMeasurement_ToFfiNullable(SensorMeasurement? value) {
-    if (value == null) return Pointer<Void>.fromAddress(0);
-    final _handle = navigine_sdk_flutter_SensorMeasurement_ToFfi(value);
-    final result = _navigine_sdk_flutter_SensorMeasurement_CreateHandleNullable(_handle);
-    navigine_sdk_flutter_SensorMeasurement_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-SensorMeasurement? navigine_sdk_flutter_SensorMeasurement_FromFfiNullable(Pointer<Void> handle) {
-    if (handle.address == 0) return null;
-    final _handle = _navigine_sdk_flutter_SensorMeasurement_GetValueNullable(handle);
-    final result = navigine_sdk_flutter_SensorMeasurement_FromFfi(_handle);
-    navigine_sdk_flutter_SensorMeasurement_ReleaseFfiHandle(_handle);
-    return result;
-}
-
-void navigine_sdk_flutter_SensorMeasurement_ReleaseFfiHandleNullable(Pointer<Void> handle) =>
-  _navigine_sdk_flutter_SensorMeasurement_ReleaseHandleNullable(handle);
+// End of SensorMeasurement "private" section.

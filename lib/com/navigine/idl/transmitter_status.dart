@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import 'package:navigine_sdk/com/_library_context.dart' as __lib;
+import 'package:ffi/ffi.dart';
 
 part 'transmitter_status.impl.dart';
 /// enum described possible transmitter state.
@@ -13,12 +13,12 @@ part 'transmitter_status.impl.dart';
 /// print('  - TransmitterStatus.inactive: ${TransmitterStatus.inactive}');
 /// ```
 enum TransmitterStatus {
-    /// Syncronized with CMS.
+    /// Synchronized with CMS.
     NONE,
-    /// Added in SDK but not syncronized with CMS.
+    /// Added in SDK but not synchronized with CMS.
     NEW,
-    /// Deleted in SDK but not syncronized with CMS.
+    /// Deleted in SDK but not synchronized with CMS.
     DELETED,
-    /// Changed in SDK but not syncronized with CMS.
+    /// Changed in SDK but not synchronized with CMS.
     MODIFIED,
 }

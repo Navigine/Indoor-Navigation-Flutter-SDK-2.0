@@ -1,6 +1,7 @@
 import 'dart:ffi';
+import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
+import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/navigine/idl/notification_listener.dart';
 
 part 'notification_manager.impl.dart';

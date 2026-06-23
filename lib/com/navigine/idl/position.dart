@@ -1,8 +1,10 @@
 import 'dart:ffi';
+import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
 import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
 
 part 'position.impl.dart';
 /// Class describing user's position.
@@ -69,7 +71,7 @@ class Position {
     /// }
     /// ```
     LocationPoint? locationPoint;
-    /// Similiar to `heading` but with respect to `sublocation north` (top of the image)
+    /// Similar to `heading` but with respect to `sublocation north` (top of the image)
     ///
     /// Example:
     /// ```dart

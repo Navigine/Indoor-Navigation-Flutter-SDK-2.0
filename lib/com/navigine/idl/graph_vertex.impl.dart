@@ -2,24 +2,44 @@ part of 'graph_vertex.dart';
 
 // GraphVertex "private" section, not exported.
 
-final _navigine_sdk_flutter_GraphVertex_CopyHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Pointer<Void> Function(Pointer<Void>),
-    Pointer<Void> Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GraphVertex_copy_handle'));
-
-final _navigine_sdk_flutter_GraphVertex_ReleaseHandle = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-    Void Function(Pointer<Void>),
-    void Function(Pointer<Void>)
-  >('navigine_sdk_flutter_GraphVertex_release_handle'));
+final _navigine_sdk_flutter_GraphVertex_check = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+    Bool Function(Pointer<Void>),
+    bool Function(Pointer<Void>)
+  >('navigine_sdk_flutter_GraphVertex_check'));
 
 final _navigine_sdk_flutter_GraphVertex_free = __lib.nativeLibrary.lookup<
     NativeFunction<Void Function(Pointer<Void>)>
   >('navigine_sdk_flutter_GraphVertex_free');
 
 
-class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex, Finalizable {
-    GraphVertex$Impl(Pointer<Void> handle) : super(handle);
+class GraphVertex$Impl implements GraphVertex, Finalizable {
+    @protected
+    final Pointer<Void> ptr;
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_GraphVertex_free.cast());
+
+    GraphVertex$Impl.fromExternalPtr(this.ptr);
+
+    @internal
+    GraphVertex$Impl.fromNativePtrImpl(this.ptr) {
+      _finalizer.attach(this, ptr);
+    }
+
+    @internal
+    factory GraphVertex$Impl.fromNativePtr(Pointer<Void> ptr) =>
+        weak_interface_wrapper.createFromNative(ptr);
+
+    @override
+    bool isValid() => _navigine_sdk_flutter_GraphVertex_check(ptr);
+
+    static Pointer<Void> getNativePtr(GraphVertex? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        return (obj as GraphVertex$Impl).ptr;
+    }
+
+    static GraphVertex? fromOptionalPtr(Pointer<Void> ptr) {
+        if (ptr.address == 0) return null;
+        return GraphVertex$Impl.fromNativePtr(ptr);
+    }
 
 
     int get id {
@@ -28,38 +48,35 @@ class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex, Finaliza
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_GraphVertex_id_get'));
 
-        final _handle = this.handle;
-        final _idHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_int_FromFfi(_idHandle);
-        navigine_sdk_flutter_int_ReleaseFfiHandle(_idHandle);
+        final _idHandle = _getFfi(this.ptr);
+        final _result = _idHandle;
+        exception.checkCallResult();
         return _result;
     }
 
 
     Point get point {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            PointNative Function(Pointer<Void>),
+            PointNative Function(Pointer<Void>)
           >('navigine_sdk_flutter_GraphVertex_point_get'));
 
-        final _handle = this.handle;
-        final _pointHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_Point_FromFfi(_pointHandle);
-        navigine_sdk_flutter_Point_ReleaseFfiHandle(_pointHandle);
+        final _pointHandle = _getFfi(this.ptr);
+        final _result = PointImpl.fromNative(_pointHandle);
+        exception.checkCallResult();
         return _result;
     }
 
 
     String get name {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Pointer<Void> Function(Pointer<Void>),
-            Pointer<Void> Function(Pointer<Void>)
+            NativeString Function(Pointer<Void>),
+            NativeString Function(Pointer<Void>)
           >('navigine_sdk_flutter_GraphVertex_name_get'));
 
-        final _handle = this.handle;
-        final _nameHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_String_FromFfi(_nameHandle);
-        navigine_sdk_flutter_String_ReleaseFfiHandle(_nameHandle);
+        final _nameHandle = _getFfi(this.ptr);
+        final _result = toPlatformString(_nameHandle);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -70,10 +87,9 @@ class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex, Finaliza
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_GraphVertex_isExternal_get'));
 
-        final _handle = this.handle;
-        final _isExternalHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(_isExternalHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(_isExternalHandle);
+        final _isExternalHandle = _getFfi(this.ptr);
+        final _result = (_isExternalHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -84,10 +100,9 @@ class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex, Finaliza
             int Function(Pointer<Void>)
           >('navigine_sdk_flutter_GraphVertex_isElevation_get'));
 
-        final _handle = this.handle;
-        final _isElevationHandle = _getFfi(_handle);
-        final _result = navigine_sdk_flutter_bool_FromFfi(_isElevationHandle);
-        navigine_sdk_flutter_bool_ReleaseFfiHandle(_isElevationHandle);
+        final _isElevationHandle = _getFfi(this.ptr);
+        final _result = (_isElevationHandle != 0);
+        exception.checkCallResult();
         return _result;
     }
 
@@ -95,34 +110,5 @@ class GraphVertex$Impl extends __lib.NativeBase implements GraphVertex, Finaliza
 
 
 }
-
-Pointer<Void> navigine_sdk_flutter_GraphVertex_ToFfi(GraphVertex value) {
-    if (value is __lib.NativeBase)  {
-        return _navigine_sdk_flutter_GraphVertex_CopyHandle((value as __lib.NativeBase).handle);
-    }
-    else  {
-        return Pointer<Void>.fromAddress(0);
-    }
-}
-
-GraphVertex navigine_sdk_flutter_GraphVertex_FromFfi(Pointer<Void> handle) {
-    if (handle.address == 0) throw StateError("Expected non-null value.");
-    final _copiedHandle = _navigine_sdk_flutter_GraphVertex_CopyHandle(handle);
-    final result = GraphVertex$Impl(_copiedHandle);
-    GraphVertex$Impl._finalizer.attach(result, _copiedHandle);
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_GraphVertex_ToFfiNullable(GraphVertex? value) => 
-  value != null ? navigine_sdk_flutter_GraphVertex_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_GraphVertex_ReleaseFfiHandle(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_GraphVertex_ReleaseHandle(handle);
-
-void navigine_sdk_flutter_GraphVertex_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-  _navigine_sdk_flutter_GraphVertex_ReleaseHandle(handle);
-
-GraphVertex? navigine_sdk_flutter_GraphVertex_FromFfiNullable(Pointer<Void> handle) => 
-  handle.address != 0 ? navigine_sdk_flutter_GraphVertex_FromFfi(handle) : null;
 
 // End of GraphVertex "private" section.

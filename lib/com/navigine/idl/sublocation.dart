@@ -1,7 +1,11 @@
 import 'dart:ffi';
+import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/_native_base.dart' as __lib;
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/containers__conversion.dart';
+import 'package:navigine_sdk/com/exception.dart' as exception;
+import 'package:navigine_sdk/com/lazy_list.dart';
+import 'package:navigine_sdk/com/lazy_map.dart';
+import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/beacon.dart';
 import 'package:navigine_sdk/com/navigine/idl/eddystone.dart';
 import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
@@ -11,16 +15,19 @@ import 'package:navigine_sdk/com/navigine/idl/reference_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/venue.dart';
 import 'package:navigine_sdk/com/navigine/idl/wifi.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
+import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
 import 'package:navigine_sdk/image_wrapper.dart';
 
 part 'sublocation.impl.dart';
-/// Class is used for storing sublocation parameters: identifier, name, width, heigth, etc.
+/// Class is used for storing sublocation parameters: identifier, name, width, height, etc.
 /// The list of sublocations for the current location can be obtained from [Location] class using public method getSublocations.
 /// Referenced from [Location].
 abstract class Sublocation implements Finalizable {
 
     /// Method is used to obtain origin sublocation image with specified maxTextureSize.
-    /// [maxTextureSize] maximum texure size to render.
+    /// [maxTextureSize] maximum texture size to render.
     /// Returns platform image.
     ///
     /// Example:
@@ -111,6 +118,8 @@ abstract class Sublocation implements Finalizable {
     /// }
     /// ```
     Zone getZoneById(int id);
+
+    bool isValid();
 
     /// sublocation's identifier.
     ///

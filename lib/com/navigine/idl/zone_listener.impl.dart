@@ -16,7 +16,7 @@ final _navigine_sdk_flutter_ZoneListener_SetPorts = __lib.catchArgumentError(() 
     Pointer<Void> Function(Pointer<Void>, int, int)
   >('navigine_sdk_flutter_ZoneListener_set_ports'));
 
-int _navigine_sdk_flutter_ZoneListener_onZoneEventStatic(Pointer<Void> _obj, Pointer<Void> zoneEvent) {
+int _navigine_sdk_flutter_ZoneListener_onZoneEventStatic(Pointer<Void> _obj, ZoneEventNative zoneEvent) {
     
     final listener = ZoneListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -24,7 +24,7 @@ int _navigine_sdk_flutter_ZoneListener_onZoneEventStatic(Pointer<Void> _obj, Poi
     }
     try  {
         listener.onZoneEvent(
-          navigine_sdk_flutter_ZoneEvent_FromFfi(zoneEvent),
+          ZoneEventImpl.fromNative(zoneEvent),
         );
         
     }
@@ -32,49 +32,47 @@ int _navigine_sdk_flutter_ZoneListener_onZoneEventStatic(Pointer<Void> _obj, Poi
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_ZoneEvent_ReleaseFfiHandle(zoneEvent);
-    }
     return 0;
 }
 
 
-class _ZoneListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _ZoneListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_ZoneListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_ZoneListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_ZoneListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension ZoneListenerImpl on ZoneListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<ZoneListener>>{};
-    static final _listenerToPointer = WeakMap<ZoneListener, _ZoneListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<ZoneListener, _navigine_sdk_flutter_ZoneListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(ZoneListener obj) {
+        final ptr = _navigine_sdk_flutter_ZoneListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, ZoneEventNative)>(_navigine_sdk_flutter_ZoneListener_onZoneEventStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_ZoneListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_ZoneListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(ZoneListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_ZoneListener_ToFfi(ZoneListener value) {
-    final result = _navigine_sdk_flutter_ZoneListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_ZoneListener_onZoneEventStatic, __lib.unknownError),
-    );
-    ZoneListenerImpl._pointerToListener[result] = WeakReference(value);
-    ZoneListenerImpl._listenerToPointer[value] = _ZoneListenerWrapper(result);
-    _navigine_sdk_flutter_ZoneListener_SetPorts(result, __lib.createPortWithCallback(ZoneListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_ZoneListener_ToFfiNullable(ZoneListener? value) => 
-  value != null ? navigine_sdk_flutter_ZoneListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_ZoneListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_ZoneListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of ZoneListener "private" section.

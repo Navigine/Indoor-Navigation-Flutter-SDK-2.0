@@ -7,7 +7,7 @@ import "package:flutter/painting.dart" as painting;
 import 'package:uuid/uuid.dart';
 
 import 'image_provider_result.dart';
-import 'package:navigine_sdk/com/builtin_types__conversion.dart';
+import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart';
@@ -64,10 +64,114 @@ class ImageProvider {
   final AsyncErrorHandler _errorHandler;
   final String id;
   final bool cacheable;
+
+  Pointer<Void>? _bindingKey;
+}
+
+class NativeImageProviderWrapper implements ImageProvider {
+  NativeImageProviderWrapper(this.rawPointer);
+
+  final Pointer<Void> rawPointer;
+
+  @override
+  FutureOr<ui.Image> Function() get _onImageRequest =>
+      throw UnimplementedError();
+
+  @override
+  bool get cacheable => throw UnimplementedError();
+
+  @override
+  String get id => throw UnimplementedError();
+
+  @override
+  AsyncErrorHandler get _errorHandler => throw UnimplementedError();
+
+  @override
+  Pointer<Void>? _bindingKey;
 }
 
 extension GetImageProviderData on ImageProvider {
   static ImageProviderHeap get heap => ImageProvider._heap;
+}
+
+/// Converts [ImageProvider] to a native pointer for FFI (Yandex-compatible).
+Pointer<Void> toNativeImageProvider(ImageProvider provider) {
+  if (provider is NativeImageProviderWrapper) {
+    return provider.rawPointer;
+  }
+  return ImageProviderImpl.getNativePtr(provider);
+}
+
+/// Returns [ImageProvider] native pointer for callbacks (binding key or native provider).
+Pointer<Void> toNativeImageProviderPtr(ImageProvider provider) {
+  if (provider is NativeImageProviderWrapper) {
+    return provider.rawPointer;
+  }
+  if (provider._bindingKey != null) {
+    return provider._bindingKey!;
+  }
+
+  final heap = GetImageProviderData.heap;
+  final sendPort = heap.sendPort;
+  final nativeObject = newImageProvider(
+      provider.cacheable, sendPort, toNativeString(provider.id));
+  if (nativeObject == nullptr) {
+    throw StateError('Failed to create native ImageProvider handle.');
+  }
+
+  final nativeObjectKey =
+      _navigine_sdk_flutter_image_provider_GetObjectKey(nativeObject);
+  if (nativeObjectKey == nullptr) {
+    _navigine_sdk_flutter_image_provider_ReleaseHandle(nativeObject);
+    throw StateError('Failed to get native ImageProvider callback key.');
+  }
+  provider._bindingKey = nativeObjectKey;
+  heap.insertObject(nativeObjectKey, provider);
+  ImageProviderImpl.releaseNativePtr(nativeObject);
+
+  return nativeObjectKey;
+}
+
+class ImageProviderImpl {
+  static Pointer<Void> getNativePtr(ImageProvider? provider) {
+    if (provider == null) return Pointer<Void>.fromAddress(0);
+    if (provider is NativeImageProviderWrapper) {
+      return provider.rawPointer;
+    }
+
+    if (provider._bindingKey != null) {
+      final handle = _navigine_sdk_flutter_image_provider_Acquire(
+          provider._bindingKey!);
+      if (handle == nullptr) {
+        throw StateError('Failed to acquire native ImageProvider handle.');
+      }
+      return handle;
+    }
+
+    final heap = GetImageProviderData.heap;
+    final sendPort = heap.sendPort;
+    final providerId = toNativeString(provider.id);
+    final nativeObject =
+        newImageProvider(provider.cacheable, sendPort, providerId);
+    if (nativeObject == nullptr) {
+      throw StateError('Failed to create native ImageProvider handle.');
+    }
+
+    final nativeObjectKey =
+        _navigine_sdk_flutter_image_provider_GetObjectKey(nativeObject);
+    if (nativeObjectKey == nullptr) {
+      _navigine_sdk_flutter_image_provider_ReleaseHandle(nativeObject);
+      throw StateError('Failed to get native ImageProvider callback key.');
+    }
+    provider._bindingKey = nativeObjectKey;
+    heap.insertObject(nativeObjectKey, provider);
+
+    return nativeObject;
+  }
+
+  static void releaseNativePtr(Pointer<Void> handle) {
+    _navigine_sdk_flutter_image_provider_ReleaseHandle(handle);
+  }
 }
 
 class ImageProviderHeap extends __lib.AsyncDispatcherHeap<ImageProvider> {
@@ -121,30 +225,8 @@ final _navigine_sdk_flutter_image_provider_GetObjectKey =
             Pointer<Void> Function(Pointer<Void>)>(
         'navigine_sdk_flutter_image_provider_get_object_key'));
 
-Pointer<Void> navigine_sdk_flutter_ImageProvider_ToFfi(ImageProvider provider) {
-  final heap = GetImageProviderData.heap;
-  final sendPort = heap.sendPort;
-  final providerId = navigine_sdk_flutter_String_ToFfi(provider.id);
-  final nativeObject =
-      newImageProvider(provider.cacheable, sendPort, providerId);
-  navigine_sdk_flutter_String_ReleaseFfiHandle(providerId);
-  if (nativeObject == nullptr) {
-    throw StateError('Failed to create native ImageProvider handle.');
-  }
-
-  // `nativeObject` is the transient FFI handle released after the call.
-  // Native async callbacks use the underlying ImageProviderBinding* as key.
-  final nativeObjectKey =
-      _navigine_sdk_flutter_image_provider_GetObjectKey(nativeObject);
-  if (nativeObjectKey == nullptr) {
-    _navigine_sdk_flutter_image_provider_ReleaseHandle(nativeObject);
-    throw StateError('Failed to get native ImageProvider callback key.');
-  }
-  heap.insertObject(nativeObjectKey, provider);
-
-  return nativeObject;
-}
-
-void navigine_sdk_flutter_ImageProvider_ReleaseFfiHandle(
-        Pointer<Void> handle) =>
-    _navigine_sdk_flutter_image_provider_ReleaseHandle(handle);
+final _navigine_sdk_flutter_image_provider_Acquire =
+    __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)>(
+        'navigine_sdk_flutter_image_provider_acquire'));

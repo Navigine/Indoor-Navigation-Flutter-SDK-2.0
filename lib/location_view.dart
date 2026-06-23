@@ -1,6 +1,5 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 
 import 'package:navigine_sdk/platform_view.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_window.dart';

@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import 'package:navigine_sdk/com/_library_context.dart' as __lib;
+import 'package:ffi/ffi.dart';
 
 part 'map_object_type.impl.dart';
 /// Enum defining the type of map object.
@@ -23,4 +23,7 @@ enum MapObjectType {
     /// Model.
     /// [ModelMapObject]
     MODEL,
+    /// Icon cluster.
+    /// [ClusterMapObject]
+    CLUSTER_MAP_OBJECT,
 }

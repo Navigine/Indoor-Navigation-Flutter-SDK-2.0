@@ -16,7 +16,7 @@ final _navigine_sdk_flutter_InputListener_SetPorts = __lib.catchArgumentError(()
     Pointer<Void> Function(Pointer<Void>, int, int)
   >('navigine_sdk_flutter_InputListener_set_ports'));
 
-int _navigine_sdk_flutter_InputListener_onViewTapStatic(Pointer<Void> _obj, Pointer<Void> screenPoint) {
+int _navigine_sdk_flutter_InputListener_onViewTapStatic(Pointer<Void> _obj, ScreenPointNative screenPoint) {
     
     final listener = InputListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -24,7 +24,7 @@ int _navigine_sdk_flutter_InputListener_onViewTapStatic(Pointer<Void> _obj, Poin
     }
     try  {
         listener.onViewTap(
-          navigine_sdk_flutter_math_Point_double_FromFfi(screenPoint),
+          ScreenPointImpl.fromNative(screenPoint),
         );
         
     }
@@ -32,13 +32,10 @@ int _navigine_sdk_flutter_InputListener_onViewTapStatic(Pointer<Void> _obj, Poin
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_math_Point_double_ReleaseFfiHandle(screenPoint);
-    }
     return 0;
 }
 
-int _navigine_sdk_flutter_InputListener_onViewDoubleTapStatic(Pointer<Void> _obj, Pointer<Void> screenPoint) {
+int _navigine_sdk_flutter_InputListener_onViewDoubleTapStatic(Pointer<Void> _obj, ScreenPointNative screenPoint) {
     
     final listener = InputListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -46,7 +43,7 @@ int _navigine_sdk_flutter_InputListener_onViewDoubleTapStatic(Pointer<Void> _obj
     }
     try  {
         listener.onViewDoubleTap(
-          navigine_sdk_flutter_math_Point_double_FromFfi(screenPoint),
+          ScreenPointImpl.fromNative(screenPoint),
         );
         
     }
@@ -54,13 +51,10 @@ int _navigine_sdk_flutter_InputListener_onViewDoubleTapStatic(Pointer<Void> _obj
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_math_Point_double_ReleaseFfiHandle(screenPoint);
-    }
     return 0;
 }
 
-int _navigine_sdk_flutter_InputListener_onViewLongTapStatic(Pointer<Void> _obj, Pointer<Void> screenPoint) {
+int _navigine_sdk_flutter_InputListener_onViewLongTapStatic(Pointer<Void> _obj, ScreenPointNative screenPoint) {
     
     final listener = InputListenerImpl._pointerToListener[_obj]?.target;
     if (listener == null) {
@@ -68,7 +62,7 @@ int _navigine_sdk_flutter_InputListener_onViewLongTapStatic(Pointer<Void> _obj, 
     }
     try  {
         listener.onViewLongTap(
-          navigine_sdk_flutter_math_Point_double_FromFfi(screenPoint),
+          ScreenPointImpl.fromNative(screenPoint),
         );
         
     }
@@ -76,51 +70,49 @@ int _navigine_sdk_flutter_InputListener_onViewLongTapStatic(Pointer<Void> _obj, 
         exception.nativeAssert('Unhandled exception $e from native call listener\n$stack');
         rethrow;
     }
-    finally  {
-        navigine_sdk_flutter_math_Point_double_ReleaseFfiHandle(screenPoint);
-    }
     return 0;
 }
 
 
-class _InputListenerWrapper extends __lib.NativeBase implements Finalizable {
-    _InputListenerWrapper(Pointer<Void> handle) : super(handle) {
-        _finalizer.attach(this, handle);
+final class _navigine_sdk_flutter_InputListenerNativeWrapper implements Finalizable {
+    _navigine_sdk_flutter_InputListenerNativeWrapper(this.ptr) {
+      _finalizer.attach(this, ptr);
     }
+
     static final _finalizer = NativeFinalizer(_navigine_sdk_flutter_InputListener_free.cast());
+    final Pointer<Void> ptr;
 }
 
 extension InputListenerImpl on InputListener  {
     static final _pointerToListener = <Pointer<Void>, WeakReference<InputListener>>{};
-    static final _listenerToPointer = WeakMap<InputListener, _InputListenerWrapper?>();
+    static final _listenerToPointer = weak_map.WeakMap<InputListener, _navigine_sdk_flutter_InputListenerNativeWrapper?>();
 
     static void _destructor(dynamic data) {
         final int address = data;
         final ptr = Pointer<Void>.fromAddress(address);
         _pointerToListener.remove(ptr);
     }
+
+    static Pointer<Void> _newNativeObject(InputListener obj) {
+        final ptr = _navigine_sdk_flutter_InputListener_CreateProxy(
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, ScreenPointNative)>(_navigine_sdk_flutter_InputListener_onViewTapStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, ScreenPointNative)>(_navigine_sdk_flutter_InputListener_onViewDoubleTapStatic, __lib.unknownError),
+          Pointer.fromFunction<Uint8 Function(Pointer<Void>, ScreenPointNative)>(_navigine_sdk_flutter_InputListener_onViewLongTapStatic, __lib.unknownError),
+        );
+        _pointerToListener[ptr] = WeakReference(obj);
+        _listenerToPointer[obj] = _navigine_sdk_flutter_InputListenerNativeWrapper(ptr);
+        _navigine_sdk_flutter_InputListener_SetPorts(ptr, __lib.createPortWithCallback(_destructor), __lib.createExecutePort());
+        return ptr;
+    }
+
+    static Pointer<Void> getNativePtr(InputListener? obj) {
+        if (obj == null) return Pointer<Void>.fromAddress(0);
+        final foundPointer = _listenerToPointer[obj];
+        if (foundPointer == null) {
+            return _newNativeObject(obj);
+        }
+        return foundPointer.ptr;
+    }
 }
-
-Pointer<Void> navigine_sdk_flutter_InputListener_ToFfi(InputListener value) {
-    final result = _navigine_sdk_flutter_InputListener_CreateProxy(
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_InputListener_onViewTapStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_InputListener_onViewDoubleTapStatic, __lib.unknownError),
-      Pointer.fromFunction<Uint8 Function(Pointer<Void>, Pointer<Void>)>(_navigine_sdk_flutter_InputListener_onViewLongTapStatic, __lib.unknownError),
-    );
-    InputListenerImpl._pointerToListener[result] = WeakReference(value);
-    InputListenerImpl._listenerToPointer[value] = _InputListenerWrapper(result);
-    _navigine_sdk_flutter_InputListener_SetPorts(result, __lib.createPortWithCallback(InputListenerImpl._destructor), __lib.createExecutePort());
-
-    return result;
-}
-
-Pointer<Void> navigine_sdk_flutter_InputListener_ToFfiNullable(InputListener? value) => 
-  value != null ? navigine_sdk_flutter_InputListener_ToFfi(value) : Pointer<Void>.fromAddress(0);
-
-void navigine_sdk_flutter_InputListener_ReleaseFfiHandle(Pointer<Void> handle) => 
-{};
-
-void navigine_sdk_flutter_InputListener_ReleaseFfiHandleNullable(Pointer<Void> handle) => 
-{};
 
 // End of InputListener "private" section.
