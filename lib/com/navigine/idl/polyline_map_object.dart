@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
@@ -9,6 +10,7 @@ import 'package:navigine_sdk/com/navigine/idl/join_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_polyline.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/title_style.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -25,14 +27,13 @@ abstract class PolylineMapObject implements MapObject, Finalizable {
     /// Example:
     /// ```dart
     /// // Set polyline geometry
-    /// List<Point> polylinePoints = [
-    ///  Point(0.0, 0.0),
-    ///  Point(50.0, 50.0),
-    ///  Point(100.0, 0.0),
-    ///  Point(150.0, 50.0),
+    /// List<GlobalPoint> polylinePoints = [
+    ///  GlobalPoint(0.0, 0.0),
+    ///  GlobalPoint(50.0, 50.0),
+    ///  GlobalPoint(100.0, 0.0),
+    ///  GlobalPoint(150.0, 50.0),
     /// ];
-    /// Polyline polyline = Polyline(polylinePoints);
-    /// LocationPolyline locationPolyline = LocationPolyline(polyline, 1, 0);
+    ///      LocationPolyline locationPolyline = LocationPolyline(polylinePoints, 0);
     /// bool success = _polylineMapObject!.setPolyLine(locationPolyline);
     /// print("Set polyline geometry: $success");
     /// ```
@@ -51,19 +52,16 @@ abstract class PolylineMapObject implements MapObject, Finalizable {
     bool setWidth(double width);
 
     /// Method is used to specify the fill color of the polyline.
-    /// [red] Red RGBA component (0 to 1).
-    /// [green] Green RGBA component (0 to 1).
-    /// [blue] Blue RGBA component (0 to 1).
-    /// [alpha] Opacity multiplier (0 to 1). Values below 0 are set to 0. Default: 1.
+    /// [color] Fill color.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
     /// // Set polyline color
-    /// bool colorSuccess = _polylineMapObject!.setColor(1.0, 0.5, 0.0, 0.9);
+    /// bool colorSuccess = _polylineMapObject!.setColor(const Color(0xE6FF8000));
     /// print("Set polyline color to orange with 90% opacity: $colorSuccess");
     /// ```
-    bool setColor(double red, double green, double blue, double alpha);
+    bool setColor(Color color);
 
     /// Method is used to specify the rendering order of the polyline.
     /// [order] The rendering order value. Default: 0.
@@ -114,24 +112,16 @@ abstract class PolylineMapObject implements MapObject, Finalizable {
     bool setMiterLimit(double miterLimit);
 
     /// Method is used to specify the color of the polyline’s outline.
-    /// [red] Red RGBA component (0 to 1).
-    /// [green] Green RGBA component (0 to 1).
-    /// [blue] Blue RGBA component (0 to 1).
-    /// [alpha] Opacity multiplier (0 to 1). Values below 0 are set to 0. Default: 1.
+    /// [color] Outline color.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
     /// // Set outline color
-    /// bool outlineColorSuccess = _polylineMapObject!.setOutlineColor(
-    ///  0.0,
-    ///  0.0,
-    ///  0.0,
-    ///  1.0,
-    /// );
+    /// bool outlineColorSuccess = _polylineMapObject!.setOutlineColor(const Color(0xFF000000));
     /// print("Set polyline outline color to black: $outlineColorSuccess");
     /// ```
-    bool setOutlineColor(double red, double green, double blue, double alpha);
+    bool setOutlineColor(Color color);
 
     /// Method is used to specify the width of the polyline’s outline.
     /// [radius] Width of the outline in pixels.

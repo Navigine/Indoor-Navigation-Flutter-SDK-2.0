@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'default_navigine_view_config.dart';
 import 'widgets/zoom_controls_config.dart';
 import 'widgets/follow_me_button_config.dart';
 import 'widgets/floor_selector_view_config.dart';
@@ -9,11 +10,11 @@ import 'widgets/floor_selector_view_config.dart';
  * @brief Configuration and controller for DefaultNavigationView
  */
 
-/// Visibility flags for built-in widgets.
+/// Visibility flags for built-in widgets (includes follow-me).
 class NavigationWidgetVisibility {
-  static const int zoomControls = 1 << 0;
+  static const int zoomControls = NavigineWidgetVisibility.zoomControls;
   static const int followMeButton = 1 << 1;
-  static const int floorSelector = 1 << 2;
+  static const int floorSelector = NavigineWidgetVisibility.floorSelector;
   static const int all = 0x7;
 }
 

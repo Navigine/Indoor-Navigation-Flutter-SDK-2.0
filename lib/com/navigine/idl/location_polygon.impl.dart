@@ -3,31 +3,26 @@ part of 'location_polygon.dart';
 // LocationPolygon "private" section, not exported.
 
 final class LocationPolygonNative extends Struct {
-    external PolygonNative polygon;
-    @Int32()
-    external int locationId;
-    @Int32()
-    external int sublocationId;
+    external Pointer<Void> points;
+    external Pointer<Void> sublocationId;
 }
 
-final LocationPolygonNative Function(PolygonNative, int, int) _LocationPolygonNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
-  .lookup<NativeFunction<LocationPolygonNative Function(PolygonNative, Int32, Int32)>>('navigine_sdk_flutter_LocationPolygon_init')
-  .asFunction<LocationPolygonNative Function(PolygonNative, int, int)>(isLeaf: true));
+final LocationPolygonNative Function(Pointer<Void>, Pointer<Void>) _LocationPolygonNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<LocationPolygonNative Function(Pointer<Void>, Pointer<Void>)>>('navigine_sdk_flutter_LocationPolygon_init')
+  .asFunction<LocationPolygonNative Function(Pointer<Void>, Pointer<Void>)>(isLeaf: true));
 
 extension LocationPolygonImpl on LocationPolygon  {
     static LocationPolygon fromNative(LocationPolygonNative native, {bool takeOwnership = true})  {
         return LocationPolygon(
-          PolygonImpl.fromNative(native.polygon, takeOwnership: takeOwnership),
-          native.locationId,
-          native.sublocationId,
+          ListGlobalPointImpl.fromNativePtr(native.points),
+          toPlatformFromPointerInt32(native.sublocationId),
         );
     }
 
     static LocationPolygonNative toNative(LocationPolygon obj)  {
         return _LocationPolygonNativeInit(
-          PolygonImpl.toNative(obj.polygon),
-          obj.locationId,
-          obj.sublocationId,
+          ListGlobalPointImpl.getNativePtr(obj.points),
+          toNativePtrInt32(obj.sublocationId),
         );
     }
 

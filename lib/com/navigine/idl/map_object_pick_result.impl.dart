@@ -35,14 +35,27 @@ class MapObjectPickResult$Impl implements MapObjectPickResult, Finalizable {
     }
 
 
-    LocationPoint get point {
+    GlobalPoint get point {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            LocationPointNative Function(Pointer<Void>),
-            LocationPointNative Function(Pointer<Void>)
+            GlobalPointNative Function(Pointer<Void>),
+            GlobalPointNative Function(Pointer<Void>)
           >('navigine_sdk_flutter_MapObjectPickResult_point_get'));
 
         final _pointHandle = _getFfi(this.ptr);
-        final _result = LocationPointImpl.fromNative(_pointHandle);
+        final _result = GlobalPointImpl.fromNative(_pointHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+
+    int? get sublocationId {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
+          >('navigine_sdk_flutter_MapObjectPickResult_sublocationId_get'));
+
+        final _sublocationIdHandle = _getFfi(this.ptr);
+        final _result = toPlatformFromPointerInt32(_sublocationIdHandle);
         exception.checkCallResult();
         return _result;
     }

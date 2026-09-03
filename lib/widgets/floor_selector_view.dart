@@ -108,6 +108,8 @@ class FloorSelectorViewState extends State<FloorSelectorView> {
   }
 
   /// Updates selection by sublocation id and scrolls to it if needed.
+  /// Does not invoke [FloorSelectorView.onFloorSelected] (parity with native:
+  /// programmatic updates only move UI; user taps fire the callback).
   void setSublocationId(int newSublocationId) {
     final int newIndex = _floors.indexWhere((floor) => floor.sublocationId == newSublocationId);
 
@@ -116,14 +118,13 @@ class FloorSelectorViewState extends State<FloorSelectorView> {
     }
 
     final bool wasAlreadySelected = _selectedFloorIndex == newIndex;
-
-    if (!wasAlreadySelected) {
-      setState(() {
-        _selectedFloorIndex = newIndex;
-      });
-    } else {
-      setState(() {});
+    if (wasAlreadySelected) {
+      return;
     }
+
+    setState(() {
+      _selectedFloorIndex = newIndex;
+    });
 
     _updateScrollButtonsVisibility();
 
@@ -144,9 +145,6 @@ class FloorSelectorViewState extends State<FloorSelectorView> {
         _scrollController.jumpTo(clampedOffset);
       }
     }
-
-    final selectedLevel = _floors[newIndex];
-    widget.onFloorSelected?.call(selectedLevel.sublocationId, selectedLevel.levelId);
   }
 
   void _scrollUp() {

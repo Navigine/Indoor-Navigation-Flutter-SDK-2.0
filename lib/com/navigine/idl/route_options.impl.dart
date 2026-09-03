@@ -3,29 +3,32 @@ part of 'route_options.dart';
 // RouteOptions "private" section, not exported.
 
 final class RouteOptionsNative extends Struct {
-    external Pointer<Void> smoothRadius;
-    external Pointer<Void> maxProjectionDistance;
-    external Pointer<Void> maxAdvance;
+    @Double()
+    external double smoothRadius;
+    @Double()
+    external double maxProjectionDistance;
+    @Double()
+    external double maxAdvance;
 }
 
-final RouteOptionsNative Function(Pointer<Void>, Pointer<Void>, Pointer<Void>) _RouteOptionsNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
-  .lookup<NativeFunction<RouteOptionsNative Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)>>('navigine_sdk_flutter_RouteOptions_init')
-  .asFunction<RouteOptionsNative Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)>(isLeaf: true));
+final RouteOptionsNative Function(double, double, double) _RouteOptionsNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<RouteOptionsNative Function(Double, Double, Double)>>('navigine_sdk_flutter_RouteOptions_init')
+  .asFunction<RouteOptionsNative Function(double, double, double)>(isLeaf: true));
 
 extension RouteOptionsImpl on RouteOptions  {
     static RouteOptions fromNative(RouteOptionsNative native, {bool takeOwnership = true})  {
         return RouteOptions(
-          toPlatformFromPointerDouble(native.smoothRadius),
-          toPlatformFromPointerDouble(native.maxProjectionDistance),
-          toPlatformFromPointerDouble(native.maxAdvance),
+          smoothRadius: native.smoothRadius,
+          maxProjectionDistance: native.maxProjectionDistance,
+          maxAdvance: native.maxAdvance,
         );
     }
 
     static RouteOptionsNative toNative(RouteOptions obj)  {
         return _RouteOptionsNativeInit(
-          toNativePtrDouble(obj.smoothRadius),
-          toNativePtrDouble(obj.maxProjectionDistance),
-          toNativePtrDouble(obj.maxAdvance),
+          obj.smoothRadius,
+          obj.maxProjectionDistance,
+          obj.maxAdvance,
         );
     }
 

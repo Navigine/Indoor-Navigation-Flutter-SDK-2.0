@@ -8,10 +8,11 @@ import 'package:navigine_sdk/com/lazy_list.dart';
 import 'package:navigine_sdk/com/lazy_map.dart';
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/cluster_map_object_listener.dart';
+import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/title_style.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -59,8 +60,10 @@ abstract class ClusterMapObject implements MapObject, Finalizable {
 
     bool isValid();
 
-    /// Cluster center in metrics coordinates.
-    LocationPoint get position;
+    /// Cluster center in WGS84 coordinates [GlobalPoint].
+    GlobalPoint get point;
+    /// Floor this cluster is attached to, or null for the outdoor map.
+    int? get sublocationId;
     /// Number of icon map objects in the cluster (at least 2 while the cluster is visible).
     int get count;
     /// Icon map objects currently grouped into this cluster.

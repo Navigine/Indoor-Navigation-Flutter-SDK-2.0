@@ -5,9 +5,10 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
+import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/title_style.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -20,20 +21,22 @@ part 'icon_map_object.impl.dart';
 abstract class IconMapObject implements MapObject, Finalizable {
 
     /// Method is used to specify the center of the icon.
-    /// [point] Metrics coordinates of the center [LocationPoint].
+    /// [point] WGS84 coordinates of the center [GlobalPoint].
+    /// [sublocationId] Floor this object is attached to, or null for the outdoor map.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
     /// // Set icon position
-    /// LocationPoint iconPoint = LocationPoint(200.0, 300.0);
-    /// bool success = _iconMapObject!.setPosition(iconPoint);
-    /// print("Set icon position to (${iconPoint.x}, ${iconPoint.y}): $success");
+    /// GlobalPoint iconPoint = GlobalPoint(200.0, 300.0);
+    /// bool success = _iconMapObject!.setPosition(iconPoint, 7);
+    /// print("Set icon position to (${iconPoint.latitude}, ${iconPoint.longitude}): $success");
     /// ```
-    bool setPosition(LocationPoint point);
+    bool setPosition(GlobalPoint point, int? sublocationId);
 
     /// Method is used to move the center of the icon with the specified animation.
-    /// [point] Metrics coordinates of the center [LocationPoint].
+    /// [point] WGS84 coordinates of the center [GlobalPoint].
+    /// [sublocationId] Floor this object is attached to, or null for the outdoor map.
     /// [duration] Animation duration in seconds.
     /// [type] Animation type [AnimationType].
     /// Returns true if the operation is successful, false otherwise.
@@ -41,17 +44,13 @@ abstract class IconMapObject implements MapObject, Finalizable {
     /// Example:
     /// ```dart
     /// // Set icon position with animation
-    /// LocationPoint animatedIconPoint = LocationPoint(250.0, 350.0);
-    /// bool animatedSuccess = _iconMapObject!.setPositionAnimated(
-    ///  animatedIconPoint,
-    ///  1.5,
-    ///  AnimationType.CUBIC,
-    /// );
+    /// GlobalPoint animatedIconPoint = GlobalPoint(250.0, 350.0);
+    /// bool animatedSuccess = _iconMapObject!.setPositionAnimated(animatedIconPoint, 7, 1.5, AnimationType.CUBIC,  );
     /// print(
-    ///  "Set icon position with animation to (${animatedIconPoint.x}, ${animatedIconPoint.y}): $animatedSuccess",
+    ///  "Set icon position with animation to (${animatedIconPoint.latitude}, ${animatedIconPoint.longitude}): $animatedSuccess",
     /// );
     /// ```
-    bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
+    bool setPositionAnimated(GlobalPoint point, int? sublocationId, double duration, AnimationType type);
 
     /// Method is used to specify the decoded raster for the icon.
     /// [bitmap] Image provider: Android com.navigine.image.ImageProvider; iOS UIImage via binding; Flutter navigine_sdk ImageProvider.
@@ -95,33 +94,33 @@ abstract class IconMapObject implements MapObject, Finalizable {
     bool setCollisionEnabled(bool enabled);
 
     /// Method is used to specify the rotation angle of the icon.
-    /// [angle] Rotation angle in degrees. Default: 0.
+    /// [angle] Rotation angle in radians. Default: 0.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
-    /// // Set icon rotation angle
-    /// bool angleSuccess = _iconMapObject!.setAngle(45.0);
-    /// print("Set icon rotation angle to 45 degrees: $angleSuccess");
+    /// // Set icon rotation angle (radians)
+    /// bool angleSuccess = _iconMapObject!.setAngle(math.pi / 4);
+    /// print("Set icon rotation angle to π/4: $angleSuccess");
     /// ```
     bool setAngle(double angle);
 
     /// Method is used to rotate the icon with the specified animation.
-    /// [angle] Rotation angle in degrees.
+    /// [angle] Rotation angle in radians.
     /// [duration] Animation duration in seconds.
     /// [type] Animation type [AnimationType].
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
-    /// // Set icon rotation with animation
+    /// // Set icon rotation with animation (radians)
     /// bool angleAnimatedSuccess = _iconMapObject!.setAngleAnimated(
-    ///  90.0,
+    ///  math.pi / 2,
     ///  2.0,
     ///  AnimationType.SINE,
     /// );
     /// print(
-    ///  "Set icon rotation with animation to 90 degrees: $angleAnimatedSuccess",
+    ///  "Set icon rotation with animation to π/2: $angleAnimatedSuccess",
     /// );
     /// ```
     bool setAngleAnimated(double angle, double duration, AnimationType type);

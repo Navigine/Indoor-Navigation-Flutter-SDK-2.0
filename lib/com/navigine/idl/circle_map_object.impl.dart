@@ -125,6 +125,18 @@ class CircleMapObject$Impl implements CircleMapObject, Finalizable {
     }
 
     @override
+    bool setTitleWithStyle(String title, TitleStyle style) {
+        final _setTitleWithStyleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, NativeString, TitleStyleNative),
+            int Function(Pointer<Void>, NativeString, TitleStyleNative)
+          >('navigine_sdk_flutter_MapObject_setTitleWithStyle__Title_Style'));
+        final __resultHandle = _setTitleWithStyleFfi(this.ptr, toNativeString(title), TitleStyleImpl.toNative(style));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     bool setAlpha(double alpha) {
         final _setAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float),
@@ -138,36 +150,36 @@ class CircleMapObject$Impl implements CircleMapObject, Finalizable {
 
 
     @override
-    bool setPosition(LocationPoint point) {
+    bool setPosition(GlobalPoint point, int? sublocationId) {
         final _setPositionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, LocationPointNative),
-            int Function(Pointer<Void>, LocationPointNative)
-          >('navigine_sdk_flutter_CircleMapObject_setPosition__Point'));
-        final __resultHandle = _setPositionFfi(this.ptr, LocationPointImpl.toNative(point));
+            Uint8 Function(Pointer<Void>, GlobalPointNative, Pointer<Void>),
+            int Function(Pointer<Void>, GlobalPointNative, Pointer<Void>)
+          >('navigine_sdk_flutter_CircleMapObject_setPosition__Point_SublocationId'));
+        final __resultHandle = _setPositionFfi(this.ptr, GlobalPointImpl.toNative(point), toNativePtrInt32(sublocationId));
         final _result = (__resultHandle != 0);
         exception.checkCallResult();
         return _result;
     }
 
     @override
-    bool setPositionAnimated(LocationPoint point, double duration, AnimationType type) {
+    bool setPositionAnimated(GlobalPoint point, int? sublocationId, double duration, AnimationType type) {
         final _setPositionAnimatedFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, LocationPointNative, Float, Uint32),
-            int Function(Pointer<Void>, LocationPointNative, double, int)
-          >('navigine_sdk_flutter_CircleMapObject_setPositionAnimated__Point_Duration_Type'));
-        final __resultHandle = _setPositionAnimatedFfi(this.ptr, LocationPointImpl.toNative(point), duration, AnimationTypeImpl.toInt(type));
+            Uint8 Function(Pointer<Void>, GlobalPointNative, Pointer<Void>, Float, Uint32),
+            int Function(Pointer<Void>, GlobalPointNative, Pointer<Void>, double, int)
+          >('navigine_sdk_flutter_CircleMapObject_setPositionAnimated__Point_SublocationId_Duration_Type'));
+        final __resultHandle = _setPositionAnimatedFfi(this.ptr, GlobalPointImpl.toNative(point), toNativePtrInt32(sublocationId), duration, AnimationTypeImpl.toInt(type));
         final _result = (__resultHandle != 0);
         exception.checkCallResult();
         return _result;
     }
 
     @override
-    bool setColor(double red, double green, double blue, double alpha) {
+    bool setColor(Color color) {
         final _setColorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Float, Float, Float, Float),
-            int Function(Pointer<Void>, double, double, double, double)
-          >('navigine_sdk_flutter_CircleMapObject_setColor__Red_Green_Blue_Alpha'));
-        final __resultHandle = _setColorFfi(this.ptr, red, green, blue, alpha);
+            Uint8 Function(Pointer<Void>, Int32),
+            int Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_CircleMapObject_setColor__Color'));
+        final __resultHandle = _setColorFfi(this.ptr, color.value);
         final _result = (__resultHandle != 0);
         exception.checkCallResult();
         return _result;
@@ -234,12 +246,12 @@ class CircleMapObject$Impl implements CircleMapObject, Finalizable {
     }
 
     @override
-    bool setOutlineColor(double red, double green, double blue, double alpha) {
+    bool setOutlineColor(Color color) {
         final _setOutlineColorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Float, Float, Float, Float),
-            int Function(Pointer<Void>, double, double, double, double)
-          >('navigine_sdk_flutter_CircleMapObject_setOutlineColor__Red_Green_Blue_Alpha'));
-        final __resultHandle = _setOutlineColorFfi(this.ptr, red, green, blue, alpha);
+            Uint8 Function(Pointer<Void>, Int32),
+            int Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_CircleMapObject_setOutlineColor__Color'));
+        final __resultHandle = _setOutlineColorFfi(this.ptr, color.value);
         final _result = (__resultHandle != 0);
         exception.checkCallResult();
         return _result;

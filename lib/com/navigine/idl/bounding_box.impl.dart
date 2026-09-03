@@ -3,26 +3,26 @@ part of 'bounding_box.dart';
 // BoundingBox "private" section, not exported.
 
 final class BoundingBoxNative extends Struct {
-    external PointNative bottomLeft;
-    external PointNative topRight;
+    external GlobalPointNative bottomLeft;
+    external GlobalPointNative topRight;
 }
 
-final BoundingBoxNative Function(PointNative, PointNative) _BoundingBoxNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
-  .lookup<NativeFunction<BoundingBoxNative Function(PointNative, PointNative)>>('navigine_sdk_flutter_BoundingBox_init')
-  .asFunction<BoundingBoxNative Function(PointNative, PointNative)>(isLeaf: true));
+final BoundingBoxNative Function(GlobalPointNative, GlobalPointNative) _BoundingBoxNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<BoundingBoxNative Function(GlobalPointNative, GlobalPointNative)>>('navigine_sdk_flutter_BoundingBox_init')
+  .asFunction<BoundingBoxNative Function(GlobalPointNative, GlobalPointNative)>(isLeaf: true));
 
 extension BoundingBoxImpl on BoundingBox  {
     static BoundingBox fromNative(BoundingBoxNative native, {bool takeOwnership = true})  {
         return BoundingBox(
-          PointImpl.fromNative(native.bottomLeft, takeOwnership: takeOwnership),
-          PointImpl.fromNative(native.topRight, takeOwnership: takeOwnership),
+          GlobalPointImpl.fromNative(native.bottomLeft, takeOwnership: takeOwnership),
+          GlobalPointImpl.fromNative(native.topRight, takeOwnership: takeOwnership),
         );
     }
 
     static BoundingBoxNative toNative(BoundingBox obj)  {
         return _BoundingBoxNativeInit(
-          PointImpl.toNative(obj.bottomLeft),
-          PointImpl.toNative(obj.topRight),
+          GlobalPointImpl.toNative(obj.bottomLeft),
+          GlobalPointImpl.toNative(obj.topRight),
         );
     }
 

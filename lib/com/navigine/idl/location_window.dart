@@ -17,12 +17,13 @@ import 'package:navigine_sdk/com/navigine/idl/circle_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/cluster_map_object_controller.dart';
 import 'package:navigine_sdk/com/navigine/idl/debug_flag.dart';
 import 'package:navigine_sdk/com/navigine/idl/dotted_polyline_map_object.dart';
+import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/input_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_filter_condition.dart';
 import 'package:navigine_sdk/com/navigine/idl/model_map_object.dart';
+import 'package:navigine_sdk/com/navigine/idl/operating_mode.dart';
 import 'package:navigine_sdk/com/navigine/idl/pick_listener.dart';
-import 'package:navigine_sdk/com/navigine/idl/point.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/sublocation_change_listener.dart';
@@ -60,43 +61,61 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     int? getSublocationId();
 
-    /// Calculates camera that fits provided bounding box.
-    /// [boundingBox] Metrics bounding box to enclose.
+    /// Sets the operating mode of the location view [OperatingMode].
+    /// Default: indoor_only.
     ///
     /// Example:
     /// ```dart
-    /// BoundingBox boundingBox = BoundingBox(Point(0.0, 0.0), Point(20.0, 30.0));
+    /// _locationWindow!.setOperatingMode(OperatingMode.OUTDOOR_INDOOR);
+    /// print("Set operating mode to OUTDOOR_INDOOR");
+    /// ```
+    void setOperatingMode(OperatingMode mode);
+
+    /// Returns the current operating mode [OperatingMode].
+    ///
+    /// Example:
+    /// ```dart
+    /// OperatingMode currentMode = _locationWindow!.getOperatingMode();
+    /// print("Current operating mode: $currentMode");
+    /// ```
+    OperatingMode getOperatingMode();
+
+    /// Calculates camera that fits provided bounding box.
+    /// [boundingBox] WGS84 bounding box to enclose.
+    ///
+    /// Example:
+    /// ```dart
+    /// BoundingBox boundingBox = BoundingBox(
+    ///    GlobalPoint(55.75, 37.61), GlobalPoint(55.76, 37.63));
     /// Camera camera = _locationWindow!.getEnclosingCamera(boundingBox);
     /// print("Camera that fits bounding box: $camera");
     /// ```
     Camera getEnclosingCamera(BoundingBox boundingBox);
 
-    /// Converts screen coordinates (pixels) to metrics coordinates (meters).
+    /// Converts screen coordinates (pixels) to WGS84 coordinates.
     /// [point] (x,y) coordinates in screen pixels.
-    /// Returns (x,y) coordinates in meters [Point].
+    /// Returns WGS84 coordinates [GlobalPoint].
     ///
     /// Example:
     /// ```dart
-    /// // Convert screen position to meters
-    /// Point screenPoint = Point(100.0, 200.0);
-    /// Point metersPoint = _locationWindow!.screenPositionToMeters(screenPoint);
-    /// print("Screen position (${screenPoint.x}, ${screenPoint.y}) converted to meters: (${metersPoint.x}, ${metersPoint.y})");
+    /// ScreenPoint screenPoint = ScreenPoint(100.0, 200.0);
+    /// GlobalPoint globalPoint = _locationWindow!.screenPositionToGlobal(screenPoint);
+    /// print("Screen position (${screenPoint.x}, ${screenPoint.y}) converted to WGS84: (${globalPoint.latitude}, ${globalPoint.longitude})");
     /// ```
-    Point screenPositionToMeters(math.Point<double> point);
+    GlobalPoint screenPositionToGlobal(math.Point<double> point);
 
-    /// Converts metrics coordinates (meters) to screen coordinates (pixels).
-    /// [point] (x,y) coordinates in meters [Point].
+    /// Converts WGS84 coordinates to screen coordinates (pixels).
+    /// [point] WGS84 coordinates [GlobalPoint].
     /// [clipToViewport] If true, coordinates outside the viewport are clipped to the viewport edge.
     /// Returns (x,y) coordinates in screen pixels.
     ///
     /// Example:
     /// ```dart
-    /// // Convert meters to screen position with clipping
-    /// Point metersPoint3 = Point(50.0, 75.0);
-    /// Point screenPoint3 = _locationWindow!.metersToScreenPosition(metersPoint3, true);
-    /// print("Meters position (${metersPoint3.x}, ${metersPoint3.y}) converted to screen with clipping: (${screenPoint3.x}, ${screenPoint3.y})");
+    /// GlobalPoint globalPoint2 = GlobalPoint(55.7558, 37.6176);
+    /// ScreenPoint screenPoint2 = _locationWindow!.globalToScreenPosition(globalPoint2, true);
+    /// print("WGS84 (${globalPoint2.latitude}, ${globalPoint2.longitude}) converted to screen with clipping: (${screenPoint2.x}, ${screenPoint2.y})");
     /// ```
-    math.Point<double> metersToScreenPosition(Point point, bool clipToViewport);
+    math.Point<double> globalToScreenPosition(GlobalPoint point, bool clipToViewport);
 
     /// Creates and adds a circle map object to the location view.
     /// Returns A CircleMapObject instance [CircleMapObject] if successful, null otherwise.
@@ -435,7 +454,7 @@ abstract class LocationWindow implements Finalizable {
     /// Example:
     /// ```dart
     /// // Fly to position with smooth animation
-    /// Point targetPoint = Point(150.0, 250.0);
+    /// GlobalPoint targetPoint = GlobalPoint(150.0, 250.0);
     /// Camera targetCamera = Camera(targetPoint, 75.0, 45.0, 30.0);
     /// CameraCallback callback = CameraCallback(
     ///  onMoveFinished: (completed) {
@@ -447,7 +466,7 @@ abstract class LocationWindow implements Finalizable {
     ///  },
     /// );
     /// _locationWindow!.flyTo(targetCamera, 2000, callback);
-    /// print("Started fly to animation to point (${targetPoint.x}, ${targetPoint.y})");
+    /// print("Started fly to animation to point (${targetPoint.latitude}, ${targetPoint.longitude})");
     /// ```
     void flyTo(Camera camera, int duration, CameraCallback callback);
 
@@ -460,7 +479,7 @@ abstract class LocationWindow implements Finalizable {
     /// Example:
     /// ```dart
     /// // Move to position with linear animation
-    /// Point targetPoint = Point(200.0, 300.0);
+    /// GlobalPoint targetPoint = GlobalPoint(200.0, 300.0);
     /// Camera targetCamera = Camera(targetPoint, 100.0, 90.0, 0.0);
     /// CameraCallback callback = CameraCallback(
     ///  onMoveFinished: (completed) {
@@ -587,14 +606,14 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     bool get stickToBorder;
     void set stickToBorder(bool stickToBorder);
-    /// Current camera position in meters.
+    /// Current camera position (look-at in WGS84).
     /// [Camera].
     ///
     /// Example:
     /// ```dart
     /// // Set camera position without animation
     /// _locationWindow!.camera = newCamera;
-    /// print("Set camera position to (${newPoint.x}, ${newPoint.y}) with zoom 50.0, rotation 0°, tilt 0°");
+    /// print("Set camera position to (${newPoint.latitude}, ${newPoint.longitude}) with zoom 50.0, rotation 0°, tilt 0°");
     /// ```
     Camera get camera;
     void set camera(Camera camera);
@@ -638,8 +657,9 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     bool get zoomGesturesEnabled;
     void set zoomGesturesEnabled(bool zoomGesturesEnabled);
-    /// Radius for picking features on the map, in density-independent pixels.
-    /// Default: 0.5 dp.
+    /// Extra slop around the hit target, in density-independent pixels.
+    /// Applied as a screen-pixel radius for points/lines and as a margin around
+    /// a label's real AABB. Default: 5 dp (MapKit tap threshold).
     ///
     /// Example:
     /// ```dart

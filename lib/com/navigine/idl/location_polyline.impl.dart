@@ -3,31 +3,26 @@ part of 'location_polyline.dart';
 // LocationPolyline "private" section, not exported.
 
 final class LocationPolylineNative extends Struct {
-    external PolylineNative polyline;
-    @Int32()
-    external int locationId;
-    @Int32()
-    external int sublocationId;
+    external Pointer<Void> points;
+    external Pointer<Void> sublocationId;
 }
 
-final LocationPolylineNative Function(PolylineNative, int, int) _LocationPolylineNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
-  .lookup<NativeFunction<LocationPolylineNative Function(PolylineNative, Int32, Int32)>>('navigine_sdk_flutter_LocationPolyline_init')
-  .asFunction<LocationPolylineNative Function(PolylineNative, int, int)>(isLeaf: true));
+final LocationPolylineNative Function(Pointer<Void>, Pointer<Void>) _LocationPolylineNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<LocationPolylineNative Function(Pointer<Void>, Pointer<Void>)>>('navigine_sdk_flutter_LocationPolyline_init')
+  .asFunction<LocationPolylineNative Function(Pointer<Void>, Pointer<Void>)>(isLeaf: true));
 
 extension LocationPolylineImpl on LocationPolyline  {
     static LocationPolyline fromNative(LocationPolylineNative native, {bool takeOwnership = true})  {
         return LocationPolyline(
-          PolylineImpl.fromNative(native.polyline, takeOwnership: takeOwnership),
-          native.locationId,
-          native.sublocationId,
+          ListGlobalPointImpl.fromNativePtr(native.points),
+          toPlatformFromPointerInt32(native.sublocationId),
         );
     }
 
     static LocationPolylineNative toNative(LocationPolyline obj)  {
         return _LocationPolylineNativeInit(
-          PolylineImpl.toNative(obj.polyline),
-          obj.locationId,
-          obj.sublocationId,
+          ListGlobalPointImpl.getNativePtr(obj.points),
+          toNativePtrInt32(obj.sublocationId),
         );
     }
 

@@ -1,13 +1,15 @@
 import 'dart:ffi';
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
+import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/title_style.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -18,22 +20,24 @@ part 'circle_map_object.impl.dart';
 abstract class CircleMapObject implements MapObject, Finalizable {
 
     /// Method is used to specify the center of the circle.
-    /// [point] Metrics coordinates of the center [LocationPoint].
+    /// [point] WGS84 coordinates of the center [GlobalPoint].
+    /// [sublocationId] Floor this object is attached to, or null for the outdoor map.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
     /// // Set circle position
-    /// LocationPoint centerPoint = LocationPoint(100.0, 200.0);
-    /// bool success = _circleMapObject!.setPosition(centerPoint);
+    /// GlobalPoint centerPoint = GlobalPoint(100.0, 200.0);
+    /// bool success = _circleMapObject!.setPosition(centerPoint, 7);
     /// print(
-    ///  "Set circle position to (${centerPoint.x}, ${centerPoint.y}): $success",
+    ///  "Set circle position to (${centerPoint.latitude}, ${centerPoint.longitude}): $success",
     /// );
     /// ```
-    bool setPosition(LocationPoint point);
+    bool setPosition(GlobalPoint point, int? sublocationId);
 
     /// Method is used to move the center of the circle with the specified animation.
-    /// [point] Metrics coordinates of the center [LocationPoint].
+    /// [point] WGS84 coordinates of the center [GlobalPoint].
+    /// [sublocationId] Floor this object is attached to, or null for the outdoor map.
     /// [duration] Animation duration in seconds.
     /// [type] Animation type [AnimationType]. Default: CENTER.
     /// Returns true if the operation is successful, false otherwise.
@@ -41,32 +45,25 @@ abstract class CircleMapObject implements MapObject, Finalizable {
     /// Example:
     /// ```dart
     /// // Set circle position with animation
-    /// LocationPoint animatedPoint = LocationPoint(150.0, 250.0);
-    /// bool animatedSuccess = _circleMapObject!.setPositionAnimated(
-    ///  animatedPoint,
-    ///  2.0,
-    ///  AnimationType.LINEAR,
-    /// );
+    /// GlobalPoint animatedPoint = GlobalPoint(150.0, 250.0);
+    /// bool animatedSuccess = _circleMapObject!.setPositionAnimated(animatedPoint, 7, 2.0, AnimationType.LINEAR,  );
     /// print(
-    ///  "Set circle position with animation to (${animatedPoint.x}, ${animatedPoint.y}): $animatedSuccess",
+    ///  "Set circle position with animation to (${animatedPoint.latitude}, ${animatedPoint.longitude}): $animatedSuccess",
     /// );
     /// ```
-    bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
+    bool setPositionAnimated(GlobalPoint point, int? sublocationId, double duration, AnimationType type);
 
     /// Method is used to specify the fill color of the circle.
-    /// [red] Red RGBA component (0 to 1).
-    /// [green] Green RGBA component (0 to 1).
-    /// [blue] Blue RGBA component (0 to 1).
-    /// [alpha] Opacity multiplier (0 to 1). Values below 0 are set to 0. Default: 1.
+    /// [color] Fill color.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
     /// // Set circle color
-    /// bool colorSuccess = _circleMapObject!.setColor(1.0, 0.0, 0.0, 0.8);
+    /// bool colorSuccess = _circleMapObject!.setColor(const Color(0xCCFF0000));
     /// print("Set circle color to red with 80% opacity: $colorSuccess");
     /// ```
-    bool setColor(double red, double green, double blue, double alpha);
+    bool setColor(Color color);
 
     /// Method is used to specify the size of the circle.
     /// [radius] Radius of the circle in meters.
@@ -131,24 +128,16 @@ abstract class CircleMapObject implements MapObject, Finalizable {
     bool setPriority(double priority);
 
     /// Method is used to specify the color of the circle’s outline.
-    /// [red] Red RGBA component (0 to 1).
-    /// [green] Green RGBA component (0 to 1).
-    /// [blue] Blue RGBA component (0 to 1).
-    /// [alpha] Opacity multiplier (0 to 1). Values below 0 are set to 0. Default: 1.
+    /// [color] Outline color.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
     /// // Set outline color
-    /// bool outlineColorSuccess = _circleMapObject!.setOutlineColor(
-    ///  0.0,
-    ///  0.0,
-    ///  1.0,
-    ///  1.0,
-    /// );
+    /// bool outlineColorSuccess = _circleMapObject!.setOutlineColor(const Color(0xFF0000FF));
     /// print("Set circle outline color to blue: $outlineColorSuccess");
     /// ```
-    bool setOutlineColor(double red, double green, double blue, double alpha);
+    bool setOutlineColor(Color color);
 
     /// Method is used to specify the thickness of the circle’s outline.
     /// [radius] Thickness of the outline in pixels.

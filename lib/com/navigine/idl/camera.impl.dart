@@ -3,7 +3,7 @@ part of 'camera.dart';
 // Camera "private" section, not exported.
 
 final class CameraNative extends Struct {
-    external PointNative point;
+    external GlobalPointNative point;
     @Float()
     external double zoom;
     @Float()
@@ -12,14 +12,14 @@ final class CameraNative extends Struct {
     external double tilt;
 }
 
-final CameraNative Function(PointNative, double, double, double) _CameraNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
-  .lookup<NativeFunction<CameraNative Function(PointNative, Float, Float, Float)>>('navigine_sdk_flutter_Camera_init')
-  .asFunction<CameraNative Function(PointNative, double, double, double)>(isLeaf: true));
+final CameraNative Function(GlobalPointNative, double, double, double) _CameraNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<CameraNative Function(GlobalPointNative, Float, Float, Float)>>('navigine_sdk_flutter_Camera_init')
+  .asFunction<CameraNative Function(GlobalPointNative, double, double, double)>(isLeaf: true));
 
 extension CameraImpl on Camera  {
     static Camera fromNative(CameraNative native, {bool takeOwnership = true})  {
         return Camera(
-          PointImpl.fromNative(native.point, takeOwnership: takeOwnership),
+          GlobalPointImpl.fromNative(native.point, takeOwnership: takeOwnership),
           native.zoom,
           native.rotation,
           native.tilt,
@@ -28,7 +28,7 @@ extension CameraImpl on Camera  {
 
     static CameraNative toNative(Camera obj)  {
         return _CameraNativeInit(
-          PointImpl.toNative(obj.point),
+          GlobalPointImpl.toNative(obj.point),
           obj.zoom,
           obj.rotation,
           obj.tilt,

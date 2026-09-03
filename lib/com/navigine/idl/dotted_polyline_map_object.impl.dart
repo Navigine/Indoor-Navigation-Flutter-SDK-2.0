@@ -125,6 +125,18 @@ class DottedPolylineMapObject$Impl implements DottedPolylineMapObject, Finalizab
     }
 
     @override
+    bool setTitleWithStyle(String title, TitleStyle style) {
+        final _setTitleWithStyleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, NativeString, TitleStyleNative),
+            int Function(Pointer<Void>, NativeString, TitleStyleNative)
+          >('navigine_sdk_flutter_MapObject_setTitleWithStyle__Title_Style'));
+        final __resultHandle = _setTitleWithStyleFfi(this.ptr, toNativeString(title), TitleStyleImpl.toNative(style));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     bool setAlpha(double alpha) {
         final _setAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float),
@@ -150,12 +162,12 @@ class DottedPolylineMapObject$Impl implements DottedPolylineMapObject, Finalizab
     }
 
     @override
-    bool setColor(double red, double green, double blue, double alpha) {
+    bool setColor(Color color) {
         final _setColorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            Uint8 Function(Pointer<Void>, Float, Float, Float, Float),
-            int Function(Pointer<Void>, double, double, double, double)
-          >('navigine_sdk_flutter_DottedPolylineMapObject_setColor__Red_Green_Blue_Alpha'));
-        final __resultHandle = _setColorFfi(this.ptr, red, green, blue, alpha);
+            Uint8 Function(Pointer<Void>, Int32),
+            int Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_DottedPolylineMapObject_setColor__Color'));
+        final __resultHandle = _setColorFfi(this.ptr, color.value);
         final _result = (__resultHandle != 0);
         exception.checkCallResult();
         return _result;

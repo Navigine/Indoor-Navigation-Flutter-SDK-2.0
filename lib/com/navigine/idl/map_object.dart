@@ -5,6 +5,7 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/title_style.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -96,6 +97,20 @@ abstract class MapObject implements Finalizable {
     /// print("Set circle title to 'Circle Object': $titleSuccess");
     /// ```
     bool setTitle(String title);
+
+    /// Method is used to set the title and its style for the map object.
+    /// [title] The title to display on the location view.
+    /// [style] Title style parameters [TitleStyle].
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set title with style
+    /// bool titleStyleSuccess =
+    ///    _circleMapObject!.setTitleWithStyle("Styled Circle", titleStyle);
+    /// print("Set circle title with style: $titleStyleSuccess");
+    /// ```
+    bool setTitleWithStyle(String title, TitleStyle style);
 
     /// Method is used to set the opacity of the map object.
     /// [alpha] Opacity multiplier. Values below 0 will be set to 0. Values above 1 will be set to 1. Default: 1.

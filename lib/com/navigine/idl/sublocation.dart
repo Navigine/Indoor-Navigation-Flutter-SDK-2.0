@@ -213,7 +213,7 @@ abstract class Sublocation implements Finalizable {
     /// print('Sublocation external ID: $externalId');
     /// ```
     String get externalId;
-    /// sublocation's building name (e.g. "Outdoor" for overview plan).
+    /// sublocation's building name.
     ///
     /// Example:
     /// ```dart
