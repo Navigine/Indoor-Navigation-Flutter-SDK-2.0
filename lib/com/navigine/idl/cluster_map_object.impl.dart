@@ -125,6 +125,18 @@ class ClusterMapObject$Impl implements ClusterMapObject, Finalizable {
     }
 
     @override
+    bool setTitleWithStyle(String title, TitleStyle style) {
+        final _setTitleWithStyleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, NativeString, TitleStyleNative),
+            int Function(Pointer<Void>, NativeString, TitleStyleNative)
+          >('navigine_sdk_flutter_MapObject_setTitleWithStyle__Title_Style'));
+        final __resultHandle = _setTitleWithStyleFfi(this.ptr, toNativeString(title), TitleStyleImpl.toNative(style));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     bool setAlpha(double alpha) {
         final _setAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float),
@@ -172,14 +184,27 @@ class ClusterMapObject$Impl implements ClusterMapObject, Finalizable {
     }
 
 
-    LocationPoint get position {
+    GlobalPoint get point {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            LocationPointNative Function(Pointer<Void>),
-            LocationPointNative Function(Pointer<Void>)
-          >('navigine_sdk_flutter_ClusterMapObject_position_get'));
+            GlobalPointNative Function(Pointer<Void>),
+            GlobalPointNative Function(Pointer<Void>)
+          >('navigine_sdk_flutter_ClusterMapObject_point_get'));
 
-        final _positionHandle = _getFfi(this.ptr);
-        final _result = LocationPointImpl.fromNative(_positionHandle);
+        final _pointHandle = _getFfi(this.ptr);
+        final _result = GlobalPointImpl.fromNative(_pointHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+
+    int? get sublocationId {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
+          >('navigine_sdk_flutter_ClusterMapObject_sublocationId_get'));
+
+        final _sublocationIdHandle = _getFfi(this.ptr);
+        final _result = toPlatformFromPointerInt32(_sublocationIdHandle);
         exception.checkCallResult();
         return _result;
     }

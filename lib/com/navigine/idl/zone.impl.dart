@@ -94,6 +94,19 @@ class Zone$Impl implements Zone, Finalizable {
     }
 
 
+    int? get guid {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
+          >('navigine_sdk_flutter_Zone_guid_get'));
+
+        final _guidHandle = _getFfi(this.ptr);
+        final _result = toPlatformFromPointerInt64(_guidHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+
     String get name {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             NativeString Function(Pointer<Void>),
@@ -107,14 +120,14 @@ class Zone$Impl implements Zone, Finalizable {
     }
 
 
-    String get color {
+    Color get color {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            NativeString Function(Pointer<Void>),
-            NativeString Function(Pointer<Void>)
+            Int32 Function(Pointer<Void>),
+            int Function(Pointer<Void>)
           >('navigine_sdk_flutter_Zone_color_get'));
 
         final _colorHandle = _getFfi(this.ptr);
-        final _result = toPlatformString(_colorHandle);
+        final _result = Color(_colorHandle);
         exception.checkCallResult();
         return _result;
     }

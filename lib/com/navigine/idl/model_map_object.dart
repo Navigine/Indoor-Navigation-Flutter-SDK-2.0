@@ -5,9 +5,10 @@ import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
-import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
+import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/title_style.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -19,33 +20,32 @@ part 'model_map_object.impl.dart';
 /// Referenced from [LocationWindow] (addModelMapObject).
 abstract class ModelMapObject implements MapObject, Finalizable {
 
-    /// Sets the anchor position of the model in metric coordinates.
-    /// [point] Center / placement point [LocationPoint].
+    /// Sets the anchor position of the model in WGS84 coordinates.
+    /// [point] Center / placement point [GlobalPoint].
+    /// [sublocationId] Floor this object is attached to, or null for the outdoor map.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
-    /// bool posOk = m.setPosition(LocationPoint(12.0, 34.0));
+    /// bool posOk = m.setPosition(GlobalPoint(12.0, 34.0));
     /// print("Model setPosition: $posOk");
     /// ```
-    bool setPosition(LocationPoint point);
+    bool setPosition(GlobalPoint point, int? sublocationId);
 
     /// Animates the model anchor to a new position.
-    /// [point] Target metrics coordinates [LocationPoint].
+    /// [point] Target WGS84 coordinates [GlobalPoint].
+    /// [sublocationId] Floor this object is attached to, or null for the outdoor map.
     /// [duration] Animation duration in seconds.
     /// [type] Animation easing [AnimationType].
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
-    /// bool posAnimOk = m.setPositionAnimated(
-    ///  LocationPoint(15.0, 40.0),
-    ///  0.5,
-    ///  AnimationType.SINE,
+    /// bool posAnimOk = m.setPositionAnimated(GlobalPoint(15.0, 40.0), 0.5, AnimationType.SINE,
     /// );
     /// print("Model setPositionAnimated: $posAnimOk");
     /// ```
-    bool setPositionAnimated(LocationPoint point, double duration, AnimationType type);
+    bool setPositionAnimated(GlobalPoint point, int? sublocationId, double duration, AnimationType type);
 
     /// Sets the 3D asset (OBJ source + texture ImageProvider).
     /// [model] Model provider [ModelProvider].
@@ -89,22 +89,26 @@ abstract class ModelMapObject implements MapObject, Finalizable {
     /// ```
     bool setCollisionEnabled(bool enabled);
 
-    /// Sets rotation angle in degrees (around the placement axis used by the engine).
+    /// Sets rotation angle in radians (around the placement axis used by the engine).
+    /// [angle] Rotation angle in radians. Default: 0.
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
-    /// bool angleOk = m.setAngle(45.0);
+    /// bool angleOk = m.setAngle(math.pi / 4);
     /// print("Model setAngle: $angleOk");
     /// ```
     bool setAngle(double angle);
 
-    /// Animates rotation to the given angle.
+    /// Animates rotation to the given angle in radians.
+    /// [angle] Rotation angle in radians.
+    /// [duration] Animation duration in seconds.
+    /// [type] Animation type [AnimationType].
     /// Returns true if the operation is successful, false otherwise.
     ///
     /// Example:
     /// ```dart
-    /// bool angleAnimOk = m.setAngleAnimated(90.0, 0.5, AnimationType.QUINT);
+    /// bool angleAnimOk = m.setAngleAnimated(math.pi / 2, 0.5, AnimationType.QUINT);
     /// print("Model setAngleAnimated: $angleAnimOk");
     /// ```
     bool setAngleAnimated(double angle, double duration, AnimationType type);

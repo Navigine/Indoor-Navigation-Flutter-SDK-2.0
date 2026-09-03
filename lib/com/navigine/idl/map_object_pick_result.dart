@@ -2,8 +2,10 @@ import 'dart:ffi';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
-import 'package:navigine_sdk/com/navigine/idl/location_point.dart';
+import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
 
 part 'map_object_pick_result.impl.dart';
 /// Class is used to handle information in [PickListener].
@@ -11,7 +13,7 @@ part 'map_object_pick_result.impl.dart';
 abstract class MapObjectPickResult implements Finalizable {
 
 
-    /// Location of the picked map object [LocationPoint].
+    /// WGS84 location of the picked map object [GlobalPoint].
     ///
     /// Example:
     /// ```dart
@@ -19,7 +21,9 @@ abstract class MapObjectPickResult implements Finalizable {
     /// print("Map object picked at screen position (${screenPosition.x}, ${screenPosition.y})");
     /// print("  Object location: (${point.x}, ${point.y})");
     /// ```
-    LocationPoint get point;
+    GlobalPoint get point;
+    /// Floor the picked object is attached to, or null for the outdoor map.
+    int? get sublocationId;
     /// Picked map object [MapObject].
     ///
     /// Example:

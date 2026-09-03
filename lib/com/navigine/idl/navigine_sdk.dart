@@ -65,6 +65,11 @@ abstract class NavigineSdk implements Finalizable {
 
     /// Method returns current User-Agent string.
     /// Returns User-Agent string
+    ///
+    /// Example:
+    /// ```dart
+    /// print("User-Agent: ${NavigineSdk.getUserAgent()}");
+    /// ```
     static String getUserAgent() => $prototype.getUserAgent();
 
     /// Method returns current timestamp.
@@ -98,6 +103,12 @@ abstract class NavigineSdk implements Finalizable {
     void setServer(String server);
 
     /// Resets SDK to the initial connection state: default production server URL, empty user hash, and a new session propagated to managers (same effect on session-aware managers as changing server or user hash). Call from the UI thread.
+    ///
+    /// Example:
+    /// ```dart
+    /// _sdk!.reset();
+    /// print("SDK reset to initial state");
+    /// ```
     void reset();
 
     /// [LocationManager] instance, which could be used for working with the [Location].

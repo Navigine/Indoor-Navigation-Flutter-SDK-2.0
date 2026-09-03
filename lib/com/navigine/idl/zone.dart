@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:ui';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
@@ -52,6 +53,17 @@ abstract class Zone implements Finalizable {
     /// print('Zone ID: $zoneId');
     /// ```
     int get id;
+    /// Optional stable zone GUID used by live tracking (MQTT zone_guids).
+    /// Distinct from id; may be missing in older location archives.
+    ///
+    /// Example:
+    /// ```dart
+    /// int? zoneGuid = zone.getGuid();
+    /// if (zoneGuid != null) {
+    ///  print('Zone GUID: $zoneGuid');
+    /// }
+    /// ```
+    int? get guid;
     /// zone's name.
     ///
     /// Example:
@@ -66,10 +78,10 @@ abstract class Zone implements Finalizable {
     /// Example:
     /// ```dart
     /// // Get zone color
-    /// String? color = zone.getColor();
+    /// Color color = zone.getColor();
     /// print('Zone color: $color');
     /// ```
-    String get color;
+    Color get color;
     /// zone's alias.
     ///
     /// Example:

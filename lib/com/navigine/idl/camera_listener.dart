@@ -17,9 +17,9 @@ abstract class CameraListener {
     /// Example:
     /// ```dart
     /// // Create camera with constructor
-    /// Point newPoint = Point(100.0, 200.0);
+    /// GlobalPoint newPoint = GlobalPoint(100.0, 200.0);
     /// Camera newCamera = Camera(newPoint, 50.0, 0.0, 0.0);
-    /// print("Created camera with point (${newPoint.x}, ${newPoint.y}), zoom 50.0, rotation 0°, tilt 0°");
+    /// print("Created camera with point (${newPoint.latitude}, ${newPoint.longitude}), zoom 50.0, rotation 0°, tilt 0°");
     /// ```
     void onCameraPositionChanged(CameraUpdateReason reason, bool finished);
 

@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
@@ -8,6 +9,7 @@ import 'package:navigine_sdk/com/navigine/idl/location_polyline.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_object_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/placement.dart';
+import 'package:navigine_sdk/com/navigine/idl/title_style.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -24,18 +26,13 @@ abstract class DottedPolylineMapObject implements MapObject, Finalizable {
     /// Example:
     /// ```dart
     /// // Set dotted polyline geometry
-    /// List<Point> dottedPoints = [
-    ///  Point(0.0, 100.0),
-    ///  Point(50.0, 150.0),
-    ///  Point(100.0, 100.0),
-    ///  Point(150.0, 150.0),
+    /// List<GlobalPoint> dottedPoints = [
+    ///  GlobalPoint(0.0, 100.0),
+    ///  GlobalPoint(50.0, 150.0),
+    ///  GlobalPoint(100.0, 100.0),
+    ///  GlobalPoint(150.0, 150.0),
     /// ];
-    /// Polyline dottedPolyline = Polyline(dottedPoints);
-    /// LocationPolyline locationDottedPolyline = LocationPolyline(
-    ///  dottedPolyline,
-    ///  1,
-    ///  0,
-    /// );
+    /// LocationPolyline locationDottedPolyline = LocationPolyline(dottedPoints, 0);
     /// bool success = _dottedPolylineMapObject!.setPolyLine(
     ///  locationDottedPolyline,
     /// );
@@ -44,26 +41,18 @@ abstract class DottedPolylineMapObject implements MapObject, Finalizable {
     bool setPolyLine(LocationPolyline polyline);
 
     /// Method is used to specify the color of the object.
-    /// [red] Red RGBA component.
-    /// [green] Green RGBA component.
-    /// [blue] Blue RGBA component.
-    /// [alpha] Opacity multiplier. Values below 0 will be set to 0. Default: 1.
+    /// [color] Fill color.
     /// Returns true if success, false otherwise.
     ///
     /// Example:
     /// ```dart
     /// // Set dotted polyline color
-    /// bool colorSuccess = _dottedPolylineMapObject!.setColor(
-    ///  0.5,
-    ///  0.0,
-    ///  1.0,
-    ///  0.8,
-    /// );
+    /// bool colorSuccess = _dottedPolylineMapObject!.setColor(const Color(0xCC8000FF));
     /// print(
     ///  "Set dotted polyline color to purple with 80% opacity: $colorSuccess",
     /// );
     /// ```
-    bool setColor(double red, double green, double blue, double alpha);
+    bool setColor(Color color);
 
     /// Method is used to specify the size of the points.
     /// [width] Width of the points in pixels.

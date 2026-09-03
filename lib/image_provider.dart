@@ -94,7 +94,7 @@ extension GetImageProviderData on ImageProvider {
   static ImageProviderHeap get heap => ImageProvider._heap;
 }
 
-/// Converts [ImageProvider] to a native pointer for FFI (Yandex-compatible).
+/// Converts [ImageProvider] to a native pointer for FFI.
 Pointer<Void> toNativeImageProvider(ImageProvider provider) {
   if (provider is NativeImageProviderWrapper) {
     return provider.rawPointer;

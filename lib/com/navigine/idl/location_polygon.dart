@@ -1,32 +1,33 @@
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
-import 'package:navigine_sdk/com/navigine/idl/polygon.dart';
+import 'package:navigine_sdk/com/containers__conversion.dart';
+import 'package:navigine_sdk/com/lazy_list.dart';
+import 'package:navigine_sdk/com/lazy_map.dart';
+import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
+import 'package:navigine_sdk/com/to_native.dart';
+import 'package:navigine_sdk/com/to_platform.dart';
 
 part 'location_polygon.impl.dart';
-/// Class is used for representing certain polygon within the location [Polygon]
+/// Polygon on the location view in WGS84 coordinates.
 ///
 /// Example:
 /// ```dart
-/// List<Point> ring = [
-///  Point(1.0, 2.0),
-///  Point(3.0, 4.0),
-///  Point(5.0, 2.0),
+/// List<GlobalPoint> ring = [
+///  GlobalPoint(55.751, 37.617),
+///  GlobalPoint(55.752, 37.618),
+///  GlobalPoint(55.751, 37.619),
 /// ];
-/// Polygon metricPolygon = Polygon(ring);
-/// LocationPolygon locationPolygon = LocationPolygon(metricPolygon, 42, 7);
-/// Polygon polygonBack = locationPolygon.polygon;
+/// LocationPolygon locationPolygon = LocationPolygon(ring, 7);
 /// print(
-///  "LocationPolygon: location ${locationPolygon.locationId} sublocation ${locationPolygon.sublocationId} vertices ${polygonBack.points.length}",
+///  "LocationPolygon: sublocation ${locationPolygon.sublocationId}, vertices ${locationPolygon.points.length}",
 /// );
 /// ```
 class LocationPolygon {
     /// Default constructor.
-    LocationPolygon(this.polygon, this.locationId, this.sublocationId);
-    /// Metrics polygon [Polygon].
-    Polygon polygon;
-    /// location polygon location identifier.
-    int locationId;
-    /// location polygon sublocation identifier.
-    int sublocationId;
+    LocationPolygon(this.points, this.sublocationId);
+    /// Ring vertices in WGS84 [GlobalPoint].
+    List<GlobalPoint> points;
+    /// Floor this polygon is attached to, or null for the outdoor map.
+    int? sublocationId;
 }

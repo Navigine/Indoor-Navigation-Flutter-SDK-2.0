@@ -64,6 +64,28 @@ class LocationWindow$Impl implements LocationWindow, Finalizable {
     }
 
     @override
+    void setOperatingMode(OperatingMode mode) {
+        final _setOperatingModeFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Uint32),
+            void Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_LocationWindow_setOperatingMode__Mode'));
+        _setOperatingModeFfi(this.ptr, OperatingModeImpl.toInt(mode));
+        exception.checkCallResult();
+    }
+
+    @override
+    OperatingMode getOperatingMode() {
+        final _getOperatingModeFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint32 Function(Pointer<Void>, ),
+            int Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_getOperatingMode'));
+        final __resultHandle = _getOperatingModeFfi(this.ptr, );
+        final _result = OperatingModeImpl.fromInt(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     Camera getEnclosingCamera(BoundingBox boundingBox) {
         final _getEnclosingCameraFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             CameraNative Function(Pointer<Void>, BoundingBoxNative),
@@ -76,24 +98,24 @@ class LocationWindow$Impl implements LocationWindow, Finalizable {
     }
 
     @override
-    Point screenPositionToMeters(math.Point<double> point) {
-        final _screenPositionToMetersFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            PointNative Function(Pointer<Void>, ScreenPointNative),
-            PointNative Function(Pointer<Void>, ScreenPointNative)
-          >('navigine_sdk_flutter_LocationWindow_screenPositionToMeters__Point'));
-        final __resultHandle = _screenPositionToMetersFfi(this.ptr, ScreenPointImpl.toNative(point));
-        final _result = PointImpl.fromNative(__resultHandle);
+    GlobalPoint screenPositionToGlobal(math.Point<double> point) {
+        final _screenPositionToGlobalFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            GlobalPointNative Function(Pointer<Void>, ScreenPointNative),
+            GlobalPointNative Function(Pointer<Void>, ScreenPointNative)
+          >('navigine_sdk_flutter_LocationWindow_screenPositionToGlobal__Point'));
+        final __resultHandle = _screenPositionToGlobalFfi(this.ptr, ScreenPointImpl.toNative(point));
+        final _result = GlobalPointImpl.fromNative(__resultHandle);
         exception.checkCallResult();
         return _result;
     }
 
     @override
-    math.Point<double> metersToScreenPosition(Point point, bool clipToViewport) {
-        final _metersToScreenPositionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
-            ScreenPointNative Function(Pointer<Void>, PointNative, Uint8),
-            ScreenPointNative Function(Pointer<Void>, PointNative, int)
-          >('navigine_sdk_flutter_LocationWindow_metersToScreenPosition__Point_ClipToViewport'));
-        final __resultHandle = _metersToScreenPositionFfi(this.ptr, PointImpl.toNative(point), (clipToViewport ? 1 : 0));
+    math.Point<double> globalToScreenPosition(GlobalPoint point, bool clipToViewport) {
+        final _globalToScreenPositionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            ScreenPointNative Function(Pointer<Void>, GlobalPointNative, Uint8),
+            ScreenPointNative Function(Pointer<Void>, GlobalPointNative, int)
+          >('navigine_sdk_flutter_LocationWindow_globalToScreenPosition__Point_ClipToViewport'));
+        final __resultHandle = _globalToScreenPositionFfi(this.ptr, GlobalPointImpl.toNative(point), (clipToViewport ? 1 : 0));
         final _result = ScreenPointImpl.fromNative(__resultHandle);
         exception.checkCallResult();
         return _result;

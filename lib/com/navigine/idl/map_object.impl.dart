@@ -124,6 +124,18 @@ class MapObject$Impl implements MapObject, Finalizable {
     }
 
     @override
+    bool setTitleWithStyle(String title, TitleStyle style) {
+        final _setTitleWithStyleFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, NativeString, TitleStyleNative),
+            int Function(Pointer<Void>, NativeString, TitleStyleNative)
+          >('navigine_sdk_flutter_MapObject_setTitleWithStyle__Title_Style'));
+        final __resultHandle = _setTitleWithStyleFfi(this.ptr, toNativeString(title), TitleStyleImpl.toNative(style));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     bool setAlpha(double alpha) {
         final _setAlphaFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float),
