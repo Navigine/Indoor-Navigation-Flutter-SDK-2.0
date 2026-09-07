@@ -659,7 +659,7 @@ abstract class LocationWindow implements Finalizable {
     void set zoomGesturesEnabled(bool zoomGesturesEnabled);
     /// Extra slop around the hit target, in density-independent pixels.
     /// Applied as a screen-pixel radius for points/lines and as a margin around
-    /// a label's real AABB. Default: 5 dp (MapKit tap threshold).
+    /// a label's real AABB. Default: 5 dp.
     ///
     /// Example:
     /// ```dart
