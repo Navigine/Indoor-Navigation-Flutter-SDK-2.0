@@ -14,6 +14,7 @@ import 'package:navigine_sdk/com/navigine/idl/mqtt_session.dart';
 import 'package:navigine_sdk/com/navigine/idl/navigation_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/notification_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/resource_manager.dart';
+import 'package:navigine_sdk/com/navigine/idl/route_layer.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/storage_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/user_location_layer.dart';
@@ -211,6 +212,23 @@ abstract class NavigineSdk implements Finalizable {
 
     /// Create layer with the user location icon.
     UserLocationLayer getUserLocationLayer(LocationWindow locationWindow);
+
+    /// Create layer that builds and renders routes on the location window.
+    /// Location / position are obtained from LocationManager and NavigationManager.
+    /// [locationWindow] Map window used for drawing.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Create RouteLayer for building and drawing routes on the map
+    /// final locationWindow = _locationWindow;
+    /// if (locationWindow != null) {
+    ///  _routeLayer = _sdk?.getRouteLayer(locationWindow);
+    ///  if (_routeLayer != null) {
+    ///    print('RouteLayer successfully initialized');
+    ///  }
+    /// }
+    /// ```
+    RouteLayer getRouteLayer(LocationWindow locationWindow);
 
     /// [RouteManager] instance, which could be used for working making routes, setting target points. [RoutePath]
     /// [locationManager] [LocationManager] instance

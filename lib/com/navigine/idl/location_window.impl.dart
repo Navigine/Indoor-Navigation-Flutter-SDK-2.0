@@ -86,12 +86,36 @@ class LocationWindow$Impl implements LocationWindow, Finalizable {
     }
 
     @override
+    String getAttribution() {
+        final _getAttributionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            NativeString Function(Pointer<Void>, ),
+            NativeString Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_getAttribution'));
+        final __resultHandle = _getAttributionFfi(this.ptr, );
+        final _result = toPlatformString(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     Camera getEnclosingCamera(BoundingBox boundingBox) {
         final _getEnclosingCameraFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             CameraNative Function(Pointer<Void>, BoundingBoxNative),
             CameraNative Function(Pointer<Void>, BoundingBoxNative)
           >('navigine_sdk_flutter_LocationWindow_getEnclosingCamera__BoundingBox'));
         final __resultHandle = _getEnclosingCameraFfi(this.ptr, BoundingBoxImpl.toNative(boundingBox));
+        final _result = CameraImpl.fromNative(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    Camera getEnclosingCameraWithFocus(BoundingBox boundingBox, ScreenRect? focusRect, double? azimuth, double? tilt) {
+        final _getEnclosingCameraWithFocusFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            CameraNative Function(Pointer<Void>, BoundingBoxNative, Pointer<Void>, Pointer<Void>, Pointer<Void>),
+            CameraNative Function(Pointer<Void>, BoundingBoxNative, Pointer<Void>, Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_getEnclosingCameraWithFocus__BoundingBox_FocusRect_Azimuth_Tilt'));
+        final __resultHandle = _getEnclosingCameraWithFocusFfi(this.ptr, BoundingBoxImpl.toNative(boundingBox), ScreenRectImpl.toPointer(focusRect), toNativePtrFloat(azimuth), toNativePtrFloat(tilt));
         final _result = CameraImpl.fromNative(__resultHandle);
         exception.checkCallResult();
         return _result;
@@ -500,6 +524,69 @@ class LocationWindow$Impl implements LocationWindow, Finalizable {
         return _result;
     }
 
+    MapTheme get mapTheme {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint32 Function(Pointer<Void>),
+            int Function(Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_mapTheme_get'));
+
+        final _mapThemeHandle = _getFfi(this.ptr);
+        final _result = MapThemeImpl.fromInt(_mapThemeHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    set mapTheme(MapTheme mapTheme) {
+        final _setFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Uint32),
+            void Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_LocationWindow_mapTheme_set'));
+        _setFfi(this.ptr, MapThemeImpl.toInt(mapTheme));
+        exception.checkCallResult();
+    }
+
+    TileProvider? get tileProvider {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_tileProvider_get'));
+
+        final _tileProviderHandle = _getFfi(this.ptr);
+        final _result = TileProviderImpl.fromPointer(_tileProviderHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    set tileProvider(TileProvider? tileProvider) {
+        final _setFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_tileProvider_set'));
+        _setFfi(this.ptr, TileProviderImpl.toPointer(tileProvider));
+        exception.checkCallResult();
+    }
+
+    AttributionAlignment get attributionAlignment {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            AttributionAlignmentNative Function(Pointer<Void>),
+            AttributionAlignmentNative Function(Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_attributionAlignment_get'));
+
+        final _attributionAlignmentHandle = _getFfi(this.ptr);
+        final _result = AttributionAlignmentImpl.fromNative(_attributionAlignmentHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    set attributionAlignment(AttributionAlignment attributionAlignment) {
+        final _setFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, AttributionAlignmentNative),
+            void Function(Pointer<Void>, AttributionAlignmentNative)
+          >('navigine_sdk_flutter_LocationWindow_attributionAlignment_set'));
+        _setFfi(this.ptr, AttributionAlignmentImpl.toNative(attributionAlignment));
+        exception.checkCallResult();
+    }
+
     double get zoomFactor {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Float Function(Pointer<Void>),
@@ -604,6 +691,53 @@ class LocationWindow$Impl implements LocationWindow, Finalizable {
         _setFfi(this.ptr, CameraImpl.toNative(camera));
         exception.checkCallResult();
     }
+
+    ScreenRect? get focusRect {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_focusRect_get'));
+
+        final _focusRectHandle = _getFfi(this.ptr);
+        final _result = ScreenRectImpl.fromPointer(_focusRectHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    set focusRect(ScreenRect? focusRect) {
+        final _setFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_focusRect_set'));
+        _setFfi(this.ptr, ScreenRectImpl.toPointer(focusRect));
+        exception.checkCallResult();
+    }
+
+    VisibleRegion get focusRegion {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            VisibleRegionNative Function(Pointer<Void>),
+            VisibleRegionNative Function(Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_focusRegion_get'));
+
+        final _focusRegionHandle = _getFfi(this.ptr);
+        final _result = VisibleRegionImpl.fromNative(_focusRegionHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+
+    VisibleRegion get visibleRegion {
+        final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            VisibleRegionNative Function(Pointer<Void>),
+            VisibleRegionNative Function(Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_visibleRegion_get'));
+
+        final _visibleRegionHandle = _getFfi(this.ptr);
+        final _result = VisibleRegionImpl.fromNative(_visibleRegionHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
 
     bool get rotateGestureEnabled {
         final _getFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<

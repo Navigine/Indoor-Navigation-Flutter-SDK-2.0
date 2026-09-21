@@ -71,7 +71,8 @@ class _DefaultNavigationViewState extends State<DefaultNavigationView>
   bool _isFollowing = false;
 
   DefaultNavigineViewConfig get _chromeConfig => DefaultNavigineViewConfig(
-        visibleWidgets: widget.viewConfig.visibleWidgets & NavigineWidgetVisibility.all,
+        visibleWidgets:
+            widget.viewConfig.visibleWidgets & NavigineWidgetVisibility.all,
       );
 
   void _handleViewCreated(LocationWindow window) {
@@ -88,16 +89,24 @@ class _DefaultNavigationViewState extends State<DefaultNavigationView>
     super.dispose();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_isFollowing) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && _isFollowing) {
+          _updateFollowMeAnchor();
+        }
+      });
+    }
+  }
+
   void _handleFollowMePressed() {
     if (!mounted || _userLocationLayer == null) return;
 
     if (!_isFollowing) {
-      final screenSize = MediaQuery.of(context).size;
-      final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
-      _userLocationLayer!.setAnchor(math.Point<double>(
-        screenSize.width * devicePixelRatio / 2,
-        screenSize.height * devicePixelRatio / 2,
-      ));
+      _updateFollowMeAnchor();
     } else {
       _userLocationLayer!.resetAnchor();
     }
@@ -106,7 +115,20 @@ class _DefaultNavigationViewState extends State<DefaultNavigationView>
     });
   }
 
-  List<Widget> _followMeOverlays(FollowMeButtonConfig followMeConfig, int visibleWidgets) {
+  void _updateFollowMeAnchor() {
+    if (!mounted || _userLocationLayer == null) return;
+
+    final mediaQuery = MediaQuery.of(context);
+    final screenSize = context.size ?? mediaQuery.size;
+    final devicePixelRatio = mediaQuery.devicePixelRatio;
+    _userLocationLayer!.setAnchor(math.Point<double>(
+      screenSize.width * devicePixelRatio / 2,
+      screenSize.height * devicePixelRatio / 2,
+    ));
+  }
+
+  List<Widget> _followMeOverlays(
+      FollowMeButtonConfig followMeConfig, int visibleWidgets) {
     if ((visibleWidgets & NavigationWidgetVisibility.followMeButton) == 0) {
       return const [];
     }

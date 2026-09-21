@@ -63,6 +63,50 @@ abstract class PolylineMapObject implements MapObject, Finalizable {
     /// ```
     bool setColor(Color color);
 
+    /// Method is used to specify dash segment length.
+    /// [dashLength] Dash segment length in line texture units. Default: 0 (dashing is disabled).
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set dash segment length
+    /// bool dashSuccess = _polylineMapObject!.setDashLength(3.0);
+    /// print("Set polyline dash length: $dashSuccess");
+    /// ```
+    bool setDashLength(double dashLength);
+
+    /// Returns dash segment length.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get dash segment length
+    /// double dashLength = _polylineMapObject!.dashLength();
+    /// print("Polyline dash length: $dashLength");
+    /// ```
+    double dashLength();
+
+    /// Method is used to specify gap length between two dashes.
+    /// [gapLength] Gap length in line texture units. Default: 0 (dashing is disabled).
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Set gap length between dashes
+    /// bool gapSuccess = _polylineMapObject!.setGapLength(1.0);
+    /// print("Set polyline gap length: $gapSuccess");
+    /// ```
+    bool setGapLength(double gapLength);
+
+    /// Returns gap length between two dashes.
+    ///
+    /// Example:
+    /// ```dart
+    /// // Get gap length between dashes
+    /// double gapLength = _polylineMapObject!.gapLength();
+    /// print("Polyline gap length: $gapLength");
+    /// ```
+    double gapLength();
+
     /// Method is used to specify the rendering order of the polyline.
     /// [order] The rendering order value. Default: 0.
     /// Returns true if the operation is successful, false otherwise.
