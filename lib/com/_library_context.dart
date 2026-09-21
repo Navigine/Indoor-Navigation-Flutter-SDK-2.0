@@ -15,7 +15,16 @@ DynamicLibrary _loadNativeLibrary(String nativeLibraryPath) {
   try {
     return DynamicLibrary.open(nativeLibraryPath);
   } catch (e) {
-    return DynamicLibrary.process();
+    // iOS/macOS: the SDK is often linked into the executable, so process()
+    // is the right lookup. Android: swallowing dlopen turns a precise
+    // linker error into a later "undefined symbol: library_dart_is_init".
+    if (Platform.isIOS || Platform.isMacOS) {
+      return DynamicLibrary.process();
+    }
+    throw ArgumentError(
+        "Failed to load native library '$nativeLibraryPath'. "
+        "This is a native load/link failure (missing .so or unresolved "
+        "symbol), not a missing initNavigineSdk() call.\n$e");
   }
 }
 

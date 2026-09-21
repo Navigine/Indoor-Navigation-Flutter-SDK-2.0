@@ -8,6 +8,7 @@ import 'package:navigine_sdk/com/lazy_list.dart';
 import 'package:navigine_sdk/com/lazy_map.dart';
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
+import 'package:navigine_sdk/com/navigine/idl/attribution_alignment.dart';
 import 'package:navigine_sdk/com/navigine/idl/bounding_box.dart';
 import 'package:navigine_sdk/com/navigine/idl/building_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/camera.dart';
@@ -21,12 +22,16 @@ import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/input_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/map_filter_condition.dart';
+import 'package:navigine_sdk/com/navigine/idl/map_theme.dart';
 import 'package:navigine_sdk/com/navigine/idl/model_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/operating_mode.dart';
 import 'package:navigine_sdk/com/navigine/idl/pick_listener.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
+import 'package:navigine_sdk/com/navigine/idl/screen_rect.dart';
 import 'package:navigine_sdk/com/navigine/idl/sublocation_change_listener.dart';
+import 'package:navigine_sdk/com/navigine/idl/tile_provider.dart';
+import 'package:navigine_sdk/com/navigine/idl/visible_region.dart';
 import 'package:navigine_sdk/com/to_native.dart';
 import 'package:navigine_sdk/com/to_platform.dart';
 import 'package:navigine_sdk/com/weak_interface_wrapper.dart' as weak_interface_wrapper;
@@ -80,7 +85,19 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     OperatingMode getOperatingMode();
 
-    /// Calculates camera that fits provided bounding box.
+    /// OSM attribution text shown when the outdoor vector basemap is active.
+    /// Comes from `tileProvider.attribution` when set, otherwise the OSM default.
+    ///
+    /// Example:
+    /// ```dart
+    /// final attribution = _locationWindow!.getAttribution();
+    /// print("Attribution: $attribution");
+    /// ```
+    String getAttribution();
+
+    /// Camera that fits boundingBox into the current focus rect.
+    /// Uses `focusRect` when set, otherwise the full viewport. Keeps the current
+    /// azimuth and tilt (tilt fit is approximate).
     /// [boundingBox] WGS84 bounding box to enclose.
     ///
     /// Example:
@@ -91,6 +108,23 @@ abstract class LocationWindow implements Finalizable {
     /// print("Camera that fits bounding box: $camera");
     /// ```
     Camera getEnclosingCamera(BoundingBox boundingBox);
+
+    /// Camera that fits boundingBox, with optional overrides.
+    /// Null `focusRect` / `azimuth` / `tilt` keep the current window values
+    /// (`focusRect` property, current camera). Azimuth and tilt are degrees,
+    /// same units as [Camera].
+    ///
+    /// Example:
+    /// ```dart
+    /// Camera padded = _locationWindow!.getEnclosingCameraWithFocus(
+    ///  boundingBox,
+    ///  focus,
+    ///  null,
+    ///  null,
+    /// );
+    /// print("Camera that fits bounding box in focus rect: $padded");
+    /// ```
+    Camera getEnclosingCameraWithFocus(BoundingBox boundingBox, ScreenRect? focusRect, double? azimuth, double? tilt);
 
     /// Converts screen coordinates (pixels) to WGS84 coordinates.
     /// [point] (x,y) coordinates in screen pixels.
@@ -564,6 +598,37 @@ abstract class LocationWindow implements Finalizable {
 
     bool isValid();
 
+    /// Outdoor vector basemap color theme [MapTheme].
+    /// Indoor rasters, venues, and user map objects are unchanged. Default: light.
+    ///
+    /// Example:
+    /// ```dart
+    /// _locationWindow!.setMapTheme(MapTheme.DARK);
+    /// print("Set map theme to DARK");
+    /// ```
+    MapTheme get mapTheme;
+    void set mapTheme(MapTheme mapTheme);
+    /// Outdoor vector tile source [TileProvider].
+    /// Null (default) uses OSM Shortbread at vector.openstreetmap.org.
+    /// When `mbtiles` is set, tiles are read only from that file.
+    /// `schema` must match the remote tiles or MBTiles pack.
+    ///
+    /// Example:
+    /// ```dart
+    /// _locationWindow!.setTileProvider(osmHttp);
+    /// _locationWindow!.setTileProvider(null);
+    /// ```
+    TileProvider? get tileProvider;
+    void set tileProvider(TileProvider? tileProvider);
+    /// Screen placement of the OSM attribution overlay [AttributionAlignment].
+    /// Default: right + bottom. Visible only in outdoor / outdoor_indoor modes.
+    ///
+    /// Example:
+    /// ```dart
+    /// _locationWindow!.setAttributionAlignment(alignment);
+    /// ```
+    AttributionAlignment get attributionAlignment;
+    void set attributionAlignment(AttributionAlignment attributionAlignment);
     /// Specifies the zoom level of the location view, in pixels per meter.
     /// Default: approximately 100 meters across the screen width.
     ///
@@ -617,6 +682,41 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     Camera get camera;
     void set camera(Camera camera);
+    /// Area of the viewport used when fitting a bounding box.
+    /// Null (default) is the full view. Set this for a floor selector, follow-me
+    /// button, or POI card so `getEnclosingCamera` keeps geometry in the remaining
+    /// rectangle. Coordinates are screen pixels [ScreenRect].
+    ///
+    /// Example:
+    /// ```dart
+    /// ScreenRect focus = ScreenRect(
+    ///  ScreenPoint(0, 0),
+    ///  ScreenPoint(1000, 1600),
+    /// );
+    /// _locationWindow!.setFocusRect(focus);
+    /// ```
+    ScreenRect? get focusRect;
+    void set focusRect(ScreenRect? focusRect);
+    /// Four corners of `focusRect` in WGS84, or `visibleRegion` when
+    /// `focusRect` is null [VisibleRegion].
+    ///
+    /// Example:
+    /// ```dart
+    /// VisibleRegion focusRegion = _locationWindow!.focusRegion;
+    /// print("Focus-rect top-left: ${focusRegion.topLeft}");
+    /// ```
+    VisibleRegion get focusRegion;
+    /// Four corners of the current viewport in WGS84
+    /// Corners are ray-cast onto the ground plane, same as `screenPositionToGlobal`.
+    /// With tilt the shape is a trapezoid.
+    /// [VisibleRegion].
+    ///
+    /// Example:
+    /// ```dart
+    /// VisibleRegion visibleRegion = _locationWindow!.visibleRegion;
+    /// print("Viewport top-left: ${visibleRegion.topLeft}");
+    /// ```
+    VisibleRegion get visibleRegion;
     /// Specifies whether rotation gestures (e.g., two-finger rotation) are enabled.
     ///
     /// Example:

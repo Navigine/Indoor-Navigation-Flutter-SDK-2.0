@@ -225,6 +225,18 @@ class NavigineSdk$Impl implements NavigineSdk, Finalizable {
     }
 
     @override
+    RouteLayer getRouteLayer(LocationWindow locationWindow) {
+        final _getRouteLayerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_getRouteLayer__LocationWindow'));
+        final __resultHandle = _getRouteLayerFfi(this.ptr, LocationWindow$Impl.getNativePtr(locationWindow));
+        final _result = RouteLayer$Impl.fromNativePtr(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     RouteManager getRouteManager(LocationManager locationManager, NavigationManager navigationManager) {
         final _getRouteManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>),

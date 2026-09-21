@@ -95,6 +95,28 @@ class UserLocationLayer$Impl implements UserLocationLayer, Finalizable {
         return _result;
     }
 
+    @override
+    void setHeadingModeActive(bool active) {
+        final _setHeadingModeActiveFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Uint8),
+            void Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_UserLocationLayer_setHeadingModeActive__Active'));
+        _setHeadingModeActiveFfi(this.ptr, (active ? 1 : 0));
+        exception.checkCallResult();
+    }
+
+    @override
+    bool headingModeActive() {
+        final _headingModeActiveFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, ),
+            int Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_UserLocationLayer_headingModeActive'));
+        final __resultHandle = _headingModeActiveFfi(this.ptr, );
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
 
 
 

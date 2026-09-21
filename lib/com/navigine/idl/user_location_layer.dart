@@ -58,6 +58,27 @@ abstract class UserLocationLayer implements Finalizable {
     /// ```
     bool anchorEnabled();
 
+    /// Enables or disables heading-up mode while the user location layer is anchored.
+    /// When enabled and a location heading is available, the map camera rotates to keep
+    /// the user's heading pointed toward the top of the screen. Without an anchor the
+    /// location icon keeps rotating independently.
+    ///
+    /// Example:
+    /// ```dart
+    /// _userLocationLayer!.setHeadingModeActive(true);
+    /// print("Heading-up mode enabled");
+    /// ```
+    void setHeadingModeActive(bool active);
+
+    /// Returns true if heading-up mode is enabled.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool headingModeActive = _userLocationLayer!.headingModeActive();
+    /// print("Heading-up mode active: $headingModeActive");
+    /// ```
+    bool headingModeActive();
+
     bool isValid();
 
 

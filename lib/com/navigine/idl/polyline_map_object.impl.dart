@@ -186,6 +186,54 @@ class PolylineMapObject$Impl implements PolylineMapObject, Finalizable {
     }
 
     @override
+    bool setDashLength(double dashLength) {
+        final _setDashLengthFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_PolylineMapObject_setDashLength__DashLength'));
+        final __resultHandle = _setDashLengthFfi(this.ptr, dashLength);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    double dashLength() {
+        final _dashLengthFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Float Function(Pointer<Void>, ),
+            double Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_PolylineMapObject_dashLength'));
+        final __resultHandle = _dashLengthFfi(this.ptr, );
+        final _result = __resultHandle;
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    bool setGapLength(double gapLength) {
+        final _setGapLengthFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_PolylineMapObject_setGapLength__GapLength'));
+        final __resultHandle = _setGapLengthFfi(this.ptr, gapLength);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    double gapLength() {
+        final _gapLengthFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Float Function(Pointer<Void>, ),
+            double Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_PolylineMapObject_gapLength'));
+        final __resultHandle = _gapLengthFfi(this.ptr, );
+        final _result = __resultHandle;
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     bool setOrder(int order) {
         final _setOrderFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Int32),
