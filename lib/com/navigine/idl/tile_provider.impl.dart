@@ -12,11 +12,13 @@ final class TileProviderNative extends Struct {
     @Int32()
     external int maxZoom;
     external Pointer<Void> attribution;
+    @Uint32()
+    external int kind;
 }
 
-final TileProviderNative Function(int, Pointer<Void>, Pointer<Void>, int, int, Pointer<Void>) _TileProviderNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
-  .lookup<NativeFunction<TileProviderNative Function(Uint32, Pointer<Void>, Pointer<Void>, Int32, Int32, Pointer<Void>)>>('navigine_sdk_flutter_TileProvider_init')
-  .asFunction<TileProviderNative Function(int, Pointer<Void>, Pointer<Void>, int, int, Pointer<Void>)>(isLeaf: true));
+final TileProviderNative Function(int, Pointer<Void>, Pointer<Void>, int, int, Pointer<Void>, int) _TileProviderNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<TileProviderNative Function(Uint32, Pointer<Void>, Pointer<Void>, Int32, Int32, Pointer<Void>, Uint32)>>('navigine_sdk_flutter_TileProvider_init')
+  .asFunction<TileProviderNative Function(int, Pointer<Void>, Pointer<Void>, int, int, Pointer<Void>, int)>(isLeaf: true));
 
 extension TileProviderImpl on TileProvider  {
     static TileProvider fromNative(TileProviderNative native, {bool takeOwnership = true})  {
@@ -27,6 +29,7 @@ extension TileProviderImpl on TileProvider  {
           minZoom: native.minZoom,
           maxZoom: native.maxZoom,
           attribution: toPlatformFromPointerString(native.attribution),
+          kind: TileKindImpl.fromInt(native.kind),
         );
     }
 
@@ -38,6 +41,7 @@ extension TileProviderImpl on TileProvider  {
           obj.minZoom,
           obj.maxZoom,
           toNativePtrString(obj.attribution),
+          TileKindImpl.toInt(obj.kind),
         );
     }
 

@@ -254,6 +254,42 @@ class LocationWindow$Impl implements LocationWindow, Finalizable {
     }
 
     @override
+    GeoJsonImport addGeoJson(String geoJson, int? sublocationId) {
+        final _addGeoJsonFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, NativeString, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, NativeString, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_addGeoJson__GeoJson_SublocationId'));
+        final __resultHandle = _addGeoJsonFfi(this.ptr, toNativeString(geoJson), toNativePtrInt32(sublocationId));
+        final _result = GeoJsonImport$Impl.fromNativePtr(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    PointBatch addPointBatch() {
+        final _addPointBatchFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, ),
+            Pointer<Void> Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_LocationWindow_addPointBatch'));
+        final __resultHandle = _addPointBatchFfi(this.ptr, );
+        final _result = PointBatch$Impl.fromNativePtr(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    bool removePointBatch(PointBatch pointBatch) {
+        final _removePointBatchFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Pointer<Void>),
+            int Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_LocationWindow_removePointBatch__PointBatch'));
+        final __resultHandle = _removePointBatchFfi(this.ptr, PointBatch$Impl.getNativePtr(pointBatch));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     bool removePolylineMapObject(PolylineMapObject polylineMapObject) {
         final _removePolylineMapObjectFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Pointer<Void>),

@@ -18,6 +18,7 @@ import 'package:navigine_sdk/com/navigine/idl/circle_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/cluster_map_object_controller.dart';
 import 'package:navigine_sdk/com/navigine/idl/debug_flag.dart';
 import 'package:navigine_sdk/com/navigine/idl/dotted_polyline_map_object.dart';
+import 'package:navigine_sdk/com/navigine/idl/geo_json_import.dart';
 import 'package:navigine_sdk/com/navigine/idl/global_point.dart';
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/input_listener.dart';
@@ -26,6 +27,7 @@ import 'package:navigine_sdk/com/navigine/idl/map_theme.dart';
 import 'package:navigine_sdk/com/navigine/idl/model_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/operating_mode.dart';
 import 'package:navigine_sdk/com/navigine/idl/pick_listener.dart';
+import 'package:navigine_sdk/com/navigine/idl/point_batch.dart';
 import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/polyline_map_object.dart';
 import 'package:navigine_sdk/com/navigine/idl/screen_rect.dart';
@@ -85,8 +87,9 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     OperatingMode getOperatingMode();
 
-    /// OSM attribution text shown when the outdoor vector basemap is active.
-    /// Comes from `tileProvider.attribution` when set, otherwise the OSM default.
+    /// Attribution text for the outdoor tiles.
+    /// Comes from `tileProvider.attribution` when set. A null vector source uses
+    /// the OSM default.
     ///
     /// Example:
     /// ```dart
@@ -263,6 +266,41 @@ abstract class LocationWindow implements Finalizable {
     /// print("Added polyline map object");
     /// ```
     PolylineMapObject addPolylineMapObject();
+
+    /// Adds polygons and lines from one GeoJSON document on a floor.
+    /// Accepts a FeatureCollection, a Feature, or one geometry, the same inputs
+    /// as a GeoJSON source. Polygon holes become
+    /// `LocationPolygon.innerRings`. Points are skipped. Returns null when the
+    /// document is not JSON. The host styles the returned objects.
+    /// [geoJson] GeoJSON text.
+    /// [sublocationId] Floor for every object, or null for the outdoor map.
+    ///
+    /// Example:
+    /// ```dart
+    /// String geoJson = '{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[37.617,55.751],[37.619,55.751],[37.619,55.752],[37.617,55.751]],[[37.6174,55.7512],[37.6176,55.7512],[37.6176,55.7514],[37.6174,55.7512]]]}},{"type":"Feature","geometry":{"type":"LineString","coordinates":[[37.617,55.751],[37.620,55.753]]}}]}';
+    /// GeoJsonImport imported = locationWindow.addGeoJson(geoJson, 7);
+    /// print("GeoJSON polygons ${imported.polygons.length}, lines ${imported.polylines.length}");
+    /// ```
+    GeoJsonImport addGeoJson(String geoJson, int? sublocationId);
+
+    /// Creates one arrow cloud. Replace its points each frame.
+    /// Returns A PointBatch [PointBatch], or null on failure.
+    ///
+    /// Example:
+    /// ```dart
+    /// PointBatch batch = locationWindow.addPointBatch();
+    /// batch.setPoints([
+    ///  PointSprite(GlobalPoint(55.751, 37.617), 0, Color(0xCCFF8000), 5),
+    ///  PointSprite(GlobalPoint(55.752, 37.618), 90, Color(0xCC0080FF), 5),
+    /// ], 7);
+    /// int? hit = batch.hitTest(math.Point<double>(12, 8), 8);
+    /// print("PointBatch hit $hit");
+    /// ```
+    PointBatch addPointBatch();
+
+    /// Removes an arrow cloud.
+    /// Returns true when the batch was on the map.
+    bool removePointBatch(PointBatch pointBatch);
 
     /// Removes a polyline map object from the location view.
     /// [polylineMapObject] The polyline map object instance [PolylineMapObject].
@@ -480,9 +518,9 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     void removeBuildingListener(BuildingListener listener);
 
-    /// Moves the map camera to a new position with an easing animation.
+    /// Moves the map camera to a new position with a smooth pan-and-zoom (fly) animation.
     /// [camera] The new camera position [Camera].
-    /// [duration] Animation duration in milliseconds.
+    /// [duration] Animation duration in milliseconds (-1 derives it from the distance).
     /// [callback] Callback to execute when the animation completes [CameraCallback].
     ///
     /// Example:
@@ -504,7 +542,7 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     void flyTo(Camera camera, int duration, CameraCallback callback);
 
-    /// Moves the map camera to a new position with a smooth pan-and-zoom animation.
+    /// Moves the map camera to a new position with an easing animation.
     /// [camera] The new camera position [Camera].
     /// [duration] Animation duration in milliseconds (-1 for default duration).
     /// [animationType] The type of easing animation [AnimationType].
@@ -608,15 +646,32 @@ abstract class LocationWindow implements Finalizable {
     /// ```
     MapTheme get mapTheme;
     void set mapTheme(MapTheme mapTheme);
-    /// Outdoor vector tile source [TileProvider].
-    /// Null (default) uses OSM Shortbread at vector.openstreetmap.org.
-    /// When `mbtiles` is set, tiles are read only from that file.
-    /// `schema` must match the remote tiles or MBTiles pack.
+    /// Outdoor tile source [TileProvider].
+    /// `kind` `vector` draws MVT (`schema` must match the tiles).
+    /// `kind` `raster` draws PNG, JPEG, or WebP imagery and hides outdoor
+    /// vector geometry and labels. `schema` is ignored for raster.
+    /// Indoor floors stay on top. Null (default) uses OSM Shortbread at
+    /// vector.openstreetmap.org. When `mbtiles` is set, tiles are read only
+    /// from that file.
     ///
     /// Example:
     /// ```dart
     /// _locationWindow!.setTileProvider(osmHttp);
     /// _locationWindow!.setTileProvider(null);
+    /// final imagery = TileProvider(
+    ///  schema: TileSchema.SHORTBREAD,
+    ///  http: HttpTileSource(
+    ///    urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    ///    headers: null,
+    ///    queryParameters: null,
+    ///  ),
+    ///  mbtiles: null,
+    ///  minZoom: 0,
+    ///  maxZoom: 19,
+    ///  attribution: "© OpenStreetMap contributors",
+    ///  kind: TileKind.RASTER,
+    /// );
+    /// _locationWindow!.setTileProvider(imagery);
     /// ```
     TileProvider? get tileProvider;
     void set tileProvider(TileProvider? tileProvider);

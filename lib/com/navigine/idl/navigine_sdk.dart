@@ -5,6 +5,7 @@ import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/native_types.dart';
 import 'package:navigine_sdk/com/navigine/idl/async_route_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/beacon_proximity_estimator.dart';
+import 'package:navigine_sdk/com/navigine/idl/guidance_camera.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_edit_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_list_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_manager.dart';
@@ -16,6 +17,7 @@ import 'package:navigine_sdk/com/navigine/idl/notification_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/resource_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_layer.dart';
 import 'package:navigine_sdk/com/navigine/idl/route_manager.dart';
+import 'package:navigine_sdk/com/navigine/idl/route_simulator.dart';
 import 'package:navigine_sdk/com/navigine/idl/storage_manager.dart';
 import 'package:navigine_sdk/com/navigine/idl/user_location_layer.dart';
 import 'package:navigine_sdk/com/navigine/idl/zone_manager.dart';
@@ -229,6 +231,64 @@ abstract class NavigineSdk implements Finalizable {
     /// }
     /// ```
     RouteLayer getRouteLayer(LocationWindow locationWindow);
+
+    /// Create a guidance camera bound to a route layer on the same window.
+    /// The controller follows route progress and publishes the next instruction.
+    /// It does not draw the route.
+    /// [locationWindow] Map window whose camera is driven.
+    /// [routeLayer] Route layer created for that window.
+    ///
+    /// Example:
+    /// ```dart
+    /// final routeLayer = _routeLayer;
+    /// if (locationWindow != null && routeLayer != null) {
+    ///  _guidanceCamera = _sdk?.getGuidanceCamera(locationWindow, routeLayer);
+    ///  // [dart_GuidanceCamera_setMode]
+    ///  _guidanceCamera?.setMode(GuidanceCameraMode.FOLLOWING);
+    ///  // [dart_GuidanceCamera_setMode]
+    ///  // [dart_GuidanceCamera_set2DMode]
+    ///  _guidanceCamera?.set2DMode(false);
+    ///  // [dart_GuidanceCamera_set2DMode]
+    ///  // [dart_GuidanceCamera_mode]
+    ///  print('Guidance mode: ${_guidanceCamera?.mode()}');
+    ///  // [dart_GuidanceCamera_mode]
+    ///  // [dart_GuidanceCamera_instruction]
+    ///  final next = _guidanceCamera?.instruction();
+    ///  print('Next instruction: ${next?.title} ${next?.distance} m');
+    ///  // [dart_GuidanceCamera_instruction]
+    /// }
+    /// ```
+    GuidanceCamera getGuidanceCamera(LocationWindow locationWindow, RouteLayer routeLayer);
+
+    /// Walk a polyline at a constant pedestrian speed. Does not move the user
+    /// location layer and does not replace MeasurementManager signal simulation.
+    /// [locationWindow] Map window whose frame clock drives the walk.
+    ///
+    /// Example:
+    /// ```dart
+    /// if (locationWindow != null) {
+    ///  final routeSimulator = _sdk?.getRouteSimulator(locationWindow);
+    ///  // [dart_RouteSimulator_setGeometry]
+    ///  final walk = LocationPolyline(
+    ///    [GlobalPoint(55.751, 37.618), GlobalPoint(55.752, 37.618)],
+    ///    null,
+    ///  );
+    ///  routeSimulator?.setGeometry([walk]);
+    ///  // [dart_RouteSimulator_setGeometry]
+    ///  // [dart_RouteSimulator_setSpeed]
+    ///  routeSimulator?.setSpeed(1.4);
+    ///  // [dart_RouteSimulator_setSpeed]
+    ///  // [dart_RouteSimulator_start]
+    ///  final started = routeSimulator?.start() ?? false;
+    ///  print('Route walk started: $started');
+    ///  // [dart_RouteSimulator_start]
+    ///  // [dart_RouteSimulator_sample]
+    ///  final sample = routeSimulator?.sample();
+    ///  print('Walk advance: ${sample?.advance} m');
+    ///  // [dart_RouteSimulator_sample]
+    /// }
+    /// ```
+    RouteSimulator getRouteSimulator(LocationWindow locationWindow);
 
     /// [RouteManager] instance, which could be used for working making routes, setting target points. [RoutePath]
     /// [locationManager] [LocationManager] instance

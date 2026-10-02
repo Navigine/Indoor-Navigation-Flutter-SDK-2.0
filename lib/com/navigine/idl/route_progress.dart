@@ -8,10 +8,14 @@ import 'package:navigine_sdk/com/to_platform.dart';
 part 'route_progress.impl.dart';
 class RouteProgress {
     /// Default constructor.
-    RouteProgress(this.point, this.sublocationId, this.advance, this.remainingDistance, this.legIndex);
+    RouteProgress(this.point, this.sublocationId, this.advance, this.remainingDistance, this.remainingTime, this.legIndex);
     GlobalPoint point;
     int? sublocationId;
     double advance;
     double remainingDistance;
+    /// Pedestrian ETA in seconds for the part of the route still ahead.
+    /// Outdoor legs use the OSRM duration scaled by the remaining fraction.
+    /// Indoor legs use a fixed walking speed (1.4 m/s). Not a traffic ETA.
+    double remainingTime;
     int legIndex;
 }

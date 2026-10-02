@@ -26,4 +26,7 @@ enum MapObjectType {
     /// Icon cluster.
     /// [ClusterMapObject]
     CLUSTER_MAP_OBJECT,
+    /// Screen-space arrow cloud.
+    /// [PointBatch]
+    POINT_BATCH,
 }

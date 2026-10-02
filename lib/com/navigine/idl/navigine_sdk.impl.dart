@@ -237,6 +237,30 @@ class NavigineSdk$Impl implements NavigineSdk, Finalizable {
     }
 
     @override
+    GuidanceCamera getGuidanceCamera(LocationWindow locationWindow, RouteLayer routeLayer) {
+        final _getGuidanceCameraFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_getGuidanceCamera__LocationWindow_RouteLayer'));
+        final __resultHandle = _getGuidanceCameraFfi(this.ptr, LocationWindow$Impl.getNativePtr(locationWindow), RouteLayer$Impl.getNativePtr(routeLayer));
+        final _result = GuidanceCamera$Impl.fromNativePtr(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    RouteSimulator getRouteSimulator(LocationWindow locationWindow) {
+        final _getRouteSimulatorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>),
+            Pointer<Void> Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_NavigineSdk_getRouteSimulator__LocationWindow'));
+        final __resultHandle = _getRouteSimulatorFfi(this.ptr, LocationWindow$Impl.getNativePtr(locationWindow));
+        final _result = RouteSimulator$Impl.fromNativePtr(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     RouteManager getRouteManager(LocationManager locationManager, NavigationManager navigationManager) {
         final _getRouteManagerFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Pointer<Void> Function(Pointer<Void>, Pointer<Void>, Pointer<Void>),
