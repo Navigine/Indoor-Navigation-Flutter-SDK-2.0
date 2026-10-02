@@ -1,12 +1,16 @@
 import 'dart:ffi';
 
 import 'package:navigine_sdk/com/navigine/idl/logger.dart' show Logger$Impl;
+import 'package:navigine_sdk/com/navigine/idl/route_simulator.dart' show RouteSimulator$Impl;
+import 'package:navigine_sdk/com/navigine/idl/guidance_camera.dart' show GuidanceCamera$Impl;
 import 'package:navigine_sdk/com/navigine/idl/route_view.dart' show RouteView$Impl;
 import 'package:navigine_sdk/com/navigine/idl/route_layer.dart' show RouteLayer$Impl;
 import 'package:navigine_sdk/com/navigine/idl/user_location_layer.dart' show UserLocationLayer$Impl;
 import 'package:navigine_sdk/com/navigine/idl/building.dart' show Building$Impl;
 import 'package:navigine_sdk/com/navigine/idl/model_map_object.dart' show ModelMapObject$Impl;
+import 'package:navigine_sdk/com/navigine/idl/point_batch.dart' show PointBatch$Impl;
 import 'package:navigine_sdk/com/navigine/idl/polygon_map_object.dart' show PolygonMapObject$Impl;
+import 'package:navigine_sdk/com/navigine/idl/geo_json_import.dart' show GeoJsonImport$Impl;
 import 'package:navigine_sdk/com/navigine/idl/cluster_map_object.dart' show ClusterMapObject$Impl;
 import 'package:navigine_sdk/com/navigine/idl/cluster_map_object_controller.dart' show ClusterMapObjectController$Impl;
 import 'package:navigine_sdk/com/navigine/idl/icon_map_object.dart' show IconMapObject$Impl;
@@ -35,12 +39,16 @@ import 'package:navigine_sdk/com/navigine/idl/navigine_sdk.dart' show NavigineSd
 
 final weakInterfacesMeta = <String, dynamic Function(Pointer<Void>)>{
   'navigine_sdk.Logger': Logger$Impl.fromNativePtrImpl,
+  'navigine_sdk.RouteSimulator': RouteSimulator$Impl.fromNativePtrImpl,
+  'navigine_sdk.GuidanceCamera': GuidanceCamera$Impl.fromNativePtrImpl,
   'navigine_sdk.RouteView': RouteView$Impl.fromNativePtrImpl,
   'navigine_sdk.RouteLayer': RouteLayer$Impl.fromNativePtrImpl,
   'navigine_sdk.UserLocationLayer': UserLocationLayer$Impl.fromNativePtrImpl,
   'navigine_sdk.Building': Building$Impl.fromNativePtrImpl,
   'navigine_sdk.ModelMapObject': ModelMapObject$Impl.fromNativePtrImpl,
+  'navigine_sdk.PointBatch': PointBatch$Impl.fromNativePtrImpl,
   'navigine_sdk.PolygonMapObject': PolygonMapObject$Impl.fromNativePtrImpl,
+  'navigine_sdk.GeoJsonImport': GeoJsonImport$Impl.fromNativePtrImpl,
   'navigine_sdk.ClusterMapObject': ClusterMapObject$Impl.fromNativePtrImpl,
   'navigine_sdk.ClusterMapObjectController': ClusterMapObjectController$Impl.fromNativePtrImpl,
   'navigine_sdk.IconMapObject': IconMapObject$Impl.fromNativePtrImpl,

@@ -31,7 +31,7 @@ abstract class PolygonMapObject implements MapObject, Finalizable {
     ///  GlobalPoint(200.0, 200.0),
     ///  GlobalPoint(150.0, 150.0),
     /// ];
-    /// LocationPolygon polygon = LocationPolygon(points, 0);
+    /// LocationPolygon polygon = LocationPolygon(points, 0, []);
     /// bool success = _polygonMapObject!.setPolygon(polygon);
     /// print("Set polygon with ${points.length} points: $success");
     /// ```

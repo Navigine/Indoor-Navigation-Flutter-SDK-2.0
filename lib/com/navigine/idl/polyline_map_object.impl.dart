@@ -162,6 +162,42 @@ class PolylineMapObject$Impl implements PolylineMapObject, Finalizable {
     }
 
     @override
+    bool setDrawnFraction(double fraction) {
+        final _setDrawnFractionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float),
+            int Function(Pointer<Void>, double)
+          >('navigine_sdk_flutter_PolylineMapObject_setDrawnFraction__Fraction'));
+        final __resultHandle = _setDrawnFractionFfi(this.ptr, fraction);
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    double drawnFraction() {
+        final _drawnFractionFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Float Function(Pointer<Void>, ),
+            double Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_PolylineMapObject_drawnFraction'));
+        final __resultHandle = _drawnFractionFfi(this.ptr, );
+        final _result = __resultHandle;
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    bool setDrawnFractionAnimated(double fraction, double duration, AnimationType type) {
+        final _setDrawnFractionAnimatedFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint8 Function(Pointer<Void>, Float, Float, Uint32),
+            int Function(Pointer<Void>, double, double, int)
+          >('navigine_sdk_flutter_PolylineMapObject_setDrawnFractionAnimated__Fraction_Duration_Type'));
+        final __resultHandle = _setDrawnFractionAnimatedFfi(this.ptr, fraction, duration, AnimationTypeImpl.toInt(type));
+        final _result = (__resultHandle != 0);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
     bool setWidth(double width) {
         final _setWidthFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
             Uint8 Function(Pointer<Void>, Float),

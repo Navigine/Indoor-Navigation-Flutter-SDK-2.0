@@ -117,6 +117,50 @@ class UserLocationLayer$Impl implements UserLocationLayer, Finalizable {
         return _result;
     }
 
+    @override
+    void setFollowMode(UserLocationFollowMode mode) {
+        final _setFollowModeFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Uint32),
+            void Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_UserLocationLayer_setFollowMode__Mode'));
+        _setFollowModeFfi(this.ptr, UserLocationFollowModeImpl.toInt(mode));
+        exception.checkCallResult();
+    }
+
+    @override
+    UserLocationFollowMode followMode() {
+        final _followModeFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Uint32 Function(Pointer<Void>, ),
+            int Function(Pointer<Void>, )
+          >('navigine_sdk_flutter_UserLocationLayer_followMode'));
+        final __resultHandle = _followModeFfi(this.ptr, );
+        final _result = UserLocationFollowModeImpl.fromInt(__resultHandle);
+        exception.checkCallResult();
+        return _result;
+    }
+
+    @override
+    void setArrowBitmap(ImageProvider? bitmap) {
+        final _setArrowBitmapFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Pointer<Void>),
+            void Function(Pointer<Void>, Pointer<Void>)
+          >('navigine_sdk_flutter_UserLocationLayer_setArrowBitmap__Bitmap'));
+        final _bitmapHandle = ImageProviderImpl.getNativePtr(bitmap);
+        _setArrowBitmapFfi(this.ptr, _bitmapHandle);
+        ImageProviderImpl.releaseNativePtr(_bitmapHandle);
+        exception.checkCallResult();
+    }
+
+    @override
+    void setAccuracyColor(Color color) {
+        final _setAccuracyColorFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<
+            Void Function(Pointer<Void>, Int32),
+            void Function(Pointer<Void>, int)
+          >('navigine_sdk_flutter_UserLocationLayer_setAccuracyColor__Color'));
+        _setAccuracyColorFfi(this.ptr, color.value);
+        exception.checkCallResult();
+    }
+
 
 
 

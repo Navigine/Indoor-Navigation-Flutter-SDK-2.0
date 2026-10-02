@@ -9,13 +9,15 @@ final class RouteProgressNative extends Struct {
     external double advance;
     @Float()
     external double remainingDistance;
+    @Float()
+    external double remainingTime;
     @Int32()
     external int legIndex;
 }
 
-final RouteProgressNative Function(GlobalPointNative, Pointer<Void>, double, double, int) _RouteProgressNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
-  .lookup<NativeFunction<RouteProgressNative Function(GlobalPointNative, Pointer<Void>, Float, Float, Int32)>>('navigine_sdk_flutter_RouteProgress_init')
-  .asFunction<RouteProgressNative Function(GlobalPointNative, Pointer<Void>, double, double, int)>(isLeaf: true));
+final RouteProgressNative Function(GlobalPointNative, Pointer<Void>, double, double, double, int) _RouteProgressNativeInit = __lib.catchArgumentError(() => __lib.nativeLibrary
+  .lookup<NativeFunction<RouteProgressNative Function(GlobalPointNative, Pointer<Void>, Float, Float, Float, Int32)>>('navigine_sdk_flutter_RouteProgress_init')
+  .asFunction<RouteProgressNative Function(GlobalPointNative, Pointer<Void>, double, double, double, int)>(isLeaf: true));
 
 extension RouteProgressImpl on RouteProgress  {
     static RouteProgress fromNative(RouteProgressNative native, {bool takeOwnership = true})  {
@@ -24,6 +26,7 @@ extension RouteProgressImpl on RouteProgress  {
           toPlatformFromPointerInt32(native.sublocationId),
           native.advance,
           native.remainingDistance,
+          native.remainingTime,
           native.legIndex,
         );
     }
@@ -34,6 +37,7 @@ extension RouteProgressImpl on RouteProgress  {
           toNativePtrInt32(obj.sublocationId),
           obj.advance,
           obj.remainingDistance,
+          obj.remainingTime,
           obj.legIndex,
         );
     }

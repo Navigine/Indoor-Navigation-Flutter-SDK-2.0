@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:navigine_sdk/com/_library_context.dart' as __lib;
 import 'package:navigine_sdk/com/exception.dart' as exception;
 import 'package:navigine_sdk/com/native_types.dart';
+import 'package:navigine_sdk/com/navigine/idl/animation_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/cap_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/join_type.dart';
 import 'package:navigine_sdk/com/navigine/idl/location_polyline.dart';
@@ -38,6 +39,39 @@ abstract class PolylineMapObject implements MapObject, Finalizable {
     /// print("Set polyline geometry: $success");
     /// ```
     bool setPolyLine(LocationPolyline polyline);
+
+    /// Fraction of the polyline drawn from its start, in [0, 1].
+    /// 0 keeps only the first point. 1 draws the whole line. Default: 1.
+    /// Animated with the same easing and timing as a point move. The mesh is
+    /// updated before the frame is drawn, so the end of the line does not pop
+    /// in later than the point.
+    ///
+    /// Example:
+    /// ```dart
+    /// _polylineMapObject!.setDrawnFraction(0);
+    /// ```
+    bool setDrawnFraction(double fraction);
+
+    /// Returns the drawn fraction.
+    ///
+    /// Example:
+    /// ```dart
+    /// print("Drawn fraction: ${_polylineMapObject!.drawnFraction()}");
+    /// ```
+    double drawnFraction();
+
+    /// Grows or shrinks the drawn fraction.
+    /// [fraction] Target fraction in [0, 1].
+    /// [duration] Duration in seconds. 0 snaps.
+    /// [type] Animation type [AnimationType].
+    /// Returns true if the operation is successful, false otherwise.
+    ///
+    /// Example:
+    /// ```dart
+    /// bool grew = _polylineMapObject!.setDrawnFractionAnimated(1, 1.0, AnimationType.LINEAR);
+    /// print("Polyline grow started: $grew");
+    /// ```
+    bool setDrawnFractionAnimated(double fraction, double duration, AnimationType type);
 
     /// Method is used to specify the width of the polyline.
     /// [width] Width of the polyline in pixels.
